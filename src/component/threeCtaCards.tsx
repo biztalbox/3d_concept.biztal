@@ -91,7 +91,6 @@ export default function ThreeCtaCards() {
         </div>
 
         <p
-          data-aos="fade-up"
           data-aos-delay="120"
           className="mx-auto mt-14 max-w-5xl text-center text-[12px] leading-6 text-white/30"
         >

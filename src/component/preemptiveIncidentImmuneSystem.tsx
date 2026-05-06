@@ -57,7 +57,7 @@ export default function PreemptiveIncidentImmuneSystem() {
                   body: "Your L1/L2 engineers transition from ticket processors to strategic architects",
                 },
               ].map((c) => (
-                <div data-aos="fade-up" key={c.title} className="bg-background p-10 flex flex-col gap-8 text-center">
+                <div data-aos="zoom-in-up" key={c.title} className="bg-background p-10 flex flex-col gap-8 text-center">
                   <h4>
                     {c.title}
                   </h4>

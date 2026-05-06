@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
 import "aos/dist/aos.css";
-
-const RIGHT_IMAGE_URL =
-  "https://plus.unsplash.com/premium_photo-1680608979589-e9349ed066d5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8QWl8ZW58MHx8MHx8fDA%3D";
 
 type CognitivePillar = {
   openTitle: string;
@@ -96,6 +96,8 @@ export default function ProposeReality() {
   // First pillar open by default; stays open until another is hovered.
   const [pillarActive, setPillarActive] = useState<number>(0);
   const hoverLockRef = useRef<number | null>(null);
+  const introVideoWrapRef = useRef<HTMLDivElement | null>(null);
+  const introVideoRef = useRef<HTMLVideoElement | null>(null);
   const pillars = useMemo(() => COGNITIVE_PILLARS, []);
 
   const setPillarActiveSmooth = useCallback((idx: number) => {
@@ -106,22 +108,52 @@ export default function ProposeReality() {
     }, 220);
   }, []);
 
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const wrap = introVideoWrapRef.current;
+    const video = introVideoRef.current;
+    if (!wrap) return;
+
+    const videoTl = gsap.timeline({
+      defaults: { duration: 1, ease: "power3.out" },
+      currentTime: 13,
+      scrollTrigger: {
+        trigger: video,
+        start: "top 15%",
+        end: "+=2000px",
+        pin: true,
+        scrub: 2,
+        // markers: true
+      }
+    })
+
+    videoTl.to(video, { scale: 2.05, transformOrigin: "top left", borderRadius: "0" }, 0.25)
+    // videoTl.from(video, { scaleX: 3.5, scaleY: 2.5, borderRadius: "0" }, 0)
+    // videoTl.from(video, { width: "50em", height: "100em", borderRadius: "0" }, 0)
+
+    // videoTl.fromTo(video, { width: "300px", height: "250px", borderRadius:"40px" }, { width: "100%", height: "100vh", borderRadius:"0" })
+
+  }, []);
+
   return (
     <>
       {/* Section 1 */}
       <section
-        className="bg-secondary dark:bg-secondary/40 py-20"
+        className="bg-secondary dark:bg-secondary/40 py-20 min-h-screen md:h-[2900px]"
       >
-        <div className="container grid grid-cols-1 md:grid-cols-2 place-items-center gap-10">
-          <div className="w-fit place-self-start relative">
-            <Image
-              width={500}
-              height={500}
-              src={RIGHT_IMAGE_URL}
-              alt="AI and human hand"
-              className="rounded-lg w-full h-full object-cover"
-            />
-          </div>
+        <div ref={introVideoWrapRef} className="container relative grid grid-cols-1 md:grid-cols-2 gap-10">
+
+          <video
+            ref={introVideoRef}
+            src="/assets/intro_video.webm"
+            muted
+            playsInline
+            loop
+            preload="metadata"
+            autoPlay
+            className="rounded block mx-auto will-change-[width,height,transform]"
+          />
 
           <div className="">
             <h2>
@@ -155,7 +187,6 @@ export default function ProposeReality() {
               maintenance to innovation?”
             </p>
           </div>
-
 
         </div>
       </section>

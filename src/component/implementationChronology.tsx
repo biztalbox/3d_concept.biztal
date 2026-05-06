@@ -19,21 +19,21 @@ function PhaseCard({ phase, title, day, body, delay = 0 }: PhaseCardProps) {
       data-aos-delay={delay}
       data-aos-duration="900"
       data-aos-easing="ease-out-cubic"
-      className="rounded-2xl bg-[#19B6C9] h-fit p-2 pt-8"
+      className="rounded-2xl bg-[#19B6C9] p-2"
     >
-      <div className="flex items-center gap-4 px-1 pb-4">
-        <h5 className="text-[13px] font-extrabold">{phase}:</h5>
-        <div className="h-px flex-1 bg-black/25" />
+      <div className="flex items-center gap-4 px-1 py-4">
+        <h5 className="font-extrabold text-foreground">{phase}</h5>
+        <div className="h-px flex-1 bg-foreground" />
       </div>
 
-      <div className="mx-auto w-full h-full rounded-2xl bg-[#0B0B0B] p-4 ring-1 ring-white/10">
-        <h4 className="">
+      <div className="flex flex-col gap-3 min-h-96 rounded-2xl bg-black p-4">
+        <h4 className="text-white">
           {title}
         </h4>
 
-        <p className="mt-4 text-[11px] font-extrabold text-white/80">{day}</p>
+        <p className="font-extrabold text-white/80">{day}</p>
 
-        <p className="mt-2 text-[11px] leading-5 text-white/40">{body}</p>
+        <p className="leading-5 text-white/40">{body}</p>
       </div>
     </div>
   );
@@ -83,7 +83,7 @@ export default function ImplementationChronology() {
             phase="Phase 1"
             title="Consciousness Awakening"
             day="Day 1"
-            body="Hyper-orchestrative self-service portal goes live. Users experience conversational workflows that feel like magic. Autonomous incident resolution foundation activates across your infrastructure. Self-healing compute capabilities begin operating. Your team witnesses their first incidents that resolve themselves."
+            body="Hyper-orchestrative self-service portal goes live. Users experience conversational workflows that feel like magic. Autonomous incident resolution foundation activates across your infrastructure. Self-healing compute capabilities begin operating."
             delay={0}
           />
 
