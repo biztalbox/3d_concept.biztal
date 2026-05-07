@@ -10,7 +10,7 @@ const HeroScene = () => {
   const botRef = useRef<Group>(null!);
   // const clickPlayedRef = useRef(false);
 
-  const model = useGLTF('/assets/bot.glb');
+  const model = useGLTF('/assets/bot_final.glb');
 
   console.log(model);
 
@@ -98,7 +98,7 @@ const HeroScene = () => {
     <group ref={botRef} >
       {/* <Float floatIntensity={2} rotationIntensity={0.2} speed={4}> */}
       <mesh onClick={() => alert("clicked on bot")}>
-        <primitive object={model.scene} scale={4.3} rotation={[0, 0, 0]} position={[0, -2, 0]}  />
+        <primitive object={model.scene} scale={4.8} rotation={[0, 0, 0]} position={[0, -2, 0]}  />
       </mesh>
       {/* </Float> */}
     </group>
