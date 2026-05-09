@@ -1,3 +1,5 @@
+"use client";
+
 import HeroScene from "@/component/HeroScene";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
@@ -37,8 +39,8 @@ const HeroCanvas = () => {
 
 
     return (
-        <div className="relative">
-            <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="w-full h-full cursor-pointer" >
+        <div className="relative h-full w-full">
+            <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="h-full w-full cursor-pointer" >
                 <HeroScene />
 
                 <Environment preset="city" />

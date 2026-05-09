@@ -1,0 +1,309 @@
+import HeroCanvas from "@/component/bot/HeroCanvas";
+import Link from "next/link";
+import Image from "next/image";
+import { PiClockCounterClockwise } from "react-icons/pi";
+import { CiCircleCheck } from "react-icons/ci";
+import { FiCloud } from "react-icons/fi";
+import { FaRocket } from "react-icons/fa6";
+
+const DAY_ONE_HERO_IMAGE ="/assets/images/men-in-pc.png"
+export default function ComplaincePage() {
+  const logos = [
+    {
+      src: "/brands/microsoft-intune.svg",
+      alt: "Microsoft Intune",
+    },
+    {
+      src: "/brands/azure-active-directory.svg",
+      alt: "Azure Active Directory",
+    },
+    {
+      src: "/brands/manageengine.svg",
+      alt: "ManageEngine",
+    },
+    {
+      src: "/brands/symphony.svg",
+      alt: "Symphony",
+    },
+    {
+      src: "/brands/servicenow.svg",
+      alt: "ServiceNow",
+    },
+    {
+      src: "/brands/infron.svg",
+      alt: "Infron",
+    },
+  ];
+
+  return (
+    <main>
+      <section id="" className="relative w-full lg:min-h-screen">
+        {/* right-side background decorative strips (flush to viewport edge) */}
+        <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
+          <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
+          <div className="absolute top-0 right-[-90px] h-[120%] w-[130px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
+        </div>
+
+        <div className="container mt-11 grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="py-16 ">
+            <h2>Drop-Ship Productivity.
+                <br />
+            <span className="text-primary! text-5xl!">
+            Zero IT Touch Required.</span>
+              
+            </h2>
+
+            <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
+              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint—without tickets, scripts, or human intervention.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
+              <Link
+                href="#"
+                className="rounded-full bg-primary px-7 py-3 text-xs font-semibold text-primary-foreground hover:bg-primary-hover sm:text-sm"
+              >
+                Get a Demo
+              </Link>
+            </div>
+          </div>
+          <HeroCanvas />
+
+        </div>
+      </section>
+
+      {/* logos / integrations marquee — tight row, large logos, black dividers (reference layout) */}
+      <section className="w-full bg-[#0b0b0b] pb-10 pt-0 sm:pb-14">
+        <div className="w-full">
+          <div className="bg-black px-4 py-5 text-center sm:px-6 sm:py-6">
+            <h4 className="text-base font-semibold leading-snug text-white sm:text-lg md:text-xl">
+              Seamlessly integrating with the tools Industry Leaders rely on:
+            </h4>
+          </div>
+
+          <div className="w-full bg-white py-6 shadow-[0_18px_60px_rgba(0,0,0,0.45)] ring-1 ring-black/10 sm:py-7 md:py-8">
+            <div className="logo-marquee">
+              <div
+                className="logo-marquee__track"
+                aria-label="Integration logos"
+              >
+                {[...logos, ...logos].map((logo, idx) => (
+                  <div
+                    key={`${logo.src}-${idx}`}
+                    className="flex flex-none items-center"
+                  >
+                    {idx > 0 ? (
+                      <div
+                        aria-hidden
+                        className="mx-0.5 h-11 w-px shrink-0 self-center bg-black sm:mx-1 sm:h-12 md:h-14"
+                      />
+                    ) : null}
+                    <div className="flex h-[46px] w-[200px] flex-none items-center justify-center px-1.5 sm:h-[52px] sm:w-[250px] sm:px-2 md:h-[58px] md:w-[300px] lg:h-[60px] lg:w-[320px]">
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          fill
+                          sizes="(max-width: 640px) 200px, (max-width: 768px) 250px, 320px"
+                          className="object-contain object-center"
+                          priority={idx < logos.length}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* cards/content inside marquee section */}
+          <div className="container mt-12 sm:mt-14">
+            <div className="mx-auto max-w-6xl rounded-3xl bg-white dark:bg-secondary/40 px-6 py-10 ring-1 ring-white/10 sm:px-10 sm:py-12">
+              <div className="max-w-4xl">
+                <h2 className="dark:text-white text-black">
+                  Imaging Laptops is a Waste of IT Talent
+                </h2>
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 sm:text-base">
+                  In modern enterprise environments, paying highly skilled IT engineers to
+                  unbox, image, repack, and ship laptops is an archaic drain on resources
+                  and budget.
+                </p>
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="group relative overflow-hidden rounded-2xl bg-secondary dark:bg-secondary/40 p-6 transition-colors duration-200 hover:border-primary hover:bg-primary sm:p-7">
+                  <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white opacity-70 transition-opacity duration-200 group-hover:opacity-100" />
+                  <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white bg-white text-primary transition-colors duration-200 group-hover:border-white/50 group-hover:bg-white/15 group-hover:text-white">
+                    <PiClockCounterClockwise className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <p className="text-sm font-semibold group-hover:text-white! text-black">
+                    The Old Way:
+                  </p>
+                  <p className="mt-3 text-sm leading-6  transition-colors duration-200 group-hover:text-white!">
+                    Manual setup. Imaging. IT dependency.
+                    <br />
+                    Day 1 login issues.
+                  </p>
+                </div>
+
+                <div className="group relative overflow-hidden rounded-2xl bg-secondary dark:bg-secondary/40 p-6 transition-colors duration-200 hover:border-primary hover:bg-primary sm:p-7">
+                  <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white opacity-70 transition-opacity duration-200 group-hover:opacity-100" />
+                  <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white bg-white text-primary transition-colors duration-200 group-hover:border-white/50 group-hover:bg-white/15 group-hover:text-white">
+                    <CiCircleCheck className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                  <p className="text-sm font-semibold group-hover:text-white! text-black">
+                    The ZerofAI Way:
+                  </p>
+                  <p className="mt-3 text-sm leading-6 transition-colors duration-200 group-hover:text-white!">
+                    Automated onboarding. Policy-driven
+                    <br />
+                    provisioning. Instant readiness.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-secondary dark:bg-secondary/40 py-10 dark:text-white text-black sm:py-12">
+        <div className="container sm:px-6">
+          <h3 className="mt-[-50px]">
+            The Day-One Experience, Automated.
+          </h3>
+
+          <div className="mt-8 grid grid-cols-1 gap-5 md:mt-10 md:grid-cols-2 md:gap-6">
+            <div className="relative bg-white dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+              <span
+                aria-hidden="true"
+                className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
+              />
+              <h5 className="text-sm font-bold sm:text-[15px]">
+                Intelligent App Orchestration
+              </h5>
+              <p className="mt-3 leading-6 text-white/85 sm:leading-6">
+                No more missing software tickets. Based on the user&apos;s role and
+                department, the AI agent dynamically installs the exact applications and
+                permissions they need to start working immediately.
+              </p>
+            </div>
+            <div className="relative bg-white dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+              <span
+                aria-hidden="true"
+                className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
+              />
+              <h5 className="text-sm font-bold sm:text-[15px]">
+                Secure Identity Binding
+              </h5>
+              <p className="mt-3 text-xs leading-6 text-white/85 sm:text-[13px] sm:leading-6">
+                Security starts at the first boot. Device enrollment is tied directly to
+                the user&apos;s corporate identity with multi-factor authentication,
+                ensuring the hardware is locked down before the desktop even loads.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 overflow-hidden bg-white dark:bg-black md:mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="relative aspect-4/3 w-full md:aspect-auto ">
+                <Image
+                  src={DAY_ONE_HERO_IMAGE}
+                  alt="Professional reviewing finance charts with holographic HUD interface"
+                  width={500}
+                  height={300}
+                 
+                  className="p-8"
+                  
+                
+                />
+              </div>
+              <div className="flex flex-col justify-center gap-6 bg-white dark:bg-black px-6 py-6 sm:px-8 sm:py-8 md:gap-7 md:px-10">
+                <div>
+                  <h4 className="text-base font-bold sm:text-lg">
+                    True &apos;Out-of-the-Box&apos; Readiness.
+                  </h4>
+                  <p className="mt-2  text-white/85">
+                    Give your employees a consumer-grade unboxing experience with
+                    enterprise-grade security. They simply power on the device, connect to
+                    the internet, and enter their credentials. ZeroAI takes over,
+                    transforming a blank device into a fully managed corporate asset in
+                    minutes.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-base font-bold sm:text-lg">
+                    Scale Globally Without Expanding IT.
+                  </h4>
+                  <p className="mt-2">
+                    Whether you are onboarding ten associates at your Global Delivery
+                    Center or equipping five hundred remote executives, the effort for your
+                    IT team remains exactly the same: zero. Team Computers designed ZeroAI
+                    to scale your endpoint infrastructure infinitely, without scaling your
+                    headcount.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA section (match design screenshot) */}
+      <section className="w-full bg-secondary dark:bg-secondary/40 py-16 text-white sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-0">
+            <div className="flex flex-col items-center text-center">
+              <div className="flex h-14 w-14 items-center justify-center">
+                <PiClockCounterClockwise
+                  className="h-[1100px] w-[1100px] text-[#11B6C9]"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="mt-4 text-xs font-semibold dark:text-white text-black">0</div>
+              <div className="mt-1 text-[11px] font-medium dark:text-white text-black">
+                Hours Spent Imaging Devices
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
+              <div className="flex h-14 w-14 items-center justify-center">
+                <FiCloud className="h-12 w-12 text-[#11B6C9]" aria-hidden="true" />
+              </div>
+              <div className="mt-4 text-xs font-semibold text-black dark:text-white">
+                100%
+              </div>
+              <div className="mt-1 text-[11px] font-medium dark:text-white text-black">
+                Cloud-Driven Configuration
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
+              <div className="flex h-14 w-14 items-center justify-center">
+                <FaRocket className="h-11 w-11 text-[#11B6C9]" aria-hidden="true" />
+              </div>
+              <div className="mt-4 text-xs font-semibold dark:text-white text-black">
+                Day 1
+              </div>
+              <div className="mt-1 text-[11px] font-medium dark:text-white text-black">
+                Immediate Employee Productivity
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14 flex flex-col items-center justify-center text-center sm:mt-16">
+            <h2 className="max-w-4xl text-[28px] font-light leading-tight tracking-wide dark:text-white text-black sm:text-[44px] sm:leading-[1.15]">
+              Ready to eliminate manual device
+              <br />
+              setup?
+            </h2>
+            <Link
+              href="#"
+              className="mt-8 rounded-full bg-primary px-7 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary"
+            >
+              Get a Demo
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

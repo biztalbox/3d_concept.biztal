@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useId, useState } from "react";
 import { IoSunnyOutline } from "react-icons/io5";
 import { RiMoonClearLine } from "react-icons/ri";
-import { ThemeProvider, useTheme } from "next-themes";
+import { ThemeProvider, useTheme } from "@teispace/next-themes";
 import {
   Accordion,
   AccordionContent,
@@ -46,17 +46,17 @@ const MEGA_MENU: MegaMenuColumn[] = [
           {
             id: "endpoint-compliance-hardening",
             label: "Continuous Compliance & Hardening",
-            href: "#",
+            href: "/continuous-compliance-hardening",
           },
           {
             id: "endpoint-sentiment-analysis",
             label: "Automated Zero-Touch Provisioning",
-            href: "#",
+            href: "/automated-zero-touch-provisioning",
           },
           {
             id: "endpoint-software-deployment",
             label: "Identity & Access Automation",
-            href: "#"
+            href: "/identity-access-automation",
           },
           {
             id: "endpoint-ad-management",
@@ -291,7 +291,7 @@ function StickyHeader() {
             ))}
           </nav>
 
-          <Link href="#" className="px-3 py-1 text-white bg-primary rounded-full">Request Demo</Link>
+          <Link href="/contact" className="px-3 py-1 text-white bg-primary rounded-full">Request Demo</Link>
 
           <button
             type="button"

@@ -127,6 +127,41 @@ html.dark {
   }
 }
 
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  will-change: transform;
+  animation: logo-marquee 28s linear infinite;
+}
+
+.logo-marquee:hover .logo-marquee__track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee__track {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+
 body {
   font-family: Helvetica, sans-serif;
 }
@@ -137,13 +172,13 @@ body {
 
 .dark {
   /* Dark theme tokens (next-themes sets `.dark` on <html>) */
+  --primary: #19b6c9;
   --background: #0a0a0a;
   --foreground: #ededed;
   --card: #0b0b0b;
   --card-foreground: #ededed;
   --popover: #0b0b0b;
   --popover-foreground: #ededed;
-  --primary: #19b6c9;
   --primary-foreground: #000000;
   --secondary: #1f1f1f;
   --secondary-foreground: #ededed;

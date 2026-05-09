@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="72" viewBox="0 0 320 72" role="img" aria-label="ManageEngine">
+  <rect width="320" height="72" fill="white"/>
+  <g transform="translate(12,18)">
+    <circle cx="18" cy="18" r="16" fill="#F59E0B"/>
+    <circle cx="24" cy="14" r="9" fill="#22C55E" opacity="0.95"/>
+    <text x="52" y="26" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="800" fill="#111827">ManageEngine</text>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="72" viewBox="0 0 280 72" role="img" aria-label="ServiceNow">
+  <rect width="280" height="72" fill="white"/>
+  <g transform="translate(12,18)">
+    <circle cx="18" cy="18" r="16" fill="#84CC16"/>
+    <circle cx="18" cy="18" r="8" fill="white" opacity="0.95"/>
+    <text x="52" y="26" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="900" fill="#111827">servicenow</text>
+  </g>
+</svg>
