@@ -168,7 +168,7 @@ export default function ComplaincePage() {
           </div>
 
           {/* 2-up features */}
-          <h2 className="mt-10">
+          <h2 className="mt-30">
             Compliance That Fixes Itself
           </h2>
 

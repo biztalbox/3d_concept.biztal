@@ -29,8 +29,8 @@ const AI_SOLUTIONS = [
 ];
 
 const POLICY_LINKS = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/termscondition" },
   { label: "Cookie Policy", href: "#" },
   { label: "Security", href: "#" },
 ];
