@@ -22,7 +22,7 @@ export default function TemporalPredictionPerpetualEvolution() {
   }, []);
 
   return (
-    <section className="py-20 bg-secondary dark:bg-secondary/40">
+    <section className="py-20 bg-secondary dark:bg-secondary/40 overflow-hidden">
       <div className="container">
         <div className="text-center">
           <h2
@@ -65,8 +65,8 @@ export default function TemporalPredictionPerpetualEvolution() {
               />
             </div>
 
-            <div data-aos="fade-left" className="text-white/40">
-              <p className="text-xs font-extrabold tracking-wide text-[#19B6C9]">
+            <div data-aos="fade-left" className="">
+              <p className="font-extrabold tracking-wide text-[#19B6C9]">
                 The Temporal Prediction Matrix
               </p>
               <p className="mt-2 text-xs font-semibold text-white/70">
@@ -92,7 +92,7 @@ export default function TemporalPredictionPerpetualEvolution() {
 
           {/* Bottom row */}
           <div className="grid items-center gap-10 md:grid-cols-[1.05fr_1fr]">
-            <div data-aos="fade-right" className="order-2 text-right md:order-1">
+            <div data-aos="fade-right" className="order-2 md:text-right md:order-1">
               <p className="text-xs font-extrabold tracking-wide text-[#19B6C9]">
                 The Perpetual Evolution Engine
               </p>

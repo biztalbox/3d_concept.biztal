@@ -39,8 +39,8 @@ const HeroCanvas = () => {
 
 
     return (
-        <div className="relative h-full w-full">
-            <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="h-full w-full cursor-pointer" >
+        <div className="relative order-1 md:order-2 overflow-hidden min-h-96">
+            <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="w-full h-full cursor-pointer" >
                 <HeroScene />
 
                 <Environment preset="city" />

@@ -96,7 +96,6 @@ export default function ProposeReality() {
   // First pillar open by default; stays open until another is hovered.
   const [pillarActive, setPillarActive] = useState<number>(0);
   const hoverLockRef = useRef<number | null>(null);
-  const introVideoWrapRef = useRef<HTMLDivElement | null>(null);
   const introVideoRef = useRef<HTMLVideoElement | null>(null);
   const pillars = useMemo(() => COGNITIVE_PILLARS, []);
 
@@ -108,31 +107,42 @@ export default function ProposeReality() {
     }, 220);
   }, []);
 
+
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const wrap = introVideoWrapRef.current;
     const video = introVideoRef.current;
-    if (!wrap) return;
+    if (!video) return;
+
+    const mm = gsap.matchMedia();
+
+  // Sirf tablet + desktop
+  mm.add("(min-width: 768px)", () => {
 
     const videoTl = gsap.timeline({
-      defaults: { duration: 1, ease: "power3.out" },
-      currentTime: 13,
+      defaults: {
+        duration: 1,
+        ease: "power3.out"
+      },
       scrollTrigger: {
         trigger: video,
         start: "top 15%",
         end: "+=2000px",
         pin: true,
-        scrub: 2,
+        scrub: 4.5,
         // markers: true
       }
-    })
+    });
 
-    videoTl.to(video, { scale: 2.05, transformOrigin: "top left", borderRadius: "0" }, 0.25)
-    // videoTl.from(video, { scaleX: 3.5, scaleY: 2.5, borderRadius: "0" }, 0)
-    // videoTl.from(video, { width: "50em", height: "100em", borderRadius: "0" }, 0)
+    videoTl.to(video, {
+      scale: 2.05,
+      transformOrigin: "top left",
+      borderRadius: "0"
+    }, 0.15);
 
-    // videoTl.fromTo(video, { width: "300px", height: "250px", borderRadius:"40px" }, { width: "100%", height: "100vh", borderRadius:"0" })
+  });
+
+  return () => mm.revert();
 
   }, []);
 
@@ -142,7 +152,7 @@ export default function ProposeReality() {
       <section
         className="bg-secondary dark:bg-secondary/40 py-20 min-h-screen md:h-[2900px]"
       >
-        <div ref={introVideoWrapRef} className="container relative grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="container relative grid grid-cols-1 md:grid-cols-2 gap-10">
 
           <video
             ref={introVideoRef}

@@ -35,8 +35,8 @@ export default function Home() {
         </div>
 
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="py-16 ">
-            <h1 className="text-[44px] font-extrabold leading-[0.98] tracking-tight sm:text-[64px] md:text-[84px]">
+          <div className="md:py-16 pb-16 order-2 md:order-1 text-center items-center md:items-start md:text-left">
+            <h1 className="">
               The ZerofAI
             </h1>
 
@@ -51,8 +51,8 @@ export default function Home() {
               silence.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
-              <Link href="#" className="rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background">
+            <div className="mt-8 sm:gap-10">
+              <Link href="#" className="rounded-full w-fit bg-foreground px-7 py-3 text-sm font-semibold text-background">
                 Book Demo
               </Link>
             </div>
