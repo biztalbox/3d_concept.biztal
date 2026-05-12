@@ -4,6 +4,7 @@ import { MdAlternateEmail, MdOutlineHeadphones } from "react-icons/md";
 import { IoShieldCheckmark, IoFlash } from "react-icons/io5";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { TbShare3 } from "react-icons/tb";
+import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact — Request Demo | ZeroFAI",
@@ -11,14 +12,6 @@ export const metadata: Metadata = {
     "Connect with ZeroFAI to automate compliance, monitor endpoints, and strengthen enterprise security operations in real time.",
 };
 
-
-const fieldClass =
-  "w-full rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-500 outline-none transition-colors " +
-  "focus:border-primary focus:ring-1 focus:ring-primary/40 " +
-  "dark:border-white/10 bg-secondary dark:bg-secondary/40 dark:text-white dark:placeholder:text-neutral-600 dark:focus:border-primary";
-
-const labelClass =
-  "mb-1.5 block text-xs font-medium tracking-wide text-neutral-600 dark:text-[#94A3B8]";
 
 const iconBox = "h-5 w-5 shrink-0 text-primary";
 const cardIcon = "h-7 w-7 shrink-0 text-primary";
@@ -34,7 +27,7 @@ export default function ContactPage() {
           <span className="text-primary! text-4xl! sm:text-5xl! md:text-6xl! lg:text-7xl!">Infrastructure</span>.
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-neutral-600 sm:text-base dark:text-[#94A3B8]">
-            Connect with ZeroFAI to automate compliance, monitor endpoints, and strengthen enterprise security
+            Connect with ZerofAI to automate compliance, monitor endpoints, and strengthen enterprise security
             operations in real time.
           </p>
         </div>
@@ -46,104 +39,14 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-[1fr_0.85fr]">
             {/* Form column */}
             <div className="border-b border-neutral-200 bg-secondary/50 dark:bg-secondary/10 p-5 sm:p-7 md:p-8 lg:border-b-0 lg:border-r lg:border-neutral-200  dark:border-white/8 dark:lg:border-white/8">
-              <form className="space-y-5" action="#" method="post">
-                <div className="grid gap-5  sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="contact-full-name" className={labelClass}>
-                      Full Name
-                    </label>
-                    <input
-                      id="contact-full-name"
-                      name="fullName"
-                      type="text"
-                      placeholder="John Doe"
-                      autoComplete="name"
-                      className={fieldClass}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-email" className={labelClass}>
-                      Work Email
-                    </label>
-                    <input
-                      id="contact-email"
-                      name="email"
-                      type="email"
-                      placeholder="john@company.com"
-                      autoComplete="email"
-                      className={fieldClass}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-company" className={labelClass}>
-                      Company Name
-                    </label>
-                    <input
-                      id="contact-company"
-                      name="company"
-                      type="text"
-                      placeholder="Acme Corp"
-                      autoComplete="organization"
-                      className={fieldClass}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-phone" className={labelClass}>
-                      Phone Number
-                    </label>
-                    <input
-                      id="contact-phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="+1 (555) 000-0000"
-                      autoComplete="tel"
-                      className={fieldClass}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="contact-role" className={labelClass}>
-                    Designation
-                  </label>
-                  <select
-                    id="contact-role"
-                    name="role"
-                    className={`${fieldClass} appearance-auto pr-3`}
-                    defaultValue="cto-ciso"
-                  >
-                    <option value="cto-ciso">CTO / CISO</option>
-                    <option value="vp-engineering">VP Engineering</option>
-                    <option value="it-director">IT Director</option>
-                    <option value="security-manager">Security Manager</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="contact-message" className={labelClass}>
-                    Message
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    rows={4}
-                    placeholder="How can we help strengthen your security posture?"
-                    className={`${fieldClass} min-h-[110px] resize-y`}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full rounded-xl bg-primary py-3.5 text-sm font-bold text-black transition hover:bg-primary-hover active:brightness-95"
-                >
-                  Request Demo
-                </button>
-              </form>
+              <ContactForm />
             </div>
 
             {/* Contact column */}
             <div className="bg-secondary dark:bg-secondary/40 p-5 sm:p-7 md:p-8">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
                 <IoFlash className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                Response within 24 hours
+                Response within 1 hours
               </div>
 
               <ul className="mt-8 space-y-6">
@@ -177,37 +80,25 @@ export default function ContactPage() {
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-neutral-200 bg-white dark:border-white/10 dark:bg-[#111]">
-                    <MdOutlineHeadphones className={iconBox} aria-hidden />
-                  </div>
-                  <div>
-                    <p className="!text-sm !font-semibold !leading-snug !text-neutral-900 dark:!text-white">
-                      Technical Support
-                    </p>
-                    <a
-                      href="tel:+18009376324"
-                      className="!mt-1 !block !text-xs !font-medium !text-neutral-700 hover:!text-primary dark:!text-[#94A3B8] dark:hover:!text-primary"
-                    >
-                      +1 (800) ZERO-FAI
-                    </a>
-                  </div>
+                  
+                  
                 </li>
               </ul>
 
               <hr className="my-8 border-neutral-200 dark:border-white/10" />
 
               <div>
-                <p className="!mb-3 !text-[11px] !font-semibold !uppercase !tracking-wider !text-neutral-500 dark:!text-[#94A3B8]">
+                <p className="!mb-3 !text-[11px] !font-semibold !uppercase !tracking-wider !text-neutral-500 dark:!text-white">
                   Business hours
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between gap-4">
-                    <span className="font-medium text-neutral-700 dark:text-white/90">Mon - Fri</span>
-                    <span className="text-neutral-600 dark:text-[#94A3B8]">09:00 - 18:00 PST</span>
+                    <span className="font-medium text-sm! text-neutral-700! dark:text-white/40!">Mon - Fri</span>
+                    <span className="text-neutral-600 text-sm! dark:text-white/40!">09:00 - 18:00 PST</span>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <span className="font-medium text-neutral-700 dark:text-white/90">Sat - Sun</span>
-                    <span className="text-neutral-600 dark:text-[#94A3B8]">Critical Support Only</span>
+                    <span className="font-medium text-sm! text-neutral-700! dark:text-white/40!">Sat - Sun</span>
+                    <span className="text-neutral-600 text-sm! dark:text-white/40!">Critical Support Only</span>
                   </div>
                 </div>
               </div>

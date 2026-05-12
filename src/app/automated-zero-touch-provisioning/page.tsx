@@ -44,11 +44,11 @@ export default function ComplaincePage() {
           <div className="absolute top-0 right-[-90px] h-[120%] w-[130px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
         </div>
 
-        <div className="container mt-11 grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="py-16 ">
+        <div className="container mt-0 grid grid-cols-1 gap-10 md:mt-11 md:grid-cols-2">
+          <div className="order-2 md:order-1 pt-6 pb-16 md:py-16">
             <h2>Drop-Ship Productivity.
                 <br />
-            <span className="text-primary! text-5xl!">
+            <span className="text-primary! leading-12! text-5xl!">
             Zero IT Touch Required.</span>
               
             </h2>
@@ -72,15 +72,15 @@ export default function ComplaincePage() {
       </section>
 
       {/* logos / integrations marquee — tight row, large logos, black dividers (reference layout) */}
-      <section className="w-full bg-[#0b0b0b] pb-10 pt-0 sm:pb-14">
+      <section className="w-full bg-secondary dark:bg-secondary/40 pb-10 pt-0 sm:pb-14">
         <div className="w-full">
-          <div className="bg-black px-4 py-5 text-center sm:px-6 sm:py-6">
-            <h4 className="text-base font-semibold leading-snug text-white sm:text-lg md:text-xl">
+          <div className="bg-secondary dark:bg-secondary/40 px-4 py-5 text-center sm:px-6 sm:py-6">
+            <h4 className="text-base font-semibold leading-snug text-black dark:text-white sm:text-lg md:text-xl">
               Seamlessly integrating with the tools Industry Leaders rely on:
             </h4>
           </div>
 
-          <div className="w-full bg-white py-6 shadow-[0_18px_60px_rgba(0,0,0,0.45)] ring-1 ring-black/10 sm:py-7 md:py-8">
+          <div className="w-full bg-white py-6  ring-black/10 sm:py-7 md:py-8">
             <div className="logo-marquee">
               <div
                 className="logo-marquee__track"
@@ -165,14 +165,14 @@ export default function ComplaincePage() {
         </div>
       </section>
 
-      <section className="bg-secondary dark:bg-secondary/40 py-10 dark:text-white text-black sm:py-12">
+      <section className="bg-white dark:bg-secondary/40 py-10 dark:text-white text-black sm:py-12">
         <div className="container sm:px-6">
-          <h3 className="mt-[-50px]">
+          <h3 className="mt-[-30px]">
             The Day-One Experience, Automated.
           </h3>
 
           <div className="mt-8 grid grid-cols-1 gap-5 md:mt-10 md:grid-cols-2 md:gap-6">
-            <div className="relative bg-white dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+            <div className="relative bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
               <span
                 aria-hidden="true"
                 className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
@@ -186,7 +186,7 @@ export default function ComplaincePage() {
                 permissions they need to start working immediately.
               </p>
             </div>
-            <div className="relative bg-white dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+            <div className="relative bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
               <span
                 aria-hidden="true"
                 className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
@@ -202,7 +202,7 @@ export default function ComplaincePage() {
             </div>
           </div>
 
-          <div className="mt-8 overflow-hidden bg-white dark:bg-black md:mt-10">
+          <div className="mt-8 overflow-hidden bg-secondary dark:bg-black md:mt-10">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative aspect-4/3 w-full md:aspect-auto ">
                 <Image
@@ -216,7 +216,7 @@ export default function ComplaincePage() {
                 
                 />
               </div>
-              <div className="flex flex-col justify-center gap-6 bg-white dark:bg-black px-6 py-6 sm:px-8 sm:py-8 md:gap-7 md:px-10">
+              <div className="flex flex-col justify-center gap-6 bg-secondary dark:bg-black px-6 py-6 sm:px-8 sm:py-8 md:gap-7 md:px-10">
                 <div>
                   <h4 className="text-base font-bold sm:text-lg">
                     True &apos;Out-of-the-Box&apos; Readiness.
@@ -248,14 +248,19 @@ export default function ComplaincePage() {
       </section>
 
       {/* CTA section (match design screenshot) */}
-      <section className="w-full bg-secondary dark:bg-secondary/40 py-16 text-white sm:py-20">
+      <section className="w-full bg-white dark:bg-secondary/40 py-16 text-white sm:py-20">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-0">
             <div className="flex flex-col items-center text-center">
               <div className="flex h-14 w-14 items-center justify-center">
-                <PiClockCounterClockwise
-                  className="h-[1100px] w-[1100px] text-[#11B6C9]"
-                  aria-hidden="true"
+              <Image
+                  src="/icons/clock.png"
+                  alt=""
+                  aria-hidden
+                  width={100}  
+                  height={100}
+                  className="w-full h-full"
+              
                 />
               </div>
               <div className="mt-4 text-xs font-semibold dark:text-white text-black">0</div>
@@ -265,9 +270,15 @@ export default function ComplaincePage() {
             </div>
 
             <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
-              <div className="flex h-14 w-14 items-center justify-center">
-                <FiCloud className="h-12 w-12 text-[#11B6C9]" aria-hidden="true" />
-              </div>
+            <Image
+                  src="/icons/cloude.png"
+                  alt=""
+                  aria-hidden
+                  width={62}  
+                  height={62}
+                  className="h-[82px] w-[100px]"
+              
+                />
               <div className="mt-4 text-xs font-semibold text-black dark:text-white">
                 100%
               </div>
@@ -277,9 +288,15 @@ export default function ComplaincePage() {
             </div>
 
             <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
-              <div className="flex h-14 w-14 items-center justify-center">
-                <FaRocket className="h-11 w-11 text-[#11B6C9]" aria-hidden="true" />
-              </div>
+            <Image
+                  src="/icons/plane.png"
+                  alt=""
+                  aria-hidden
+                  width={100}  
+                  height={100}
+                  className="h-[82px] w-[92px]"
+              
+                />
               <div className="mt-4 text-xs font-semibold dark:text-white text-black">
                 Day 1
               </div>

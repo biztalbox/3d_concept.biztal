@@ -13,10 +13,10 @@ export default function ComplaincePage() {
         </div>
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
-          <div className="px-5 py-14 sm:px-6 sm:py-16">
+          <div className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16">
             <h2>Bulletproof Your Endpoints.
               Automate Your{" "}
-              <span className="text-primary text-3xl sm:text-5xl">
+              <span className="text-primary! text-3xl! sm:text-5xl!">
                 {" "}
                 Compliance.
               </span>

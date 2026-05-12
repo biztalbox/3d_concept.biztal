@@ -32,7 +32,7 @@ const POLICY_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/termscondition" },
   { label: "Cookie Policy", href: "#" },
-  { label: "Security", href: "#" },
+  
 ];
 
 const SOCIAL_BUTTONS = [
@@ -136,11 +136,15 @@ export default function Footer() {
           <div className="md:col-span-4">
             <div className="relative rounded-2xl border border-[#19B6C9]/30 bg-background/70 p-6">
               <h5 className="font-bold text-foreground">
-                Stay Ahead with AI
+                Get a Call Back from our team to discuss your needs.
               </h5>
-              <p className="mt-2 text-sm! leading-6 text-foreground/65">
-                Get curated insights into the future of enterprise intelligence.
-              </p>
+              
+              <input 
+                type="text"
+                placeholder="Enter your phone number"
+                aria-label="Phone number"
+                className="mt-4 w-full rounded-md bg-secondary px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/40"
+              />
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -151,7 +155,7 @@ export default function Footer() {
                 type="button"
                 className="mt-3 w-full bg-primary rounded-md px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-95"
               >
-                Subscribe
+                Submit
               </button>
             </div>
           </div>

@@ -12,18 +12,18 @@ const ACCESS_GAP_IMAGE ="/assets/images/vs-image.png"
 export default function ComplaincePage() {
   return (
     <>
-      <section id="" className=" p-5 relative w-full lg:min-h-screen">
+      <section id="" className="relative w-full px-0 py-5 sm:p-5 lg:min-h-screen">
         {/* right-side background decorative strips (flush to viewport edge) */}
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
           <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
           <div className="absolute top-0 right-[-90px] h-[120%] w-[130px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
         </div>
 
-        <div className="container grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="py-16 ">
-            <h2>Dentity is the New Perimeter.
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-0 sm:px-4 md:grid-cols-2">
+          <div className="order-2 md:order-1 px-4 py-16 sm:px-0">
+            <h2>Identity is the New Perimeter.
                 <br />
-             <span className="text-primary! text-5xl!"> Automate the Gatekeeper.</span>
+             <span className="text-primary! leading-12! text-5xl!"> Automate the Gatekeeper.</span>
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
@@ -46,8 +46,8 @@ export default function ComplaincePage() {
 
       {/* Section under hero (match screenshot) */}
       <section className="w-full bg-secondary py-16 dark:bg-secondary/40 sm:py-20">
-        <div className="container">
-          <div className="p-8">
+        <div className="mx-auto w-full max-w-7xl px-0 sm:px-4">
+          <div className="py-8 px-4 sm:p-8">
             <h2 className="text-black dark:text-white">
               Manual Access Management is Your
               <br />
@@ -99,9 +99,9 @@ export default function ComplaincePage() {
       </section>
 
       {/* Identity lifecycle cards (match screenshot) */}
-      <section className="w-full bg-secondary p-5 py-16 dark:bg-secondary/40 sm:py-20">
-        <div className="container">
-          <div className="mx-auto max-w-7xl">
+      <section className="w-full bg-secondary px-0 py-16 sm:p-5 dark:bg-secondary/40 sm:py-20">
+        <div className="mx-auto w-full max-w-7xl px-0 sm:px-4">
+          <div className="mx-auto max-w-7xl px-4 sm:px-0">
             <h2 className=" text-black dark:text-white">
               Intelligent Identity Lifecycle Management.
             </h2>
@@ -160,8 +160,8 @@ export default function ComplaincePage() {
 
       {/* 3+3+CTA section (match screenshot) */}
       <section className="w-full bg-secondary py-16 dark:bg-secondary/40 sm:py-20">
-        <div className="container">
-          <div className="mx-auto max-w-6xl">
+        <div className="mx-auto w-full max-w-7xl px-0 sm:px-4">
+          <div className="mx-auto max-w-6xl px-4 sm:px-0">
             {/* Top 3 columns inside one wide panel */}
             <div className="overflow-hidden rounded-2xl dark:bg-secondary bg-white px-6 py-10 sm:px-10 sm:py-12">
               <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:gap-0">

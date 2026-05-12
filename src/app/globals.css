@@ -56,6 +56,16 @@ html.dark {
   --muted-foreground: #a3a3a3;
 }
 
+/* Native <select>: dark popup / options (esp. Chrome on Windows; complements Tailwind [&_option] utilities). */
+html.dark select {
+  color-scheme: dark;
+}
+
+html.dark select option {
+  background-color: #161616;
+  color: #f5f5f5;
+}
+
 /* Theme tokens → Tailwind utilities (e.g. bg-primary, text-foreground, border-surface-card) */
 @theme inline {
   --color-primary: var(--primary);
@@ -162,9 +172,6 @@ html.dark {
   }
 }
 
-body {
-  font-family: Helvetica, sans-serif;
-}
 
 @utility container {
   @apply mx-auto w-full max-w-7xl px-4;

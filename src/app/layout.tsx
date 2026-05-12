@@ -5,8 +5,6 @@ import Header from "@/layout/header";
 import Footer from "@/layout/Footer";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -28,7 +26,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", "overflow-x-hidden", poppins.variable, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", "overflow-x-hidden", poppins.variable, "font-sans")}
     >
       <body>
         <Header />
