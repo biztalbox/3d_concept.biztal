@@ -172,6 +172,9 @@ html.dark select option {
   }
 }
 
+body {
+  font-family: Helvetica, sans-serif;
+}
 
 @utility container {
   @apply mx-auto w-full max-w-7xl px-4;

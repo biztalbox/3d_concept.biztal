@@ -26,7 +26,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", "overflow-x-hidden", poppins.variable, "font-sans")}
+      className={cn("antialiased", "overflow-x-hidden", poppins.variable)}
     >
       <body>
         <Header />
