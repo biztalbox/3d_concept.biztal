@@ -91,7 +91,7 @@ export default function SelfHealingDigitalOrganism() {
           >
             Your infrastructure evolves from static hardware into living,
             breathing digital physiology. It doesn&apos;t just respond to
-            problems—it anticipates, prevents, and continuously optimizes itself
+            problems it anticipates, prevents, and continuously optimizes itself
             without human intervention.
           </p>
         </div>

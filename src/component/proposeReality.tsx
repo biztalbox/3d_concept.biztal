@@ -176,7 +176,7 @@ export default function ProposeReality() {
             <div className="mt-7 space-y-4">
               <p>
                 Imagine an IT infrastructure that breathes, thinks, and evolves.
-                Not automation—true autonomy. Your digital ecosystem develops its
+                Not automation true autonomy. Your digital ecosystem develops its
                 own immune system that neutralizes threats before they manifest. A
                 predictive nervous system that senses disruptions in their
                 earliest electromagnetic whispers. Cognitive reasoning that
@@ -201,7 +201,7 @@ export default function ProposeReality() {
         </div>
       </section>
 
-      {/* Section 2 — Cognitive Architecture (screenshot layout: static left + 7 hover pillars) */}
+      {/* Section 2   Cognitive Architecture (screenshot layout: static left + 7 hover pillars) */}
       <section
         className="bg-secondary dark:bg-secondary/40 pb-12 md:pb-0"
 

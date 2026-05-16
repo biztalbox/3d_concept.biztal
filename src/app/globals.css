@@ -231,17 +231,21 @@ h1{
 }
 
 h2{
-  @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  @apply text-3xl md:text-4xl font-bold;
 }
 
 h3{
-  @apply text-2xl md:text-3xl lg:text-4xl font-bold;
+  @apply text-2xl md:text-3xl font-bold;
 }
 
 h4{
-  @apply text-xl md:text-2xl lg:text-3xl font-bold;
+  @apply text-xl md:text-2xl font-semibold;
 }
 
-p, span {
+p {
   @apply text-sm md:text-base lg:text-lg leading-7 text-muted-foreground;
+}
+
+ul{
+  @apply pl-3 list-disc;
 }

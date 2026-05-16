@@ -18,7 +18,7 @@ const selectFieldClass =
   "[&_option]:bg-white [&_option]:text-neutral-900 " +
   "dark:[&_option]:bg-[#161616] dark:[&_option]:text-neutral-100";
 
-/** Lowercase domains commonly used for personal / free mail — business submissions should use corporate domains. */
+/** Lowercase domains commonly used for personal / free mail   business submissions should use corporate domains. */
 const PERSONAL_EMAIL_DOMAINS = new Set([
   "gmail.com",
   "googlemail.com",

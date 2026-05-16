@@ -83,7 +83,7 @@ export default function TemporalPredictionPerpetualEvolution() {
                 </p>
                 <p>
                   Your CIO receives quarterly briefings titled “Infrastructure
-                  Vulnerabilities That Will Never Materialize”—because they’ve
+                  Vulnerabilities That Will Never Materialize” because they’ve
                   already been prevented.
                 </p>
               </div>
@@ -101,7 +101,7 @@ export default function TemporalPredictionPerpetualEvolution() {
               </p>
               <p className="mt-6 max-w-3xl text-xs leading-6 text-white/35 md:text-sm md:leading-7">
                 While competitors offer automation, ZerofAI delivers Autonomous
-                Evolution—machine intelligence that perpetually refines its own
+                Evolution machine intelligence that perpetually refines its own
                 intelligence, evolves new capabilities, and adapts to emergent
                 conditions.
               </p>

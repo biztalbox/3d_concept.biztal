@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useId, useState } from "react";
 import { IoSunnyOutline } from "react-icons/io5";
 import { RiMoonClearLine } from "react-icons/ri";
-import { ThemeProvider, useTheme } from "@teispace/next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
 import {
   Accordion,
   AccordionContent,
@@ -62,7 +62,7 @@ const MEGA_MENU: MegaMenuColumn[] = [
           {
             id: "endpoint-software-metering",
             label: "Predictive Health Analytics",
-            href: "#",
+            href: "/predictive-analytics",
           },
          
         ],

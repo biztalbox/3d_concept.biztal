@@ -104,14 +104,13 @@ export default function ComplaincePage() {
           <div className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16">
             <h2>Bulletproof Your Endpoints.
               Automate Your{" "}
-              <span className="text-primary! text-3xl! sm:text-5xl!">
-                {" "}
+              <span className="text-primary!">
                 Compliance.
               </span>
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint—without tickets, scripts, or human intervention.
+              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint without tickets, scripts, or human intervention.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
@@ -165,7 +164,7 @@ export default function ComplaincePage() {
         <div className="container max-w-6xl">
           <h2 className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
             From Password Reset to{" "}
-            <span className="text-primary! text-5xl!">Autonomous<br /> Identity Recovery</span>
+            <span className="text-primary!">Autonomous<br /> Identity Recovery</span>
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3 md:items-stretch md:gap-8">
@@ -361,20 +360,16 @@ export default function ComplaincePage() {
         </div>
       </section>
 
-      <section className="w-full p-20 bg-white py-10 sm:py-20 md:py-24 dark:bg-[#121212]">
+      <section className="py-16 sm:py-20">
         
-
-        
-   
-
-          <div className="rounded-3xl bg-secondary dark:bg-gray p-8 text-center sm:mt-14 sm:p-10 md:p-14">
-            <hr className="border-black dark:border-white mb-8 w-96 ml-70" />
-            <h3 className="mx-auto max-w-3xl text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl dark:text-white">
+          <div className="container rounded-3xl">
+            <hr className="border-black dark:border-white mb-8 w-60 mx-auto" />
+            <h3 className="text-center">
               Turn Your Service Desk Into an Autonomous Engine
             </h3>
             <div className="mt-8 flex   justify-center sm:mt-10">
               <Link
-                href="#"
+                href="/contact"
                 className="rounded-full bg-primary text-white! px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-10 sm:py-3.5 sm:text-base"
               >
                 Get a Demo

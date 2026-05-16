@@ -29,7 +29,7 @@ export default function PreemptiveIncidentImmuneSystem() {
           >
             <p data-aos="fade-left">
               Where incidents meet their obsolescence. Alerts are intercepted by
-              our Predictive Mitigation Mesh—a distributed network of
+              our Predictive Mitigation Mesh a distributed network of
               specialized AI agents applying algorithmic resolution before human
               notification ever occurs.
             </p>

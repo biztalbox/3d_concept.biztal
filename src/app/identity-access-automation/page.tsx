@@ -26,7 +26,7 @@ export default function ComplaincePage() {
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint—without tickets, scripts, or human intervention.
+              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint without tickets, scripts, or human intervention.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
@@ -114,15 +114,15 @@ export default function ComplaincePage() {
               {[
                 {
                   title: "Automated User Provisioning & Deprovisioning",
-                  body: "ZerofAI automatically grants and revokes access based on user roles, onboarding events, and organizational changes—reducing delays and eliminating orphaned accounts.",
+                  body: "ZerofAI automatically grants and revokes access based on user roles, onboarding events, and organizational changes reducing delays and eliminating orphaned accounts.",
                 },
                 {
                   title: "Role-Based Access Control (RBAC)",
-                  body: "Access is dynamically assigned based on roles, ensuring users only get what they need—no more, no less.",
+                  body: "Access is dynamically assigned based on roles, ensuring users only get what they need no more, no less.",
                 },
                 {
                   title: "Password & Access Automation",
-                  body: "Common requests like password resets, account unlocks, and access approvals are handled automatically—eliminating help-desk dependency.",
+                  body: "Common requests like password resets, account unlocks, and access approvals are handled automatically eliminating help-desk dependency.",
                 },
                 {
                   title: "Unified Identity Visibility",
@@ -176,7 +176,7 @@ export default function ComplaincePage() {
                   </h5>
                     <p className="mx-auto mt-4 max-w-[320px] text-xs leading-5 text-black dark:text-white">
                     From onboarding to role changes to offboarding, ZerofAI ensures access
-                    is always aligned with user roles—without manual intervention.
+                    is always aligned with user roles without manual intervention.
                   </p>
                 </div>
 
@@ -189,7 +189,7 @@ export default function ComplaincePage() {
                   </h5>
                   <p className="mx-auto mt-4 max-w-[320px] text-xs leading-5 text-black dark:text-white">
                     ZerofAI continuously evaluates access permissions and enforces policies
-                    dynamically—ensuring compliance and minimizing risk exposure.
+                    dynamically ensuring compliance and minimizing risk exposure.
                   </p>
                 </div>
 
@@ -211,7 +211,7 @@ export default function ComplaincePage() {
               </div>
             </div>
 
-            {/* 3 stat cards — 90% / 100% count up on scroll into view */}
+            {/* 3 stat cards   90% / 100% count up on scroll into view */}
             <IdentityAccessAutomationStats />
 
             {/* CTA box */}

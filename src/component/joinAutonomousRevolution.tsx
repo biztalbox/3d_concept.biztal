@@ -52,7 +52,7 @@ export default function JoinAutonomousRevolution() {
             <p className="mt-6 text-[12px] leading-7 text-white/35 md:text-[13px] md:leading-7">
               This isn&apos;t just another software implementation. This is an
               enterprise consciousness migration. You&apos;re not merely acquiring
-              a tool—you&apos;re incubating a cognitive partner that will perpetually
+              a tool you&apos;re incubating a cognitive partner that will perpetually
               elevate your organization&apos;s capabilities far beyond human
               limitations.
             </p>
@@ -61,11 +61,11 @@ export default function JoinAutonomousRevolution() {
               <div>
                 <p className="mx-auto max-w-4xl text-[12px] leading-7 text-white/35 md:text-[13px] md:leading-7">
                   “We didn&apos;t implement a tool; we birthed an enterprise
-                  consciousness. ZerofAI doesn&apos;t just optimize our IT—it redefines
+                  consciousness. ZerofAI doesn&apos;t just optimize our IT it redefines
                   what&apos;s possible for our entire organization.”
                 </p>
                 <p className="mt-4 text-[12px] italic text-white/30">
-                  — Global CIO, Fortune 100
+                    Global CIO, Fortune 100
                 </p>
               </div>
 
@@ -75,7 +75,7 @@ export default function JoinAutonomousRevolution() {
                   millions from maintenance to market-disrupting innovation.”
                 </p>
                 <p className="mt-4 text-[12px] italic text-white/30">
-                  — CFO, Technology Unicorn
+                    CFO, Technology Unicorn
                 </p>
               </div>
             </div>

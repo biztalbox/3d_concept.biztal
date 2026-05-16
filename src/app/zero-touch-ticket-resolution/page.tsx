@@ -120,7 +120,7 @@ function IconChip({
     <div
       className={
         isOld
-          ? "flex min-h-[3.25rem] items-center gap-2.5 rounded-xl bg-[#2e2e2e] px-3 py-2.5 sm:min-h-[3.5rem] sm:px-3.5"
+          ? "flex min-h-[3.25rem] items-center gap-2.5 rounded-xl bg-secondary px-3 py-2.5 sm:min-h-[3.5rem] sm:px-3.5"
           : "flex min-h-[3.25rem] items-center gap-2.5 rounded-xl bg-white px-3 py-2.5 sm:min-h-[3.5rem] sm:px-3.5"
       }
     >
@@ -142,7 +142,7 @@ function IconChip({
       <span
         className={
           isOld
-            ? "text-sm font-medium leading-tight  text-white sm:text-[0.9375rem]"
+            ? "text-sm font-medium leading-tight  text-foreground sm:text-[0.9375rem]"
             : "text-sm font-medium leading-tight text-black sm:text-[0.9375rem]"
         }
       >
@@ -170,8 +170,8 @@ function TicketsResolvedComparison() {
         <div className="mx-auto mt-12 flex max-w-5xl flex-col items-stretch gap-10 md:mt-16 md:flex-row md:items-stretch md:justify-center md:gap-0">
           {/* Left: The Old Way */}
           <div className="flex flex-1 flex-col items-center md:pr-8 lg:pr-12">
-            <ScallopedIconBadge className="text-[#3a3a3a]">
-              <FaClockRotateLeft className="text-white" aria-hidden />
+            <ScallopedIconBadge className="text-secondary">
+              <FaClockRotateLeft className="text-foreground" aria-hidden />
             </ScallopedIconBadge>
             <p className="mt-4 text-center text-sm! font-bold! text-neutral-900 sm:text-[0.9375rem] dark:text-white!">
               The Old Way
@@ -253,14 +253,13 @@ export default function ZeroTouchTicketResolutionPage() {
           <div className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16">
             <h2>
               Bulletproof Your Endpoints. Automate Your{" "}
-              <span className="text-primary! text-3xl! sm:text-5xl!">
-                {" "}
+              <span className="text-primary!">
                 Compliance.
               </span>
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint—without tickets, scripts, or human intervention.
+              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint without tickets, scripts, or human intervention.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
@@ -282,7 +281,7 @@ export default function ZeroTouchTicketResolutionPage() {
         <div className="container max-w-6xl">
           <h2 className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
             From Password Reset to{" "}
-            <span className="text-primary! text-5xl!">Autonomous<br /> Identity Recovery</span>
+            <span className="text-primary!">Autonomous<br /> Identity Recovery</span>
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3 md:items-stretch md:gap-8">
@@ -435,10 +434,10 @@ export default function ZeroTouchTicketResolutionPage() {
                       aria-hidden
                     />
                   )}
-                  <div className="mb-1.5 flex h-16 w-16 shrink-0 items-center justify-center sm:mb-2 sm:h-18 sm:w-18 md:mb-2 md:h-20 md:w-20">
+                  <div className="mb-1.5 flex h-16 w-16 shrink-0 items-center justify-center sm:mb-2 sm:h-18 sm:w-18 md:mb-5">
                     <Icon
                       className="h-full w-full text-primary"
-                      aria-hidden
+                      
                       strokeWidth={1}
                     />
                   </div>
@@ -518,30 +517,25 @@ export default function ZeroTouchTicketResolutionPage() {
       </section>
 
       <section
-        className="bg-[#F5F5F5] pt-14 dark:bg-[#121212] sm:pb-16 sm:pt-16 md:pb-20 md:pt-20"
+        className="bg-[#F5F5F5] dark:bg-[#121212] py-16"
         aria-labelledby="service-desk-cta-heading"
       >
-        <div className="container max-w-4xl px-4 sm:px-6">
+        <div className="container max-w-4xl flex flex-col gap-10 items-center">
           <h2
             id="service-desk-cta-heading"
             className="text-center text-2xl font-medium leading-snug tracking-tight text-neutral-900 sm:text-3xl md:text-[2.125rem] md:leading-[1.25] dark:text-white"
           >
             <span className="block">Turn Your Service Desk Into an</span>
             <span className="block">Autonomous Engine</span>
-          </h2>
 
-          <div className="mx-auto mt-10 max-w-3xl sm:mt-12 md:mt-14">
-            <div className="rounded-t-[2rem] bg-[#F8F9FA] px-6 pb-14 pt-10 shadow-sm sm:rounded-t-[2.5rem] sm:px-10 sm:pb-16 sm:pt-12 md:rounded-t-[2.5rem] md:pb-20 md:pt-14 dark:bg-[#262626] dark:shadow-none">
-              <div className="flex justify-center">
-                <Link
-                  href="#"
+          </h2>
+            <Link
+                  href="/contact"
                   className="rounded-full bg-[#00bcd4] px-10 py-3.5 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90 sm:px-12 sm:py-4 sm:text-base"
                 >
                   Get a Demo
                 </Link>
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
     </>

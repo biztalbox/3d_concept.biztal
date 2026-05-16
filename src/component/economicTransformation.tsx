@@ -310,7 +310,7 @@ export default function EconomicTransformation() {
                 </p>
                 <p>
                   Your IT organization transforms from a cost center into a
-                  revenue architect—the strategic engine that enables
+                  revenue architect the strategic engine that enables
                   market-disrupting innovations impossible for competitors still
                   trapped in reactive paradigms.
                 </p>

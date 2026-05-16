@@ -7,7 +7,7 @@ import { TbShare3 } from "react-icons/tb";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — Request Demo | ZeroFAI",
+  title: "Contact   Request Demo | ZeroFAI",
   description:
     "Connect with ZeroFAI to automate compliance, monitor endpoints, and strengthen enterprise security operations in real time.",
 };

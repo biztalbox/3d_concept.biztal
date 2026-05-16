@@ -310,7 +310,7 @@ alerts further complicates visibility, making it harder to separate critical iss
 
           {/* 3 cards */}
           <div className="mt-10 grid grid-cols-1 justify-items-center gap-8 md:grid-cols-3 md:gap-4">
-            {/* Card 1 — landscape panel ~1.42:1 (w:h) to match design PDF */}
+            {/* Card 1   landscape panel ~1.42:1 (w:h) to match design PDF */}
             <div className="zf-fade-left-up zf-fade-left-up--d1 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg

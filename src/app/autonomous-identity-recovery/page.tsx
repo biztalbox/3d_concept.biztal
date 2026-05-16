@@ -360,7 +360,7 @@ export default function AutonomousIdentityRecoveryPage() {
       </section>
 
       <section className="w-full overflow-x-hidden bg-secondary py-12 sm:py-16 md:py-20 dark:bg-secondary/40">
-        <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 sm:gap-10">
+        <div className="container flex flex-col gap-8 sm:gap-10">
           {recoveryStoryRows.map((row, index) => {
             const alignLeft = index % 2 === 0;
             return (

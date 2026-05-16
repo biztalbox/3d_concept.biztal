@@ -12,6 +12,7 @@ import type { IconType } from "react-icons";
 import { LuClockArrowDown } from "react-icons/lu";
 import { SlMagnifier } from "react-icons/sl";
 import { IoSettingsOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
+import { CheckCircle } from "lucide-react";
 
 
 
@@ -79,7 +80,7 @@ export default function SmartWorkflowOrchestrationPage() {
           <div className="order-2 px-5 py-14 sm:px-6 sm:py-16 md:order-1">
             <h2>
               Orchestrate IT Workflows.
-              <span className="text-primary! text-3xl! sm:text-5xl!"> Intelligently. Automatically.</span>
+              <span className="text-primary!"> Intelligently. Automatically.</span>
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
@@ -121,11 +122,12 @@ export default function SmartWorkflowOrchestrationPage() {
             </p>
           </div>
 
-          <div className="px-20 mt-12 grid max-w-4xl grid-cols-1 gap-10 md:mt-14 md:max-w-5xl md:grid-cols-[1fr_auto_1fr] md:items-start md:gap-0 lg:max-w-6xl">
+          
+          <div className="grid max-w-4xl mx-auto mt-10 grid-cols-1 gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start md:gap-0">
             {/* The Old Way */}
             <div className="flex flex-col items-center md:pr-10 lg:pr-14">
               <div className="flex size-18 items-center justify-center rounded-full border border-dashed border-neutral-300 bg-neutral-200 text-neutral-700 sm:size-20 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white">
-                <FaClockRotateLeft aria-hidden />
+                <FaClockRotateLeft />
               </div>
               <p className="mt-4 text-center text-sm font-bold text-neutral-900 sm:text-base dark:text-white">
                 The Old Way
@@ -136,10 +138,10 @@ export default function SmartWorkflowOrchestrationPage() {
                     key={`old-${label}`}
                     className="flex items-center gap-3 rounded-full bg-neutral-200 px-5 py-3.5 sm:px-6 sm:py-4 dark:bg-secondary"
                   >
-                    <span className="relative flex size-8 shrink-0 items-center justify-center text-primary" aria-hidden>
+                    <span className="relative flex size-8 shrink-0 items-center justify-center">
                       <FaRegCircle />
-                      <span className="absolute inset-[3px] rounded-full bg-primary sm:inset-1" />
-                      <span className="absolute inset-0 flex items-center justify-center text-white">
+                      <span className="absolute inset-[3px] rounded-full bg-secondary sm:inset-1" />
+                      <span className="absolute inset-0 flex items-center justify-center">
                         <RxCross2 />
                       </span>
                     </span>
@@ -158,7 +160,7 @@ export default function SmartWorkflowOrchestrationPage() {
             >
               <div className="h-px w-full max-w-xs bg-neutral-300 md:hidden dark:bg-neutral-600" />
               <div className="absolute top-1/2 left-1/2 hidden h-full w-px -translate-x-1/2 -translate-y-1/2 bg-neutral-300 md:block dark:bg-neutral-600" />
-              <span className="relative z-10 text-primary">
+              <span className="absolute z-10 text-primary">
                 <FaRegCircle />
               </span>
             </div>
@@ -166,7 +168,7 @@ export default function SmartWorkflowOrchestrationPage() {
             {/* The ZerofAI Way */}
             <div className="flex flex-col items-center md:pl-10 lg:pl-14">
               <div className="flex size-18 items-center justify-center rounded-full bg-primary text-white sm:size-20">
-                <GiStarSwirl aria-hidden />
+                <CheckCircle aria-hidden />
               </div>
               <p className="mt-4 text-center text-sm font-bold text-neutral-900 sm:text-base dark:text-white">
                 The ZerofAI Way
@@ -197,7 +199,7 @@ export default function SmartWorkflowOrchestrationPage() {
         <div className="container max-w-6xl">
           <h2 className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
             From Password Reset to{" "}
-            <span className="text-primary! text-5xl!">Autonomous<br /> Identity Recovery</span>
+            <span className="text-primary!">Autonomous<br /> Identity Recovery</span>
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3 md:items-stretch md:gap-8">
@@ -371,7 +373,7 @@ export default function SmartWorkflowOrchestrationPage() {
       </section>
 
       <section
-        className="bg-neutral-100 pb-14 pt-12 text-foreground md:pb-16 md:pt-16 lg:pb-20 lg:pt-20 dark:bg-[#121212] dark:text-white"
+        className="py-16"
         aria-labelledby="predictive-ops-heading"
       >
         <div className="container max-w-6xl px-4 sm:px-6">
@@ -433,20 +435,16 @@ export default function SmartWorkflowOrchestrationPage() {
       </section>
 
 
-      <section className="w-full p-20 bg-white py-16 sm:py-20 md:py-24 dark:bg-[#121212]">
+      <section className="py-16 sm:py-20">
         
-
-        
-   
-
-          <div className="mt-12 rounded-3xl bg-secondary dark:bg-gray p-8 text-center sm:mt-14 sm:p-10 md:p-14">
-            <hr className="border-black dark:border-white mb-8 w-96 ml-70" />
-            <h3 className="mx-auto max-w-3xl text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl dark:text-white">
+          <div className="container rounded-3xl">
+            <hr className="border-black dark:border-white mb-8 w-60 mx-auto" />
+            <h3 className="text-center">
               Turn Your Service Desk Into an Autonomous Engine
             </h3>
             <div className="mt-8 flex   justify-center sm:mt-10">
               <Link
-                href="#"
+                href="/contact"
                 className="rounded-full bg-primary text-white! px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-10 sm:py-3.5 sm:text-base"
               >
                 Get a Demo

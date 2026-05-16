@@ -72,7 +72,7 @@ export default function ImplementationChronology() {
             data-aos="fade-up"
             className="mx-auto mt-6 max-w-3xl"
           >
-            This isn&apos;t a software deployment—it&apos;s a consciousness
+            This isn&apos;t a software deployment it&apos;s a consciousness
             migration. Your enterprise evolves through three distinct phases,
             each unlocking exponentially greater capabilities.
           </p>
@@ -99,7 +99,7 @@ export default function ImplementationChronology() {
             phase="Phase 3"
             title="Cognitive Dominance"
             day="Day 180"
-            body="Temporal prediction matrices reveal future states with unprecedented accuracy. Strategic intelligence canvases deliver executive insights that reshape business strategy. Perpetual evolution engine reaches full activation—your platform now improves itself faster than human teams ever could. You've achieved true enterprise consciousness"
+            body="Temporal prediction matrices reveal future states with unprecedented accuracy. Strategic intelligence canvases deliver executive insights that reshape business strategy. Perpetual evolution engine reaches full activation your platform now improves itself faster than human teams ever could. You've achieved true enterprise consciousness"
             delay={800}
           />
         </div>

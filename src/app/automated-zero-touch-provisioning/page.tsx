@@ -6,7 +6,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { FiCloud } from "react-icons/fi";
 import { FaRocket } from "react-icons/fa6";
 
-const DAY_ONE_HERO_IMAGE ="/assets/images/men-in-pc.png"
+const DAY_ONE_HERO_IMAGE = "/assets/images/men-in-pc.png"
 export default function ComplaincePage() {
   const logos = [
     {
@@ -46,20 +46,19 @@ export default function ComplaincePage() {
 
         <div className="container mt-0 grid grid-cols-1 gap-10 md:mt-11 md:grid-cols-2">
           <div className="order-2 md:order-1 pt-6 pb-16 md:py-16">
-            <h2>Drop-Ship Productivity.
-                <br />
-            <span className="text-primary! leading-12! text-5xl!">
-            Zero IT Touch Required.</span>
-              
+            <h2>Drop-Ship Productivity. <br />
+              <span className="text-primary!">
+                Zero IT Touch Required.</span>
+
             </h2>
 
-            <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint—without tickets, scripts, or human intervention.
+            <p className="mt-8 max-w-4xl text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
+              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint without tickets, scripts, or human intervention.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
               <Link
-                href="#"
+                href="/contact"
                 className="rounded-full bg-primary px-7 py-3 text-xs font-semibold text-primary-foreground hover:bg-primary-hover sm:text-sm"
               >
                 Get a Demo
@@ -71,13 +70,14 @@ export default function ComplaincePage() {
         </div>
       </section>
 
-      {/* logos / integrations marquee — tight row, large logos, black dividers (reference layout) */}
-      <section className="w-full bg-secondary dark:bg-secondary/40 pb-10 pt-0 sm:pb-14">
-        <div className="w-full">
-          <div className="bg-secondary dark:bg-secondary/40 px-4 py-5 text-center sm:px-6 sm:py-6">
-            <h4 className="text-base font-semibold leading-snug text-black dark:text-white sm:text-lg md:text-xl">
+      {/* logos / integrations marquee   tight row, large logos, black dividers (reference layout) */}
+      <section className="bg-secondary dark:bg-secondary/40 py-16">
+        <div className="">
+          <div className="container mb-8 text-center">
+
+            <h2>
               Seamlessly integrating with the tools Industry Leaders rely on:
-            </h4>
+            </h2>
           </div>
 
           <div className="w-full bg-white py-6  ring-black/10 sm:py-7 md:py-8">
@@ -165,14 +165,14 @@ export default function ComplaincePage() {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-secondary/40 py-10 dark:text-white text-black sm:py-12">
+      <section className="dark:bg-secondary/40 py-16">
         <div className="container sm:px-6">
-          <h3 className="mt-[-30px]">
+          <h3 className="">
             The Day-One Experience, Automated.
           </h3>
 
           <div className="mt-8 grid grid-cols-1 gap-5 md:mt-10 md:grid-cols-2 md:gap-6">
-            <div className="relative bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+            <div className="relative rounded-xl bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
               <span
                 aria-hidden="true"
                 className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
@@ -186,7 +186,7 @@ export default function ComplaincePage() {
                 permissions they need to start working immediately.
               </p>
             </div>
-            <div className="relative bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+            <div className="relative rounded-xl bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
               <span
                 aria-hidden="true"
                 className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
@@ -201,47 +201,47 @@ export default function ComplaincePage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-8 overflow-hidden bg-secondary dark:bg-black md:mt-10">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="relative aspect-4/3 w-full md:aspect-auto ">
-                <Image
-                  src={DAY_ONE_HERO_IMAGE}
-                  alt="Professional reviewing finance charts with holographic HUD interface"
-                  width={500}
-                  height={300}
-                 
-                  className="p-8"
-                  
-                
-                />
-              </div>
-              <div className="flex flex-col justify-center gap-6 bg-secondary dark:bg-black px-6 py-6 sm:px-8 sm:py-8 md:gap-7 md:px-10">
-                <div>
-                  <h4 className="text-base font-bold sm:text-lg">
-                    True &apos;Out-of-the-Box&apos; Readiness.
-                  </h4>
-                  <p className="mt-2  text-white/85">
-                    Give your employees a consumer-grade unboxing experience with
-                    enterprise-grade security. They simply power on the device, connect to
-                    the internet, and enter their credentials. ZeroAI takes over,
-                    transforming a blank device into a fully managed corporate asset in
-                    minutes.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-base font-bold sm:text-lg">
-                    Scale Globally Without Expanding IT.
-                  </h4>
-                  <p className="mt-2">
-                    Whether you are onboarding ten associates at your Global Delivery
-                    Center or equipping five hundred remote executives, the effort for your
-                    IT team remains exactly the same: zero. Team Computers designed ZeroAI
-                    to scale your endpoint infrastructure infinitely, without scaling your
-                    headcount.
-                  </p>
-                </div>
-              </div>
+      <section className="bg-secondary py-16">
+        <div className="container grid grid-cols-1 md:grid-cols-2">
+          <div className="relative aspect-4/3 w-full md:aspect-auto ">
+            <Image
+              src={DAY_ONE_HERO_IMAGE}
+              alt="Professional reviewing finance charts with holographic HUD interface"
+              width={500}
+              height={300}
+
+              className="p-8"
+
+
+            />
+          </div>
+          <div className="flex flex-col justify-center gap-6 bg-secondary dark:bg-black px-6 py-6 sm:px-8 sm:py-8 md:gap-7 md:px-10">
+            <div>
+              <h4 className="text-base font-bold sm:text-lg">
+                True &apos;Out-of-the-Box&apos; Readiness.
+              </h4>
+              <p className="mt-2  text-white/85">
+                Give your employees a consumer-grade unboxing experience with
+                enterprise-grade security. They simply power on the device, connect to
+                the internet, and enter their credentials. ZeroAI takes over,
+                transforming a blank device into a fully managed corporate asset in
+                minutes.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-base font-bold sm:text-lg">
+                Scale Globally Without Expanding IT.
+              </h4>
+              <p className="mt-2">
+                Whether you are onboarding ten associates at your Global Delivery
+                Center or equipping five hundred remote executives, the effort for your
+                IT team remains exactly the same: zero. Team Computers designed ZeroAI
+                to scale your endpoint infrastructure infinitely, without scaling your
+                headcount.
+              </p>
             </div>
           </div>
         </div>
@@ -253,60 +253,60 @@ export default function ComplaincePage() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-0">
             <div className="flex flex-col items-center text-center">
               <div className="flex h-14 w-14 items-center justify-center">
-              <Image
+                <Image
                   src="/icons/clock.png"
                   alt=""
                   aria-hidden
-                  width={100}  
+                  width={100}
                   height={100}
                   className="w-full h-full"
-              
+
                 />
               </div>
-              <div className="mt-4 text-xs font-semibold dark:text-white text-black">0</div>
-              <div className="mt-1 text-[11px] font-medium dark:text-white text-black">
+              <div className="mt-4 text-xl font-semibold dark:text-white text-black">0</div>
+              <div className="mt-1 text-lg font-medium dark:text-white text-black">
                 Hours Spent Imaging Devices
               </div>
             </div>
 
             <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
-            <Image
-                  src="/icons/cloude.png"
-                  alt=""
-                  aria-hidden
-                  width={62}  
-                  height={62}
-                  className="h-[82px] w-[100px]"
-              
-                />
-              <div className="mt-4 text-xs font-semibold text-black dark:text-white">
+              <Image
+                src="/icons/cloude.png"
+                alt=""
+                aria-hidden
+                width={62}
+                height={62}
+                className="h-[82px] w-[100px]"
+
+              />
+              <div className="mt-4 text-xl font-semibold text-black dark:text-white">
                 100%
               </div>
-              <div className="mt-1 text-[11px] font-medium dark:text-white text-black">
+              <div className="mt-1 text-lg font-medium dark:text-white text-black">
                 Cloud-Driven Configuration
               </div>
             </div>
 
             <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
-            <Image
-                  src="/icons/plane.png"
-                  alt=""
-                  aria-hidden
-                  width={100}  
-                  height={100}
-                  className="h-[82px] w-[92px]"
-              
-                />
-              <div className="mt-4 text-xs font-semibold dark:text-white text-black">
+              <Image
+                src="/icons/plane.png"
+                alt=""
+                aria-hidden
+                width={100}
+                height={100}
+                className="h-[82px] w-[92px]"
+
+              />
+              <div className="mt-4 text-xl font-semibold dark:text-white text-black">
                 Day 1
               </div>
-              <div className="mt-1 text-[11px] font-medium dark:text-white text-black">
+              <div className="mt-1 text-lg font-medium dark:text-white text-black">
                 Immediate Employee Productivity
               </div>
             </div>
           </div>
 
-          <div className="mt-14 flex flex-col items-center justify-center text-center sm:mt-16">
+          <div className="mt-14 flex flex-col items-center justify-center text-center sm:mt-20">
             <h2 className="max-w-4xl text-[28px] font-light leading-tight tracking-wide dark:text-white text-black sm:text-[44px] sm:leading-[1.15]">
               Ready to eliminate manual device
               <br />

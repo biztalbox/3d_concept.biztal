@@ -16,14 +16,13 @@ export default function ComplaincePage() {
           <div className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16">
             <h2>Bulletproof Your Endpoints.
               Automate Your{" "}
-              <span className="text-primary! text-3xl! sm:text-5xl!">
-                {" "}
+              <span className="text-primary!">
                 Compliance.
               </span>
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint—without tickets, scripts, or human intervention.
+              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint without tickets, scripts, or human intervention.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
@@ -50,7 +49,7 @@ export default function ComplaincePage() {
 
           {/* 3 cards */}
           <div className="mt-10 grid grid-cols-1 justify-items-center gap-8 md:grid-cols-3 md:gap-4">
-            {/* Card 1 — landscape panel ~1.42:1 (w:h) to match design PDF */}
+            {/* Card 1   landscape panel ~1.42:1 (w:h) to match design PDF */}
             <div className="zf-fade-left-up zf-fade-left-up--d1 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg
@@ -173,7 +172,7 @@ export default function ComplaincePage() {
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
-            <div className="zf-fade-left-up zf-fade-left-up--d1 group relative overflow-hidden rounded-none bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary">
+            <div className="zf-fade-left-up zf-fade-left-up--d1 group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary">
               <div className="flex items-start gap-4">
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/15 transition-colors duration-300 group-hover:bg-white/20">
                   <svg
@@ -205,7 +204,7 @@ export default function ComplaincePage() {
               </div>
             </div>
 
-            <div className="zf-fade-left-up zf-fade-left-up--d2 group relative overflow-hidden rounded-none bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary">
+            <div className="zf-fade-left-up zf-fade-left-up--d2 group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary">
               <div className="flex items-start gap-4">
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/15 transition-colors duration-300 group-hover:bg-white/20">
                   <svg
@@ -250,8 +249,8 @@ export default function ComplaincePage() {
       <section className="bg-white px-5 py-16 dark:bg-secondary/40 sm:px-6 md:py-20">
         <div className="container">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
-            <div className="zf-fade-left-up relative rounded bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10">
-              <div className="absolute -left-4 -top-4 grid h-12 w-12 place-items-center rounded bg-primary sm:-left-6 sm:-top-6 sm:h-14 sm:w-14">
+            <div className="zf-fade-left-up relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10">
+              <div className="absolute -left-4 -top-4 grid h-12 w-12 place-items-center rounded-2xl bg-primary sm:-left-6 sm:-top-6 sm:h-14 sm:w-14">
                 <svg
                   viewBox="0 0 24 24"
                   width="24"
@@ -287,8 +286,8 @@ export default function ComplaincePage() {
               </p>
             </div>
 
-            <div className="zf-fade-left-up zf-fade-left-up--d1 relative rounded bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10">
-              <div className="absolute -left-4 -top-4 grid h-12 w-12 place-items-center rounded bg-primary sm:-left-6 sm:-top-6 sm:h-14 sm:w-14">
+            <div className="zf-fade-left-up zf-fade-left-up--d1 relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10">
+              <div className="absolute -left-4 -top-4 grid h-12 w-12 place-items-center rounded-2xl bg-primary sm:-left-6 sm:-top-6 sm:h-14 sm:w-14">
                 <svg
                   viewBox="0 0 24 24"
                   width="24"
@@ -391,22 +390,19 @@ export default function ComplaincePage() {
           </div>
         </div>
 
-        {/* CTA (as per screenshot) */}
-        <div className="container">
-          <div className="mx-auto mt-16 max-w-4xl text-center md:mt-20">
-            <h2 className="text-black dark:text-white font-medium leading-tight md:leading-tight">
-              Ready to secure your endpoints with
-              <br />
-              zero manual effort?
-            </h2>
+        <div className="container max-w-4xl text-center py-16">
+          <h2>
+            Ready to secure your endpoints with
+            <br />
+            zero manual effort?
+          </h2>
 
-            <Link
-              href="#"
-              className="mt-10 inline-flex rounded-full bg-primary px-7 py-3 text-xs font-semibold text-primary-foreground hover:bg-primary-hover sm:text-sm"
-            >
-              Get a Demo
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="mt-10 inline-flex rounded-full bg-primary px-7 py-3 text-xs font-semibold text-primary-foreground hover:bg-primary-hover sm:text-sm"
+          >
+            Get a Demo
+          </Link>
         </div>
       </section>
     </>
