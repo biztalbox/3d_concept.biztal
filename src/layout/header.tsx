@@ -58,56 +58,62 @@ const MEGA_MENU: MegaMenuColumn[] = [
             label: "Identity & Access Automation",
             href: "/identity-access-automation",
           },
-          {
-            id: "endpoint-ad-management",
-            label: "Predictive Asset Intelligence",
-            href: "#",
-          },
+         
           {
             id: "endpoint-software-metering",
             label: "Predictive Health Analytics",
             href: "#",
           },
-          {
-            id: "endpoint-auto-compliance",
-            label: "Real-time Edge Observability",
-            href: "#",
-          },
+         
         ],
       },
       {
         id: "end-user-management",
-        label: "End-user Management",
+        label: "Intelligent Service Automation",
         children: [
-          { id: "eum-ticket-management", label: "Ticket Management", href: "#" },
+          { id: "eum-ticket-management", label: "Zero-Touch Ticket Resolution", href: "/zero-touch-ticket-resolution" },
           {
             id: "eum-password-reset",
-            label: "Password Reset/ Account Unlock",
-            href: "#",
+            label: "Autonomous Identity Recovery",
+            href: "/autonomous-identity-recovery",
           },
-          { id: "eum-knowledge-search", label: "Knowledge Search", href: "#" },
           {
             id: "eum-service-workflow",
-            label: "Service Workflow Automation",
-            href: "#",
+            label: "Cognitive Knowledge Discovery",
+            href: "/cognitive-knowledge-discovery",
           },
-          { id: "eum-troubleshooters", label: "One Click Troubleshooters", href: "#" },
+          {
+            id: "eum-service-workflow",
+            label: "Smart Workflow Orchestration",
+            href: "/smart-workflow-orchestration",
+          },
+          {
+            id: "eum-service-workflow",
+            label: "One Click Auto-Remediation",
+            href: "/one-click-auto-remediation",
+          },
+          
         ],
       },
       {
         id: "digital-employee-experience",
-        label: "Digital Employee Experience",
+        label: "Workplace Intelligence & DEX",
         children: [
           {
             id: "dex-experience-mgmt",
-            label: "Experience Management",
-            href: "#",
+            label: "Proactive Self-Healing",
+            href: "/proactive-self-healing",
           },
-          { id: "dex-employee-engagement", label: "Employee Engagement", href: "#" },
+          { id: "dex-employee-engagement", label: "Sentimental Trend Analysis", href: "#" },
           {
             id: "dex-self-healing",
-            label: "Self Healing",
-            href: "#",
+            label: "Employee Productivity Guardrails",
+            href: "/employee-productivity-guardrails",
+          },
+          {
+            id: "dex-self-healing",
+            label: "Experience Optimization & Personalization",
+            href: "/employee-productivity-guardrails",
           },
         ],
       },
