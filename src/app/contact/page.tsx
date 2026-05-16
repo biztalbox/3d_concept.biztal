@@ -114,8 +114,8 @@ export default function ContactPage() {
             <div className="mx-auto mb-4 grid h-12 w-12 place-items-center">
               <IoShieldCheckmark className={cardIcon} aria-hidden />
             </div>
-            <h2 className="!text-base !font-bold !text-neutral-950 md:!text-lg dark:!text-white">ISO 27001 Ready</h2>
-            <p className="">
+            <h2 className="!text-base !font-bold  !text-neutral-950 md:!text-lg dark:!text-white">ISO 27001 Ready</h2>
+            <p className="text-sm! leading-5!">
               Built for enterprise compliance standards from the ground up.
             </p>
           </article>
@@ -124,7 +124,7 @@ export default function ContactPage() {
               <TbShare3 className={cardIcon} aria-hidden />
             </div>
             <h2 className="!text-base !font-bold !text-neutral-950 md:!text-lg dark:!text-white">Native Integrations</h2>
-            <p className="">
+            <p className="text-sm! leading-5!">
               Seamlessly connects with AWS, GCP, Azure, and Kubernetes.
             </p>
           </article>
@@ -133,7 +133,7 @@ export default function ContactPage() {
               <BsGraphUpArrow className={cardIcon} aria-hidden />
             </div>
             <h2 className="!text-base !font-bold !text-neutral-950 md:!text-lg dark:!text-white">Real-Time DRI</h2>
-            <p className="">
+            <p className="text-sm! leading-5!">
               Immediate detection and remediation of compliance drift.
             </p>
           </article>

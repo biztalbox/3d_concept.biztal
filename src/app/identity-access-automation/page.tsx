@@ -1,11 +1,10 @@
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import IdentityAccessAutomationStats from "@/component/identityAccessAutomationStats";
 import Link from "next/link";
 import Image from "next/image";
 import { IoPersonOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
 import { GoGoal } from "react-icons/go";
 import { BsFileBarGraph } from "react-icons/bs";
-import { LuChartPie } from "react-icons/lu";
-import { RxEyeOpen } from "react-icons/rx";
 
 const ACCESS_GAP_IMAGE ="/assets/images/vs-image.png"
 
@@ -76,18 +75,18 @@ export default function ComplaincePage() {
 
               <div className="mt-8 grid grid-cols-1 gap-5 px-5 pb-6 sm:mt-10 sm:grid-cols-2 sm:gap-6 sm:px-8 sm:pb-8">
                 <div className="group relative overflow-hidden rounded-2xl bg-black p-6 ring-1 ring-white/10 transition-colors duration-200 hover:bg-primary sm:p-7">
-                  <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white/70 opacity-60 transition-opacity duration-200 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white! opacity-60 transition-opacity duration-200 group-hover:opacity-100" />
                   <h5 className="text-sm font-semibold text-white">The Old Way:</h5>
-                  <p className="mt-3 text-sm leading-6 text-white/80 transition-colors duration-200 group-hover:text-white!">
+                  <p className="mt-3   text-white/80! transition-colors duration-200 group-hover:text-white!">
                     IT tickets for every folder access, &apos;ghost&apos; accounts of former
                     employees, manual AD updates, and weak, static passwords.
                   </p>
                 </div>
 
                 <div className="group relative overflow-hidden rounded-2xl bg-black p-6 ring-1 ring-white/10 transition-colors duration-200 hover:bg-primary sm:p-7">
-                  <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white/70 opacity-60 transition-opacity duration-200 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white! transition-opacity duration-200 group-hover:opacity-100" />
                   <h5 className="text-sm font-semibold text-white">The ZerofAI Way:</h5>
-                  <p className="mt-3 text-sm leading-6 text-white/80 transition-colors duration-200 group-hover:text-white!">
+                  <p className="mt-3 text-sm text-white/80! transition-colors duration-200 group-hover:text-white!">
                     Automated identity lifecycle. Real-time access control. Zero-touch
                     execution.
                   </p>
@@ -136,19 +135,19 @@ export default function ComplaincePage() {
               ].map((card) => (
                 <div
                   key={card.title}
-                  className="rounded-3xl bg-white px-6 py-6 text-center ring-1 ring-white/10 dark:bg-[#202020]"
+                  className="group rounded-3xl bg-white px-6 py-6 text-center ring-1 ring-black/10 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-black/10 hover:ring-primary/40 hover:bg-primary dark:bg-[#202020] dark:ring-white/10  dark:hover:shadow-xl dark:hover:shadow-black/50 dark:hover:ring-primary/45"
                 >
-                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-primary">
+                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-primary group-hover:bg-white transition-transform duration-300 ease-out group-hover:scale-110">
                     <IoShieldCheckmarkOutline
                       className="h-6 w-6 text-black"
                       aria-hidden="true"
                     />
                   </div>
 
-                  <h5 className="mt-4 text-sm font-semibold leading-5 text-black dark:text-white">
+                  <h5 className="mt-4 text-sm font-semibold leading-5 text-black group-hover:text-white! dark:text-white">
                     {card.title}
                   </h5>
-                  <p className="mt-3 text-xs leading-5 text-black dark:text-white">
+                  <p className="mt-3 text-sm! leading-6! text-black group-hover:text-white! dark:text-white">
                     {card.body}
                   </p>
                 </div>
@@ -212,41 +211,8 @@ export default function ComplaincePage() {
               </div>
             </div>
 
-            {/* 3 stat cards */}
-            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-                <div className="rounded-xl bg-white px-6 py-9 text-center dark:bg-[#202020]">
-                <IoShieldCheckmarkOutline
-                  className="mx-auto h-12 w-12 text-black dark:text-white"
-                  aria-hidden="true"
-                />
-                <div className="mt-4 text-xl font-semibold tracking-wide text-black dark:text-white">
-                  Instant
-                </div>
-                <div className="mt-1 text-sm text-black dark:text-white">
-                  Offboarding &amp; Account Revocation
-                </div>
-              </div>
-
-              <div className="rounded-xl bg-white px-6 py-9 text-center  dark:bg-[#202020]">
-                <LuChartPie className="mx-auto h-12 w-12 text-black dark:text-white" aria-hidden="true" />
-                <div className="mt-4 text-xl font-semibold tracking-wide text-black dark:text-white">
-                  90%
-                </div>
-                <div className="mt-1 text-sm text-black dark:text-white">
-                  Reduction in Identity-Related IT Tickets
-                </div>
-              </div>
-
-              <div className="rounded-xl bg-white px-6 py-9 text-center  dark:bg-[#202020]">
-                <RxEyeOpen className="mx-auto h-12 w-12 text-black dark:text-white" aria-hidden="true" />
-                <div className="mt-4 text-xl font-semibold tracking-wide text-black dark:text-white">
-                  100%
-                </div>
-                <div className="mt-1 text-sm text-black dark:text-white">
-                  Visibility into Privileged User Activity
-                </div>
-              </div>
-            </div>
+            {/* 3 stat cards — 90% / 100% count up on scroll into view */}
+            <IdentityAccessAutomationStats />
 
             {/* CTA box */}
             <div className="mt-12 overflow-hidden rounded-2xl bg-white px-6 py-14 text-center  dark:bg-[#202020] sm:px-10 sm:py-16">
