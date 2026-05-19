@@ -347,7 +347,7 @@ export default function AutonomousIdentityRecoveryPage() {
       </section>
 
       <section className="w-full overflow-x-hidden bg-neutral-100 py-14 sm:py-20 dark:bg-secondary/40">
-        <div className=" w-full  px-5 sm:px-6">
+        <div className="container">
           <h3
             className="text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
             data-aos="fade-up"
@@ -416,7 +416,7 @@ export default function AutonomousIdentityRecoveryPage() {
       </section>
 
       <section className=" py-10 dark:bg-secondary/40">
-        <div className="w-full">
+        <div className="container">
           <div className="  rounded-2xl px-10 border border-neutral-200/90 bg-neutral-50 py-1 sm:rounded-3xl sm:px-7 sm:py-14 md:rounded-[28px] md:px-10 md:py-16 lg:px-12 dark:border-white/10 dark:bg-black dark:shadow-none">
             <h3
               className="w-full text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"

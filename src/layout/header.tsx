@@ -104,17 +104,9 @@ const MEGA_MENU: MegaMenuColumn[] = [
             label: "Proactive Self-Healing",
             href: "/proactive-self-healing",
           },
-          { id: "dex-employee-engagement", label: "Sentimental Trend Analysis", href: "#" },
-          {
-            id: "dex-self-healing",
-            label: "Employee Productivity Guardrails",
-            href: "/employee-productivity-guardrails",
-          },
-          {
-            id: "dex-self-healing",
-            label: "Experience Optimization & Personalization",
-            href: "/employee-productivity-guardrails",
-          },
+          { id: "dex-experience-mgmt", label: "Sentiment Trend Analysis", href: "/sentiment-trend-analysis" },
+          { id: "dex-experience-mgmt", label: "Employee Productivity Guardrails", href: "/employee-productivity-guardrails" },
+          { id: "dex-experience-mgmt", label: "Experience Optimization & Orchestration", href: "/experience-optimization-orchestration" },
         ],
       },
     ]
