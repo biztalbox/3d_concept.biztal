@@ -374,7 +374,6 @@ export default function SmartWorkflowOrchestrationPage() {
 
       <section
         className="py-16"
-        aria-labelledby="predictive-ops-heading"
       >
         <div className="container max-w-6xl px-4 sm:px-6">
           <h2
