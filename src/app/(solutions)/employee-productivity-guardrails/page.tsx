@@ -46,7 +46,7 @@ export default function ComplaincePage() {
   ]
   return (
     <main className="flex flex-col">
-      <section id="" className="relative w-full px-0 sm:p-5">
+      <section className="relative w-full px-0 sm:p-5">
         {/* right-side background decorative strips (flush to viewport edge) */}
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
           <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
