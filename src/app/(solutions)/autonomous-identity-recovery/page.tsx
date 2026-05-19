@@ -1,4 +1,6 @@
+import AosInit from "@/component/AosInit";
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
 import Link from "next/link";
 import Image from "next/image";
 import type { IconType } from "react-icons";
@@ -47,10 +49,12 @@ function RecoveryStoryImage({
   src,
   alt,
   imageFirst,
+  animation,
 }: {
   src: string;
   alt: string;
   imageFirst: boolean;
+  animation: "fade-left" | "fade-right";
 }) {
   const shellClass = imageFirst
     ? [
@@ -66,6 +70,9 @@ function RecoveryStoryImage({
 
   return (
     <div
+      data-aos={animation}
+      data-aos-duration="900"
+      data-aos-easing="ease-out-cubic"
       className={`relative h-full min-h-[200px] w-full flex-1 overflow-hidden sm:min-h-[220px] md:min-h-full ${shellClass}`}
     >
       <Image
@@ -79,9 +86,23 @@ function RecoveryStoryImage({
   );
 }
 
-function RecoveryStoryTextBlock({ title, body }: { title: string; body: string }) {
+function RecoveryStoryTextBlock({
+  title,
+  body,
+  animation,
+}: {
+  title: string;
+  body: string;
+  animation: "fade-left" | "fade-right";
+}) {
   return (
-    <div className="flex w-full flex-col">
+    <div
+      data-aos={animation}
+      data-aos-duration="900"
+      data-aos-easing="ease-out-cubic"
+      data-aos-delay="80"
+      className="flex w-full flex-col"
+    >
       <span className="h-px w-10 shrink-0 bg-primary sm:w-12" aria-hidden />
       <h3 className="mt-5 text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:mt-6 sm:text-3xl md:text-4xl dark:text-white">
         {title}
@@ -104,15 +125,23 @@ function RecoveryStoryRow({
   image: string;
   imageFirst: boolean;
 }) {
+  const imageAnimation = imageFirst ? "fade-right" : "fade-left";
+  const textAnimation = imageFirst ? "fade-left" : "fade-right";
+
   const textCol = (
     <div className="flex min-h-0 w-full flex-1 flex-col justify-center md:py-10">
-      <RecoveryStoryTextBlock title={title} body={body} />
+      <RecoveryStoryTextBlock title={title} body={body} animation={textAnimation} />
     </div>
   );
 
   const imageCol = (
     <div className="flex min-h-[200px] w-full flex-1 flex-col md:h-full md:min-h-0">
-      <RecoveryStoryImage src={image} alt={title} imageFirst={imageFirst} />
+      <RecoveryStoryImage
+        src={image}
+        alt={title}
+        imageFirst={imageFirst}
+        animation={imageAnimation}
+      />
     </div>
   );
 
@@ -242,13 +271,21 @@ function RecoveryFeatureCard({
   Icon,
   title,
   body,
+  aosDelay = 0,
 }: {
   Icon: IconType;
   title: string;
   body: string;
+  aosDelay?: number;
 }) {
   return (
-    <div className="flex h-full w-full">
+    <div
+      className="flex h-full w-full"
+      data-aos="fade-up"
+      data-aos-duration="900"
+      data-aos-easing="ease-out-cubic"
+      data-aos-delay={aosDelay}
+    >
       <div className="group relative flex h-full min-h-80 w-full flex-col rounded-2xl border border-transparent bg-white text-center shadow-sm ring-1 ring-black/5 transition-colors duration-200 hover:border-primary sm:min-h-88 md:min-h-0 dark:bg-secondary dark:shadow-none dark:ring-white/10 dark:hover:border-primary">
         <div className="absolute left-1/2 top-8 z-20 flex size-13 -translate-x-1/2 items-center justify-center rounded-2xl bg-[#7DD3FC] text-neutral-900 shadow-md sm:top-10 sm:size-14">
           <Icon className="size-7 sm:size-8" aria-hidden />
@@ -268,7 +305,7 @@ function RecoveryFeatureCard({
 
 export default function AutonomousIdentityRecoveryPage() {
   return (
-    <>
+    <AosInit>
       <section id="" className="relative w-full lg:min-h-screen">
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
           <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
@@ -276,7 +313,12 @@ export default function AutonomousIdentityRecoveryPage() {
         </div>
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
-          <div className="order-2 px-5 py-14 sm:px-6 sm:py-16 md:order-1">
+          <div
+            className="order-2 py-14 sm:px-6 sm:py-16 md:order-1"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             <h2>
               Recover Access Without{" "}
               <span className="text-primary! text-3xl! sm:text-5xl!">
@@ -305,54 +347,95 @@ export default function AutonomousIdentityRecoveryPage() {
       </section>
 
       <section className="w-full overflow-x-hidden bg-neutral-100 py-14 sm:py-20 dark:bg-secondary/40">
-        <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
-          <h3 className="text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
+        <div className=" w-full  px-5 sm:px-6">
+          <h3
+            className="text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             Account Recovery Shouldn&apos;t Depend on the Helpdesk
           </h3>
 
-          <p className="mt-6 max-w-4xl text-sm leading-7 text-neutral-600 sm:text-[15px] sm:leading-8 dark:text-white/70">
+          <p
+            className="mt-6 text-sm leading-7 text-neutral-600 sm:text-[15px] sm:leading-8 dark:text-white/70"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay="80"
+          >
             In most organizations, account recovery still relies on manual processes, users raise
             tickets, IT teams perform identity verification, and access is restored through a series
             of disconnected steps. This approach is slow, resource-intensive, and introduces security
             risks, especially in cases of lost devices, expired credentials, or authentication
             failures.
           </p>
-          <p className="mt-5 max-w-4xl text-sm leading-7 text-neutral-600 sm:text-[15px] sm:leading-8 dark:text-white/70">
+          <p
+            className="mt-5 text-sm leading-7 text-neutral-600 sm:text-[15px] sm:leading-8 dark:text-white/70"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay="120"
+          >
             Even self-service password reset systems fall short when users lose access to all
             authentication methods, forcing recovery back into manual workflows.
           </p>
         </div>
 
         <div className="mx-auto mt-10 grid w-full max-w-xl grid-cols-1 gap-5 px-5 sm:mt-12 sm:max-w-2xl sm:px-6 md:mt-12 md:max-w-4xl md:grid-cols-2 md:items-stretch md:gap-6 lg:max-w-5xl">
-          <RecoveryCompareCard
-            variant="oldWay"
-            title="The Old Way"
-            steps={["Raise ticket.", "Verify identity manually.", "Reset access."]}
-          />
-          <RecoveryCompareCard
-            variant="zerofai"
-            title="The ZerofAI Way"
-            steps={["Verify identity.", "Authenticate.", "Restore access."]}
-            footer={
-              <div className="flex items-center gap-1.5 text-xs font-medium text-primary sm:text-[13px]">
-                <Crosshair className="size-3.5 shrink-0 sm:size-4" strokeWidth={2} aria-hidden />
-                <span>Self-Service.</span>
-              </div>
-            }
-          />
+          <div
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
+            <RecoveryCompareCard
+              variant="oldWay"
+              title="The Old Way"
+              steps={["Raise ticket.", "Verify identity manually.", "Reset access."]}
+            />
+          </div>
+          <div
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay={COMPARE_STAGGER_MS}
+          >
+            <RecoveryCompareCard
+              variant="zerofai"
+              title="The ZerofAI Way"
+              steps={["Verify identity.", "Authenticate.", "Restore access."]}
+              footer={
+                <div className="flex items-center gap-1.5 text-xs font-medium text-primary sm:text-[13px]">
+                  <Crosshair className="size-3.5 shrink-0 sm:size-4" strokeWidth={2} aria-hidden />
+                  <span>Self-Service.</span>
+                </div>
+              }
+            />
+          </div>
         </div>
       </section>
 
-      <section className="w-full py-10 dark:bg-secondary/40">
-        <div className="w-full px-5">
+      <section className=" py-10 dark:bg-secondary/40">
+        <div className="w-full">
           <div className="  rounded-2xl px-10 border border-neutral-200/90 bg-neutral-50 py-1 sm:rounded-3xl sm:px-7 sm:py-14 md:rounded-[28px] md:px-10 md:py-16 lg:px-12 dark:border-white/10 dark:bg-black dark:shadow-none">
-            <h3 className="w-full text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
+            <h3
+              className="w-full text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               From Password Reset to Autonomous Identity Recovery
             </h3>
 
             <div className="mt-12 grid grid-cols-1 gap-12 sm:mt-14 sm:gap-10 md:grid-cols-3 md:items-stretch md:gap-8 lg:gap-10">
-              {recoveryFeatureCards.map(({ Icon, title, body }) => (
-                <RecoveryFeatureCard key={title} Icon={Icon} title={title} body={body} />
+              {recoveryFeatureCards.map(({ Icon, title, body }, index) => (
+                <RecoveryFeatureCard
+                  key={title}
+                  Icon={Icon}
+                  title={title}
+                  body={body}
+                  aosDelay={index * CARD_STAGGER_MS}
+                />
               ))}
             </div>
           </div>
@@ -389,12 +472,23 @@ export default function AutonomousIdentityRecoveryPage() {
 
       <section className="w-full bg-white py-16 sm:py-20 md:py-24 dark:bg-[#121212]">
         <div className="container max-w-6xl px-5 sm:px-6">
-          <h3 className="mx-auto max-w-5xl text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.12] dark:text-white">
+          <h3
+            className="mx-auto max-w-5xl text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.12] dark:text-white"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             Beyond Password Reset Toward Identity Continuity
           </h3>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-2 md:items-stretch md:gap-8">
-            <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary">
+            <div
+              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay="80"
+            >
               <span className="inline-flex text-white! w-fit shrink-0 items-center rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-wide  transition-colors duration-300 group-hover:bg-neutral-950 sm:px-5 sm:text-sm">
                 Traditional Systems
               </span>
@@ -413,7 +507,13 @@ export default function AutonomousIdentityRecoveryPage() {
               </ul>
             </div>
 
-            <div className="group flex h-full flex-col  overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary">
+            <div
+              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={COMPARE_STAGGER_MS}
+            >
               <span className="inline-flex w-fit! shrink-0 items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-wide text-white! transition-colors duration-300 group-hover:bg-neutral-950 sm:px-5 sm:text-sm">
                 <FaCheck className=" shrink-0 text-white group-hover:text-primary sm:size-4" aria-hidden />
                 ZerofAI
@@ -425,7 +525,7 @@ export default function AutonomousIdentityRecoveryPage() {
                       className="mt-0.5 size-4 shrink-0 text-neutral-700 group-hover:text-white sm:size-[18px] dark:text-white"
                       aria-hidden
                     />
-                    <span className="text-sm leading-relaxed text-neutral-800 transition-colors duration-300 group-hover:text-white! sm:text-base">
+                    <span className="text-sm leading-relaxed text-white transition-colors duration-300 group-hover:text-white! sm:text-base">
                       {item}
                     </span>
                   </li>
@@ -434,13 +534,25 @@ export default function AutonomousIdentityRecoveryPage() {
             </div>
           </div>
 
-          <div className="mt-10 flex justify-center  md:mt-12">
+          <div
+            className="mt-10 flex justify-center md:mt-12"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay="160"
+          >
             <span className="inline-flex max-w-full  text:black bg-secondary! text-sm! rounded-full px-5 py-2.5 text-center  font-medium leading-snug sm:px-6 sm:text-sm dark:bg-gray dark:text-white">
               Unlock Access Without Waiting on IT
             </span>
           </div>
 
-          <div className="mt-12 rounded-3xl bg-secondary dark:bg-gray p-8 text-center sm:mt-14 sm:p-10 md:p-14">
+          <div
+            className="mt-12 rounded-3xl bg-secondary p-8 text-center dark:bg-gray sm:mt-14 sm:p-10 md:p-14"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay="200"
+          >
             <hr className="border-black dark:border-white mb-8 w-96 ml-70" />
             <h3 className="mx-auto max-w-3xl text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl dark:text-white">
               Turn Your Service Desk Into an Autonomous Engine
@@ -459,9 +571,7 @@ export default function AutonomousIdentityRecoveryPage() {
 
       </section>
 
-    </>
-
+    </AosInit>
   );
-
 }
 

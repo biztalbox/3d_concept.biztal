@@ -1,55 +1,121 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import HeroCanvas from "@/component/bot/HeroCanvas";
 import Link from "next/link";
 import Image from "next/image";
 import { PiClockCounterClockwise } from "react-icons/pi";
 import { CiCircleCheck } from "react-icons/ci";
-import { FiCloud } from "react-icons/fi";
-import { FaRocket } from "react-icons/fa6";
 
-const DAY_ONE_HERO_IMAGE = "/assets/images/men-in-pc.png"
+const DAY_ONE_HERO_IMAGE = "/assets/images/men-in-pc.png";
+
+/** Counts 0 → target whenever the element scrolls into view; resets when it leaves. */
+function ScrollPercentCounter({
+  target = 100,
+  durationMs = 1400,
+  className = "",
+}: {
+  target?: number;
+  durationMs?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [value, setValue] = useState(0);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const cancelAnimation = () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+    };
+
+    const runCount = () => {
+      cancelAnimation();
+      setValue(0);
+      const start = performance.now();
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / durationMs, 1);
+        const eased = 1 - (1 - progress) ** 3;
+        setValue(Math.round(eased * target));
+        if (progress < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        }
+      };
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          runCount();
+        } else {
+          cancelAnimation();
+          setValue(0);
+        }
+      },
+      { threshold: 0.4, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      cancelAnimation();
+    };
+  }, [target, durationMs]);
+
+  return (
+    <div ref={ref} className={className} aria-live="polite" aria-label={`${value} percent`}>
+      {value}%
+    </div>
+  );
+}
+
+const logos = [
+  { src: "/brands/microsoft-intune.svg", alt: "Microsoft Intune" },
+  { src: "/brands/azure-active-directory.svg", alt: "Azure Active Directory" },
+  { src: "/brands/manageengine.svg", alt: "ManageEngine" },
+  { src: "/brands/symphony.svg", alt: "Symphony" },
+  { src: "/brands/servicenow.svg", alt: "ServiceNow" },
+  { src: "/brands/infron.svg", alt: "Infron" },
+];
+
 export default function ComplaincePage() {
-  const logos = [
-    {
-      src: "/brands/microsoft-intune.svg",
-      alt: "Microsoft Intune",
-    },
-    {
-      src: "/brands/azure-active-directory.svg",
-      alt: "Azure Active Directory",
-    },
-    {
-      src: "/brands/manageengine.svg",
-      alt: "ManageEngine",
-    },
-    {
-      src: "/brands/symphony.svg",
-      alt: "Symphony",
-    },
-    {
-      src: "/brands/servicenow.svg",
-      alt: "ServiceNow",
-    },
-    {
-      src: "/brands/infron.svg",
-      alt: "Infron",
-    },
-  ];
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 850,
+      easing: "ease-out-cubic",
+      once: false,
+      mirror: true,
+    });
+  }, []);
 
   return (
     <main>
       <section id="" className="relative w-full lg:min-h-screen">
-        {/* right-side background decorative strips (flush to viewport edge) */}
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
           <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
           <div className="absolute top-0 right-[-90px] h-[120%] w-[130px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
         </div>
 
         <div className="container mt-0 grid grid-cols-1 gap-10 md:mt-11 md:grid-cols-2">
-          <div className="order-2 md:order-1 pt-6 pb-16 md:py-16">
-            <h2>Drop-Ship Productivity. <br />
-              <span className="text-primary!">
-                Zero IT Touch Required.</span>
-
+          <div
+            className="order-2 pt-6 pb-16 md:order-1 md:py-16"
+            data-aos="fade-up"
+            data-aos-duration="900"
+          >
+            <h2>
+              Drop-Ship Productivity. <br />
+              <span className="text-primary!">Zero IT Touch Required.</span>
             </h2>
 
             <p className="mt-8 max-w-4xl text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
@@ -73,7 +139,7 @@ export default function ComplaincePage() {
       {/* logos / integrations marquee   tight row, large logos, black dividers (reference layout) */}
       <section className="bg-secondary dark:bg-secondary/40 py-16">
         <div className="">
-          <div className="container mb-8 text-center">
+          <div className="container mb-8 ">
 
             <h2>
               Seamlessly integrating with the tools Industry Leaders rely on:
@@ -115,11 +181,14 @@ export default function ComplaincePage() {
             </div>
           </div>
 
-          {/* cards/content inside marquee section */}
           <div className="container mt-12 sm:mt-14">
-            <div className="mx-auto max-w-6xl rounded-3xl bg-white dark:bg-secondary/40 px-6 py-10 ring-1 ring-white/10 sm:px-10 sm:py-12">
-              <div className="max-w-4xl">
-                <h2 className="dark:text-white text-black">
+            <div
+              className="mx-auto rounded-3xl bg-white px-6 py-10 ring-1 ring-white/10 sm:px-10 sm:py-12 dark:bg-secondary/40"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div className="max-w-4xl" data-aos="fade-up" data-aos-delay="120">
+                <h2 className="text-black dark:text-white">
                   Imaging Laptops is a Waste of IT Talent
                 </h2>
                 <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 sm:text-base">
@@ -130,27 +199,35 @@ export default function ComplaincePage() {
               </div>
 
               <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className="group relative overflow-hidden rounded-2xl bg-secondary dark:bg-secondary/40 p-6 transition-colors duration-200 hover:border-primary hover:bg-primary sm:p-7">
+                <div
+                  className="group relative overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-200 hover:border-primary hover:bg-primary sm:p-7 dark:bg-secondary/40"
+                  data-aos="fade-up"
+                  data-aos-delay="160"
+                >
                   <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white opacity-70 transition-opacity duration-200 group-hover:opacity-100" />
-                  <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white bg-white text-primary transition-colors duration-200 group-hover:border-white/50 group-hover:bg-white/15 group-hover:text-white">
+                  <div className="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-full border border-white bg-white text-primary transition-colors duration-200 group-hover:border-white/50 group-hover:bg-white/15 group-hover:text-white">
                     <PiClockCounterClockwise className="h-5 w-5" aria-hidden="true" />
                   </div>
-                  <p className="text-sm font-semibold group-hover:text-white! text-black">
+                  <p className="text-sm font-semibold text-black group-hover:text-white!">
                     The Old Way:
                   </p>
-                  <p className="mt-3 text-sm leading-6  transition-colors duration-200 group-hover:text-white!">
+                  <p className="mt-3 text-sm leading-6 transition-colors duration-200 group-hover:text-white!">
                     Manual setup. Imaging. IT dependency.
                     <br />
                     Day 1 login issues.
                   </p>
                 </div>
 
-                <div className="group relative overflow-hidden rounded-2xl bg-secondary dark:bg-secondary/40 p-6 transition-colors duration-200 hover:border-primary hover:bg-primary sm:p-7">
+                <div
+                  className="group relative overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-200 hover:border-primary hover:bg-primary sm:p-7 dark:bg-secondary/40"
+                  data-aos="fade-up"
+                  data-aos-delay="240"
+                >
                   <div className="pointer-events-none absolute inset-1 rounded-[14px] border border-white opacity-70 transition-opacity duration-200 group-hover:opacity-100" />
-                  <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white bg-white text-primary transition-colors duration-200 group-hover:border-white/50 group-hover:bg-white/15 group-hover:text-white">
+                  <div className="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-full border border-white bg-white text-primary transition-colors duration-200 group-hover:border-white/50 group-hover:bg-white/15 group-hover:text-white">
                     <CiCircleCheck className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <p className="text-sm font-semibold group-hover:text-white! text-black">
+                  <p className="text-sm font-semibold text-black group-hover:text-white!">
                     The ZerofAI Way:
                   </p>
                   <p className="mt-3 text-sm leading-6 transition-colors duration-200 group-hover:text-white!">
@@ -165,17 +242,19 @@ export default function ComplaincePage() {
         </div>
       </section>
 
-      <section className="dark:bg-secondary/40 py-16">
+      <section className="py-16 dark:bg-secondary/40">
         <div className="container sm:px-6">
-          <h3 className="">
-            The Day-One Experience, Automated.
-          </h3>
+          <h3 data-aos="fade-up">The Day-One Experience, Automated.</h3>
 
           <div className="mt-8 grid grid-cols-1 gap-5 md:mt-10 md:grid-cols-2 md:gap-6">
-            <div className="relative rounded-xl bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+            <div
+              className="relative rounded-xl bg-secondary p-5 pl-7 sm:p-6 sm:pl-8 dark:bg-black"
+              data-aos="fade-up"
+              data-aos-delay="80"
+            >
               <span
                 aria-hidden="true"
-                className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
+                className="absolute top-5 left-[-5] h-7 w-[8px] bg-black sm:top-6 dark:bg-white"
               />
               <h5 className="text-sm font-bold sm:text-[15px]">
                 Intelligent App Orchestration
@@ -186,14 +265,16 @@ export default function ComplaincePage() {
                 permissions they need to start working immediately.
               </p>
             </div>
-            <div className="relative rounded-xl bg-secondary dark:bg-black p-5 pl-7 sm:p-6 sm:pl-8">
+            <div
+              className="relative rounded-xl bg-secondary p-5 pl-7 sm:p-6 sm:pl-8 dark:bg-black"
+              data-aos="fade-up"
+              data-aos-delay="160"
+            >
               <span
                 aria-hidden="true"
-                className="absolute left-[-5] top-5 h-7 w-[8px] bg-black dark:bg-white sm:top-6"
+                className="absolute top-5 left-[-5] h-7 w-[8px] bg-black sm:top-6 dark:bg-white"
               />
-              <h5 className="text-sm font-bold sm:text-[15px]">
-                Secure Identity Binding
-              </h5>
+              <h5 className="text-sm font-bold sm:text-[15px]">Secure Identity Binding</h5>
               <p className="mt-3 text-xs leading-6 text-white/85 sm:text-[13px] sm:leading-6">
                 Security starts at the first boot. Device enrollment is tied directly to
                 the user&apos;s corporate identity with multi-factor authentication,
@@ -206,24 +287,25 @@ export default function ComplaincePage() {
 
       <section className="bg-secondary py-16">
         <div className="container grid grid-cols-1 md:grid-cols-2">
-          <div className="relative aspect-4/3 w-full md:aspect-auto ">
+          <div
+            className="relative aspect-4/3 w-full md:aspect-auto"
+            data-aos="fade-up"
+            data-aos-delay="80"
+          >
             <Image
               src={DAY_ONE_HERO_IMAGE}
               alt="Professional reviewing finance charts with holographic HUD interface"
               width={500}
               height={300}
-
-              className="p-8"
-
-
+              className=""
             />
           </div>
-          <div className="flex flex-col justify-center gap-6 bg-secondary dark:bg-black px-6 py-6 sm:px-8 sm:py-8 md:gap-7 md:px-10">
-            <div>
+          <div className="flex flex-col justify-center gap-6 bg-secondary px-6 py-6 sm:px-8 sm:py-8 md:gap-7 md:px-10 dark:bg-black">
+            <div data-aos="fade-up" data-aos-delay="120">
               <h4 className="text-base font-bold sm:text-lg">
                 True &apos;Out-of-the-Box&apos; Readiness.
               </h4>
-              <p className="mt-2  text-white/85">
+              <p className="mt-2 text-white/85">
                 Give your employees a consumer-grade unboxing experience with
                 enterprise-grade security. They simply power on the device, connect to
                 the internet, and enter their credentials. ZeroAI takes over,
@@ -231,27 +313,29 @@ export default function ComplaincePage() {
                 minutes.
               </p>
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="200">
               <h4 className="text-base font-bold sm:text-lg">
                 Scale Globally Without Expanding IT.
               </h4>
               <p className="mt-2">
-                Whether you are onboarding ten associates at your Global Delivery
-                Center or equipping five hundred remote executives, the effort for your
-                IT team remains exactly the same: zero. Team Computers designed ZeroAI
-                to scale your endpoint infrastructure infinitely, without scaling your
-                headcount.
+                Whether you are onboarding ten associates at your Global Delivery Center
+                or equipping five hundred remote executives, the effort for your IT team
+                remains exactly the same: zero. Team Computers designed ZeroAI to scale
+                your endpoint infrastructure infinitely, without scaling your headcount.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA section (match design screenshot) */}
-      <section className="w-full bg-white dark:bg-secondary/40 py-16 text-white sm:py-20">
+      <section className="w-full bg-white py-16 text-white sm:py-20 dark:bg-secondary/40">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-0">
-            <div className="flex flex-col items-center text-center">
+            <div
+              className="flex flex-col items-center text-center"
+              data-aos="fade-up"
+              data-aos-delay="0"
+            >
               <div className="flex h-14 w-14 items-center justify-center">
                 <Image
                   src="/icons/clock.png"
@@ -259,17 +343,20 @@ export default function ComplaincePage() {
                   aria-hidden
                   width={100}
                   height={100}
-                  className="w-full h-full"
-
+                  className="h-full w-full"
                 />
               </div>
-              <div className="mt-4 text-xl font-semibold dark:text-white text-black">0</div>
-              <div className="mt-1 text-lg font-medium dark:text-white text-black">
+              <div className="mt-4 text-xl font-semibold text-black dark:text-white">0</div>
+              <div className="mt-1 text-lg font-medium text-black dark:text-white">
                 Hours Spent Imaging Devices
               </div>
             </div>
 
-            <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
+            <div
+              className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white"
+              data-aos="fade-up"
+              data-aos-delay="120"
+            >
               <Image
                 src="/icons/cloude.png"
                 alt=""
@@ -277,17 +364,18 @@ export default function ComplaincePage() {
                 width={62}
                 height={62}
                 className="h-[82px] w-[100px]"
-
               />
-              <div className="mt-4 text-xl font-semibold text-black dark:text-white">
-                100%
-              </div>
-              <div className="mt-1 text-lg font-medium dark:text-white text-black">
+              <ScrollPercentCounter className="mt-4 text-xl font-semibold text-primary" />
+              <div className="mt-1 text-lg font-medium text-black dark:text-white">
                 Cloud-Driven Configuration
               </div>
             </div>
 
-            <div className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white">
+            <div
+              className="flex flex-col items-center text-center sm:border-l sm:border-black dark:border-white"
+              data-aos="fade-up"
+              data-aos-delay="240"
+            >
               <Image
                 src="/icons/plane.png"
                 alt=""
@@ -295,19 +383,22 @@ export default function ComplaincePage() {
                 width={100}
                 height={100}
                 className="h-[82px] w-[92px]"
-
               />
-              <div className="mt-4 text-xl font-semibold dark:text-white text-black">
+              <div className="mt-4 text-xl font-semibold text-black dark:text-white">
                 Day 1
               </div>
-              <div className="mt-1 text-lg font-medium dark:text-white text-black">
+              <div className="mt-1 text-lg font-medium text-black dark:text-white">
                 Immediate Employee Productivity
               </div>
             </div>
           </div>
 
-          <div className="mt-14 flex flex-col items-center justify-center text-center sm:mt-20">
-            <h2 className="max-w-4xl text-[28px] font-light leading-tight tracking-wide dark:text-white text-black sm:text-[44px] sm:leading-[1.15]">
+          <div
+            className="mt-14 flex flex-col items-center justify-center text-center sm:mt-20"
+            data-aos="fade-up"
+            data-aos-delay="120"
+          >
+            <h2 className="max-w-4xl text-[28px] font-light leading-tight tracking-wide text-black sm:text-[44px] sm:leading-[1.15] dark:text-white">
               Ready to eliminate manual device
               <br />
               setup?
