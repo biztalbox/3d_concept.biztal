@@ -172,6 +172,69 @@ html.dark select option {
   }
 }
 
+/* Pre-emptive Incident timeline path */
+@keyframes immune-node-pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes immune-path-shimmer {
+  0% {
+    stroke-dashoffset: 120;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes immune-card-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(25, 182, 201, 0.12), 0 24px 48px -28px rgba(25, 182, 201, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(62, 214, 230, 0.35), 0 28px 56px -20px rgba(25, 182, 201, 0.5);
+  }
+}
+
+.immune-timeline-node-pulse {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: immune-node-pulse 2.4s ease-out infinite;
+}
+
+.immune-timeline-node-pulse--delayed-1 {
+  animation-delay: 0.5s;
+}
+
+.immune-timeline-node-pulse--delayed-2 {
+  animation-delay: 1s;
+}
+
+.immune-card-glow-animate {
+  animation: immune-card-glow 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .immune-timeline-node-pulse,
+  .immune-timeline-node-pulse--delayed-1,
+  .immune-timeline-node-pulse--delayed-2,
+  .immune-card-glow-animate {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 body {
   font-family: Helvetica, sans-serif;
 }

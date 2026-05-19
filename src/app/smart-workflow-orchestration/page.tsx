@@ -1,4 +1,8 @@
+import AosInit from "@/component/AosInit";
+import AlternatingFeatureRows from "@/component/AlternatingFeatureRows";
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
+import { DEFAULT_REMEDIATION_FEATURE_ROWS } from "@/lib/default-alternating-rows";
 import Link from "next/link";
 import { FaClockRotateLeft, FaCheck } from "react-icons/fa6";
 import { GiStarSwirl } from "react-icons/gi";
@@ -69,7 +73,7 @@ const featureBarItems: {
 
 export default function SmartWorkflowOrchestrationPage() {
   return (
-    <>
+    <AosInit>
       <section className="relative w-full lg:min-h-screen">
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
           <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
@@ -77,7 +81,12 @@ export default function SmartWorkflowOrchestrationPage() {
         </div>
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
-          <div className="order-2 px-5 py-14 sm:px-6 sm:py-16 md:order-1">
+          <div
+            className="order-2 px-5 py-14 sm:px-6 sm:py-16 md:order-1"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             <h2>
               Orchestrate IT Workflows.
               <span className="text-primary!"> Intelligently. Automatically.</span>
@@ -111,10 +120,19 @@ export default function SmartWorkflowOrchestrationPage() {
             <h3
               id="workflow-coordination-heading"
               className="text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
             >
               IT Workflows Shouldn&apos;t Depend on Manual Coordination
             </h3>
-            <p className="mt-6 text-sm leading-7 text-neutral-600 sm:text-[15px] sm:leading-8 dark:text-neutral-400">
+            <p
+              className="mt-6 text-sm leading-7 text-neutral-600 sm:text-[15px] sm:leading-8 dark:text-neutral-400"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay="80"
+            >
               Most enterprise workflows span multiple systems, approvals, and teams forcing IT operations
               into a cycle of ticket routing, repetitive execution, and manual follow-ups. Even when
               automation exists, workflows are often fragmented, rule-based, and dependent on human
@@ -125,7 +143,12 @@ export default function SmartWorkflowOrchestrationPage() {
           
           <div className="grid max-w-4xl mx-auto mt-10 grid-cols-1 gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start md:gap-0">
             {/* The Old Way */}
-            <div className="flex flex-col items-center md:pr-10 lg:pr-14">
+            <div
+              className="flex flex-col items-center md:pr-10 lg:pr-14"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <div className="flex size-18 items-center justify-center rounded-full border border-dashed border-neutral-300 bg-neutral-200 text-neutral-700 sm:size-20 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white">
                 <FaClockRotateLeft />
               </div>
@@ -197,13 +220,23 @@ export default function SmartWorkflowOrchestrationPage() {
 
       <section className="bg-neutral-100 py-14 dark:bg-[#111111] sm:py-16 md:py-20">
         <div className="container max-w-6xl">
-          <h2 className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
+          <h2
+            className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             From Password Reset to{" "}
             <span className="text-primary!">Autonomous<br /> Identity Recovery</span>
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3 md:items-stretch md:gap-8">
-            <div className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary">
+            <div
+              className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <div className="flex shrink-0 items-start justify-between gap-4">
                 <p className="text-[0.9375rem] font-bold leading-snug dark:text-white! text-neutral-900 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
                   Automated Identity Verification
@@ -218,7 +251,13 @@ export default function SmartWorkflowOrchestrationPage() {
               </p>
             </div>
 
-            <div className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary">
+            <div
+              className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={CARD_STAGGER_MS}
+            >
               <div className="flex shrink-0 items-start justify-between gap-4">
                 <p className="text-base font-bold leading-snug text-neutral-900 dark:text-white! transition-colors duration-300 group-hover:text-white! sm:text-[1.0625rem] dark:text-white">
                   Zero-Touch Credential &amp; Access Restoration
@@ -233,7 +272,13 @@ export default function SmartWorkflowOrchestrationPage() {
               </p>
             </div>
 
-            <div className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary">
+            <div
+              className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={CARD_STAGGER_MS * 2}
+            >
               <div className="flex shrink-0 items-start justify-between gap-4">
                 <p className="text-base font-bold leading-snug text-neutral-900  dark:text-white! transition-colors duration-300 group-hover:text-white! sm:text-[1.0625rem] dark:text-white">
                   Unified Recovery Across Systems
@@ -251,84 +296,9 @@ export default function SmartWorkflowOrchestrationPage() {
         </div>
       </section>
 
-      <section className="bg-neutral-50 py-16 dark:bg-black sm:py-20 md:py-24">
-        <div className="container max-w-6xl">
-          <div className="flex flex-col gap-14 md:gap-20 lg:gap-24">
-            <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-stretch md:gap-10 lg:gap-14">
-              <div className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 md:self-stretch dark:ring-0">
-                <Image
-                  src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGF0YSUyMGludGVsbGlnZW5jZXxlbnwwfHwwfHx8MA%3D%3D"
-                  alt="Event-Driven Detection"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 760px) 100vw, 50vw"
-                  priority
-                />
-              </div>
-              <div className="flex h-full min-h-0 w-full flex-col items-stretch md:flex-1 md:basis-0 md:self-stretch">
-                <span className="mb-3 h-2 w-14 shrink-0 self-start rounded-full bg-primary" aria-hidden />
-                <div className="flex min-h-0 flex-1 flex-col justify-center rounded-[24px] border border-neutral-200 bg-white px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14 dark:border-0 dark:bg-[#1e1e1e]">
-                  <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
-                    Event-Driven Detection
-                  </h4>
-                  <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
-                    ZerofAI captures signals from users, endpoints, and monitoring systems, triggering resolution workflows before tickets are formally created.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <AlternatingFeatureRows rows={DEFAULT_REMEDIATION_FEATURE_ROWS} />
 
-            <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-stretch md:gap-10 lg:gap-14">
-              <div className="flex h-full min-h-0 w-full flex-col items-stretch md:flex-1 md:basis-0 md:self-stretch">
-                <span className="mb-3 h-2 w-14 shrink-0 self-start rounded-full bg-[#00bcd4]" aria-hidden />
-                <div className="flex min-h-0 flex-1 flex-col justify-center rounded-[24px] border border-neutral-200 bg-white px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14 dark:border-0 dark:bg-[#1e1e1e]">
-                  <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
-                    AI-Led Diagnosis &amp; Decisioning
-                  </h4>
-                  <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
-                    Using historical data, context, and predefined policies, ZerofAI determines the root cause and selects the appropriate resolution path automatically.
-                  </p>
-                </div>
-              </div>
-              <div className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 md:self-stretch dark:ring-0">
-                <Image
-                  src="https://media.istockphoto.com/id/2265515077/photo/echnology-consultant-integrates-artificial-intelligence-engine-with-data-visualization.webp?a=1&b=1&s=612x612&w=0&k=20&c=qD69FXAFYtbN1Q3XIVsMF9iNv-HKaPzm_s_D9q6rsHE="
-                  alt="AI-Led Diagnosis and decisioning"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-stretch md:gap-10 lg:gap-14">
-              <div className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 md:self-stretch dark:ring-0">
-                <Image
-                  src="https://media.istockphoto.com/id/2208747071/photo/hands-of-robots-touching-on-access-management-network-connections-highlight-robotics.webp?a=1&b=1&s=612x612&w=0&k=20&c=Vch3r1Ej9lyc1Xhp_-FftSYKO7GK9sYUXsTMS9frMyA="
-                  alt="Closed-Loop Resolution"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div className="flex h-full min-h-0 w-full flex-col items-stretch md:flex-1 md:basis-0 md:self-stretch">
-                <span className="mb-3 h-2 w-14 shrink-0 self-start rounded-full bg-[#00bcd4]" aria-hidden />
-                <div className="flex min-h-0 flex-1 flex-col justify-center rounded-[24px] border border-neutral-200 bg-white px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14 dark:border-0 dark:bg-[#1e1e1e]">
-                  <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
-                    Closed-Loop Resolution
-                  </h4>
-                  <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
-                    ZerofAI executes actions, validates outcomes, and logs resolution details ensuring issues are fully resolved without manual follow-up.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section
+<section
         className="w-full border-y border-neutral-200 bg-[#F8F9FA] py-2 md:py-2.5 dark:border-neutral-600 dark:bg-[#141414]"
         aria-label="Operational outcomes"
       >
@@ -345,6 +315,10 @@ export default function SmartWorkflowOrchestrationPage() {
                       ? "max-md:border-b max-md:border-primary/50 dark:max-md:border-primary/40"
                       : "")
                   }
+                  data-aos="fade-up"
+                  data-aos-duration="900"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-delay={index * CARD_STAGGER_MS}
                 >
                   {index < featureBarItems.length - 1 && (
                     <span
@@ -437,7 +411,12 @@ export default function SmartWorkflowOrchestrationPage() {
 
       <section className="py-16 sm:py-20">
         
-          <div className="container rounded-3xl">
+          <div
+            className="container rounded-3xl"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             <hr className="border-black dark:border-white mb-8 w-60 mx-auto" />
             <h3 className="text-center">
               Turn Your Service Desk Into an Autonomous Engine
@@ -454,6 +433,6 @@ export default function SmartWorkflowOrchestrationPage() {
         
       </section>
 
-    </>
+    </AosInit>
   );
 }

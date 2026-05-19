@@ -1,8 +1,9 @@
+import AosInit from "@/component/AosInit";
 import HeroCanvas from "@/component/bot/HeroCanvas";
+
 import Image from "next/image";
 import Link from "next/link";
-import { FaClockRotateLeft, FaCheck } from "react-icons/fa6";
-import { WiStars } from "react-icons/wi";
+import { FaCheck } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { FaRegCircle } from "react-icons/fa";
 import { GoGoal } from "react-icons/go";
@@ -12,22 +13,12 @@ import { LuClockArrowDown } from "react-icons/lu";
 import { SlMagnifier } from "react-icons/sl";
 import { IoSettingsOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
 import type { IconType } from "react-icons";
+const COMPARE_STAGGER_MS = 400;
 
-/** 24-point path: alternating outer/inner radius for a circular scalloped badge (viewBox 0 0 100 100). */
-const SCALLOPED_CIRCLE_PATH = (() => {
-  const cx = 50;
-  const cy = 50;
-  const rOut = 47;
-  const rIn = 40;
-  const n = 12;
-  const pts: string[] = [];
-  for (let i = 0; i < n * 2; i++) {
-    const angle = (i / (n * 2)) * 2 * Math.PI - Math.PI / 2;
-    const r = i % 2 === 0 ? rOut : rIn;
-    pts.push(`${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`);
-  }
-  return `M ${pts[0]} L ${pts.slice(1).join(" ")} Z`;
-})();
+const COMPARE_BADGE_ICONS = {
+  oldWay: "/assets/icons/old-way-badge.png",
+  zerofaiWay: "/assets/icons/zerofai-way-badge.png",
+} as const;
 
 const featureBarItems: {
     Icon: IconType;
@@ -36,39 +27,69 @@ const featureBarItems: {
   }[] = [
     {
       Icon: LuClockArrowDown,
-      title: "Less Downtime",
-      sub: "By predicting and preventing issues before they impact users",
+      title: "Reduced Ticket Volume ",
+      sub: "by eliminating repetitive tickets",
     },
     {
       Icon: SlMagnifier,
-      title: "Faster Root Cause ID",
-      sub: "AI-driven insights accelerate incident investigation",
+      title: "Faster Resolution Times",
+      sub: " with end-to-end automation",
+
     },
     {
       Icon: IoSettingsOutline,
-      title: "Lower Overhead",
-      sub: "Through automated detection and response workflows",
+      title: "Lower ITSM Costs",
+      sub: "through reduced manual workload",
     },
     {
       Icon: IoShieldCheckmarkOutline,
-      title: "System Reliability",
-      sub: "With continuous health monitoring and proactive maintenance",
+      title: "Improved User Experience ",
+      sub: "with instant issue resolution",
     },
   ];
- 
- 
+
+const identityRecoveryCards: {
+  title: string;
+  description: string;
+  Icon: IconType;
+}[] = [
+  {
+    title: "Automated Ticket Detection & Classification",
+    description:
+    "ZerofAI interprets user requests and system signals in real time automatically identifying issues, categorizing them, and initiating resolution workflows without manual input.",
+    Icon: GoGoal,
+  },
+  {
+    title: " Autonomous Issue Resolution",
+    description:
+    "From password resets to application fixes, ZerofAI executes remediation actions across systems resolving common issues end-to-end without human intervention.",
+    Icon: GiBrain,
+  },
+  {
+    title: "Intelligent Orchestration Across Systems",
+    description:
+    "ZerofAI connects identity, endpoint, and service platforms ensuring actions are executed seamlessly across environments without manual coordination.",
+    Icon: CiVirus,
+  },
+];
+
+/** Stagger (ms): card 1 → 0ms, card 2 → 400ms, card 3 → 800ms */
+const IDENTITY_CARD_STAGGER_MS = 400;
+
   const traditionalOpsItemList = [
-    "Generate alerts after issues occur",
-    "Require manual investigation",
-    "Create alert fatigue",
-    "Focus on visibility",
+    "Focus on ticket tracking ",
+    "Automate routing and workflows ",
+    "Require human resolution ",
+    "Operate in reactive cycles",
+
   ];
   
   const predictiveOpsItems = [
-    "Predicts issues before they occur",
-    "Correlates signals automatically",
-    "Eliminates noise and false alerts",
-    "Takes preventive action autonomously",
+    "Eliminates ticket creation for routine issues ",   
+    "Resolves incidents end-to-end automatically ",
+    "Integrates detection, diagnosis, and action ",
+    "Operates in real-time, autonomous mode",
+
   ];
   
   const oldWayItems = [
@@ -85,26 +106,15 @@ const featureBarItems: {
     "Intelligence filtering: Focus only on what matters",
   ]; 
 
-function ScallopedIconBadge({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
+function CompareBadgeIcon({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className={`relative flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center sm:h-[5rem] sm:w-[5rem] ${className ?? ""}`}>
-      <svg
-        className="absolute inset-0 h-full w-full drop-shadow-sm"
-        viewBox="0 0 100 100"
-        aria-hidden
-      >
-        <path d={SCALLOPED_CIRCLE_PATH} fill="currentColor" />
-      </svg>
-      <span className="relative z-10 flex items-center justify-center text-white [&>svg]:h-[1.35rem] [&>svg]:w-[1.35rem] sm:[&>svg]:h-6 sm:[&>svg]:w-6">
-        {children}
-      </span>
-    </div>
+    <Image
+      src={src}
+      alt={alt}
+      width={80}
+      height={80}
+      className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain sm:h-[5rem] sm:w-[5rem]"
+    />
   );
 }
 
@@ -116,14 +126,10 @@ function IconChip({
   label: string;
 }) {
   const isOld = variant === "old";
+  const chipBase =
+    "flex min-h-[4.5rem] items-center gap-2.5 rounded-xl pt-0 pr-3 pb-0 pl-0 sm:min-h-[5rem] sm:pr-3.5";
   return (
-    <div
-      className={
-        isOld
-          ? "flex min-h-[3.25rem] items-center gap-2.5 rounded-xl bg-secondary px-3 py-2.5 sm:min-h-[3.5rem] sm:px-3.5"
-          : "flex min-h-[3.25rem] items-center gap-2.5 rounded-xl bg-white px-3 py-2.5 sm:min-h-[3.5rem] sm:px-3.5"
-      }
-    >
+    <div className={chipBase}>
       <span className="relative inline-flex size-7 shrink-0 items-center justify-center sm:size-8">
         <FaRegCircle
           className="absolute size-7 text-primary [&>path]:fill-primary sm:size-8"
@@ -139,13 +145,7 @@ function IconChip({
           <FaCheck className="relative z-10 size-3 text-white sm:size-3.5" aria-hidden />
         )}
       </span>
-      <span
-        className={
-          isOld
-            ? "text-sm font-medium leading-tight  text-foreground sm:text-[0.9375rem]"
-            : "text-sm font-medium leading-tight text-black sm:text-[0.9375rem]"
-        }
-      >
+      <span className="text-sm font-medium leading-tight text-neutral-900 sm:text-[0.9375rem] dark:text-white">
         {label}
       </span>
     </div>
@@ -154,36 +154,40 @@ function IconChip({
 
 function TicketsResolvedComparison() {
   return (
-    <section className="bg-secondary p-15 text-secondary-foreground dark:bg-secondary/40 dark:text-white">
-      <div className="container max-w-6xl">
+    <section className="bg-secondary py-10 text-secondary-foreground dark:bg-secondary/40 dark:text-white">
+      <div className="container">
         <h3 className="font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
           Tickets Should Be Resolved Not Managed
         </h3>
-        <p className="mt-8 text-neutral-700 dark:text-white/90">
+        <p
+          data-aos="fade-up"
+          data-aos-delay="80"
+          className="mt-8 text-neutral-700 dark:text-white/90"
+        >
           Traditional IT service desks are built around tickets. Every issue becomes a request, every request enters a queue, and every resolution depends on manual
           triage, routing, and execution. As environments grow, this model creates delays, increases workload, and turns IT into a reactive function.
-          <br />
-          <br />
           Even with automation in place, most systems still stop at ticket creation or routing leaving resolution dependent on human effort.
         </p>
 
-        <div className="mx-auto mt-12 flex max-w-5xl flex-col items-stretch gap-10 md:mt-16 md:flex-row md:items-stretch md:justify-center md:gap-0">
+        <div className="mt-12 flex flex-col items-stretch gap-10 md:mt-16 md:flex-row md:items-stretch md:justify-center md:gap-0">
           {/* Left: The Old Way */}
-          <div className="flex flex-1 flex-col items-center md:pr-8 lg:pr-12">
-            <ScallopedIconBadge className="text-secondary">
-              <FaClockRotateLeft className="text-foreground" aria-hidden />
-            </ScallopedIconBadge>
+          <div
+            data-aos="fade-up"
+            data-aos-delay="120"
+            className="flex flex-1 flex-col items-center md:pr-8 lg:pr-12"
+          >
+            <img src={COMPARE_BADGE_ICONS.oldWay} alt="The Old Way" width={80} height={80} className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain sm:h-[5rem] sm:w-[5rem]" />
             <p className="mt-4 text-center text-sm! font-bold! text-neutral-900 sm:text-[0.9375rem] dark:text-white!">
               The Old Way
             </p>
 
             <div className="mt-6 w-full max-w-[22rem] sm:max-w-[24rem]">
-              <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                <IconChip variant="old" label="Monitor" />
-                <IconChip variant="old" label="Alert." />
-                <IconChip variant="old" label="React." />
+              <div className="grid grid-cols-3 gap-2  sm:gap-3">
+                <IconChip variant="old" label="Log." />
+                <IconChip variant="old" label="Route." />
+                <IconChip variant="old" label="Resolve manually." />
               </div>
-              <div className="relative mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="relative mt-5 grid  grid-cols-3 gap-2 sm:gap-3">
                 <div
                   className="pointer-events-none absolute top-1/2 right-0 left-0 z-0 h-px -translate-y-1/2 bg-neutral-400 dark:bg-white"
                   aria-hidden
@@ -206,23 +210,25 @@ function TicketsResolvedComparison() {
           </div>
 
           {/* Right: The ZerofAI Way */}
-          <div className="flex flex-1 flex-col items-center md:pl-8 lg:pl-12">
-            <ScallopedIconBadge className="text-primary ">
-              <WiStars className="text-white" aria-hidden />
-            </ScallopedIconBadge>
+          <div
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="flex flex-1 flex-col items-center md:pl-8 lg:pl-12"
+          >
+            <img src={COMPARE_BADGE_ICONS.zerofaiWay} alt="The ZerofAI Way" width={160} height={160} className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain sm:h-[5rem] sm:w-[5rem]" />
             <p className="mt-4 text-center text-sm! font-bold! text-neutral-900 sm:text-[0.9375rem] dark:text-white!">
               The ZerofAI Way
             </p>
 
             <div className="mt-6 w-full max-w-[22rem] sm:max-w-[24rem]">
               <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                <IconChip variant="new" label="Analyze" />
-                <IconChip variant="new" label="Predict" />
-                <IconChip variant="new" label="Prevent" />
+                <IconChip variant="new" label="Detect." />
+                <IconChip variant="new" label="Diagnose." />
+                <IconChip variant="new" label="Resolve automatically." />
               </div>
               <div className="relative mt-5 grid grid-cols-3 gap-2 sm:gap-3">
                 <div
-                  className="pointer-events-none absolute top-1/2 right-0 left-0 z-0 h-px -translate-y-1/2 bg-primary"
+                  className="pointer-events-none absolute  top-1/2 right-0 left-0 z-0 h-px -translate-y-1/2 bg-primary"
                   aria-hidden
                 />
                 {[0, 1, 2].map((i) => (
@@ -241,7 +247,7 @@ function TicketsResolvedComparison() {
 
 export default function ZeroTouchTicketResolutionPage() {
   return (
-    <>
+    <AosInit>
       <section id="" className="relative w-full lg:min-h-screen">
         {/* right-side background decorative strips (flush to viewport edge) */}
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
@@ -252,15 +258,20 @@ export default function ZeroTouchTicketResolutionPage() {
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
           <div className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16">
             <h2>
-              Bulletproof Your Endpoints. Automate Your{" "}
+            Resolve Tickets.{" "}
               <span className="text-primary!">
-                Compliance.
+                <br />
+              Without Touching Them.
               </span>
             </h2>
 
-            <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint without tickets, scripts, or human intervention.
-            </p>
+            <p
+              className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7"
+              data-aos="fade-up"
+              data-aos-delay="80"
+            >
+ZerofAI automatically detects, diagnoses, and resolves IT issues eliminating tickets before they reach your service desk and
+reducing manual intervention to near zero.            </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
               <Link
@@ -278,140 +289,122 @@ export default function ZeroTouchTicketResolutionPage() {
       <TicketsResolvedComparison />
 
       <section className="bg-neutral-100 py-14 dark:bg-[#111111] sm:py-16 md:py-20">
-        <div className="container max-w-6xl">
-          <h2 className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white">
+        <div className="container">
+          <h2
+            data-aos="fade-up"
+            className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+          >
             From Password Reset to{" "}
             <span className="text-primary!">Autonomous<br /> Identity Recovery</span>
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3 md:items-stretch md:gap-8">
-            <div className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary">
-              <div className="flex shrink-0 items-start justify-between gap-4">
-                <p className="text-[0.9375rem] font-bold leading-snug dark:text-white! text-neutral-900 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
-                  Automated Identity Verification
+            {identityRecoveryCards.map(({ title, description, Icon }, index) => (
+              <div
+                key={title}
+                data-aos="fade-up"
+                data-aos-delay={index * IDENTITY_CARD_STAGGER_MS}
+                data-aos-duration="900"
+                data-aos-easing="ease-out-cubic"
+                className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary"
+              >
+                <div className="flex shrink-0 items-start justify-between gap-4">
+                  <p className="text-[0.9375rem] font-bold leading-snug text-neutral-900 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
+                    {title}
+                  </p>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary transition-colors duration-300 group-hover:bg-white!">
+                    <Icon className="h-5 w-5 text-white group-hover:text-primary!" aria-hidden />
+                  </span>
+                </div>
+                <p className="mt-6 text-sm leading-relaxed text-neutral-600 transition-colors duration-300 group-hover:text-white! dark:text-[#a0a0a0] sm:text-[0.9375rem]">
+                  {description}
                 </p>
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary transition-colors duration-300 group-hover:bg-white!">
-                  <GoGoal className="h-5 w-5 text-white group-hover:text-primary!" aria-hidden />
-                </span>
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-neutral-600 transition-colors duration-300 group-hover:text-white! dark:text-[#a0a0a0] sm:text-[0.9375rem]">
-                ZerofAI validates user identity using contextual signals, authentication factors,
-                and policy-driven checks ensuring secure recovery without human involvement.
-              </p>
-            </div>
-
-            <div className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary">
-              <div className="flex shrink-0 items-start justify-between gap-4">
-                <p className="text-base font-bold leading-snug text-neutral-900 dark:text-white! transition-colors duration-300 group-hover:text-white! sm:text-[1.0625rem] dark:text-white">
-                  Zero-Touch Credential &amp; Access Restoration
-                </p>
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary transition-colors duration-300 group-hover:bg-white!">
-                  <GiBrain className="h-5 w-5 text-white group-hover:text-primary!" aria-hidden />
-                </span>
-              </div>
-              <p className="mt-6 text-sm leading-relaxed text-neutral-600 transition-colors duration-300 group-hover:text-white! dark:text-[#a0a0a0] sm:text-[0.9375rem]">
-                From password resets to MFA reconfiguration, ZerofAI automatically restores
-                access across identity systems eliminating delays and manual workflows.
-              </p>
-            </div>
-
-            <div className="group flex h-full w-full min-w-0 flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm transition-colors duration-300 sm:p-8 dark:border-0 dark:bg-[#1e1e1e] dark:shadow-none hover:bg-primary">
-              <div className="flex shrink-0 items-start justify-between gap-4">
-                <p className="text-base font-bold leading-snug text-neutral-900  dark:text-white! transition-colors duration-300 group-hover:text-white! sm:text-[1.0625rem] dark:text-white">
-                  Unified Recovery Across Systems
-                </p>
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary transition-colors duration-300 group-hover:bg-white!">
-                  <CiVirus className="h-5 w-5 text-white group-hover:text-primary!" aria-hidden />
-                </span>
-              </div>
-              <p className="mt-6 text-sm leading-relaxed text-neutral-600 transition-colors duration-300 group-hover:text-white! dark:text-[#a0a0a0] sm:text-[0.9375rem]">
-                ZerofAI orchestrates recovery across directories, applications, and endpoints
-                ensuring seamless access restoration in hybrid and multi-system environments.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-neutral-50 py-16 dark:bg-black sm:py-20 md:py-24">
-        <div className="container max-w-6xl">
-          <div className="flex flex-col gap-14 md:gap-20 lg:gap-24">
-            <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-stretch md:gap-10 lg:gap-14">
-              <div className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 md:self-stretch dark:ring-0">
-                <Image
-                  src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGF0YSUyMGludGVsbGlnZW5jZXxlbnwwfHwwfHx8MA%3D%3D"
-                  alt="Event-Driven Detection"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 760px) 100vw, 50vw"
-                  priority
-                />
-              </div>
-              <div className="flex h-full min-h-0 w-full flex-col items-stretch md:flex-1 md:basis-0 md:self-stretch">
-                <span className="mb-3 h-2 w-14 shrink-0 self-start rounded-full bg-primary" aria-hidden />
-                <div className="flex min-h-0 flex-1 flex-col justify-center rounded-[24px] border border-neutral-200 bg-white px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14 dark:border-0 dark:bg-[#1e1e1e]">
-                  <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
-                    Event-Driven Detection
-                  </h4>
-                  <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
-                    ZerofAI captures signals from users, endpoints, and monitoring systems, triggering resolution workflows before tickets are formally created.
-                  </p>
-                </div>
-              </div>
-            </div>
+      <section>
+          <div
+            className="container grid items-center gap-6 bg-secondary p-0 md:grid-cols-2 md:gap-10 md:rounded-xl dark:bg-secondary/40 lg:max-w-7xl"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
+            <Image
+              src="/assets/images/sample-img.webp"
+              width={1200}
+              height={680}
+              alt="zerofai"
+              className="justify-self-end rounded-xl md:border-r-4 border-primary"
+            />
+            <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
+              <h2>Event-Driven Detection</h2>
+              <p>
+              ZerofAI captures signals from users, endpoints, and monitoring systems, triggering resolution workflows before tickets are formally created.
 
-            <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-stretch md:gap-10 lg:gap-14">
-              <div className="flex h-full min-h-0 w-full flex-col items-stretch md:flex-1 md:basis-0 md:self-stretch">
-                <span className="mb-3 h-2 w-14 shrink-0 self-start rounded-full bg-[#00bcd4]" aria-hidden />
-                <div className="flex min-h-0 flex-1 flex-col justify-center rounded-[24px] border border-neutral-200 bg-white px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14 dark:border-0 dark:bg-[#1e1e1e]">
-                  <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
-                    AI-Led Diagnosis &amp; Decisioning
-                  </h4>
-                  <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
-                    Using historical data, context, and predefined policies, ZerofAI determines the root cause and selects the appropriate resolution path automatically.
-                  </p>
-                </div>
-              </div>
-              <div className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 md:self-stretch dark:ring-0">
-                <Image
-                  src="https://media.istockphoto.com/id/2265515077/photo/echnology-consultant-integrates-artificial-intelligence-engine-with-data-visualization.webp?a=1&b=1&s=612x612&w=0&k=20&c=qD69FXAFYtbN1Q3XIVsMF9iNv-HKaPzm_s_D9q6rsHE="
-                  alt="AI-Led Diagnosis and decisioning"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-stretch md:gap-10 lg:gap-14">
-              <div className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 md:self-stretch dark:ring-0">
-                <Image
-                  src="https://media.istockphoto.com/id/2208747071/photo/hands-of-robots-touching-on-access-management-network-connections-highlight-robotics.webp?a=1&b=1&s=612x612&w=0&k=20&c=Vch3r1Ej9lyc1Xhp_-FftSYKO7GK9sYUXsTMS9frMyA="
-                  alt="Closed-Loop Resolution"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div className="flex h-full min-h-0 w-full flex-col items-stretch md:flex-1 md:basis-0 md:self-stretch">
-                <span className="mb-3 h-2 w-14 shrink-0 self-start rounded-full bg-[#00bcd4]" aria-hidden />
-                <div className="flex min-h-0 flex-1 flex-col justify-center rounded-[24px] border border-neutral-200 bg-white px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14 dark:border-0 dark:bg-[#1e1e1e]">
-                  <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
-                    Closed-Loop Resolution
-                  </h4>
-                  <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
-                    ZerofAI executes actions, validates outcomes, and logs resolution details ensuring issues are fully resolved without manual follow-up.
-                  </p>
-                </div>
-              </div>
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section>
+          <div
+            className="container mt-10 grid items-center gap-6 bg-secondary p-0 md:grid-cols-2 md:gap-10 md:rounded-xl dark:bg-secondary/40 lg:max-w-7xl"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay={COMPARE_STAGGER_MS}
+          >
+            <div className="order-2 flex flex-col gap-10 px-6 py-12 md:order-1 md:px-8">
+              <h2>Closed-Loop Resolution</h2>
+              <p>
+              ZerofAI executes actions, validates outcomes, and logs resolution details ensuring issues are fully resolved without manual follow-up.
+
+              </p>
+            </div>
+            <Image
+              src="/assets/images/sample-img.webp"
+              width={1200}
+              height={680}
+              alt="zerofai"
+              className="order-1 justify-self-end rounded-xl md:order-2 md:border-l-4 border-primary"
+            />
+          </div>
+        </section>
+
+
+
+        <section>
+          <div
+            className="container grid items-center mt-10 gap-6 bg-secondary p-0! md:grid-cols-2 md:gap-10 md:rounded-xl dark:bg-secondary/40 lg:max-w-7xl"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay={COMPARE_STAGGER_MS * 2}
+          >
+            <Image
+              src="/assets/images/sample-img.webp"
+              width={1200}
+              height={680}
+              alt="zerofai"
+              className="justify-self-end rounded-xl md:border-r-4 border-primary"
+            />
+            <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
+              <h2>Conversational Knowledge Access</h2>
+              <p>
+                Users interact with enterprise knowledge through natural language, receiving summarized,
+                explainable answers without navigating multiple disconnected systems.
+              </p>
+            </div>
+          </div>
+        </section>
+       
 
 
       <section
-        className="w-full border-y border-neutral-200 bg-[#F8F9FA] py-2 md:py-2.5 dark:border-neutral-600 dark:bg-[#141414]"
+        className="w-full border-y border-neutral-200 mt-20 bg-[#F8F9FA] py-2 md:py-2.5 dark:border-neutral-600 dark:bg-[#141414]"
         aria-label="Operational outcomes"
       >
         <div className="container max-w-7xl px-2 sm:px-4">
@@ -421,6 +414,8 @@ export default function ZeroTouchTicketResolutionPage() {
               return (
                 <div
                   key={title}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
                   className={
                     "relative flex flex-col items-center px-2 py-3 text-center sm:px-3 md:py-2 " +
                     (index < featureBarItems.length - 1
@@ -461,6 +456,7 @@ export default function ZeroTouchTicketResolutionPage() {
         <div className="container max-w-6xl px-4 sm:px-6">
           <h2
             id="predictive-ops-heading"
+            data-aos="fade-up"
             className="text-center text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
           >
             <span className="text-primary">Beyond Monitoring</span>
@@ -472,7 +468,11 @@ export default function ZeroTouchTicketResolutionPage() {
 
           <div className="mt-12 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-2 md:gap-10 lg:mt-16">
             {/* Traditional Systems */}
-            <div className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="80"
+              className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]"
+            >
               <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-wide text-primary-foreground sm:px-6 sm:text-sm">
                 Traditional Systems
               </div>
@@ -493,7 +493,11 @@ export default function ZeroTouchTicketResolutionPage() {
             </div>
 
             {/* ZerofAI */}
-            <div className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="160"
+              className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]"
+            >
               <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-wide text-primary-foreground sm:px-6 sm:text-sm">
                 ZerofAI
               </div>
@@ -523,6 +527,7 @@ export default function ZeroTouchTicketResolutionPage() {
         <div className="container max-w-4xl flex flex-col gap-10 items-center">
           <h2
             id="service-desk-cta-heading"
+            data-aos="fade-up"
             className="text-center text-2xl font-medium leading-snug tracking-tight text-neutral-900 sm:text-3xl md:text-[2.125rem] md:leading-[1.25] dark:text-white"
           >
             <span className="block">Turn Your Service Desk Into an</span>
@@ -530,14 +535,16 @@ export default function ZeroTouchTicketResolutionPage() {
 
           </h2>
             <Link
-                  href="/contact"
-                  className="rounded-full bg-[#00bcd4] px-10 py-3.5 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90 sm:px-12 sm:py-4 sm:text-base"
-                >
+              href="/contact"
+              data-aos="fade-up"
+              data-aos-delay="120"
+              className="rounded-full bg-[#00bcd4] px-10 py-3.5 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90 sm:px-12 sm:py-4 sm:text-base"
+            >
                   Get a Demo
                 </Link>
 
         </div>
       </section>
-    </>
+    </AosInit>
   );
 }

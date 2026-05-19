@@ -1,4 +1,6 @@
+import AosInit from "@/component/AosInit";
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -175,7 +177,7 @@ const intelligenceRows = [
 
 export default function ComplaincePage() {
   return (
-    <>
+    <AosInit>
       <section id="" className="relative w-full lg:min-h-screen">
         {/* right-side background decorative strips (flush to viewport edge) */}
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
@@ -184,7 +186,12 @@ export default function ComplaincePage() {
         </div>
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
-          <div className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16">
+          <div
+            className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             <h2>Know The Health of Your IT
               
               <span className="text-primary! text-3xl! sm:text-5xl!">
@@ -228,17 +235,31 @@ export default function ComplaincePage() {
             <h3
               id="structural-transformation-heading"
               className="font-bold tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl dark:text-white"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
             >
               Monitoring Tells You What Happened. Prediction Tells You What’s Next.
             </h3>
-            <p className="mt-4 text-sm text-muted-foreground sm:text-base lg:text-lg dark:text-neutral-400">
+            <p
+              className="mt-4 text-sm text-muted-foreground sm:text-base lg:text-lg dark:text-neutral-400"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay="80"
+            >
             Traditional monitoring tools generate alerts only after issues occur, forcing IT teams into a reactive cycle of investigation and resolution. By the time a
 problem is identified, performance has already degraded, users are impacted, and valuable time is lost in identifying root causes. The noise from excessive
 alerts further complicates visibility, making it harder to separate critical issues from background signals.            </p>
           </header>
 
           <div className="mx-auto mt-10 flex max-w-5xl flex-col items-stretch gap-10 lg:mt-14 lg:flex-row lg:items-stretch lg:justify-center lg:gap-0">
-            <div className="group/oldcol group/col flex flex-1 flex-col items-center rounded-2xl p-4 transition-shadow duration-300 hover:shadow-[0_0_40px_-6px_rgba(25,182,201,0.45)] md:pr-8 lg:pr-12">
+            <div
+              className="group/oldcol group/col flex flex-1 flex-col items-center rounded-2xl p-4 transition-shadow duration-300 hover:shadow-[0_0_40px_-6px_rgba(25,182,201,0.45)] md:pr-8 lg:pr-12"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <ScallopedIconBadge className="text-neutral-400 dark:text-[#3a3a3a]">
                 <GiAnticlockwiseRotation className="text-neutral-800 dark:text-white" aria-hidden />
               </ScallopedIconBadge>
@@ -273,7 +294,13 @@ alerts further complicates visibility, making it harder to separate critical iss
               <div className="h-px w-full max-w-xs bg-neutral-300 dark:bg-neutral-600" />
             </div>
 
-            <div className="group/newcol group/col flex flex-1 flex-col items-center rounded-2xl p-4 transition-shadow duration-300 hover:shadow-[0_0_40px_-6px_rgba(25,182,201,0.45)] md:pl-8 lg:pl-12">
+            <div
+              className="group/newcol group/col flex flex-1 flex-col items-center rounded-2xl p-4 transition-shadow duration-300 hover:shadow-[0_0_40px_-6px_rgba(25,182,201,0.45)] md:pl-8 lg:pl-12"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={COMPARE_STAGGER_MS}
+            >
               <ScallopedIconBadge className="text-primary">
                 <GiStarsStack className="text-white" aria-hidden />
               </ScallopedIconBadge>
@@ -303,15 +330,24 @@ alerts further complicates visibility, making it harder to separate critical iss
 
       <section className="bg-secondary px-5 py-16 text-foreground md:py-20 dark:bg-secondary/40">
         <div className="container">
-          <div className="zf-fade-left-up">
-            <h3 className="text-foreground">From Monitoring to<span className="text-primary! text-4xl!"> Predictive Intelligence</span></h3>
-            
-          </div>
+          <h3
+            className="text-foreground"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
+            From Monitoring to<span className="text-primary! text-4xl!"> Predictive Intelligence</span>
+          </h3>
 
           {/* 3 cards */}
           <div className="mt-10 grid grid-cols-1 justify-items-center gap-8 md:grid-cols-3 md:gap-4">
             {/* Card 1   landscape panel ~1.42:1 (w:h) to match design PDF */}
-            <div className="zf-fade-left-up zf-fade-left-up--d1 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
+            <div
+              className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg
                   viewBox="0 0 24 24"
@@ -352,7 +388,13 @@ alerts further complicates visibility, making it harder to separate critical iss
             </div>
 
             {/* Card 2 */}
-            <div className="zf-fade-left-up zf-fade-left-up--d2 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
+            <div
+              className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={CARD_STAGGER_MS}
+            >
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg
                   viewBox="0 0 24 24"
@@ -388,7 +430,13 @@ alerts further complicates visibility, making it harder to separate critical iss
             </div>
 
             {/* Card 3 */}
-            <div className="zf-fade-left-up zf-fade-left-up--d3 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
+            <div
+              className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={CARD_STAGGER_MS * 2}
+            >
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg
                   viewBox="0 0 24 24"
@@ -446,6 +494,10 @@ alerts further complicates visibility, making it harder to separate critical iss
                         ? "order-2 flex flex-col justify-start lg:order-2"
                         : "order-1 flex flex-col justify-start lg:order-1"
                     }
+                    data-aos="fade-up"
+                    data-aos-duration="900"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-delay={rowIndex * CARD_STAGGER_MS}
                   >
                     <span className="inline-flex w-fit rounded-full bg-primary px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white! sm:text-xs!">
                       {row.label}
@@ -464,6 +516,10 @@ alerts further complicates visibility, making it harder to separate critical iss
                         ? "order-1 lg:order-1"
                         : "order-2 lg:order-2"
                     }
+                    data-aos="fade-up"
+                    data-aos-duration="900"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-delay={rowIndex * CARD_STAGGER_MS + 80}
                   >
                     <div
                       className={[
@@ -508,6 +564,10 @@ alerts further complicates visibility, making it harder to separate critical iss
                       ? "max-md:border-b max-md:border-primary/50 dark:max-md:border-primary/40"
                       : "")
                   }
+                  data-aos="fade-up"
+                  data-aos-duration="900"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-delay={index * CARD_STAGGER_MS}
                 >
                   {index < featureBarItems.length - 1 && (
                     <span
@@ -543,6 +603,9 @@ alerts further complicates visibility, making it harder to separate critical iss
           <h2
             id="predictive-ops-heading"
             className="text-center text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
           >
             <span className="text-primary">Beyond Monitoring</span>
             <span className="text-neutral-900 dark:text-white">
@@ -553,7 +616,12 @@ alerts further complicates visibility, making it harder to separate critical iss
 
           <div className="mt-12 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-2 md:gap-10 lg:mt-16">
             {/* Traditional Systems */}
-            <div className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]">
+            <div
+              className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-wide text-primary-foreground sm:px-6 sm:text-sm">
                 Traditional Systems
               </div>
@@ -574,7 +642,13 @@ alerts further complicates visibility, making it harder to separate critical iss
             </div>
 
             {/* ZerofAI */}
-            <div className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]">
+            <div
+              className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={COMPARE_STAGGER_MS}
+            >
               <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-wide text-primary-foreground sm:px-6 sm:text-sm">
                 ZerofAI
               </div>
@@ -595,7 +669,12 @@ alerts further complicates visibility, making it harder to separate critical iss
             </div>
           </div>
 
-          <div className="mx-auto mt-14 max-w-3xl text-center md:mt-16 lg:mt-20">
+          <div
+            className="mx-auto mt-14 max-w-3xl text-center md:mt-16 lg:mt-20"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             <p className="text-xl font-semibold leading-snug text-neutral-900 sm:text-2xl md:text-[1.65rem] md:leading-snug dark:text-white">
               Unlock Access Without Waiting on IT
             </p>
@@ -608,6 +687,6 @@ alerts further complicates visibility, making it harder to separate critical iss
           </div>
         </div>
       </section>
-    </>
+    </AosInit>
   );
 }

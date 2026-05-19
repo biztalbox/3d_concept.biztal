@@ -1,10 +1,12 @@
+import AosInit from "@/component/AosInit";
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function ComplaincePage() {
   return (
-    <>
+    <AosInit>
       <section id="" className="relative w-full lg:min-h-screen">
         {/* right-side background decorative strips (flush to viewport edge) */}
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
@@ -13,7 +15,12 @@ export default function ComplaincePage() {
         </div>
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
-          <div className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16">
+          <div
+            className="order-2 md:order-1 px-5 py-14 sm:px-6 sm:py-16"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             <h2>Bulletproof Your Endpoints.
               Automate Your{" "}
               <span className="text-primary!">
@@ -40,17 +47,35 @@ export default function ComplaincePage() {
       </section>
 
       {/* Previous section (restored) */}
-      <section className=" p-5 bg-secondary dark:bg-secondary/40 py-16 md:py-20">
+      <section className=" bg-secondary dark:bg-secondary/40 py-16 md:py-20">
         <div className="container">
-          <div className="zf-fade-left-up">
-            <h2 className="">The Era of Manual Compliance is Over.</h2>
-            <p className=" mt-6">Autonomous Enterprise Consciousness</p>
-          </div>
+          <h2
+            className=""
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
+            The Era of Manual Compliance is Over.
+          </h2>
+          <p
+            className=" mt-6 dark:text-white!"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+            data-aos-delay="80"
+          >
+            Autonomous Enterprise Consciousness
+          </p>
 
           {/* 3 cards */}
           <div className="mt-10 grid grid-cols-1 justify-items-center gap-8 md:grid-cols-3 md:gap-4">
             {/* Card 1   landscape panel ~1.42:1 (w:h) to match design PDF */}
-            <div className="zf-fade-left-up zf-fade-left-up--d1 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
+            <div
+              className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg
                   viewBox="0 0 24 24"
@@ -93,7 +118,13 @@ export default function ComplaincePage() {
             </div>
 
             {/* Card 2 */}
-            <div className="zf-fade-left-up zf-fade-left-up--d2 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
+            <div
+              className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={CARD_STAGGER_MS}
+            >
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg
                   viewBox="0 0 24 24"
@@ -129,7 +160,13 @@ export default function ComplaincePage() {
             </div>
 
             {/* Card 3 */}
-            <div className="zf-fade-left-up zf-fade-left-up--d3 group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1">
+            <div
+              className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={CARD_STAGGER_MS * 2}
+            >
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
                 <svg
                   viewBox="0 0 24 24"
@@ -167,12 +204,22 @@ export default function ComplaincePage() {
           </div>
 
           {/* 2-up features */}
-          <h2 className="mt-30">
+          <h2
+            className="mt-30"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
             Compliance That Fixes Itself
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
-            <div className="zf-fade-left-up zf-fade-left-up--d1 group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary">
+            <div
+              className="group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <div className="flex items-start gap-4">
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/15 transition-colors duration-300 group-hover:bg-white/20">
                   <svg
@@ -204,7 +251,13 @@ export default function ComplaincePage() {
               </div>
             </div>
 
-            <div className="zf-fade-left-up zf-fade-left-up--d2 group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary">
+            <div
+              className="group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={COMPARE_STAGGER_MS}
+            >
               <div className="flex items-start gap-4">
                 <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/15 transition-colors duration-300 group-hover:bg-white/20">
                   <svg
@@ -249,7 +302,12 @@ export default function ComplaincePage() {
       <section className="bg-white px-5 py-16 dark:bg-secondary/40 sm:px-6 md:py-20">
         <div className="container">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
-            <div className="zf-fade-left-up relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10">
+            <div
+              className="relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
               <div className="absolute -left-4 -top-4 grid h-12 w-12 place-items-center rounded-2xl bg-primary sm:-left-6 sm:-top-6 sm:h-14 sm:w-14">
                 <svg
                   viewBox="0 0 24 24"
@@ -286,7 +344,13 @@ export default function ComplaincePage() {
               </p>
             </div>
 
-            <div className="zf-fade-left-up zf-fade-left-up--d1 relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10">
+            <div
+              className="relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={COMPARE_STAGGER_MS}
+            >
               <div className="absolute -left-4 -top-4 grid h-12 w-12 place-items-center rounded-2xl bg-primary sm:-left-6 sm:-top-6 sm:h-14 sm:w-14">
                 <svg
                   viewBox="0 0 24 24"
@@ -333,7 +397,12 @@ export default function ComplaincePage() {
         <div className="mt-14 bg-secondary dark:bg-white">
           <div className="container">
             <div className="flex flex-col items-center gap-12 py-14 md:flex-row md:gap-0 md:py-16">
-              <div className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45">
+              <div
+                className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45"
+                data-aos="fade-up"
+                data-aos-duration="900"
+                data-aos-easing="ease-out-cubic"
+              >
                 <Image
                   src="/icons/policy-enforcement.png"
                   alt=""
@@ -351,7 +420,13 @@ export default function ComplaincePage() {
                 </div>
               </div>
 
-              <div className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45">
+              <div
+                className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45"
+                data-aos="fade-up"
+                data-aos-duration="900"
+                data-aos-easing="ease-out-cubic"
+                data-aos-delay={COMPARE_STAGGER_MS}
+              >
                 <Image
                   src="/icons/manual-interventions.png"
                   alt=""
@@ -369,7 +444,13 @@ export default function ComplaincePage() {
                 </div>
               </div>
 
-              <div className="flex w-full flex-col items-center text-center md:w-1/3">
+              <div
+                className="flex w-full flex-col items-center text-center md:w-1/3"
+                data-aos="fade-up"
+                data-aos-duration="900"
+                data-aos-easing="ease-out-cubic"
+                data-aos-delay={COMPARE_STAGGER_MS * 2}
+              >
                 <Image
                   src="/icons/audit-readiness.png"
                   alt=""
@@ -390,7 +471,12 @@ export default function ComplaincePage() {
           </div>
         </div>
 
-        <div className="container max-w-4xl text-center py-16">
+        <div
+          className="container max-w-4xl text-center py-16"
+          data-aos="fade-up"
+          data-aos-duration="900"
+          data-aos-easing="ease-out-cubic"
+        >
           <h2>
             Ready to secure your endpoints with
             <br />
@@ -405,7 +491,6 @@ export default function ComplaincePage() {
           </Link>
         </div>
       </section>
-    </>
+    </AosInit>
   );
 }
-
