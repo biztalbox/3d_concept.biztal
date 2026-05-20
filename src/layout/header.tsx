@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useId, useState } from "react";
-import { IoSunnyOutline } from "react-icons/io5";
+import { useCallback, useEffect, useId, useRef, useState } from "react"; import { IoSunnyOutline } from "react-icons/io5";
 import { RiMoonClearLine } from "react-icons/ri";
 import { ThemeProvider, useTheme } from "next-themes";
 import {
@@ -12,10 +11,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 
-type NavNode = {
-  /** Stable key for CMS + rendering */
+type NavNode = {  /** Stable key for CMS + rendering */
   id: string;
   label: string;
   href?: string;
@@ -58,13 +55,13 @@ const MEGA_MENU: MegaMenuColumn[] = [
             label: "Identity & Access Automation",
             href: "/identity-access-automation",
           },
-         
+
           {
             id: "endpoint-software-metering",
             label: "Predictive Health Analytics",
             href: "/predictive-analytics",
           },
-         
+
         ],
       },
       {
@@ -92,7 +89,7 @@ const MEGA_MENU: MegaMenuColumn[] = [
             label: "One Click Auto-Remediation",
             href: "/one-click-auto-remediation",
           },
-          
+
         ],
       },
       {
@@ -114,30 +111,89 @@ const MEGA_MENU: MegaMenuColumn[] = [
   {
     id: "services",
     heading: "Services",
-    href: "#"
-  },
-  {
+    items: [
+      {
+        id: "autonomous-support-operations",
+        label: "Autonomous Support Operations",
+        href: "/autonomous-support-operations",
+      },
+      {
+        id: "predictive-intelligence-operations",
+        label: "Predictive Intelligence Operations",
+        href: "/predictive-intelligence-operations",
+      },
+      {
+        id: "proactive-experience-operations",
+        label: "Proactive Experience Operations",
+        href: "/proactive-experience-operations",
+      },
+    ],
+  }, {
     id: "Resources",
     heading: "Resources",
-    href: "#"
+    items: [
+      {
+        id: "r0",
+        label: "Blogs",
+        href: "#",
+      },
+      {
+        id: "r1",
+        label: "Platform Updates",
+        href: "#",
+      },
+      {
+        id: "r2",
+        label: "Customer Stories",
+        href: "#",
+      },
+    ]
   },
   {
     id: "About",
     heading: "About",
-    href: "#"
+    items: [
+      {
+        id: "a0",
+        label: "Leadership",
+        href: "#",
+      },
+      {
+        id: "a1",
+        label: "Contact Us",
+        href: "/contact",
+      },
+    ]
   }
 
 ];
 
-function DesktopMenuItem({ item }: { item: NavNode }) {
+function getDropdownPositionClass(index: number, total: number) {
+  if (index === 0) return "left-0";
+  if (index === total - 1) return "right-0";
+  return "left-1/2 -translate-x-1/2";
+}
+
+function DesktopMenuItem({
+  item,
+  openSubMenuId,
+  onToggleSubMenu,
+  onNavigate,
+}: {
+  item: NavNode;
+  openSubMenuId: string | null;
+  onToggleSubMenu: (itemId: string) => void;
+  onNavigate: () => void;
+}) {
   const hasChildren = Boolean(item.children?.length);
+  const isSubOpen = openSubMenuId === item.id;
 
   if (!hasChildren) {
     return (
       <Link
-        key={item.id}
         href={item.href ?? "#"}
-        className="block px-4 py-2.5 text-left text-sm font-medium hover:bg-black/10 dark:bg-white/10"
+        onClick={onNavigate}
+        className="block px-4 py-2.5 text-left text-sm font-medium hover:bg-black/10 dark:hover:bg-white/10"
       >
         {item.label}
       </Link>
@@ -145,25 +201,45 @@ function DesktopMenuItem({ item }: { item: NavNode }) {
   }
 
   return (
-    <div key={item.id} className="relative group/sub">
-      <Link
-        href={item.href ?? "#"}
-        className="flex items-center justify-between gap-3 px-4 py-2 text-left text-sm font-medium hover:bg-black/10 dark:bg-white/10"
+    <div className="relative">
+      <button
+        type="button"
+        aria-expanded={isSubOpen}
+        aria-haspopup="true"
+        onClick={(event) => {
+          event.stopPropagation();
+          onToggleSubMenu(item.id);
+        }}
+        className="flex w-full items-center justify-between gap-3 px-4 py-2 text-left text-sm font-medium hover:bg-black/10 dark:hover:bg-white/10"
       >
         {item.label}
-        <span aria-hidden className="text-black/60 dark:text-white/60">
+        <span
+          aria-hidden
+          className={[
+            "text-black/60 transition-transform duration-200 dark:text-white/60",
+            isSubOpen ? "rotate-90" : "",
+          ].join(" ")}
+        >
           ›
         </span>
-      </Link>
+      </button>
 
-      <div className="pointer-events-none absolute left-full top-0 z-50 pl-2 opacity-0 translate-x-1 transition-all duration-200 ease-out group-hover/sub:pointer-events-auto group-hover/sub:opacity-100 group-hover/sub:translate-x-0">
+      <div
+        className={[
+          "absolute left-full top-0 z-50 pl-2 transition-all duration-200 ease-out",
+          isSubOpen
+            ? "pointer-events-auto opacity-100 translate-x-0"
+            : "pointer-events-none opacity-0 -translate-x-1",
+        ].join(" ")}
+      >
         <div className="overflow-hidden rounded-[10px] border border-black/10 bg-white dark:border-white/10 dark:bg-[#0b0b0b]">
-          <div className="divide-y divide-black/10 dark:divide-white/10 min-w-[220px]">
+          <div className="min-w-[220px] divide-y divide-black/10 dark:divide-white/10">
             {item.children!.map((child) => (
               <Link
                 key={child.id}
                 href={child.href ?? "#"}
-                className="block px-4 py-2.5 text-left text-sm font-medium hover:bg-black/10 dark:bg-white/10"
+                onClick={onNavigate}
+                className="block px-4 py-2.5 text-left text-sm font-medium hover:bg-black/10 dark:hover:bg-white/10"
               >
                 {child.label}
               </Link>
@@ -211,9 +287,26 @@ function MobileMenuNode({
 
 function StickyHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+  const [openSubMenuId, setOpenSubMenuId] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
   const mobileMenuId = useId();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+
+  const closeDesktopMenus = useCallback(() => {
+    setOpenMenuId(null);
+    setOpenSubMenuId(null);
+  }, []);
+
+  const toggleTopMenu = useCallback((menuId: string) => {
+    setOpenSubMenuId(null);
+    setOpenMenuId((current) => (current === menuId ? null : menuId));
+  }, []);
+
+  const toggleSubMenu = useCallback((itemId: string) => {
+    setOpenSubMenuId((current) => (current === itemId ? null : itemId));
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -221,6 +314,26 @@ function StickyHeader() {
 
   const isLight = resolvedTheme !== "dark";
 
+  useEffect(() => {
+    if (!openMenuId && !openSubMenuId) return;
+
+    function handlePointerDown(event: MouseEvent) {
+      if (navRef.current?.contains(event.target as Node)) return;
+      closeDesktopMenus();
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") closeDesktopMenus();
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeDesktopMenus, openMenuId, openSubMenuId]);
   useEffect(() => {
     if (!isMobileMenuOpen) return;
 
@@ -246,49 +359,101 @@ function StickyHeader() {
 
       <div className="container flex items-center justify-between gap-4">
         {/* logo */}
-        <Image
-          src="/zerofai-logo.png"
-          alt="ZerofAI"
-          width={150}
-          height={50}
-          priority
-          className="w-32 sm:w-40"
-        />
+        <Link href="/">
+          <Image
+            src="/zerofai-logo.png"
+            alt="ZerofAI"
+            width={150}
+            height={50}
+            priority
+            className="w-32 sm:w-40"
+          />
+        </Link>
 
         {/* desktop nav pill (solid colors only) */}
         <div className="hidden w-fit items-center justify-between gap-3 rounded-full bg-secondary dark:bg-secondary/40 px-2 pl-4 py-2 lg:flex">
-          <nav className="hidden min-w-0 flex-1 items-center gap-6 whitespace-nowrap md:flex">
-            {MEGA_MENU.map((col, idx) => (
-              <div key={col.heading} className="relative group">
-                <Link
-                  href={col.href ?? "#"}
-                  className="whitespace-nowrap text-sm font-semibold"
-                >
-                  {col.heading}
-                </Link>
+          <nav ref={navRef} className="hidden min-w-0 flex-1 items-center gap-6 whitespace-nowrap md:flex">
+            {MEGA_MENU.map((col, idx) => {
+              const hasItems = Boolean(col.items?.length);
+              const isOpen = openMenuId === col.id;
 
-                <div
-                  className={[
-                    "pointer-events-none absolute top-full z-50 pt-4 opacity-0 translate-y-2 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0",
-                    idx === 0
-                      ? "left-0"
-                      : idx === 1
-                        ? "left-1/2 -translate-x-1/2 group-hover:-translate-x-1/2"
-                        : "right-0",
-                  ].join(" ")}
-                >
-                  <div className="relative overflow-visible rounded-[10px] border border-black/10 bg-white dark:border-white/10 dark:bg-[#0b0b0b]">
-                    <div className="divide-y divide-black/10 dark:divide-white/10">
-                      {col.items?.map((item) => (
-                        <DesktopMenuItem key={item.id} item={item} />
-                      ))}
+              return (
+                <div key={col.id} className="relative">
+                  {hasItems ? (
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-haspopup="true"
+                      aria-controls={`desktop-menu-${col.id}`}
+                      onClick={() => toggleTopMenu(col.id)}
+                      className={[
+                        "inline-flex items-center gap-1 whitespace-nowrap text-sm font-semibold transition-colors",
+                        isOpen ? "text-primary" : "",
+                      ].join(" ")}
+                    >
+                      {col.heading}
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden
+                        className={[
+                          "transition-transform duration-200",
+                          isOpen ? "rotate-180" : "",
+                        ].join(" ")}
+                      >
+                        <path
+                          d="M6 9l6 6 6-6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <Link
+                      href={col.href ?? "#"}
+                      onClick={closeDesktopMenus}
+                      className="whitespace-nowrap text-sm font-semibold"
+                    >
+                      {col.heading}
+                    </Link>
+                  )}
+
+                  {hasItems && (
+                    <div
+                      id={`desktop-menu-${col.id}`}
+                      role="menu"
+                      aria-hidden={!isOpen}
+                      className={[
+                        "absolute top-full z-50 pt-4 transition-all duration-200 ease-out",
+                        getDropdownPositionClass(idx, MEGA_MENU.length),
+                        isOpen
+                          ? "pointer-events-auto opacity-100 translate-y-0"
+                          : "pointer-events-none opacity-0 translate-y-2",
+                      ].join(" ")}
+                    >
+                      <div className="relative overflow-visible rounded-[10px] border border-black/10 bg-white shadow-lg dark:border-white/10 dark:bg-[#0b0b0b]">
+                        <div className="divide-y divide-black/10 dark:divide-white/10">
+                          {col.items!.map((item) => (
+                            <DesktopMenuItem
+                              key={item.id}
+                              item={item}
+                              openSubMenuId={openSubMenuId}
+                              onToggleSubMenu={toggleSubMenu}
+                              onNavigate={closeDesktopMenus}
+                            />
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </nav>
-
           <Link href="/contact" className="px-3 py-1 text-white bg-primary rounded-full">Request Demo</Link>
 
           <button
@@ -308,7 +473,7 @@ function StickyHeader() {
             )}
           </button>
         </div>
-        
+
 
         {/* mobile actions */}
         <div className="flex items-center gap-3 lg:hidden">
@@ -329,7 +494,7 @@ function StickyHeader() {
             )}
           </button>
 
-          
+
 
           <button
             type="button"
@@ -384,24 +549,40 @@ function StickyHeader() {
               </div>
 
               <Accordion type="single" collapsible className="mt-6 w-full">
-                {MEGA_MENU.map((col) => (
-                  <AccordionItem key={`mobile-${col.heading}`} value={col.heading}>
-                    <AccordionTrigger>{col.heading}</AccordionTrigger>
-                    <AccordionContent>
-                      <Accordion type="single" collapsible className="w-full">
-                        {col.items?.map((item) => (
-                          <MobileMenuNode
-                            key={item.id}
-                            node={item}
-                            onNavigate={() => setIsMobileMenuOpen(false)}
-                          />
-                        ))}
-                      </Accordion>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+                {MEGA_MENU.map((col) => {
+                  const hasItems = Boolean(col.items?.length);
+
+                  if (!hasItems) {
+                    return (
+                      <Link
+                        key={`mobile-${col.id}`}
+                        href={col.href ?? "#"}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block border-b border-black/10 py-4 text-sm font-semibold dark:border-white/10"
+                      >
+                        {col.heading}
+                      </Link>
+                    );
+                  }
+
+                  return (
+                    <AccordionItem key={`mobile-${col.id}`} value={col.id}>
+                      <AccordionTrigger>{col.heading}</AccordionTrigger>
+                      <AccordionContent>
+                        <Accordion type="single" collapsible className="w-full">
+                          {col.items!.map((item) => (
+                            <MobileMenuNode
+                              key={item.id}
+                              node={item}
+                              onNavigate={() => setIsMobileMenuOpen(false)}
+                            />
+                          ))}
+                        </Accordion>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>            </div>
           </div>
         )}
     </header>

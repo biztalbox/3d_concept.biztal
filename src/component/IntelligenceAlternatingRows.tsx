@@ -20,7 +20,7 @@ export default function IntelligenceAlternatingRows({
 }) {
   return (
     <section className={className ?? "py-0"} aria-label="Feature capabilities">
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-16">
         {rows.map((row, rowIndex) => (
           <div
             key={row.label}
@@ -30,7 +30,7 @@ export default function IntelligenceAlternatingRows({
                 : "w-full bg-white py-4 dark:bg-black md:py-5 lg:py-6"
             }
           >
-            <div className="container max-w-6xl">
+            <div className="container">
               <div className="grid grid-cols-1 items-start gap-7 lg:grid-cols-2 lg:items-center lg:gap-10 xl:gap-12">
                 <div
                   className={

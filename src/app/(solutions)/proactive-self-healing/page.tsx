@@ -1,16 +1,8 @@
 import HeroCanvas from "@/component/bot/HeroCanvas";
 import IntelligenceAlternatingRows from "@/component/IntelligenceAlternatingRows";
 import OldWayZerofaiWayCompare from "@/component/OldWayZerofaiWayCompare";
-import IdentityAccessAutomationStats from "@/component/identityAccessAutomationStats";
 import Link from "next/link";
 import Image from "next/image";
-import { IoPersonOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
-import { GoGoal } from "react-icons/go";
-import { BsFileBarGraph } from "react-icons/bs";
-import { RiHome4Line } from "react-icons/ri";
-import { FaDatabase } from "react-icons/fa";
-import { TbChartDots2, TbClockDown } from "react-icons/tb";
-import { LuMonitorCheck } from "react-icons/lu";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { FaRobot } from "react-icons/fa";
 import { IoSyncSharp } from "react-icons/io5";
@@ -108,7 +100,7 @@ export default function ComplaincePage() {
         </div>
       </section>
 
-      <section className="">
+      <section className="bg-secondary dark:bg-secondary/40 py-15 md:py-20 flex flex-col gap-16">
         <div className="container flex flex-col gap-10">
           <h2>
           Reactive IT Support Creates Reactive Employee Experiences
@@ -129,17 +121,15 @@ export default function ComplaincePage() {
             zerofaiWayItems={selfHealingZerofaiWayItems}
           />
         </div>
-      </section>
 
-      <section className="">
         <div className="container flex flex-col gap-10"> 
                     <h2>
         From IT Alerts to Autonomous Resolution
         </h2>
 
-          <div className="grid md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-primary p-6 bg-secondary rounded-2xl dark:bg-secondary/40">
+          <div className="grid md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-primary">
 
-            <div className="flex flex-col gap-6 text-center items-center p-5">
+            <div className="flex flex-col gap-6 text-center items-center p-5 hover:bg-primary">
               <span className="text-primary! bg-background text-5xl! p-5 rounded-full">
 
                 <MdOutlineHealthAndSafety />
@@ -147,11 +137,11 @@ export default function ComplaincePage() {
 
               <h4>Continuous Endpoint Health Monitoring</h4>
 
-              <p>ZerofAI continuously analyzes endpoint telemetry, application behavior, system performance, and user-impact signals to identify early indicators of
+              <p className="text-foreground!">ZerofAI continuously analyzes endpoint telemetry, application behavior, system performance, and user-impact signals to identify early indicators of
               instability and degradation.
               </p>
             </div>
-            <div className="flex flex-col gap-6 text-center items-center p-5">
+            <div className="flex flex-col gap-6 text-center items-center p-5 hover:bg-primary">
               <span className="text-primary! bg-background text-5xl! p-5 rounded-full">
 
                 <FaRobot />
@@ -159,14 +149,14 @@ export default function ComplaincePage() {
 
               <h4>AI-Driven Anomaly Detection</h4>
 
-              <p>AI models understand intent,
+              <p className="text-foreground!">AI models understand intent,
                 relationships, and contextual
                 meaning to surface the most
                 relevant answers, not just keyword
                 matches.
               </p>
             </div>
-            <div className="flex flex-col gap-6 text-center items-center p-5">
+            <div className="flex flex-col gap-6 text-center items-center p-5 hover:bg-primary">
               <span className="text-primary! bg-background text-5xl! p-5 rounded-full">
 
                 <IoSyncSharp />
@@ -174,7 +164,7 @@ export default function ComplaincePage() {
 
               <h4>Autonomous Healing & Recovery</h4>
 
-              <p>ZerofAI automatically executes predefined remediation workflows such as restarting failed services, restoring configurations, clearing bottlenecks,
+              <p className="text-foreground!">ZerofAI automatically executes predefined remediation workflows such as restarting failed services, restoring configurations, clearing bottlenecks,
               reconnecting dependencies, and stabilizing system performance without requiring user or IT intervention.
               </p>
             </div>
@@ -183,6 +173,7 @@ export default function ComplaincePage() {
 
         </div>
       </section>
+
 
 
       <IntelligenceAlternatingRows rows={[...selfHealingIntelligenceRows]} />
@@ -264,7 +255,7 @@ export default function ComplaincePage() {
             </div>
 
             {/* ZerofAI */}
-            <div className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]">
+            <div className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 bg:secondary! dark:bg-secondary/40">
               <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-wide text-primary-foreground sm:px-6 sm:text-sm">
                 ZerofAI
               </div>
