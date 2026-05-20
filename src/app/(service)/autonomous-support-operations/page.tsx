@@ -27,6 +27,76 @@ const invisibleSupportSteps: {
         { Icon: FaRegCircleCheck, label: 'Operational Stability' },
     ]
 
+/** Stepped dashed elbow: card dot → bend → hub dot (animated line only). */
+function OrchestrationElbowLink({
+    side,
+    position,
+}: {
+    side: 'left' | 'right'
+    position: 'top' | 'bottom'
+}) {
+    const mirror = side === 'right'
+    const top = position === 'top'
+    const d = top
+        ? 'M 8 10 L 48 10 L 48 46 L 100 46'
+        : 'M 8 46 L 48 46 L 48 10 L 100 10'
+    const dotStart = top ? { cx: 8, cy: 10 } : { cx: 8, cy: 46 }
+    const dotEnd = top ? { cx: 100, cy: 46 } : { cx: 100, cy: 10 }
+
+    return (
+        <svg
+            className="h-full w-full min-h-11 text-primary dark:text-primary"
+            viewBox="0 0 100 56"
+            preserveAspectRatio="none"
+            aria-hidden
+        >
+            <g transform={mirror ? 'translate(100,0) scale(-1,1)' : undefined}>
+                <path
+                    d={d}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    strokeDasharray="6 8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    vectorEffect="nonScalingStroke"
+                    className="orchestration-flow-line"
+                />
+                <circle
+                    cx={dotStart.cx}
+                    cy={dotStart.cy}
+                    r="2.25"
+                    className="fill-primary"
+                    vectorEffect="nonScalingStroke"
+                />
+                <circle
+                    cx={dotEnd.cx}
+                    cy={dotEnd.cy}
+                    r="2.25"
+                    className="fill-primary"
+                    vectorEffect="nonScalingStroke"
+                />
+            </g>
+        </svg>
+    )
+}
+
+function OrchestrationConnectorColumn({ side }: { side: 'left' | 'right' }) {
+    return (
+        <div
+            className={`hidden min-h-[200px] w-12 shrink-0 flex-col justify-between overflow-visible py-4 sm:min-h-[220px] sm:w-14 xl:w-20 lg:flex ${side === 'left' ? '-mr-px' : '-ml-px'}`}
+            aria-hidden
+        >
+            <div className="h-[42%] min-h-12 overflow-visible">
+                <OrchestrationElbowLink side={side} position="top" />
+            </div>
+            <div className="h-[42%] min-h-12 overflow-visible">
+                <OrchestrationElbowLink side={side} position="bottom" />
+            </div>
+        </div>
+    )
+}
+
 function CompareListIcon({ variant }: { variant: 'negative' | 'positive' }) {
     return (
         <span className="relative flex size-8 shrink-0 items-center justify-center" aria-hidden>
@@ -421,14 +491,16 @@ const page = () => {
                         </div>
 
                         <div className="mt-12 lg:mt-16">
-                            <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-4 xl:gap-8">
+                            {/* Mobile: stacked cards + hub */}
+                            <div className="flex flex-col items-center gap-6 lg:hidden">
                                 <article
-                                    className="z-10 mx-auto w-fit rounded-xl border border-neutral-200 bg-white p-6 dark:border-white/15 dark:bg-[#1e1e1e] lg:mx-0"
+                                    className="z-10 w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-6 dark:border-white/15 dark:bg-[#1e1e1e]"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay="120"
-                                >                                    <h4 className="text-base font-bold text-primary sm:text-lg">
+                                >
+                                    <h4 className="text-base font-bold text-primary sm:text-lg">
                                         AI Handles Repetitive Execution
                                     </h4>
                                     <ul className="mt-5 space-y-3 text-left text-sm text-foreground sm:text-base">
@@ -450,16 +522,82 @@ const page = () => {
                                         </li>
                                     </ul>
                                 </article>
-                                 
-                                 <div className="absolute rotate-90 lg:rotate-0 left-1/2 -translate-x-1/2 top-[43%] w-96 h-10 border border-dotted border-primary"></div>
-
                                 <div
-                                    className="z-10 bg-secondary w-fit mx-auto lg:mx-0 dark:bg-secondary/40 rounded-full border border-primary p-4 flex items-center justify-center"
+                                    className="z-10 flex w-fit items-center justify-center rounded-full border border-primary bg-secondary p-5 dark:bg-secondary/40 sm:p-6"
                                     data-aos="zoom-in"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay={COMPARE_STAGGER_MS + 120}
-                                >                                    <div className="flex items-center justify-center rounded-full px-8 md:px-6 md:py-12 lg:px-4 py-12 bg-primary">
+                                >
+                                    <div className="flex size-32 items-center justify-center rounded-full bg-primary sm:size-36">
+                                        <p className="text-center text-sm font-bold leading-snug text-foreground! sm:text-base">
+                                            Human + AI
+                                            <br />
+                                            Orchestration
+                                        </p>
+                                    </div>
+                                </div>
+                                <article
+                                    className="z-10 w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-6 text-right dark:border-white/15 dark:bg-[#1e1e1e]"
+                                    data-aos="fade-up"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay={COMPARE_STAGGER_MS * 2 + 120}
+                                >
+                                    <h4 className="text-base font-bold text-primary sm:text-lg">
+                                        AI Handles Repetitive Execution
+                                    </h4>
+                                    <ul className="mt-5 list-none! space-y-3 text-sm text-foreground sm:text-base">
+                                        <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
+                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li>
+                                        <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
+                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li>
+                                    </ul>
+                                </article>
+                            </div>
+
+                            {/* Desktop: card — elbow lines — hub — elbow lines — card */}
+                            <div className="hidden items-center justify-center gap-0 lg:flex">
+                                <article
+                                    className="z-10 w-full max-w-xs shrink-0 rounded-xl border border-neutral-200 bg-white p-6 dark:border-white/15 dark:bg-[#1e1e1e] xl:max-w-sm"
+                                    data-aos="fade-up"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay="120"
+                                >
+                                    <h4 className="text-base font-bold text-primary sm:text-lg">
+                                        AI Handles Repetitive Execution
+                                    </h4>
+                                    <ul className="mt-5 space-y-3 text-left text-sm text-foreground sm:text-base">
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Ticket Triage
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Workflow Execution
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Ticket Triage
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Workflow Execution
+                                        </li>
+                                    </ul>
+                                </article>
+
+                                <OrchestrationConnectorColumn side="left" />
+
+                                <div
+                                    className="z-10 flex w-fit shrink-0 items-center justify-center rounded-full border border-primary bg-secondary p-5 dark:bg-secondary/40 sm:p-6"
+                                    data-aos="zoom-in"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay={COMPARE_STAGGER_MS + 120}
+                                >
+                                    <div className="flex size-36 items-center justify-center rounded-full bg-primary sm:size-40">
                                         <p className="text-center text-sm font-bold leading-snug text-foreground! sm:text-base">
                                             Human + AI
                                             <br />
@@ -468,16 +606,19 @@ const page = () => {
                                     </div>
                                 </div>
 
+                                <OrchestrationConnectorColumn side="right" />
+
                                 <article
-                                    className="z-10 mx-auto w-fit lg:text-right  rounded-xl border border-neutral-200 bg-white p-6 dark:border-white/15 dark:bg-[#1e1e1e] lg:mx-0"
+                                    className="z-10 w-full max-w-xs shrink-0 rounded-xl border border-neutral-200 bg-white p-6 text-right dark:border-white/15 dark:bg-[#1e1e1e] xl:max-w-sm"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay={COMPARE_STAGGER_MS * 2 + 120}
-                                >                                    <h4 className="text-base font-bold text-primary sm:text-lg">
+                                >
+                                    <h4 className="text-base font-bold text-primary sm:text-lg">
                                         AI Handles Repetitive Execution
                                     </h4>
-                                    <ul className="mt-5 space-y-3 lg:text-right list-none! text-sm text-foreground sm:text-base">
+                                    <ul className="mt-5 list-none! space-y-3 text-sm text-foreground sm:text-base">
                                         <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
                                         <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li>
                                         <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
