@@ -305,7 +305,7 @@ Over time, this digital friction slows work, reduces engagement, increases cogni
               </div>
 
               <div
-                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-foreground p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
                 data-aos="fade-up"
                 data-aos-duration="900"
                 data-aos-easing="ease-out-cubic"
@@ -319,10 +319,10 @@ Over time, this digital friction slows work, reduces engagement, increases cogni
                   {workplaceZerofaiItems.map((item) => (
                     <li key={item} className="flex gap-3 text-left">
                       <FaCheck
-                        className="mt-0.5 size-4 shrink-0 text-neutral-700 transition-colors duration-300 group-hover:text-white sm:size-[18px] dark:text-white"
+                        className="mt-0.5 size-4 shrink-0 text-neutral-600 transition-colors duration-300 group-hover:text-white sm:size-[18px] dark:text-white"
                         aria-hidden
                       />
-                      <span className="text-sm leading-relaxed text-white transition-colors duration-300 group-hover:text-white! sm:text-base">
+                      <span className="text-sm leading-relaxed text-neutral-800 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
                         {item}
                       </span>
                     </li>

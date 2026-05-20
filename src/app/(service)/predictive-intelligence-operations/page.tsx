@@ -1,5 +1,6 @@
 import AosInit from '@/component/AosInit'
 import HeroCanvas from '@/component/bot/HeroCanvas'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
     AOS_DURATION,
@@ -88,6 +89,27 @@ const supportStruggleCards = [
         description: 'Every escalation slows the employee experience further.',
     },
 ] as const
+
+const predictiveOutcomesBanner = [
+    { lead: 'Fewer ', accent: 'operational', tail: ' surprises.' },
+    { lead: 'Earlier ', accent: 'risk', tail: ' visibility.' },
+    { lead: 'Faster ', accent: 'operational', tail: ' decisions.' },
+    { lead: 'More resilient ', accent: 'enterprise', tail: ' operations.' },
+] as const
+
+function predictiveBannerCellClass(index: number) {
+    const base = 'relative px-5 py-9 sm:px-7 sm:py-10 lg:px-8 lg:py-11'
+    const divider =
+        'before:pointer-events-none before:absolute before:top-1/2 before:hidden before:h-[56%] before:w-px before:-translate-y-1/2 before:bg-primary lg:before:left-0 lg:before:block'
+    if (index === 0) return base
+    if (index === 1) {
+        return `${base} border-t border-primary md:border-t-0 md:border-l md:border-primary lg:border-t-0 ${divider}`
+    }
+    if (index === 2) {
+        return `${base} border-t border-primary lg:border-t-0 ${divider}`
+    }
+    return `${base} border-t border-primary md:border-l md:border-primary lg:border-t-0 ${divider}`
+}
 
 const page = () => {
     return (
@@ -188,6 +210,254 @@ const page = () => {
                     </div>
                 </section>
 
+                {/* From visibility → predictive intelligence (text left / image right) */}
+                <section
+                    className="bg-neutral-50 py-16 sm:py-20 md:py-24 dark:bg-[#1e1e1e]"
+                    aria-labelledby="operational-visibility-heading"
+                >
+                    <div className="container">
+                        <h2
+                            id="operational-visibility-heading"
+                            className="max-w-4xl text-left text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.15]"
+                            data-aos="fade-up"
+                            data-aos-duration={AOS_DURATION}
+                            data-aos-easing={AOS_EASING}
+                        >
+                            <span className="text-foreground">From Operational Visibility to </span>
+                            <span className="text-primary">Predictive Intelligence</span>
+                        </h2>
+
+                        <div className="mt-10 grid grid-cols-1 items-center gap-10 md:mt-14 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+                            <div
+                                className="flex flex-col justify-center"
+                                data-aos="fade-left"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                            >
+                                <div className="rounded-[24px] border border-neutral-200 bg-neutral-100 px-7 py-9 sm:px-9 sm:py-10 md:px-10 md:py-11 dark:border-white/10 dark:bg-[#2a2a2a]">
+                                    <p className="text-sm font-medium leading-relaxed text-neutral-900 first:mt-0 sm:text-base md:leading-relaxed dark:text-white">
+                                        Enterprise operations generate massive signals long before failures become tickets,
+                                        incidents, or executive-visible disruption in traditional dashboards.
+                                    </p>
+                                    <p className="mt-4 text-sm font-medium leading-relaxed text-neutral-900 sm:text-base md:leading-relaxed dark:text-white">
+                                        Moving from static visibility to predictive intelligence means correlating patterns
+                                        across systems, users, and services earlier in the disruption lifecycle—when
+                                        remediation is cheaper, faster, and less customer-impacting.
+                                    </p>
+                                    <p className="mt-4 text-sm font-semibold leading-relaxed text-primary sm:text-base md:leading-relaxed dark:text-primary">
+                                        ZerofAI helps teams operationalize that shift by fusing continuous signal
+                                        ingestion, contextual enrichment, and anticipatory alerting so leaders intervene
+                                        while outcomes are still reversible.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                data-aos="fade-right"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                                data-aos-delay="80"
+                            >
+                                <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+                                    <div className="relative aspect-4/3 w-full overflow-hidden rounded-[24px] border-y-0 border-r-0 border-l-8 border-primary bg-neutral-200 dark:bg-neutral-950">
+                                        <Image
+                                            src="/assets/images/predictive-visibility-data-stream.png"
+                                            alt="Abstract visualization of operational signals converging into ZerofAI predictive intelligence."
+                                            fill
+                                            className="object-cover object-center"
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Intelligence layer (image left / text right) */}
+                <section
+                    className="bg-neutral-50 py-16 sm:py-20 md:py-24 dark:bg-[#1e1e1e]"
+                    aria-labelledby="intelligence-layer-heading"
+                >
+                    <div className="container">
+                        <h2
+                            id="intelligence-layer-heading"
+                            className="max-w-4xl text-left text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.15]"
+                            data-aos="fade-up"
+                            data-aos-duration={AOS_DURATION}
+                            data-aos-easing={AOS_EASING}
+                        >
+                            <span className="text-primary">An Intelligence Layer </span>
+                            <span className="text-foreground">That Continuously Learns</span>
+                        </h2>
+
+                        <div className="mt-10 grid grid-cols-1 items-center gap-10 md:mt-14 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+                            <div
+                                className="flex flex-col justify-center"
+                                data-aos="fade-left"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                            >
+                                <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+                                    <div className="relative aspect-4/3 w-full overflow-hidden rounded-[24px] border-y-0 border-l-0 border-r-8 border-primary bg-neutral-200 dark:bg-neutral-950">
+                                        <Image
+                                            src="/assets/images/predictive-intelligence-network.png"
+                                            alt="Network diagram of ZerofAI intelligence connections across enterprise systems and teams."
+                                            fill
+                                            className="object-cover object-center"
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                className="flex flex-col justify-center"
+                                data-aos="fade-right"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                                data-aos-delay="80"
+                            >
+                                <div className="rounded-[24px] border border-neutral-200 bg-neutral-100 px-7 py-9 sm:px-9 sm:py-10 md:px-10 md:py-11 dark:border-white/10 dark:bg-[#2a2a2a]">
+                                    <p className="text-sm font-medium leading-relaxed text-neutral-900 first:mt-0 sm:text-base md:leading-relaxed dark:text-white">
+                                        A predictive operations program is only as strong as the intelligence layer
+                                        sitting underneath it—one that can absorb messy enterprise reality without
+                                        constant re-tuning.
+                                    </p>
+                                    <p className="mt-4 text-sm font-medium leading-relaxed text-neutral-900 sm:text-base md:leading-relaxed dark:text-white">
+                                        That layer needs to learn continuously from new signals, seasonal patterns,
+                                        change windows, and human feedback so recommendations stay relevant as the
+                                        environment evolves.
+                                    </p>
+                                    <p className="mt-4 text-sm font-medium leading-relaxed text-neutral-900 sm:text-base md:leading-relaxed dark:text-white">
+                                        When learning is continuous, operational teams spend less time reconciling
+                                        contradictory alerts—and more time validating the few decisions that truly need
+                                        human judgment.
+                                    </p>
+                                    <p className="mt-4 text-sm font-semibold leading-relaxed text-primary sm:text-base md:leading-relaxed dark:text-primary">
+                                        ZerofAI compounds operational context over time, improving anticipation, tightening
+                                        governance, and keeping humans in control of the decisions that matter most.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* AI predicts / people decide — matches design below “react too late” section */}
+                <section
+                    className="bg-neutral-50 py-16 sm:py-20 md:py-24 dark:bg-[#1e1e1e]"
+                    aria-labelledby="predictive-intelligence-heading"
+                >
+                    <div className="container">
+                        <h2
+                            id="predictive-intelligence-heading"
+                            className="max-w-4xl text-left text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.15]"
+                            data-aos="fade-up"
+                            data-aos-duration={AOS_DURATION}
+                            data-aos-easing={AOS_EASING}
+                        >
+                            <span className="text-primary">AI Predicts Faster.</span>{' '}
+                            <span className="text-foreground">People Decide Smarter.</span>
+                        </h2>
+
+                        <div className="mt-10 grid grid-cols-1 items-center gap-10 md:mt-14 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+                            <div
+                                className="flex flex-col justify-center"
+                                data-aos="fade-left"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                            >
+                                <div className="rounded-[24px] border border-neutral-200 bg-neutral-100 px-7 py-9 sm:px-9 sm:py-10 md:px-10 md:py-11 dark:border-white/10 dark:bg-[#2a2a2a]">
+                                    <p className="text-sm font-medium leading-relaxed text-neutral-900 first:mt-0 sm:text-base md:leading-relaxed dark:text-white">
+                                        Predictive intelligence is not about removing operational control.
+                                    </p>
+                                    <p className="mt-4 text-sm font-medium leading-relaxed text-neutral-900 sm:text-base md:leading-relaxed dark:text-white">
+                                        It&apos;s about helping enterprise teams make faster, more informed, and more
+                                        proactive operational decisions with greater confidence and operational context.
+                                    </p>
+                                    <p className="mt-4 text-sm font-semibold leading-relaxed text-primary sm:text-base md:leading-relaxed dark:text-primary">
+                                        ZerofAI continuously surfaces predictive insights, emerging operational risks, and
+                                        intelligence-driven recommendations while maintaining governance, visibility, and
+                                        human oversight across enterprise environments.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                data-aos="fade-right"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                                data-aos-delay="80"
+                            >
+                                <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+                                    <div className="relative aspect-4/3 w-full overflow-hidden rounded-[24px] border-y-0 border-r-0 border-l-8 border-primary bg-neutral-200 dark:bg-neutral-800">
+                                        <Image
+                                            src="/assets/images/predictive-intelligence-decision.png"
+                                            alt="Operations leader reviewing predictive intelligence on a monitor in a dimly lit office."
+                                            fill
+                                            className="object-cover object-[center_30%] sm:object-center"
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Outcomes banner + CTA — before footer */}
+                <section
+                    aria-labelledby="predictive-operations-footer-heading"
+                    className="w-full bg-neutral-200 py-10 sm:py-12 md:py-14 dark:bg-[#1a1a1a]"
+                    data-aos="fade-up"
+                    data-aos-duration={AOS_DURATION}
+                    data-aos-easing={AOS_EASING}
+                >
+                    <div className="container px-4 sm:px-6">
+                        <div className="overflow-hidden rounded-2xl bg-neutral-950 sm:rounded-3xl dark:bg-black">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                                {predictiveOutcomesBanner.map((row, index) => (
+                                    <div
+                                        key={row.accent}
+                                        className={predictiveBannerCellClass(index)}
+                                    >
+                                        <p className="text-left text-base font-semibold leading-snug tracking-tight text-white sm:text-lg md:text-xl">
+                                            {row.lead}
+                                            <span className="text-primary">{row.accent}</span>
+                                            {row.tail}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="mx-auto mt-6 max-w-5xl sm:mt-8">
+                            <div className="rounded-t-[2.5rem] bg-neutral-950 px-6 pb-12 pt-8 text-center sm:rounded-t-[3rem] sm:px-10 sm:pb-14 sm:pt-10 md:px-14 dark:bg-black">
+                                <div
+                                    className="mx-auto h-0.5 w-20 rounded-full bg-primary sm:w-28"
+                                    aria-hidden
+                                />
+                                <h2
+                                    id="predictive-operations-footer-heading"
+                                    className="mx-auto mt-8 max-w-3xl text-balance text-2xl font-bold leading-[1.2] tracking-tight text-white sm:text-3xl md:text-4xl lg:text-[2.5rem]"
+                                >
+                                    The Future of Workplace
+                                    <br />
+                                    Operations Is Proactive.
+                                </h2>
+                                <div className="mt-10 flex justify-center sm:mt-12">
+                                    <Link
+                                        href="/contact"
+                                        className="rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-10 sm:text-base"
+                                    >
+                                        Get a Demo
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
             </main>
         </AosInit>
