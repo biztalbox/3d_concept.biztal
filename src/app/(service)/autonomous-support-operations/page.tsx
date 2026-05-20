@@ -1,5 +1,6 @@
 import AosInit from '@/component/AosInit'
 import HeroCanvas from '@/component/bot/HeroCanvas'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
     AOS_DURATION,
@@ -304,48 +305,86 @@ const page = () => {
                             </p>
                         </div>
 
-                        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-2 md:gap-8">
-                            <article
-                                className="rounded-2xl bg-secondary p-6 sm:p-8 dark:bg-[#2a2a2a]"
-                                data-aos="fade-up"
-                                data-aos-duration={AOS_DURATION}
-                                data-aos-easing={AOS_EASING}
-                                data-aos-delay="160"
-                            >                                <h3 className="text-lg font-bold text-foreground sm:text-xl">
-                                    Fragmented Support Operations
-                                </h3>
-                                <ul className="mt-6 flex flex-col gap-4 sm:mt-8 sm:gap-5">
-                                    {fragmentedSupportItems.map((item) => (
-                                        <li key={item} className="flex items-center gap-3 text-left">
-                                            <CompareListIcon variant="negative" />
-                                            <span className="text-sm text-muted-foreground sm:text-base">
-                                                {item}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </article>
+                        <div className="mt-10 grid grid-cols-1 gap-10 md:mt-12 md:grid-cols-2 md:items-start md:gap-6 lg:gap-8">
+                            <div className="flex flex-col items-stretch gap-6 sm:gap-8">
+                                <article
+                                    className="w-full rounded-2xl bg-secondary p-6 sm:p-8 dark:bg-[#2a2a2a]"
+                                    data-aos="fade-up"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay="160"
+                                >
+                                    <h3 className="text-lg font-bold text-foreground sm:text-xl">
+                                        Fragmented Support Operations
+                                    </h3>
+                                    <ul className="mt-6 flex flex-col gap-4 sm:mt-8 sm:gap-5">
+                                        {fragmentedSupportItems.map((item) => (
+                                            <li key={item} className="flex items-center gap-3 text-left">
+                                                <CompareListIcon variant="negative" />
+                                                <span className="text-sm text-muted-foreground sm:text-base">
+                                                    {item}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </article>
+                                <div
+                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:py-0 dark:px-0"
+                                    data-aos="fade-up"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay="200"
+                                >
+                                    <Image
+                                        src="/assets/images/fragmented-support-flow.png"
+                                        alt="Fragmented support workflow diagram showing disconnected ticket, communication, and data paths."
+                                        width={640}
+                                        height={360}
+                                        className="h-auto w-full object-contain"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                    />
+                                </div>
+                            </div>
 
-                            <article
-                                className="rounded-2xl border-2 border-primary bg-secondary p-6 sm:p-8 dark:bg-[#2a2a2a]"
-                                data-aos="zoom-in"
-                                data-aos-duration={AOS_DURATION}
-                                data-aos-easing={AOS_EASING}
-                                data-aos-delay={COMPARE_STAGGER_MS + 160}
-                            >                                <h3 className="text-lg font-bold text-foreground sm:text-xl">
-                                    Smooth Autonomous Operational Flow
-                                </h3>
-                                <ul className="mt-6 flex flex-col gap-4 sm:mt-8 sm:gap-5">
-                                    {autonomousFlowItems.map((item) => (
-                                        <li key={item} className="flex items-center gap-3 text-left">
-                                            <CompareListIcon variant="positive" />
-                                            <span className="text-sm text-muted-foreground sm:text-base">
-                                                {item}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </article>
+                            <div className="flex flex-col items-stretch gap-6 sm:gap-8">
+                                <article
+                                    className="w-full rounded-2xl border-2 border-primary bg-secondary p-6 sm:p-8 dark:bg-[#2a2a2a]"
+                                    data-aos="zoom-in"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay={COMPARE_STAGGER_MS + 160}
+                                >
+                                    <h3 className="text-lg font-bold text-foreground sm:text-xl">
+                                        Smooth Autonomous Operational Flow
+                                    </h3>
+                                    <ul className="mt-6 flex flex-col gap-4 sm:mt-8 sm:gap-5">
+                                        {autonomousFlowItems.map((item) => (
+                                            <li key={item} className="flex items-center gap-3 text-left">
+                                                <CompareListIcon variant="positive" />
+                                                <span className="text-sm text-muted-foreground sm:text-base">
+                                                    {item}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </article>
+                                <div
+                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:py-0 dark:px-0"
+                                    data-aos="fade-up"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay={COMPARE_STAGGER_MS + 200}
+                                >
+                                    <Image
+                                        src="/assets/images/autonomous-operational-flow.png"
+                                        alt="Smooth autonomous operational flow diagram from signal intake through orchestration to outcomes."
+                                        width={640}
+                                        height={360}
+                                        className="h-auto w-full object-contain"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
