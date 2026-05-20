@@ -106,15 +106,40 @@ const IDENTITY_CARD_STAGGER_MS = 400;
     "Intelligence filtering: Focus only on what matters",
   ]; 
 
-function CompareBadgeIcon({ src, alt }: { src: string; alt: string }) {
+const compareBadgeIconBox =
+  "flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center sm:h-[5rem] sm:w-[5rem]";
+
+function CompareBadgeIcon({
+  src,
+  alt,
+  variant,
+}: {
+  src: string;
+  alt: string;
+  variant: "old" | "new";
+}) {
+  if (variant === "old") {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={80}
+        height={80}
+        className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain sm:h-[5rem] sm:w-[5rem]"
+      />
+    );
+  }
+
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={80}
-      height={80}
-      className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain sm:h-[5rem] sm:w-[5rem]"
-    />
+    <div className={compareBadgeIconBox}>
+      <Image
+        src={src}
+        alt={alt}
+        width={80}
+        height={80}
+        className="h-[3.25rem] w-[3.25rem] object-contain sm:h-[3.75rem] sm:w-[3.75rem]"
+      />
+    </div>
   );
 }
 
@@ -176,7 +201,7 @@ function TicketsResolvedComparison() {
             data-aos-delay="120"
             className="flex flex-1 flex-col items-center md:pr-8 lg:pr-12"
           >
-            <img src={COMPARE_BADGE_ICONS.oldWay} alt="The Old Way" width={80} height={80} className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain sm:h-[5rem] sm:w-[5rem]" />
+            <CompareBadgeIcon src={COMPARE_BADGE_ICONS.oldWay} alt="The Old Way" variant="old" />
             <p className="mt-4 text-center text-sm! font-bold! text-neutral-900 sm:text-[0.9375rem] dark:text-white!">
               The Old Way
             </p>
@@ -215,7 +240,7 @@ function TicketsResolvedComparison() {
             data-aos-delay="200"
             className="flex flex-1 flex-col items-center md:pl-8 lg:pl-12"
           >
-            <img src={COMPARE_BADGE_ICONS.zerofaiWay} alt="The ZerofAI Way" width={160} height={160} className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain sm:h-[5rem] sm:w-[5rem]" />
+            <CompareBadgeIcon src={COMPARE_BADGE_ICONS.zerofaiWay} alt="The ZerofAI Way" variant="new" />
             <p className="mt-4 text-center text-sm! font-bold! text-neutral-900 sm:text-[0.9375rem] dark:text-white!">
               The ZerofAI Way
             </p>

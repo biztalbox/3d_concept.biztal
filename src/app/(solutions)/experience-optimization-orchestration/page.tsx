@@ -1,11 +1,14 @@
 import AosInit from "@/component/AosInit";
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import IntelligenceAlternatingRows from "@/component/IntelligenceAlternatingRows";
 import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
 import Link from "next/link";
 import Image from "next/image";
 import { FaDatabase } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa6";
 import { TbChartDots2 } from "react-icons/tb";
 import { LuMonitorCheck } from "react-icons/lu";
+import { RxCross2 } from "react-icons/rx";
 
 const featureCards = [
   {
@@ -57,7 +60,53 @@ const outcomeStats = [
   },
 ] as const;
 
+const workplaceTraditionalItems = [
+  "Focus on isolated tools and systems",
+  "Operate through disconnected workflows",
+  "Measure usage instead of experience",
+  "React after productivity is impacted",
+] as const;
 
+const workplaceZerofaiItems = [
+  "Understands how employees experience work",
+  "Connects workflows, systems, and interactions",
+  "Identifies and reduces digital friction proactively",
+  "Continuously optimizes workplace experiences",
+] as const;
+
+
+const experienceIntelligenceRows = [
+  {
+    label: "01 / EXPERIENCE ANALYSIS",
+    title: "Continuous Workplace Experience Analysis",
+    description:
+      "ZerofAI continuously analyzes how employees interact with enterprise tools, workflows, collaboration systems, and support environments providing real-time visibility into workplace experience patterns across teams and business functions.",
+    image: "/assets/images/sample-img.webp",
+    imageAlt: "Continuous workplace experience analysis",
+    imageFirst: false,
+    imageAccent: "top-left" as const,
+  },
+  {
+    label: "02 / WORKFLOW INTELLIGENCE",
+    title: "AI-Driven Workflow Intelligence",
+    description:
+      "Using behavioral analytics and contextual understanding, ZerofAI identifies workflow inefficiencies, excessive context switching, collaboration delays, and operational friction that impact workplace productivity.",
+    image: "/assets/images/sample-img.webp",
+    imageAlt: "AI-driven workflow intelligence",
+    imageFirst: true,
+    imageAccent: "top-right" as const,
+  },
+  {
+    label: "03 / EXPERIENCE OPTIMIZATION",
+    title: "Continuous Experience Optimization",
+    description:
+      "By surfacing workplace friction and operational inefficiencies early, ZerofAI enables organizations to continuously improve digital workflows, streamline employee interactions, and create more connected work experiences across the enterprise.",
+    image: "/assets/images/sample-img.webp",
+    imageAlt: "Continuous experience optimization",
+    imageFirst: false,
+    imageAccent: "top-left" as const,
+  },
+] as const;
 
 export default function CognitiveKnowledgeDiscoveryPage() {
   return (
@@ -193,92 +242,7 @@ Over time, this digital friction slows work, reduces engagement, increases cogni
           </div>
         </section>
 
-        <section>
-          <div
-            className="container grid items-center gap-6 bg-secondary p-0 md:grid-cols-2 md:gap-10 md:rounded-xl dark:bg-secondary/40 lg:max-w-7xl"
-            data-aos="fade-up"
-            data-aos-duration="900"
-            data-aos-easing="ease-out-cubic"
-          >
-            <Image
-              src="/assets/images/sample-img.webp"
-              width={1200}
-              height={680}
-              alt="zerofai"
-              className="justify-self-end rounded-xl md:border-r-4 border-primary"
-            />
-            <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-
-            
-              <h2>Continuous Workplace Experience Analysis</h2>
-              <p>
-                ZerofAI continuously analyzes how employees interact with enterprise tools, workflows, collaboration systems, and support
-                environments providing real-time visibility into workplace experience patterns across teams and business functions.
-              </p>
-         
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div
-            className="container grid items-center gap-6 bg-secondary p-0 md:grid-cols-2 md:gap-10 md:rounded-xl dark:bg-secondary/40 lg:max-w-7xl"
-            data-aos="fade-up"
-            data-aos-duration="900"
-            data-aos-easing="ease-out-cubic"
-            data-aos-delay={COMPARE_STAGGER_MS}
-          >
-            <div className="order-2 flex flex-col gap-10 px-6 py-12 md:order-1 md:px-8">
-
-           
-              <h2>AI-Driven Workflow Intelligence</h2>
-              <p>
-                Using behavioral analytics and contextual understanding, ZerofAI identifies workflow inefficiencies, excessive context switching,
-                collaboration delays, and operational friction that impact workplace productivity.
-              </p>
-         
-            </div>
-            <Image
-              src="/assets/images/sample-img.webp"
-              width={1200}
-              height={680}
-              alt="zerofai"
-              className="order-1 justify-self-end rounded-xl md:order-2 md:border-l-4 border-primary"
-            />
-          </div>
-        </section>
-
-        <section>
-          <div
-            className="container grid items-center gap-6 bg-secondary p-0! md:grid-cols-2 md:gap-10 md:rounded-xl dark:bg-secondary/40 lg:max-w-7xl"
-            data-aos="fade-up"
-            data-aos-duration="900"
-            data-aos-easing="ease-out-cubic"
-            data-aos-delay={COMPARE_STAGGER_MS * 2}
-          >
-            <Image
-              src="/assets/images/sample-img.webp"
-              width={1200}
-              height={680}
-              alt="zerofai"
-              className="justify-self-end rounded-xl md:border-r-4 border-primary"
-            />
-            <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-           
-              <h2>Continuous Experience Optimization</h2>
-              <p>
-                By surfacing workplace friction and operational inefficiencies early, ZerofAI enables organizations to continuously improve digital
-                workflows, streamline employee interactions, and create more connected work experiences across the enterprise.
-              </p>
-         
-         
-            </div>
-          </div>
-        </section>
-
-        
-
-
+        <IntelligenceAlternatingRows rows={[...experienceIntelligenceRows]} />
 
         <section className="bg-primary py-16">
           <div className="container grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-8">
@@ -296,6 +260,76 @@ Over time, this digital friction slows work, reduces engagement, increases cogni
                 <p className="text-white!">{body}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section
+          className="w-full bg-white py-16 sm:py-20 md:py-24 dark:bg-[#121212]"
+          aria-labelledby="workplace-experience-heading"
+        >
+          <div className="container max-w-6xl px-5 sm:px-6">
+            <h2
+              id="workplace-experience-heading"
+              className="max-w-5xl text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.12] dark:text-white"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
+              Employees Don&apos;t Experience Tools. They Experience Work
+            </h2>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-2 md:items-stretch md:gap-8">
+              <div
+                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
+                data-aos="fade-up"
+                data-aos-duration="900"
+                data-aos-easing="ease-out-cubic"
+                data-aos-delay="80"
+              >
+                <span className="inline-flex w-fit shrink-0 items-center rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-wide text-white! transition-colors duration-300 group-hover:bg-neutral-950 sm:px-5 sm:text-sm">
+                  Traditional Workplace Platforms
+                </span>
+                <ul className="mt-8 flex flex-1 flex-col gap-4 sm:mt-10 sm:gap-5">
+                  {workplaceTraditionalItems.map((item) => (
+                    <li key={item} className="flex gap-3 text-left">
+                      <RxCross2
+                        className="mt-0.5 size-4 shrink-0 text-neutral-600 transition-colors duration-300 group-hover:text-white sm:size-[18px] dark:text-white"
+                        aria-hidden
+                      />
+                      <span className="text-sm leading-relaxed text-neutral-800 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div
+                className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
+                data-aos="fade-up"
+                data-aos-duration="900"
+                data-aos-easing="ease-out-cubic"
+                data-aos-delay={COMPARE_STAGGER_MS}
+              >
+                <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-wide text-white! transition-colors duration-300 group-hover:bg-neutral-950 sm:px-5 sm:text-sm">
+                  <FaCheck className="shrink-0 text-white group-hover:text-primary sm:size-4" aria-hidden />
+                  ZerofAI
+                </span>
+                <ul className="mt-8 flex flex-1 flex-col gap-4 sm:mt-10 sm:gap-5">
+                  {workplaceZerofaiItems.map((item) => (
+                    <li key={item} className="flex gap-3 text-left">
+                      <FaCheck
+                        className="mt-0.5 size-4 shrink-0 text-neutral-700 transition-colors duration-300 group-hover:text-white sm:size-[18px] dark:text-white"
+                        aria-hidden
+                      />
+                      <span className="text-sm leading-relaxed text-white transition-colors duration-300 group-hover:text-white! sm:text-base">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 

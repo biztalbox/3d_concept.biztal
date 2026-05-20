@@ -1,5 +1,6 @@
+import AosInit from "@/component/AosInit";
+import AlternatingFeatureRows from "@/component/AlternatingFeatureRows";
 import HeroCanvas from "@/component/bot/HeroCanvas";
-import IdentityAccessAutomationStats from "@/component/identityAccessAutomationStats";
 import Link from "next/link";
 import Image from "next/image";
 import { IoPersonOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
@@ -20,7 +21,35 @@ import { IoSyncSharp } from "react-icons/io5";
 
 
 
-const ACCESS_GAP_IMAGE = "/assets/images/vs-image.png"
+const productivityIntelligenceRows = [
+  {
+    imageSrc: "/assets/images/sample-img.webp",
+    imageAlt: "Workplace experience intelligence visualization",
+    accentClass: "bg-primary",
+    title: "Workplace Experience Intelligence",
+    description:
+      "ZerofAI continuously analyzes digital workplace interactions across collaboration platforms, enterprise applications, service environments, and endpoint experiences—creating a real-time understanding of productivity health across the organization.",
+    imageFirst: true,
+  },
+  {
+    imageSrc: "/assets/images/sample-img.webp",
+    imageAlt: "AI-driven productivity insights visualization",
+    accentClass: "bg-primary",
+    title: "AI-Driven Productivity Insights",
+    description:
+      "Using behavioral analysis and contextual intelligence, ZerofAI identifies trends that indicate workflow inefficiencies, excessive context switching, recurring interruptions, and operational bottlenecks impacting employee performance.",
+    imageFirst: false,
+  },
+  {
+    imageSrc: "/assets/images/sample-img.webp",
+    imageAlt: "Proactive workplace optimization visualization",
+    accentClass: "bg-primary",
+    title: "Proactive Workplace Optimization",
+    description:
+      "By surfacing productivity-impacting patterns early, ZerofAI enables organizations to improve digital workflows, reduce operational friction, and create more seamless employee work experiences.",
+    imageFirst: true,
+  },
+] as const;
 
 export default function ComplaincePage() {
 
@@ -45,6 +74,7 @@ export default function ComplaincePage() {
     ]
   ]
   return (
+    <AosInit>
     <main className="flex flex-col">
       <section className="relative w-full px-0 sm:p-5">
         {/* right-side background decorative strips (flush to viewport edge) */}
@@ -262,57 +292,7 @@ reduce employee focus, efficiency, and uninterrupted productive work time across
       </section>
 
 
-      <section className="mt-16 md:mt-20">
-
-        <div className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0 items-center">
-          <Image src="/assets/images/sample-img.webp" width={1200} height={680} alt="zerofai" className="rounded-xl justify-self-end md:border-r-4 border-primary" />
-          <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-            <h2>
-            Workplace Experience Intelligence
-            </h2>
-
-            <p>ZerofAI continuously analyzes digital workplace interactions across collaboration platforms, enterprise applications, service
-            environments, and endpoint experiences—creating a real-time understanding of productivity health across the organization.</p>
-
-
-
-          </div>
-        </div>
-      </section>
-      <section className="mt-16 md:mt-20">
-
-        <div className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0 items-center">
-          <div className="flex flex-col gap-10 px-6 py-12 md:px-8 order-2 md:order-1">
-            <h2>
-            AI-Driven Productivity Insights
-            </h2>
-
-            <p>Using behavioral analysis and contextual intelligence, ZerofAI identifies trends that indicate workflow inefficiencies, excessive context
-            switching, recurring interruptions, and operational bottlenecks impacting employee performance.</p>
-
-
-
-          </div>
-          <Image src="/assets/images/sample-img.webp" width={1200} height={680} alt="zerofai" className="order-1 md:order-2 rounded-xl justify-self-end md:border-l-4 border-primary" />
-        </div>
-      </section>
-
-      <section className="mt-16 md:mt-20">
-
-        <div className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0! items-center">
-          <Image src="/assets/images/sample-img.webp" width={1200} height={680} alt="zerofai" className="rounded-xl justify-self-end md:border-r-4 border-primary" />
-          <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-            <h2>
-            Proactive Workplace Optimization
-            </h2>
-
-            <p>By surfacing productivity-impacting patterns early, ZerofAI enables organizations to improve digital workflows, reduce operational
-            friction, and create more seamless employee work experiences.</p>
-
-          </div>
-        </div>
-      </section>
-
+      <AlternatingFeatureRows rows={[...productivityIntelligenceRows]} />
 
       <section className="bg-primary py-16">
 
@@ -430,5 +410,6 @@ reduce employee focus, efficiency, and uninterrupted productive work time across
       </section>
 
     </main>
+    </AosInit>
   );
 }

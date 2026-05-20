@@ -225,13 +225,23 @@ html.dark select option {
   animation: immune-card-glow 3.5s ease-in-out infinite;
 }
 
+@keyframes orchestration-flow-line {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.orchestration-flow-line {
+  animation: orchestration-flow-line 1.1s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .immune-timeline-node-pulse,
   .immune-timeline-node-pulse--delayed-1,
   .immune-timeline-node-pulse--delayed-2,
-  .immune-card-glow-animate {
+  .immune-card-glow-animate,
+  .orchestration-flow-line {
     animation: none;
-    opacity: 0;
   }
 }
 

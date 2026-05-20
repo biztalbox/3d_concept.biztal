@@ -1,4 +1,6 @@
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import IntelligenceAlternatingRows from "@/component/IntelligenceAlternatingRows";
+import OldWayZerofaiWayCompare from "@/component/OldWayZerofaiWayCompare";
 import IdentityAccessAutomationStats from "@/component/identityAccessAutomationStats";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,10 +11,6 @@ import { RiHome4Line } from "react-icons/ri";
 import { FaDatabase } from "react-icons/fa";
 import { TbChartDots2, TbClockDown } from "react-icons/tb";
 import { LuMonitorCheck } from "react-icons/lu";
-import { FaClockRotateLeft, FaCheck } from "react-icons/fa6";
-import { FaRegCircle } from "react-icons/fa";
-import { CheckCircle } from "lucide-react";
-import { FaInfo } from "react-icons/fa6";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { FaRobot } from "react-icons/fa";
 import { IoSyncSharp } from "react-icons/io5";
@@ -21,6 +19,52 @@ import { IoSyncSharp } from "react-icons/io5";
 
 
 const ACCESS_GAP_IMAGE = "/assets/images/vs-image.png"
+
+
+const selfHealingIntelligenceRows = [
+  {
+    label: "01 / ENDPOINT INTELLIGENCE",
+    title: "Real-Time Endpoint Intelligence",
+    description:
+      "ZerofAI continuously collects telemetry from devices, applications, services, and user interactions building a real-time understanding of endpoint health and operational stability.",
+    image: "/assets/images/sample-img.webp",
+    imageAlt: "Real-time endpoint intelligence visualization",
+    imageFirst: false,
+    imageAccent: "top-left" as const,
+  },
+  {
+    label: "02 / DECISION INTELLIGENCE",
+    title: "Contextual Decision Intelligence",
+    description:
+      "Using behavioral analysis, historical patterns, and operational context, ZerofAI determines whether an issue requires proactive remediation, escalation, or continuous observation.",
+    image: "/assets/images/sample-img.webp",
+    imageAlt: "Contextual decision intelligence visualization",
+    imageFirst: true,
+    imageAccent: "top-right" as const,
+  },
+  {
+    label: "03 / AUTONOMOUS HEALING",
+    title: "Autonomous Closed-Loop Healing",
+    description:
+      "Once remediation is triggered, ZerofAI validates system stability, verifies successful recovery, and continuously monitors for recurrence ensuring endpoints remain healthy without repetitive operational effort.",
+    image: "/assets/images/sample-img.webp",
+    imageAlt: "Autonomous closed-loop healing visualization",
+    imageFirst: false,
+    imageAccent: "top-left" as const,
+  },
+] as const;
+
+const selfHealingOldWayItems = [
+  "Detect issues",
+  "Raise tickets",
+  "Troubleshoot manually",
+] as const;
+
+const selfHealingZerofaiWayItems = [
+  "Detect anomalies",
+  "Self-Heal",
+  "Remediate",
+] as const;
 
 export default function ComplaincePage() {
 
@@ -80,122 +124,10 @@ export default function ComplaincePage() {
             desk intervention.
               </p>
 
-              <div className="grid max-w-4xl mx-auto mt-10 grid-cols-1 gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start md:gap-0">
-            {/* The Old Way */}
-            <div className="flex flex-col items-center md:pr-10 lg:pr-14">
-              <div className="flex size-18 items-center justify-center rounded-full border border-dashed border-neutral-300 bg-neutral-200 text-neutral-700 sm:size-20 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white">
-                <FaClockRotateLeft />
-              </div>
-              <p className="mt-4 text-center text-sm font-bold text-neutral-900 sm:text-base dark:text-white">
-                The Old Way
-              </p>
-              <ul className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:gap-3.5">
-                
-                  <li
-                    className="flex items-center gap-3 rounded-full bg-neutral-200 px-5 py-3.5 sm:px-6 sm:py-4 dark:bg-secondary"
-                  >
-                    <span className="relative flex size-8 shrink-0 items-center justify-center">
-                      <FaRegCircle />
-                      <span className="absolute inset-[3px] rounded-full bg-secondary sm:inset-1" />
-                      <span className="absolute inset-0 flex items-center justify-center">
-                      <FaInfo />
-                      </span>
-                    </span>
-                    <span className="text-sm font-medium text-neutral-900 dark:text-white">
-                    Detect issues
-                    </span>
-                  </li>
-                  <li
-                    className="flex items-center gap-3 rounded-full bg-neutral-200 px-5 py-3.5 sm:px-6 sm:py-4 dark:bg-secondary"
-                  >
-                    <span className="relative flex size-8 shrink-0 items-center justify-center">
-                      <FaRegCircle />
-                      <span className="absolute inset-[3px] rounded-full bg-secondary sm:inset-1" />
-                      <span className="absolute inset-0 flex items-center justify-center">
-                      <FaInfo />
-                      </span>
-                    </span>
-                    <span className="text-sm font-medium text-neutral-900 dark:text-white">
-                    Raise tickets
-                    </span>
-                  </li>
-                  <li
-                    className="flex items-center gap-3 rounded-full bg-neutral-200 px-5 py-3.5 sm:px-6 sm:py-4 dark:bg-secondary"
-                  >
-                    <span className="relative flex size-8 shrink-0 items-center justify-center">
-                      <FaRegCircle />
-                      <span className="absolute inset-[3px] rounded-full bg-secondary sm:inset-1" />
-                      <span className="absolute inset-0 flex items-center justify-center">
-                      <FaInfo />
-                      </span>
-                    </span>
-                    <span className="text-sm font-medium text-neutral-900 dark:text-white">
-                    Troubleshoot manually
-                    </span>
-                  </li>
-              </ul>
-            </div>
-
-            {/* Divider */}
-            <div
-              className="relative flex min-h-8 items-center justify-center md:min-h-0 md:w-px md:self-stretch"
-              aria-hidden
-            >
-              <div className="h-px w-full max-w-xs bg-neutral-300 md:hidden dark:bg-neutral-600" />
-              <div className="absolute top-1/2 left-1/2 hidden h-full w-px -translate-x-1/2 -translate-y-1/2 bg-neutral-300 md:block dark:bg-neutral-600" />
-              <span className="absolute z-10 text-primary">
-                <FaRegCircle />
-              </span>
-            </div>
-
-            {/* The ZerofAI Way */}
-            <div className="flex flex-col items-center md:pl-10 lg:pl-14">
-              <div className="flex size-18 items-center justify-center rounded-full bg-primary text-white sm:size-20">
-                <CheckCircle aria-hidden />
-              </div>
-              <p className="mt-4 text-center text-sm font-bold text-neutral-900 sm:text-base dark:text-white">
-                The ZerofAI Way
-              </p>
-              <ul className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:gap-3.5">
-                <li
-                    className="flex items-center gap-3 rounded-full bg-white px-5 py-3.5 text-neutral-900 shadow-sm ring-1 ring-black/5 sm:px-6 sm:py-4 dark:bg-white dark:ring-0"
-                  >
-                    <span className="relative flex size-8 shrink-0 items-center justify-center text-primary" aria-hidden>
-                      <FaRegCircle />
-                      <span className="absolute inset-[3px] rounded-full bg-primary sm:inset-1" />
-                      <span className="absolute inset-0 flex items-center justify-center text-white">
-                        <FaCheck />
-                      </span>
-                    </span>
-                    <span className="text-sm font-medium sm:text-[0.9375rem]">Detect anomalies</span>
-                  </li>
-                <li
-                    className="flex items-center gap-3 rounded-full bg-white px-5 py-3.5 text-neutral-900 shadow-sm ring-1 ring-black/5 sm:px-6 sm:py-4 dark:bg-white dark:ring-0"
-                  >
-                    <span className="relative flex size-8 shrink-0 items-center justify-center text-primary" aria-hidden>
-                      <FaRegCircle />
-                      <span className="absolute inset-[3px] rounded-full bg-primary sm:inset-1" />
-                      <span className="absolute inset-0 flex items-center justify-center text-white">
-                        <FaCheck />
-                      </span>
-                    </span>
-                    <span className="text-sm font-medium sm:text-[0.9375rem]">Self-Heal</span>
-                  </li>
-                <li
-                    className="flex items-center gap-3 rounded-full bg-white px-5 py-3.5 text-neutral-900 shadow-sm ring-1 ring-black/5 sm:px-6 sm:py-4 dark:bg-white dark:ring-0"
-                  >
-                    <span className="relative flex size-8 shrink-0 items-center justify-center text-primary" aria-hidden>
-                      <FaRegCircle />
-                      <span className="absolute inset-[3px] rounded-full bg-primary sm:inset-1" />
-                      <span className="absolute inset-0 flex items-center justify-center text-white">
-                        <FaCheck />
-                      </span>
-                    </span>
-                    <span className="text-sm font-medium sm:text-[0.9375rem]">Remediate</span>
-                  </li>
-              </ul>
-            </div>
-          </div>
+          <OldWayZerofaiWayCompare
+            oldWayItems={selfHealingOldWayItems}
+            zerofaiWayItems={selfHealingZerofaiWayItems}
+          />
         </div>
       </section>
 
@@ -253,57 +185,7 @@ export default function ComplaincePage() {
       </section>
 
 
-      <section className="">
-
-        <div className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0 items-center">
-          <Image src="/assets/images/sample-img.webp" width={1200} height={680} alt="zerofai" className="rounded-xl justify-self-end md:border-r-4 border-primary" />
-          <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-            <h2>
-            Real-Time Endpoint Intelligence
-            </h2>
-
-            <p>ZerofAI continuously collects telemetry from devices, applications, services, and user interactions building a real-time understanding of
-            endpoint health and operational stability.</p>
-
-
-
-          </div>
-        </div>
-      </section>
-      <section className="">
-
-        <div className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0 items-center">
-          <div className="flex flex-col gap-10 px-6 py-12 md:px-8 order-2 md:order-1">
-            <h2>
-            Contextual Decision Intelligence
-            </h2>
-
-            <p>Using behavioral analysis, historical patterns, and operational context, ZerofAI determines whether an issue requires proactive
-            remediation, escalation, or continuous observation.</p>
-
-
-
-          </div>
-          <Image src="/assets/images/sample-img.webp" width={1200} height={680} alt="zerofai" className="order-1 md:order-2 rounded-xl justify-self-end md:border-l-4 border-primary" />
-        </div>
-      </section>
-
-      <section className="">
-
-        <div className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0! items-center">
-          <Image src="/assets/images/sample-img.webp" width={1200} height={680} alt="zerofai" className="rounded-xl justify-self-end md:border-r-4 border-primary" />
-          <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-            <h2>
-            Autonomous Closed-Loop Healing
-            </h2>
-
-            <p>Once remediation is triggered, ZerofAI validates system stability, verifies successful recovery, and continuously monitors for recurrence
-            ensuring endpoints remain healthy without repetitive operational effort.</p>
-
-          </div>
-        </div>
-      </section>
-
+      <IntelligenceAlternatingRows rows={[...selfHealingIntelligenceRows]} />
 
       <section className="bg-primary py-16">
 
