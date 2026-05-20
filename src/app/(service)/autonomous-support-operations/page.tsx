@@ -305,31 +305,56 @@ const page = () => {
                             </p>
                         </div>
 
-                        <div className="mt-10 grid grid-cols-1 gap-10 md:mt-12 md:grid-cols-2 md:items-start md:gap-6 lg:gap-8">
-                            <div className="flex flex-col items-stretch gap-6 sm:gap-8">
+                        <div className="mt-10 flex flex-col gap-6 md:mt-12 md:gap-8">
+                            <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 md:gap-6 lg:gap-8">
                                 <article
-                                    className="w-full rounded-2xl bg-secondary p-6 sm:p-8 dark:bg-[#2a2a2a]"
+                                    className="flex h-full min-h-0 flex-col rounded-2xl bg-secondary p-5 sm:p-6 dark:bg-[#2a2a2a]"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay="160"
                                 >
-                                    <h3 className="text-lg font-bold text-foreground sm:text-xl">
+                                    <h3 className="text-base font-bold leading-snug text-foreground sm:text-lg">
                                         Fragmented Support Operations
                                     </h3>
-                                    <ul className="mt-6 flex flex-col gap-4 sm:mt-8 sm:gap-5">
+                                    <ul className="mt-4 flex flex-col gap-3 sm:mt-5">
                                         {fragmentedSupportItems.map((item) => (
-                                            <li key={item} className="flex items-center gap-3 text-left">
+                                            <li key={item} className="flex items-center gap-2.5 text-left">
                                                 <CompareListIcon variant="negative" />
-                                                <span className="text-sm text-muted-foreground sm:text-base">
+                                                <span className="text-sm leading-snug text-muted-foreground">
                                                     {item}
                                                 </span>
                                             </li>
                                         ))}
                                     </ul>
                                 </article>
+
+                                <article
+                                    className="flex h-full min-h-0 flex-col rounded-2xl border-2 border-primary bg-secondary p-5 sm:p-6 dark:bg-[#2a2a2a]"
+                                    data-aos="zoom-in"
+                                    data-aos-duration={AOS_DURATION}
+                                    data-aos-easing={AOS_EASING}
+                                    data-aos-delay={COMPARE_STAGGER_MS + 160}
+                                >
+                                    <h3 className="text-base font-bold leading-snug text-foreground sm:text-lg">
+                                        Smooth Autonomous Operational Flow
+                                    </h3>
+                                    <ul className="mt-4 flex flex-col gap-3 sm:mt-5">
+                                        {autonomousFlowItems.map((item) => (
+                                            <li key={item} className="flex items-center gap-2.5 text-left">
+                                                <CompareListIcon variant="positive" />
+                                                <span className="text-sm leading-snug text-muted-foreground">
+                                                    {item}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </article>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-6 lg:gap-8">
                                 <div
-                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:py-0 dark:px-0"
+                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:px-0 dark:py-0"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
@@ -344,32 +369,8 @@ const page = () => {
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                     />
                                 </div>
-                            </div>
-
-                            <div className="flex flex-col items-stretch gap-6 sm:gap-8">
-                                <article
-                                    className="w-full rounded-2xl border-2 border-primary bg-secondary p-6 sm:p-8 dark:bg-[#2a2a2a]"
-                                    data-aos="zoom-in"
-                                    data-aos-duration={AOS_DURATION}
-                                    data-aos-easing={AOS_EASING}
-                                    data-aos-delay={COMPARE_STAGGER_MS + 160}
-                                >
-                                    <h3 className="text-lg font-bold text-foreground sm:text-xl">
-                                        Smooth Autonomous Operational Flow
-                                    </h3>
-                                    <ul className="mt-6 flex flex-col gap-4 sm:mt-8 sm:gap-5">
-                                        {autonomousFlowItems.map((item) => (
-                                            <li key={item} className="flex items-center gap-3 text-left">
-                                                <CompareListIcon variant="positive" />
-                                                <span className="text-sm text-muted-foreground sm:text-base">
-                                                    {item}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </article>
                                 <div
-                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:py-0 dark:px-0"
+                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:px-0 dark:py-0"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
