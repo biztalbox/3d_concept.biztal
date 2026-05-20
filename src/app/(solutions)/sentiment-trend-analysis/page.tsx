@@ -90,6 +90,111 @@ function IconChip({
   );
 }
 
+const sentimentInsightRows = [
+  {
+    imageFirst: false,
+    title: "Continuous Workplace Signal Analysis",
+    body: "ZerofAI aggregates behavioral and operational signals across endpoints, collaboration platforms, service interactions, and workplace systems—creating a real-time understanding of employee digital experience.",
+    src: "/assets/images/predictive-intelligence-network.png",
+    alt: "Workplace experience dashboards and signal visualizations.",
+  },
+  {
+    imageFirst: true,
+    title: "AI-Driven Sentiment Intelligence",
+    body: "Using trend analysis, contextual correlation, and behavioral modeling, ZerofAI identifies hidden patterns of frustration, disengagement, and recurring workplace friction across teams and environments.",
+    src: "/assets/images/predictive-intelligence-decision.png",
+    alt: "AI processing and circuit pathways representing sentiment intelligence.",
+  },
+  {
+    imageFirst: false,
+    title: "Proactive Experience Optimization",
+    body: "By identifying experience degradation early, ZerofAI enables organizations to proactively optimize workflows, resolve friction points, and improve digital workplace engagement before issues escalate.",
+    src: "/assets/images/predictive-intelligence-network.png",
+    alt: "Abstract visualization of digital experience flow and optimization.",
+  },
+] as const;
+
+function SentimentAlternatingInsights() {
+  return (
+    <section
+      className="mb-16 bg-neutral-100 text-neutral-900 md:mb-24 dark:bg-neutral-950 dark:text-neutral-100"
+      data-aos="fade-up"
+      data-aos-duration={AOS_DURATION}
+      data-aos-easing={AOS_EASING}
+    >
+      <div className="container max-w-6xl px-4 sm:px-6">
+        {sentimentInsightRows.map((row, index) => {
+          const textBlock = (
+            <div
+              className={`relative flex max-w-xl flex-col gap-4 text-left ${
+                row.imageFirst
+                  ? "lg:items-start lg:pl-12 lg:text-left lg:after:left-0"
+                  : "lg:items-end lg:pr-12 lg:text-right lg:after:right-0"
+              } after:pointer-events-none after:hidden after:absolute after:top-1/2 after:h-[58%] after:w-1 after:-translate-y-1/2 after:rounded-full after:bg-primary lg:after:block`}
+              data-aos={row.imageFirst ? "fade-right" : "fade-left"}
+              data-aos-duration={AOS_DURATION}
+              data-aos-easing={AOS_EASING}
+              data-aos-delay="80"
+            >
+              <h3 className="text-xl font-bold tracking-tight text-primary sm:text-2xl md:text-[1.65rem]">
+                {row.title}
+              </h3>
+              <p className="text-base leading-relaxed text-neutral-600 dark:text-neutral-300 md:text-lg md:leading-relaxed">
+                {row.body}
+              </p>
+            </div>
+          );
+
+          const imageBlock = (
+            <div
+              className={`relative aspect-4/3 w-full max-w-xl overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-200 dark:bg-neutral-900 ${
+                row.imageFirst
+                  ? "border-y-0 border-l-0 border-r-8 border-primary"
+                  : "border-y-0 border-r-0 border-l-8 border-primary"
+              }`}
+              data-aos={row.imageFirst ? "fade-left" : "fade-right"}
+              data-aos-duration={AOS_DURATION}
+              data-aos-easing={AOS_EASING}
+            >
+              <Image
+                src={row.src}
+                alt={row.alt}
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority={index === 0}
+              />
+            </div>
+          );
+
+          return (
+            <div
+              key={row.title}
+              className="grid grid-cols-1 items-center gap-10 border-b border-neutral-200 py-12 last:border-b-0 sm:gap-12 sm:py-14 md:py-16 lg:grid-cols-2 lg:gap-14 dark:border-white/10"
+            >
+              {row.imageFirst ? (
+                <>
+                  <div className="order-2 lg:order-1">{imageBlock}</div>
+                  <div className="order-1 flex w-full justify-center lg:order-2 lg:justify-start">
+                    {textBlock}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="order-1 flex w-full justify-center lg:order-1 lg:justify-end">
+                    {textBlock}
+                  </div>
+                  <div className="order-2 lg:order-2">{imageBlock}</div>
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function ExperienceMetricsComparison() {
   return (
     <div className="mt-12 flex flex-col items-stretch gap-10 md:mt-16 md:flex-row md:items-stretch md:justify-center md:gap-0">
@@ -347,117 +452,7 @@ export default function SentimentTrendAnalysisPage() {
         </div>
       </section>
 
-
-      <section className="mb-16 md:mb-20">
-
-        <div
-          className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0 items-center"
-          data-aos="fade-up"
-          data-aos-duration={AOS_DURATION}
-          data-aos-easing={AOS_EASING}
-        >
-          <Image
-            src="/assets/images/sample-img.webp"
-            width={1200}
-            height={680}
-            alt="Continuous workplace signal analysis"
-            className="rounded-xl justify-self-end md:border-r-4 border-primary"
-            data-aos="zoom-in"
-            data-aos-duration={AOS_DURATION}
-            data-aos-easing={AOS_EASING}
-            data-aos-delay="100"
-          />
-          <div
-            className="flex flex-col gap-10 px-6 py-12 md:px-8"
-            data-aos="fade-up"
-            data-aos-duration={AOS_DURATION}
-            data-aos-easing={AOS_EASING}
-            data-aos-delay={COMPARE_STAGGER_MS}
-          >
-            <h2>
-              Continuous Workplace Signal Analysis
-            </h2>
-            <p>ZerofAI aggregates behavioral and operational signals across endpoints, collaboration platforms, service interactions, and workplace
-              systems—creating a real-time understanding of employee digital experience.</p>
-
-
-
-          </div>
-        </div>
-      </section>
-      <section className="mb-16 md:mb-20">
-
-        <div
-          className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0 items-center"
-          data-aos="fade-up"
-          data-aos-duration={AOS_DURATION}
-          data-aos-easing={AOS_EASING}
-        >
-          <div
-            className="flex flex-col gap-10 px-6 py-12 md:px-8 order-2 md:order-1"
-            data-aos="fade-up"
-            data-aos-duration={AOS_DURATION}
-            data-aos-easing={AOS_EASING}
-            data-aos-delay={COMPARE_STAGGER_MS}
-          >
-            <h2>
-              AI-Driven Sentiment Intelligence
-            </h2>
-            <p>Using trend analysis, contextual correlation, and behavioral modeling, ZerofAI identifies hidden patterns of frustration, disengagement,
-              and recurring workplace friction across teams and environments.</p>
-
-
-          </div>
-          <Image
-            src="/assets/images/sample-img.webp"
-            width={1200}
-            height={680}
-            alt="AI-driven sentiment intelligence"
-            className="order-1 md:order-2 rounded-xl justify-self-end md:border-l-4 border-primary"
-            data-aos="zoom-in"
-            data-aos-duration={AOS_DURATION}
-            data-aos-easing={AOS_EASING}
-            data-aos-delay="100"
-          />
-        </div>
-      </section>
-
-      <section className="mb-16 md:mb-20">
-
-        <div
-          className="container grid md:grid-cols-2 gap-6 md:gap-10 bg-secondary dark:bg-secondary/40 lg:max-w-7xl md:rounded-xl p-0! items-center"
-          data-aos="fade-up"
-          data-aos-duration={AOS_DURATION}
-          data-aos-easing={AOS_EASING}
-        >
-          <Image
-            src="/assets/images/sample-img.webp"
-            width={1200}
-            height={680}
-            alt="Proactive experience optimization"
-            className="rounded-xl justify-self-end md:border-r-4 border-primary"
-            data-aos="zoom-in"
-            data-aos-duration={AOS_DURATION}
-            data-aos-easing={AOS_EASING}
-            data-aos-delay="100"
-          />
-          <div
-            className="flex flex-col gap-10 px-6 py-12 md:px-8"
-            data-aos="fade-up"
-            data-aos-duration={AOS_DURATION}
-            data-aos-easing={AOS_EASING}
-            data-aos-delay={COMPARE_STAGGER_MS}
-          >
-            <h2>
-              Proactive Experience Optimization
-            </h2>
-            <p>By identifying experience degradation early, ZerofAI enables organizations to proactively optimize workflows, resolve friction points, and
-              improve digital workplace engagement before issues escalate.</p>
-
-          </div>
-        </div>
-      </section>
-
+      <SentimentAlternatingInsights />
 
       <section className="bg-primary py-16">
 
