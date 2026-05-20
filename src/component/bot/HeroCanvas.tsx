@@ -1,56 +1,55 @@
 "use client";
 
 import HeroScene from "@/component/HeroScene";
+import { MinDurationLoader } from "@/components/min-duration-loader";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
-import { useRef } from "react";
+import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { Suspense, useRef } from "react";
+
+useGLTF.preload("/assets/bot_final.glb");
 
 function MouseOrbit() {
-    const controlsRef = useRef<any>(null);
+  const controlsRef = useRef<React.ComponentRef<typeof OrbitControls>>(null);
 
-    useFrame((state) => {
-        const controls = controlsRef.current;
-        if (!controls) return;
+  useFrame((state) => {
+    const controls = controlsRef.current;
+    if (!controls) return;
 
-        // movement x-axis
-        const targetAzimuth = state.mouse.x * -0.5;
-        controls.setAzimuthalAngle(targetAzimuth);
+    const targetAzimuth = state.mouse.x * -0.5;
+    controls.setAzimuthalAngle(targetAzimuth);
+    controls.update();
+  });
 
-        // movement y-axis
-        // const targetPolar = 1.25 - state.mouse.y * -0.2;
-        // controls.setPolarAngle(targetPolar);
-        controls.update();
-    });
+  return (
+    <OrbitControls
+      ref={controlsRef}
+      enableZoom={false}
+      enablePan={false}
+      enableRotate={false}
+      enableDamping
+      dampingFactor={0.08}
+    />
+  );
+}
 
-    return (
-        <OrbitControls
-            ref={controlsRef}
-            enableZoom={false}
-            enablePan={false}
-            enableRotate={false}
-            enableDamping
-            dampingFactor={0.08}
-        />
-    );
+function HeroCanvasScene() {
+  return (
+    <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="h-full w-full cursor-pointer">
+      <HeroScene />
+      <Environment preset="city" />
+      <MouseOrbit />
+    </Canvas>
+  );
 }
 
 const HeroCanvas = () => {
+  return (
+    <div className="relative order-1 h-full overflow-hidden md:order-2">
+      <Suspense fallback={<MinDurationLoader />}>
+        <HeroCanvasScene />
+      </Suspense>
+    </div>
+  );
+};
 
-
-
-    return (
-        <div className="relative order-1 md:order-2 overflow-hidden min-h-96">
-            <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="w-full h-full cursor-pointer" >
-                <HeroScene />
-
-                <Environment preset="city" />
-                <MouseOrbit />
-            </Canvas>
-            {/* <div className="absolute top-52 right-[28rem] w-fit p-2 rounded-xl bg-foreground shadow text-background text-xl font-bold">
-              <span>Click here</span>
-            </div> */}
-        </div>
-    )
-}
-
-export default HeroCanvas
+export default HeroCanvas;

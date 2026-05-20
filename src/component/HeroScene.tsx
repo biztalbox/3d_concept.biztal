@@ -10,9 +10,7 @@ const HeroScene = () => {
   const botRef = useRef<Group>(null!);
   // const clickPlayedRef = useRef(false);
 
-  const model = useGLTF('/assets/bot_final.glb');
-
-  console.log(model);
+  const model = useGLTF("/assets/bot_final.glb");
 
   const { actions, mixer } = useAnimations(model.animations, model.scene);
 
