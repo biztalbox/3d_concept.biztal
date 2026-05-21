@@ -150,9 +150,9 @@ export default function ProposeReality() {
     <>
       {/* Section 1 */}
       <section
-        className="bg-secondary dark:bg-secondary/40 py-20 min-h-screen md:h-[2900px]"
+        className="overflow-x-hidden bg-secondary py-20 min-h-screen dark:bg-secondary/40 md:h-[2900px]"
       >
-        <div className="container relative grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="container relative grid min-w-0 grid-cols-1 gap-10 md:grid-cols-2">
 
           <video
             ref={introVideoRef}
@@ -162,10 +162,10 @@ export default function ProposeReality() {
             loop
             preload="metadata"
             autoPlay
-            className="rounded block mx-auto will-change-[width,height,transform]"
+            className="mx-auto block h-auto w-full max-w-full rounded will-change-[width,height,transform]"
           />
 
-          <div className="">
+          <div className="min-w-0 w-full">
             <h2>
               We Propose a New Reality
             </h2>
@@ -202,12 +202,9 @@ export default function ProposeReality() {
       </section>
 
       {/* Section 2   Cognitive Architecture (screenshot layout: static left + 7 hover pillars) */}
-      <section
-        className="bg-secondary dark:bg-secondary/40 pb-12 md:pb-0"
+      <section className="overflow-x-hidden bg-secondary pb-12 dark:bg-secondary/40 md:pb-0">
 
-      >
-
-        <div className="flex w-full flex-col">
+        <div className="flex w-full min-w-0 flex-col">
           {/* Desktop: edge-to-edge columns */}
           <div className="relative hidden min-h-145 w-full min-w-0 lg:block lg:h-[min(78vh,880px)]">
             <div className="flex h-full min-h-145 w-full overflow-hidden bg-secondary dark:bg-secondary/40">

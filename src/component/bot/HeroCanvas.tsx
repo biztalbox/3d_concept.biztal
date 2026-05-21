@@ -44,7 +44,7 @@ function HeroCanvasScene() {
 
 const HeroCanvas = () => {
   return (
-    <div className="relative order-1 h-full overflow-hidden md:order-2">
+    <div className="relative order-1 h-full w-full min-w-0 overflow-hidden md:order-2">
       <Suspense fallback={<MinDurationLoader />}>
         <HeroCanvasScene />
       </Suspense>

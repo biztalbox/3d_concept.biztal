@@ -29,7 +29,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("antialiased", "overflow-x-hidden", poppins.variable)}
     >
-      <body>
+      <body className="min-w-0 overflow-x-hidden">
         <LoaderExtensionProvider>
           <Header />
           {children}
