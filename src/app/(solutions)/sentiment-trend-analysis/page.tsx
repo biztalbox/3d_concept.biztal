@@ -303,7 +303,7 @@ export default function SentimentTrendAnalysisPage() {
           <div
             className="order-2 md:order-1 px-4 py-16 sm:px-0 flex flex-col gap-8"
           >
-            <h2>Understand What Employee Experience, Not Just What Systems Report
+            <h2>Understand What Employee Experience,<span className="text-primary!"> Not Just What Systems Report</span>
             </h2>
 
             <p>
@@ -587,7 +587,8 @@ export default function SentimentTrendAnalysisPage() {
           data-aos-easing={AOS_EASING}
         >
           <h2>
-            Fix Problems Before Productivity Slows Down
+          Understand Friction Before It Becomes Frustration
+
           </h2>
 
           <Link

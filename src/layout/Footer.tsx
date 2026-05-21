@@ -55,7 +55,7 @@ const AI_SOLUTION_CATEGORIES = [
 const POLICY_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/termscondition" },
-  { label: "Cookie Policy", href: "#" },
+  
   
 ];
 

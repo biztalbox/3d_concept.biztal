@@ -34,7 +34,7 @@ function MouseOrbit() {
 
 function HeroCanvasScene() {
   return (
-    <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="h-full w-full cursor-pointer">
+    <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="min-h-96 w-full cursor-pointer">
       <HeroScene />
       <Environment preset="city" />
       <MouseOrbit />

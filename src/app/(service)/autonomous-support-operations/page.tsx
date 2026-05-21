@@ -305,87 +305,84 @@ const page = () => {
                             </p>
                         </div>
 
-                        <div className="mt-10 flex flex-col gap-6 md:mt-12 md:gap-8">
-                            <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 md:gap-6 lg:gap-8">
-                                <article
-                                    className="flex h-full min-h-0 flex-col rounded-2xl bg-secondary p-5 sm:p-6 dark:bg-[#2a2a2a]"
-                                    data-aos="fade-up"
-                                    data-aos-duration={AOS_DURATION}
-                                    data-aos-easing={AOS_EASING}
-                                    data-aos-delay="160"
-                                >
-                                    <h3 className="text-base font-bold leading-snug text-foreground sm:text-lg">
-                                        Fragmented Support Operations
-                                    </h3>
-                                    <ul className="mt-4 flex flex-col gap-3 sm:mt-5">
-                                        {fragmentedSupportItems.map((item) => (
-                                            <li key={item} className="flex items-center gap-2.5 text-left">
-                                                <CompareListIcon variant="negative" />
-                                                <span className="text-sm leading-snug text-muted-foreground">
-                                                    {item}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </article>
-
-                                <article
-                                    className="flex h-full min-h-0 flex-col rounded-2xl border-2 border-primary bg-secondary p-5 sm:p-6 dark:bg-[#2a2a2a]"
-                                    data-aos="zoom-in"
-                                    data-aos-duration={AOS_DURATION}
-                                    data-aos-easing={AOS_EASING}
-                                    data-aos-delay={COMPARE_STAGGER_MS + 160}
-                                >
-                                    <h3 className="text-base font-bold leading-snug text-foreground sm:text-lg">
-                                        Smooth Autonomous Operational Flow
-                                    </h3>
-                                    <ul className="mt-4 flex flex-col gap-3 sm:mt-5">
-                                        {autonomousFlowItems.map((item) => (
-                                            <li key={item} className="flex items-center gap-2.5 text-left">
-                                                <CompareListIcon variant="positive" />
-                                                <span className="text-sm leading-snug text-muted-foreground">
-                                                    {item}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </article>
+                        <div className="mt-10 grid grid-cols-1 items-stretch gap-5 md:mt-12 md:grid-cols-2 md:gap-6 lg:gap-8">
+                            <div
+                                className="order-1 relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 md:order-3 dark:bg-transparent dark:px-0 dark:py-0"
+                                data-aos="fade-up"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                                data-aos-delay="160"
+                            >
+                                <Image
+                                    src="/fragmented.gif"
+                                    alt="Fragmented support workflow diagram showing disconnected ticket, communication, and data paths."
+                                    width={640}
+                                    height={360}
+                                    className="h-auto w-full object-contain"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                />
                             </div>
 
-                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-6 lg:gap-8">
-                                <div
-                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:px-0 dark:py-0"
-                                    data-aos="fade-up"
-                                    data-aos-duration={AOS_DURATION}
-                                    data-aos-easing={AOS_EASING}
-                                    data-aos-delay="200"
-                                >
-                                    <Image
-                                        src="/assets/images/fragmented-support-flow.png"
-                                        alt="Fragmented support workflow diagram showing disconnected ticket, communication, and data paths."
-                                        width={640}
-                                        height={360}
-                                        className="h-auto w-full object-contain"
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                    />
-                                </div>
-                                <div
-                                    className="relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 dark:bg-transparent dark:px-0 dark:py-0"
-                                    data-aos="fade-up"
-                                    data-aos-duration={AOS_DURATION}
-                                    data-aos-easing={AOS_EASING}
-                                    data-aos-delay={COMPARE_STAGGER_MS + 200}
-                                >
-                                    <Image
-                                        src="/assets/images/autonomous-operational-flow.png"
-                                        alt="Smooth autonomous operational flow diagram from signal intake through orchestration to outcomes."
-                                        width={640}
-                                        height={360}
-                                        className="h-auto w-full object-contain"
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                    />
-                                </div>
+                            <article
+                                className="order-2 flex h-full min-h-0 flex-col rounded-2xl bg-secondary p-5 sm:p-6 md:order-1 dark:bg-[#2a2a2a]"
+                                data-aos="fade-up"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                                data-aos-delay="200"
+                            >
+                                <h3 className="text-base font-bold leading-snug text-foreground sm:text-lg">
+                                    Fragmented Support Operations
+                                </h3>
+                                <ul className="mt-4 flex flex-col gap-3 sm:mt-5">
+                                    {fragmentedSupportItems.map((item) => (
+                                        <li key={item} className="flex items-center gap-2.5 text-left">
+                                            <CompareListIcon variant="negative" />
+                                            <span className="text-sm leading-snug text-muted-foreground">
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </article>
+
+                            <div
+                                className="order-3 relative mx-auto w-full max-w-md rounded-xl bg-[#0a0a0a] px-2 py-4 sm:px-4 md:order-4 dark:bg-transparent dark:px-0 dark:py-0"
+                                data-aos="fade-up"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                                data-aos-delay={COMPARE_STAGGER_MS + 160}
+                            >
+                                <Image
+                                    src="/smooth.gif"
+                                    alt="Smooth autonomous operational flow diagram from signal intake through orchestration to outcomes."
+                                    width={640}
+                                    height={360}
+                                    className="h-auto w-full object-contain"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                />
                             </div>
+
+                            <article
+                                className="order-4 flex h-full min-h-0 flex-col rounded-2xl border-2 border-primary bg-secondary p-5 sm:p-6 md:order-2 dark:bg-[#2a2a2a]"
+                                data-aos="zoom-in"
+                                data-aos-duration={AOS_DURATION}
+                                data-aos-easing={AOS_EASING}
+                                data-aos-delay={COMPARE_STAGGER_MS + 200}
+                            >
+                                <h3 className="text-base font-bold leading-snug text-foreground sm:text-lg">
+                                    Smooth Autonomous Operational Flow
+                                </h3>
+                                <ul className="mt-4 flex flex-col gap-3 sm:mt-5">
+                                    {autonomousFlowItems.map((item) => (
+                                        <li key={item} className="flex items-center gap-2.5 text-left">
+                                            <CompareListIcon variant="positive" />
+                                            <span className="text-sm leading-snug text-muted-foreground">
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </article>
                         </div>
                     </div>
                 </div>
@@ -584,14 +581,14 @@ const page = () => {
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay={COMPARE_STAGGER_MS * 2 + 120}
                                 >
-                                    <h4 className="text-base font-bold text-primary sm:text-lg">
+                                    {/* <h4 className="text-base font-bold text-primary sm:text-lg">
                                         AI Handles Repetitive Execution
-                                    </h4>
+                                    </h4> */}
                                     <ul className="mt-5 list-none! space-y-3 text-sm text-foreground sm:text-base">
-                                        <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li>
+                                        <li>Less firefighting. <span className="text-primary" aria-hidden>•</span></li>
+                                        <li>More meaningful operations.<span className="text-primary" aria-hidden>•</span></li>
+                                        {/* <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
+                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li> */}
                                     </ul>
                                 </article>
                             </div>
@@ -605,26 +602,20 @@ const page = () => {
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay="120"
                                 >
-                                    <h4 className="text-base font-bold text-primary sm:text-lg">
+                                    {/* <h4 className="text-base font-bold text-primary sm:text-lg">
                                         AI Handles Repetitive Execution
-                                    </h4>
+                                    </h4> */}
                                     <ul className="mt-5 space-y-3 text-left text-sm text-foreground sm:text-base">
                                         <li className="flex items-center gap-2">
                                             <span className="text-primary" aria-hidden>•</span>
-                                            Ticket Triage
+                                            Less firefighting.
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <span className="text-primary" aria-hidden>•</span>
-                                            Workflow Execution
+                                            More meaningful operations.
+
                                         </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="text-primary" aria-hidden>•</span>
-                                            Ticket Triage
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="text-primary" aria-hidden>•</span>
-                                            Workflow Execution
-                                        </li>
+                                        
                                     </ul>
                                 </article>
 
@@ -655,14 +646,11 @@ const page = () => {
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay={COMPARE_STAGGER_MS * 2 + 120}
                                 >
-                                    <h4 className="text-base font-bold text-primary sm:text-lg">
-                                        AI Handles Repetitive Execution
-                                    </h4>
+                                   
                                     <ul className="mt-5 list-none! space-y-3 text-sm text-foreground sm:text-base">
-                                        <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li>
+                                        
+                                        <li>Fewer repetitive escalations. <span className="text-primary" aria-hidden>•</span></li>
+                                        <li>Faster employee support experiences. <span className="text-primary" aria-hidden>•</span></li>
                                     </ul>
                                 </article>
                             </div>
