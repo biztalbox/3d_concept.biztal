@@ -1,16 +1,17 @@
 "use client";
 
-import ProposeReality from "../component/proposeReality";
-import Autonomous from "../component/Autonomous";
-import PreemptiveIncidentImmuneSystem from "../component/preemptiveIncidentImmuneSystem";
-import SelfHealingDigitalOrganism from "../component/selfHealingDigitalOrganism";
-import JoinAutonomousRevolution from "../component/joinAutonomousRevolution";
-import ThreeCtaCards from "../component/threeCtaCards";
-import ImplementationChronology from "../component/implementationChronology";
-import EconomicTransformation from "../component/economicTransformation";
-import TemporalPredictionPerpetualEvolution from "../component/temporalPredictionPerpetualEvolution";
+import ProposeReality from "@/component/proposeReality";
+import Autonomous from "@/component/Autonomous";
+import PreemptiveIncidentImmuneSystem from "@/component/preemptiveIncidentImmuneSystem";
+import SelfHealingDigitalOrganism from "@/component/selfHealingDigitalOrganism";
+import JoinAutonomousRevolution from "@/component/joinAutonomousRevolution";
+import ThreeCtaCards from "@/component/threeCtaCards";
+import ImplementationChronology from "@/component/implementationChronology";
+import EconomicTransformation from "@/component/economicTransformation";
+import TemporalPredictionPerpetualEvolution from "@/component/temporalPredictionPerpetualEvolution";
 import Link from "next/link";
 import HeroCanvas from "@/component/bot/HeroCanvas";
+import HomeScene from "@/components/3d/HomeScene";
 
 
 
@@ -25,6 +26,12 @@ export default function Home() {
 
   return (
     <main className="w-full min-w-0 overflow-x-hidden">
+
+      {/* <HomeScene /> */}
+
+
+
+
 
       {/* hero */}
       <section id="" className="relative w-full min-w-0 overflow-x-hidden lg:min-h-screen">

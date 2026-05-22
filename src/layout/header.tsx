@@ -135,7 +135,7 @@ const MEGA_MENU: MegaMenuColumn[] = [
       {
         id: "r0",
         label: "Blogs",
-        href: "#",
+        href: "/blogs",
       },
       {
         id: "r1",
@@ -156,7 +156,7 @@ const MEGA_MENU: MegaMenuColumn[] = [
       {
         id: "a0",
         label: "Leadership",
-        href: "#",
+        href: "/leadership",
       },
       {
         id: "a1",
