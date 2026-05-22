@@ -66,7 +66,7 @@ export default function Home() {
 
       <ProposeReality />
       <Autonomous />
-      <PreemptiveIncidentImmuneSystem />
+    <PreemptiveIncidentImmuneSystem /> 
       <SelfHealingDigitalOrganism />
       <TemporalPredictionPerpetualEvolution />
       <EconomicTransformation />

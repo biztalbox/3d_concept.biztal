@@ -7,6 +7,24 @@ import { FaDatabase } from "react-icons/fa";
 import { TbChartDots2 } from "react-icons/tb";
 import { LuMonitorCheck } from "react-icons/lu";
 
+
+
+
+const traditionalOpsItems = [
+  "Depend on keyword-based search",
+
+  "Operate in disconnected silos",
+  "Surface documents, not answers",
+  "Require manual navigation and interpretation",
+];
+
+const predictiveOpsItems = [
+  "Understands context and intent",
+
+  "Connects knowledge across systems",
+  "Embeds intelligence directly into workflows",
+];
+
 const featureCards = [
   {
     Icon: FaDatabase,
@@ -202,8 +220,8 @@ export default function CognitiveKnowledgeDiscoveryPage() {
             <div className="order-2 flex flex-col gap-10 px-6 py-12 md:order-1 md:px-8">
               <h2>AI-Powered Semantic Understanding</h2>
               <p>
-                Machine learning models interpret meaning, context, and relationships across knowledge sources to
-                deliver precise, actionable answers instead of keyword-only search results.
+              Natural language processing and contextual reasoning help ZerofAI understand relationships between incidents, workflows, documents,
+              and user queries—delivering precise and explainable responses.
               </p>
             </div>
             <Image
@@ -232,10 +250,10 @@ export default function CognitiveKnowledgeDiscoveryPage() {
               className="justify-self-end rounded-xl md:border-r-4 border-primary"
             />
             <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-              <h2>Conversational Knowledge Access</h2>
+              <h2>Intelligent Knowledge Delivery</h2>
               <p>
-                Users interact with enterprise knowledge through natural language, receiving summarized,
-                explainable answers without navigating multiple disconnected systems.
+              ZerofAI surfaces relevant knowledge directly within workflows, service interactions, and support experiences reducing friction and
+              accelerating resolution.
               </p>
             </div>
           </div>
@@ -259,6 +277,83 @@ export default function CognitiveKnowledgeDiscoveryPage() {
             ))}
           </div>
         </section>
+        <section
+        className="bg-neutral-100 pb-14 pt-12 text-foreground md:pb-16 md:pt-16 lg:pb-20 lg:pt-20 dark:bg-[#121212] dark:text-white"
+        aria-labelledby="predictive-ops-heading"
+      >
+        <div className="container max-w-6xl px-4 sm:px-6">
+          <h2
+            id="predictive-ops-heading"
+            className="text-center text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-easing="ease-out-cubic"
+          >
+            <span className="text-primary">Beyond Enterprise</span>
+            <span className="text-neutral-900 dark:text-white">
+              {" "}
+              Search Toward Knowledge Intelligence
+            </span>
+          </h2>
+
+          <div className="mt-12 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-2 md:gap-10 lg:mt-16">
+            {/* Traditional Systems */}
+            <div
+              className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+            >
+              <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-wide text-primary-foreground sm:px-6 sm:text-sm">
+                Traditional Systems
+              </div>
+              <ul className="mt-2 flex flex-col gap-4 sm:gap-5">
+                {traditionalOpsItems.map((line) => (
+                  <li
+                    key={line}
+                    className="flex gap-3 text-left text-sm leading-relaxed text-muted-foreground sm:text-base dark:text-white/95"
+                  >
+                    <span
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground dark:bg-white"
+                      aria-hidden
+                    />
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* ZerofAI */}
+            <div
+              className="relative flex flex-col rounded-2xl border border-border bg-card px-6 pb-8 pt-11 shadow-sm sm:px-8 sm:pb-10 sm:pt-12 dark:border-white/6 dark:bg-[#1a1a1a] dark:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)]"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-easing="ease-out-cubic"
+              data-aos-delay={COMPARE_STAGGER_MS}
+            >
+              <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-wide text-primary-foreground sm:px-6 sm:text-sm">
+                ZerofAI
+              </div>
+              <ul className="mt-2 flex flex-col gap-4 sm:gap-5">
+                {predictiveOpsItems.map((line) => (
+                  <li
+                    key={line}
+                    className="flex gap-3 text-left text-sm leading-relaxed text-muted-foreground sm:text-base dark:text-white/95"
+                  >
+                    <span
+                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground dark:bg-white"
+                      aria-hidden
+                    />
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          
+        </div>
+      </section>
 
         <section className="py-16">
           <div
@@ -276,6 +371,8 @@ export default function CognitiveKnowledgeDiscoveryPage() {
             </Link>
           </div>
         </section>
+
+        
       </main>
     </AosInit>
   );

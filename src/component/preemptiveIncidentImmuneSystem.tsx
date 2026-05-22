@@ -162,7 +162,7 @@ export default function PreemptiveIncidentImmuneSystem() {
     <section className="pt-16">
       <div className="container">
         <h2 data-aos="fade-left">Pre-emptive Incident Immune System</h2>
-
+         <p data-aos="fade-left" className=" text-primary! py-1">Intelligent Incident Mitigation (IIM)</p>
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr]">
           <div className="relative max-w-4xl border-l-4 border-primary pl-6 text-sm">
             <p data-aos="fade-left">

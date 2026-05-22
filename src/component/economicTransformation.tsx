@@ -330,7 +330,7 @@ export default function EconomicTransformation() {
 
               <div className="mt-5 space-y-5 text-[12px] leading-6 text-white/35 md:text-[13px]">
                 <p>
-                  $1M redirected to innovation initiatives that drive competitive
+                  $1.1M redirected to innovation initiatives that drive competitive
                   advantage. Engineers architecting next-generation
                   capabilities. Maintenance becomes automatic, invisible,
                   costless.

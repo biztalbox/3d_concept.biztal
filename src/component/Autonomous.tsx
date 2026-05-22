@@ -36,8 +36,8 @@ const ROWS: Row[] = [
     imageUrl: IMAGE_URL_3,
   },
   {
-    title: "Agentic Self-Healing",
-    subtitle: "Password resets, software deployment, service fulfillment with zero human touch",
+    title: "Sentient Ticket Management",
+    subtitle: "Incidents autonomously created, routed, and resolved with emotional intelligence",
     imageUrl: IMAGE_URL_4,
   },
 ];
@@ -57,12 +57,15 @@ export default function Autonomous() {
   }, []);
 
   return (
-    <section className="bg-black py-16">
+    <section className="bg-black py-25">
       <div className="container">
-        <h2 className="text-center text-white">
+        <h2 className="text-center text-primary!">
           Autonomous Service Consciousness
         </h2>
+         
 
+        <p className="text-foreground pt-5 font-bold!">Your service desk reimagined as a conversational command center where natural language becomes orchestrated action. A user types "Excel crashed." Within 3.2 seconds, reality shifts.</p>
+        <p className="text-foreground pt-5">The Agentic Workflow Orchestrator diagnoses the memory leak, executes remediation protocols, reinstalls the application with optimized configurations, validates full functionality across dependent services, and logs comprehensive resolution documentation—all within the chat interface. The user never leaves the conversation. The problem becomes history before coffee gets cold.</p>
         <div className="mt-10">
           <div
             className="relative"
