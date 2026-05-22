@@ -79,14 +79,41 @@ function ScrollPercentCounter({
   );
 }
 
-const logos = [
-  { src: "/brands/microsoft-intune.svg", alt: "Microsoft Intune" },
-  { src: "/brands/azure-active-directory.svg", alt: "Azure Active Directory" },
-  { src: "/brands/manageengine.svg", alt: "ManageEngine" },
-  { src: "/brands/symphony.svg", alt: "Symphony" },
-  { src: "/brands/servicenow.svg", alt: "ServiceNow" },
-  
+/** Default image size (px) — used when width/height omitted on an entry */
+const DEFAULT_LOGO_WIDTH = 160;
+const DEFAULT_LOGO_HEIGHT = 48;
+/** Padding each side of image inside its cell — keeps divider gaps even */
+const LOGO_SLOT_PADDING = 8;
+const LOGO_SLOT_HEIGHT = 80;
+
+type IntegrationLogo = {
+  src: string;
+  alt: string;
+  /** Image width in px — adjust per brand */
+  width?: number;
+  /** Image height in px — adjust per brand */
+  height?: number;
+  /** Cell width in px — override only if one logo needs a different slot */
+  slotWidth?: number;
+};
+
+const integrationLogos: IntegrationLogo[] = [
+  { src: "/brands/microsoft-intune.svg", alt: "Microsoft Intune", width: 280, height: 90 },
+  { src: "/brands/azure-active-directory.svg", alt: "Azure Active Directory", width: 250, height: 80 },
+  { src: "/brands/manageengine.svg", alt: "ManageEngine", width: 250, height: 80 },
+  { src: "/brands/symphony.svg", alt: "Symphony", width: 250, height: 80 },
+  { src: "/brands/servicenow.svg", alt: "ServiceNow", width: 250, height: 80 },
+  { src: "/brands/infron.avif", alt: "Infor", width: 120, height: 40 },
 ];
+
+/** Same cell width for every logo — matches widest entry so dividers align evenly */
+const LOGO_SLOT_WIDTH = Math.max(
+  ...integrationLogos.map(
+    (logo) =>
+      logo.slotWidth ??
+      (logo.width ?? DEFAULT_LOGO_WIDTH) + LOGO_SLOT_PADDING * 2
+  )
+);
 
 export default function ComplaincePage() {
   useEffect(() => {
@@ -136,57 +163,63 @@ export default function ComplaincePage() {
         </div>
       </section>
 
-      {/* logos / integrations marquee   tight row, large logos, black dividers (reference layout) */}
-      <section className="bg-secondary dark:bg-secondary/40 py-16">
+      {/* logos / integrations marquee */}
+      <section className="bg-secondary py-16 dark:bg-secondary/40">
         <div className="">
-          <div className="container mb-8 ">
-
+          <div className="container mb-8">
             <h2>
               Seamlessly integrating with the tools Industry Leaders rely on:
             </h2>
           </div>
 
-          <div className="w-full bg-white py-6  ring-black/10 sm:py-7 md:py-8">
+          <div className="w-full bg-white py-6 ring-black/10 sm:py-7 md:py-8">
             <div className="logo-marquee">
               <div
                 className="logo-marquee__track"
                 aria-label="Integration logos"
               >
-                {[...logos, ...logos].map((logo, idx) => (
-                  <div
-                    key={`${logo.src}-${idx}`}
-                    className="flex flex-none items-center"
-                  >
-                    {idx > 0 ? (
+                {[...integrationLogos, ...integrationLogos].map((logo, idx) => {
+                  const w = logo.width ?? DEFAULT_LOGO_WIDTH;
+                  const h = logo.height ?? DEFAULT_LOGO_HEIGHT;
+                  const slotW = logo.slotWidth ?? LOGO_SLOT_WIDTH;
+
+                  return (
+                    <div
+                      key={`${logo.src}-${idx}`}
+                      className="flex flex-none items-center"
+                    >
+                      {idx > 0 ? (
+                        <div
+                          aria-hidden
+                          className="mx-1 h-11 w-px shrink-0 self-center bg-black sm:mx-3 sm:h-12 md:h-14"
+                        />
+                      ) : null}
                       <div
-                        aria-hidden
-                        className="mx-0.5 h-11 w-px shrink-0 self-center bg-black sm:mx-1 sm:h-12 md:h-14"
-                      />
-                    ) : null}
-                    <div className="flex h-[46px] w-[200px] flex-none items-center justify-center px-1.5 sm:h-[52px] sm:w-[250px] sm:px-2 md:h-[58px] md:w-[300px] lg:h-[60px] lg:w-[320px]">
-                      <div className="relative h-full w-full">
+                        className="flex shrink-0 items-center justify-center"
+                        style={{ width: slotW, height: LOGO_SLOT_HEIGHT }}
+                      >
                         <Image
                           src={logo.src}
                           alt={logo.alt}
-                          fill
-                          sizes="(max-width: 640px) 200px, (max-width: 768px) 250px, 320px"
-                          className="object-contain object-center"
-                          priority={idx < logos.length}
+                          width={w}
+                          height={h}
+                          className="max-h-full max-w-full object-contain object-center"
+                          style={{ width: w, height: h }}
                         />
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
 
           <div className="container mt-12 sm:mt-14">
-            <div
-              className="mx-auto rounded-3xl bg-white px-6 py-10 ring-1 ring-white/10 sm:px-10 sm:py-12 dark:bg-secondary/40"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
+          <div
+            className="mx-auto rounded-3xl bg-white px-6 py-10 ring-1 ring-white/10 sm:px-10 sm:py-12 dark:bg-secondary/40"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
               <div className="max-w-4xl" data-aos="fade-up" data-aos-delay="120">
                 <h2 className="text-black dark:text-white">
                   Imaging Laptops is a Waste of IT Talent

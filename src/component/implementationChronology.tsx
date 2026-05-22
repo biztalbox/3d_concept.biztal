@@ -83,7 +83,7 @@ export default function ImplementationChronology() {
             phase="Phase 1"
             title="Consciousness Awakening"
             day="Day 1"
-            body="Hyper-orchestrative self-service portal goes live. Users experience conversational workflows that feel like magic. Autonomous incident resolution foundation activates across your infrastructure. Self-healing compute capabilities begin operating."
+            body="Hyper-orchestrative self-service portal goes live. Users experience conversational workflows that feel like magic. Autonomous incident resolution foundation activates across your infrastructure. Self-healing compute capabilities begin operating. Your team witnesses their first incidents that resolve themselves."
             delay={0}
           />
 
