@@ -676,7 +676,7 @@ alerts further complicates visibility, making it harder to separate critical iss
             data-aos-easing="ease-out-cubic"
           >
             <p className="text-xl font-semibold leading-snug text-neutral-900 sm:text-2xl md:text-[1.65rem] md:leading-snug dark:text-white">
-              Unlock Access Without Waiting on IT
+            Stop Chasing Alerts. Start Preventing Issues.
             </p>
             <Link
               href="#"

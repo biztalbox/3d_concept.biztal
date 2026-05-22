@@ -85,7 +85,7 @@ const logos = [
   { src: "/brands/manageengine.svg", alt: "ManageEngine" },
   { src: "/brands/symphony.svg", alt: "Symphony" },
   { src: "/brands/servicenow.svg", alt: "ServiceNow" },
-  { src: "/brands/infron.svg", alt: "Infron" },
+  
 ];
 
 export default function ComplaincePage() {
@@ -119,8 +119,8 @@ export default function ComplaincePage() {
             </h2>
 
             <p className="mt-8 max-w-4xl text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and auto-remediates compliance drift across every endpoint without tickets, scripts, or human intervention.
-            </p>
+            Empower your global workforce from day one. ZerofAI bypasses the IT staging room, delivering fully configured, secure,
+            and personalized devices directly from the factory to the employee’s desk.            </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
               <Link
