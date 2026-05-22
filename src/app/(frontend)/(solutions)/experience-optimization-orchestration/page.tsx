@@ -4,12 +4,17 @@ import IntelligenceAlternatingRows from "@/component/IntelligenceAlternatingRows
 import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
 import Link from "next/link";
 import Image from "next/image";
+import type { IconType } from "react-icons";
 import { FaDatabase } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { TbChartDots2 } from "react-icons/tb";
 import { LuLaptopMinimalCheck, LuMonitorCheck } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
 import { BsPersonWorkspace } from "react-icons/bs";
+
+type OutcomeStat =
+  | { icon: string; iconW: number; title: string; body: string }
+  | { Icon: IconType; iconW: number; title: string; body: string };
 
 const featureCards = [
   {
@@ -33,11 +38,10 @@ const featureCards = [
   },
 ] as const;
 
-const outcomeStats = [
+const outcomeStats: OutcomeStat[] = [
   {
     icon: "/assets/icons/watch.png",
     iconW: 100,
-    
     title: "Improved Employee Experience",
     body: "Improved Employee Experience through more seamless digital workflows",
   },
@@ -59,7 +63,7 @@ const outcomeStats = [
     title: "Better Workplace Visibility",
     body: "through continuous experience intelligence insights",
   },
-] as const;
+];
 
 const workplaceTraditionalItems = [
   "Focus on isolated tools and systems",
@@ -249,25 +253,39 @@ Over time, this digital friction slows work, reduces engagement, increases cogni
           <div className="container grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-8">
             {outcomeStats.map((stat, index) => {
               const { iconW, title, body } = stat;
-              const Icon = "Icon" in stat ? stat.Icon : null;
-              return (
-              <div
-                key={title}
-                className="flex flex-col items-center gap-4 text-center"
-                data-aos="fade-up"
-                data-aos-duration="900"
-                data-aos-easing="ease-out-cubic"
-                data-aos-delay={index * CARD_STAGGER_MS}
-              >
-                {Icon ? (
+
+              let iconNode: React.ReactNode;
+              if ("Icon" in stat) {
+                const Icon = stat.Icon;
+                iconNode = (
                   <Icon strokeWidth={0.6} className="text-white" size={iconW} aria-hidden />
-                ) : (
-                  <Image src={stat.icon} className="invert" width={iconW} height={iconW} alt="" />
-                )}
-                <h5 className="text-xl font-bold text-white">{title}</h5>
-                <p className="text-white!">{body}</p>
-              </div>
-            );
+                );
+              } else {
+                iconNode = (
+                  <Image
+                    src={stat.icon}
+                    className="invert"
+                    width={iconW}
+                    height={iconW}
+                    alt=""
+                  />
+                );
+              }
+
+              return (
+                <div
+                  key={title}
+                  className="flex flex-col items-center gap-4 text-center"
+                  data-aos="fade-up"
+                  data-aos-duration="900"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-delay={index * CARD_STAGGER_MS}
+                >
+                  {iconNode}
+                  <h5 className="text-xl font-bold text-white">{title}</h5>
+                  <p className="text-white!">{body}</p>
+                </div>
+              );
             })}
           </div>
         </section>
