@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const SCALABILITY_GIF = "/water-overflow.gif";
+
 type StatItem =
   | {
       value: number;
@@ -43,29 +45,51 @@ function StatCard({
     <div className="mx-auto flex h-full w-full min-w-0 flex-col items-center sm:max-w-none  lg:max-w-none">
       <div
         className={[
-          "relative z-10 w-24 overflow-hidden text-center",
+          "relative z-10 w-24 shrink-0 overflow-hidden text-center",
           STAT_BAR_HEIGHT_CLASS,
           barBg,
         ].join(" ")}
       >
-        <div
-          ref={setFillRef(index)}
-          data-target={Math.max(0, Math.min(100, Math.round(item.fillPercent)))}
-          className={[
-            "absolute bottom-0 left-0 right-0 h-0 will-change-[height]",
-            "bg-[linear-gradient(180deg,#23D3E8_0%,#19B6C9_60%,#118DA0_100%)]",
-          ].join(" ")}
-          aria-hidden
-        />
+        {item.value === "infinity" ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/water-overflow.gif"
+              
+              alt=""
+              className="h-full w-full object-cover"
+              aria-hidden
+            />
+            <h4
+              ref={setTextRef(index)}
+              className="absolute inset-0 z-10 flex items-center justify-center text-7xl font-extrabold leading-none text-white"
+              style={{ willChange: "opacity" }}
+            >
+              ∞
+            </h4>
+          </>
+        ) : (
+          <>
+            <div
+              ref={setFillRef(index)}
+              data-target={Math.max(0, Math.min(100, Math.round(item.fillPercent)))}
+              className={[
+                "absolute bottom-0 left-0 right-0 h-0 will-change-[height]",
+                "bg-[linear-gradient(180deg,#23D3E8_0%,#19B6C9_60%,#118DA0_100%)]",
+              ].join(" ")}
+              aria-hidden
+            />
 
-        <h4
-          ref={setTextRef(index)}
-          data-count-target={typeof item.value === "number" ? `${item.value}` : ""}
-          className="absolute inset-0 flex items-center justify-center text-7xl font-extrabold leading-none text-white"
-          style={{ willChange: "contents, opacity" }}
-        >
-          {item.value === "infinity" ? "∞" : `${item.value}%`}
-        </h4>
+            <h4
+              ref={setTextRef(index)}
+              data-count-target={`${item.value}`}
+              className="absolute inset-0 flex items-center justify-center text-7xl font-extrabold leading-none text-white"
+              style={{ willChange: "contents, opacity" }}
+            >
+              {`${item.value}%`}
+            </h4>
+          </>
+        )}
       </div>
 
       <div className="relative -mt-px flex w-full flex-1 overflow-hidden rounded border border-white/8 bg-secondary dark:bg-secondary/40">
@@ -153,7 +177,11 @@ export default function EconomicTransformation() {
       textRefs.current.forEach((el, i) => {
         if (!el) return;
         const item = stats[i];
-        el.textContent = item.value === "infinity" ? "∞" : `${item.value}%`;
+        if (item.value === "infinity") {
+          el.style.opacity = "1";
+          return;
+        }
+        el.textContent = `${item.value}%`;
         el.style.opacity = "1";
       });
       return;
@@ -169,12 +197,11 @@ export default function EconomicTransformation() {
           if (!el) return;
           const item = stats[i];
           if (item.value === "infinity") {
-            el.textContent = "∞";
             gsap.set(el, { opacity: 0 });
-          } else {
-            el.textContent = "0%";
-            gsap.set(el, { opacity: 1 });
+            return;
           }
+          el.textContent = "0%";
+          gsap.set(el, { opacity: 1 });
         });
       };
 

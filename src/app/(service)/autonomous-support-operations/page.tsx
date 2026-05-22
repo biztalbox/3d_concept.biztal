@@ -516,52 +516,41 @@ const page = () => {
                         data-aos-duration={AOS_DURATION}
                         data-aos-easing={AOS_EASING}
                         data-aos-delay="80"
-                    >                        <div className="mx-auto flex max-w-3xl flex-col gap-5 text-center sm:gap-6">
-                            <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    >                        <div className="mx-auto flex w-full max-w-3xl flex-col gap-5 text-left sm:gap-6 lg:text-center">
+                            <p className="text-left! text-sm leading-relaxed text-muted-foreground! sm:text-base">
                                 ZerofAI is designed to reduce repetitive operational workload not replace operational teams.
                             </p>
-                            <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                            <p className="text-left! text-sm leading-relaxed text-muted-foreground! sm:text-base">
                                 By continuously orchestrating repetitive support execution in the background, enterprise teams gain more time to focus on governance, strategic initiatives, employee experience, and operational innovation.
                             </p>
-                            <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                            <p className="text-left! text-sm leading-relaxed text-muted-foreground! sm:text-base">
                                 Modern enterprise operational models increasingly combine autonomous execution with governed human oversight to improve operational scalability while maintaining visibility and control.
                             </p>
                         </div>
 
                         <div className="mt-12 lg:mt-16">
-                            {/* Mobile: stacked cards + hub */}
-                            <div className="flex flex-col items-center gap-6 lg:hidden">
+                            {/* Mobile: stacked cards + hub (same content as desktop, left-aligned) */}
+                            <div className="flex w-full flex-col items-stretch gap-6 lg:hidden">
                                 <article
-                                    className="z-10 w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-6 dark:border-white/15 dark:bg-[#1e1e1e]"
+                                    className="z-10 w-full rounded-xl border border-neutral-200 bg-white p-6 text-left dark:border-white/15 dark:bg-[#1e1e1e]"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay="120"
                                 >
-                                    <h4 className="text-base font-bold text-primary sm:text-lg">
-                                        AI Handles Repetitive Execution
-                                    </h4>
-                                    <ul className="mt-5 space-y-3 text-left text-sm text-foreground sm:text-base">
-                                        <li className="flex items-center gap-2">
+                                    <ul className="list-none! space-y-3 pl-0! text-left text-sm text-foreground! sm:text-base">
+                                        <li className="flex items-center justify-start gap-2">
                                             <span className="text-primary" aria-hidden>•</span>
-                                            Ticket Triage
+                                            Less firefighting.
                                         </li>
-                                        <li className="flex items-center gap-2">
+                                        <li className="flex items-center justify-start gap-2">
                                             <span className="text-primary" aria-hidden>•</span>
-                                            Workflow Execution
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="text-primary" aria-hidden>•</span>
-                                            Ticket Triage
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <span className="text-primary" aria-hidden>•</span>
-                                            Workflow Execution
+                                            More meaningful operations.
                                         </li>
                                     </ul>
                                 </article>
                                 <div
-                                    className="z-10 flex w-fit items-center justify-center rounded-full border border-primary bg-secondary p-5 dark:bg-secondary/40 sm:p-6"
+                                    className="z-10 mx-auto flex w-fit items-center justify-center rounded-full border border-primary bg-secondary p-5 dark:bg-secondary/40 sm:p-6"
                                     data-aos="zoom-in"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
@@ -576,20 +565,21 @@ const page = () => {
                                     </div>
                                 </div>
                                 <article
-                                    className="z-10 w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-6 text-right dark:border-white/15 dark:bg-[#1e1e1e]"
+                                    className="z-10 w-full rounded-xl border border-neutral-200 bg-white p-6 text-left dark:border-white/15 dark:bg-[#1e1e1e]"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay={COMPARE_STAGGER_MS * 2 + 120}
                                 >
-                                    {/* <h4 className="text-base font-bold text-primary sm:text-lg">
-                                        AI Handles Repetitive Execution
-                                    </h4> */}
-                                    <ul className="mt-5 list-none! space-y-3 text-sm text-foreground sm:text-base">
-                                        <li>Less firefighting. <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>More meaningful operations.<span className="text-primary" aria-hidden>•</span></li>
-                                        {/* <li>Ticket Triage <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Workflow Execution <span className="text-primary" aria-hidden>•</span></li> */}
+                                    <ul className="list-none! space-y-3 pl-0! text-left text-sm text-foreground! sm:text-base">
+                                        <li className="flex items-center justify-start gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Fewer repetitive escalations.
+                                        </li>
+                                        <li className="flex items-center justify-start gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Faster employee support experiences.
+                                        </li>
                                     </ul>
                                 </article>
                             </div>

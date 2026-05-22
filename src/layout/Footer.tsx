@@ -20,34 +20,31 @@ const NAV_LINKS = [
 
 const AI_SOLUTION_CATEGORIES = [
   {
-    title: "Endpoint Management",
+    title: "Autonomous Endpoint Governance",
     items: [
-      { label: "Compliance Hardening", href: "/continuous-compliance-hardening" },
-      { label: "Sentimental Analysis", href: "/sentiment-trend-analysis" },
-      { label: "Software Deployment", href: "/automated-zero-touch-provisioning" },
-      { label: "AD Management", href: "/identity-access-automation" },
-      { label: "Software Metering", href: "/employee-productivity-guardrails" },
-      { label: "Auto Compliance Adherence", href: "/continuous-compliance-hardening" },
-      { label: "AI Insights", href: "/predictive-analytics" },
-      { label: "Analytical Dashboard", href: "/predictive-analytics" },
+      { label: "Continuous Compliance & Hardening", href: "/continuous-compliance-hardening" },
+      { label: "Automated Zero-Touch Provisioning", href: "/automated-zero-touch-provisioning" },
+      { label: "Identity & Access Automation", href: "/identity-access-automation" },
+      { label: "Predictive Health Analytics", href: "/predictive-analytics" },
     ],
   },
   {
-    title: "End-user Management",
+    title: "Intelligent Service Automation",
     items: [
-      { label: "Ticket Management", href: "/zero-touch-ticket-resolution" },
-      { label: "Password Reset/ Account Unlock", href: "/autonomous-identity-recovery" },
-      { label: "Knowledge Search", href: "/cognitive-knowledge-discovery" },
-      { label: "Service Workflow Automation", href: "/smart-workflow-orchestration" },
-      { label: "One Click Troubleshooters", href: "/one-click-auto-remediation" },
+      { label: "Zero-Touch Ticket Resolution", href: "/zero-touch-ticket-resolution" },
+      { label: "Autonomous Identity Recovery", href: "/autonomous-identity-recovery" },
+      { label: "Cognitive Knowledge Discovery", href: "/cognitive-knowledge-discovery" },
+      { label: "Smart Workflow Orchestration", href: "/smart-workflow-orchestration" },
+      { label: "One Click Auto-Remediation", href: "/one-click-auto-remediation" },
     ],
   },
   {
-    title: "Digital Employee Experience",
+    title: "Workplace Intelligence & DEX",
     items: [
-      { label: "Experience Management", href: "/experience-optimization-orchestration" },
-      { label: "Employee Engagement", href: "/employee-productivity-guardrails" },
-      { label: "Self Healing", href: "/proactive-self-healing" },
+      { label: "Proactive Self-Healing", href: "/proactive-self-healing" },
+      { label: "Sentiment Trend Analysis", href: "/sentiment-trend-analysis" },
+      { label: "Employee Productivity Guardrails", href: "/employee-productivity-guardrails" },
+      { label: "Experience Optimization & Orchestration", href: "/experience-optimization-orchestration" },
     ],
   },
 ];
@@ -113,8 +110,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-2 mt-5">
-            <p className="flex items-center  text-xs font-semibold  text-foreground">
-             
+            <p className="flex items-center text-lg! font-bold! text-foreground! leading-normal! md:text-sm! md:font-semibold!">
                Company
             </p>
             <ul className="mt-5 space-y-3.5">
@@ -137,7 +133,7 @@ export default function Footer() {
             <div className="mt-5 grid grid-cols-1 gap-8 sm:grid-cols-3">
               {AI_SOLUTION_CATEGORIES.map((category) => (
                 <div key={category.title}>
-                  <p className="text-sm font-semibold text-foreground">
+                  <p className="text-lg! font-bold! text-foreground! leading-normal! md:text-sm! md:font-semibold!">
                     {category.title}
                   </p>
                   <ul className="mt-4 space-y-3.5 list-none! pl-0!">

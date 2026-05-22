@@ -55,7 +55,8 @@ export default function ComplaincePage() {
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
           >
-            The Era of Manual Compliance is Over.
+            The Era of <span className="text-primary!">Manual Compliance is Over.</span>
+           
           </h2>
           <p
             className=" mt-6 dark:text-white!"
