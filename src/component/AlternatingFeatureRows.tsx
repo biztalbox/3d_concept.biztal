@@ -110,22 +110,16 @@ export default function AlternatingFeatureRows({
               />
             );
 
+            const imageOrder = row.imageFirst ? "order-1 md:order-1" : "order-1 md:order-2";
+            const cardOrder = row.imageFirst ? "order-2 md:order-2" : "order-2 md:order-1";
+
             return (
               <div
                 key={row.title}
                 className="flex flex-col items-stretch gap-8 md:flex-row md:items-center md:gap-10 lg:gap-14"
               >
-                {row.imageFirst ? (
-                  <>
-                    {image}
-                    {card}
-                  </>
-                ) : (
-                  <>
-                    {card}
-                    {image}
-                  </>
-                )}
+                <div className={`w-full min-w-0 ${imageOrder}`}>{image}</div>
+                <div className={`w-full min-w-0 ${cardOrder}`}>{card}</div>
               </div>
             );
           })}

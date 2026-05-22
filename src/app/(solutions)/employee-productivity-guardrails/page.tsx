@@ -85,7 +85,7 @@ export default function ComplaincePage() {
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2 pb-10">
           <div className="order-2 md:order-1 px-4 py-16 sm:px-0 flex flex-col gap-8">
-            <h2>Protect Productive Work Time Across the Enterprise.
+            <h2>Protect Productive Work Time<span className="text-primary!"> Across the Enterprise.</span>
             </h2>
 
             <p>

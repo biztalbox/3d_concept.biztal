@@ -133,7 +133,7 @@ function RecoveryStoryTextBlock({
       className="flex w-full flex-col"
     >
       <span className="h-px w-10 shrink-0 bg-primary sm:w-12" aria-hidden />
-      <h3 className="mt-5 text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:mt-6 sm:text-3xl md:text-4xl dark:text-white">
+      <h3 className="mt-5 text-balance text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:mt-6 sm:text-2xl md:text-3xl lg:text-4xl dark:text-white">
         {title}
       </h3>
       <p className="mt-5 text-sm leading-relaxed text-neutral-600 sm:mt-6 sm:text-base sm:leading-8 dark:text-white/85">
@@ -157,14 +157,21 @@ function RecoveryStoryRow({
   const imageAnimation = imageFirst ? "fade-right" : "fade-left";
   const textAnimation = imageFirst ? "fade-left" : "fade-right";
 
+  const imageOrder = imageFirst ? "order-1 md:order-1" : "order-1 md:order-2";
+  const textOrder = imageFirst ? "order-2 md:order-2" : "order-2 md:order-1";
+
   const textCol = (
-    <div className="flex min-h-0 w-full flex-1 flex-col justify-center md:py-10">
+    <div
+      className={`flex min-h-0 w-full flex-1 flex-col justify-center md:py-10 ${textOrder}`}
+    >
       <RecoveryStoryTextBlock title={title} body={body} animation={textAnimation} />
     </div>
   );
 
   const imageCol = (
-    <div className="flex min-h-[200px] w-full flex-1 flex-col md:h-full md:min-h-0">
+    <div
+      className={`flex min-h-[200px] w-full flex-1 flex-col md:h-full md:min-h-0 ${imageOrder}`}
+    >
       <RecoveryStoryImage
         src={image}
         alt={title}
@@ -175,18 +182,9 @@ function RecoveryStoryRow({
   );
 
   return (
-    <div className="grid grid-cols-1 gap-8 overflow-hidden rounded-[28px] bg-white p-6 shadow-sm ring-1 ring-black/10 sm:gap-10 sm:p-8 md:grid-cols-2 md:items-stretch md:gap-10 md:px-10 md:py-0 lg:rounded-[32px] dark:bg-black dark:shadow-none dark:ring-white/10">
-      {imageFirst ? (
-        <>
-          {imageCol}
-          {textCol}
-        </>
-      ) : (
-        <>
-          {textCol}
-          {imageCol}
-        </>
-      )}
+    <div className="grid grid-cols-1 gap-6 overflow-hidden rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/10 sm:gap-8 sm:rounded-[28px] sm:p-6 md:grid-cols-2 md:items-stretch md:gap-10 md:p-8 md:px-10 md:py-0 lg:rounded-[32px] dark:bg-black dark:shadow-none dark:ring-white/10">
+      {imageCol}
+      {textCol}
     </div>
   );
 }
@@ -256,7 +254,7 @@ function RecoveryCompareCard({
           {steps.map((label, i) => (
             <li key={label} className="flex items-center gap-2.5 sm:gap-3">
               <CompareStepBadge index={i} />
-              <span className="text-xs font-medium leading-snug text-neutral-800 sm:text-[13px] dark:text-white">
+              <span className="min-w-0 flex-1 text-xs font-medium leading-snug text-neutral-800 sm:text-[13px] dark:text-white">
                 {label}
               </span>
             </li>
@@ -315,7 +313,7 @@ function RecoveryFeatureCard({
       data-aos-easing="ease-out-cubic"
       data-aos-delay={aosDelay}
     >
-      <div className="group relative flex h-full min-h-80 w-full flex-col rounded-2xl border border-transparent bg-white text-center shadow-sm ring-1 ring-black/5 transition-colors duration-200 hover:border-primary sm:min-h-88 md:min-h-0 dark:bg-secondary dark:shadow-none dark:ring-white/10 dark:hover:border-primary">
+      <div className="group relative flex h-full min-h-[17rem] w-full flex-col rounded-2xl border border-transparent bg-white text-center shadow-sm ring-1 ring-black/5 transition-colors duration-200 hover:border-primary sm:min-h-80 md:min-h-0 dark:bg-secondary dark:shadow-none dark:ring-white/10 dark:hover:border-primary">
         <div className="absolute left-1/2 top-8 z-20 flex size-13 -translate-x-1/2 items-center justify-center rounded-2xl bg-[#7DD3FC] text-neutral-900 shadow-md sm:top-10 sm:size-14">
           <Icon className="size-7 sm:size-8" aria-hidden />
         </div>
@@ -343,20 +341,19 @@ export default function AutonomousIdentityRecoveryPage() {
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
           <div
-            className="order-2 py-14 sm:px-6 sm:py-16 md:order-1"
+            className="order-2 px-1 py-10 sm:px-0 sm:py-14 md:order-1 md:py-16"
             data-aos="fade-up"
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
           >
-            <h2>
+            <h2 className="text-balance text-2xl leading-tight sm:text-3xl md:text-4xl">
               Recover Access Without{" "}
-              <span className="text-primary! text-3xl! sm:text-5xl!">
-                {" "}
+              <span className="text-primary! text-4xl!">
                 Raising a Ticket.
               </span>
             </h2>
 
-            <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
+            <p className="mt-6 max-w-[640px] text-sm leading-6 text-black/70 dark:text-white/75 sm:mt-8 sm:text-sm sm:leading-7 md:mt-10">
               ZerofAI enables secure, zero-touch identity recovery, automatically restoring user
               access across systems without manual verification, service desk involvement, or
               delays.
@@ -378,7 +375,7 @@ export default function AutonomousIdentityRecoveryPage() {
       <section className="w-full overflow-x-hidden bg-neutral-100 py-14 sm:py-20 dark:bg-secondary/40">
         <div className="container">
           <h3
-            className="text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+            className="text-balance text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl md:leading-[1.15] dark:text-white"
             data-aos="fade-up"
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
@@ -411,7 +408,7 @@ export default function AutonomousIdentityRecoveryPage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-10 grid w-full max-w-xl grid-cols-1 gap-5 px-5 sm:mt-12 sm:max-w-2xl sm:px-6 md:mt-12 md:max-w-4xl md:grid-cols-2 md:items-stretch md:gap-6 lg:max-w-5xl">
+        <div className="mx-auto mt-10 grid w-full max-w-xl grid-cols-1 gap-4 sm:mt-12 sm:max-w-2xl sm:gap-5 md:mt-12 md:max-w-4xl md:grid-cols-2 md:items-stretch md:gap-6 lg:max-w-5xl">
           <div
             data-aos="fade-up"
             data-aos-duration="900"
@@ -444,11 +441,11 @@ export default function AutonomousIdentityRecoveryPage() {
         </div>
       </section>
 
-      <section className=" py-10 dark:bg-secondary/40">
+      <section className="overflow-x-hidden py-10 sm:py-12 dark:bg-secondary/40">
         <div className="container">
-          <div className="  rounded-2xl px-10 border border-neutral-200/90 bg-neutral-50 py-1 sm:rounded-3xl sm:px-7 sm:py-14 md:rounded-[28px] md:px-10 md:py-16 lg:px-12 dark:border-white/10 dark:bg-black dark:shadow-none">
+          <div className="rounded-2xl border border-neutral-200/90 bg-neutral-50 px-4 py-10 sm:rounded-3xl sm:px-7 sm:py-14 md:rounded-[28px] md:px-10 md:py-16 lg:px-12 dark:border-white/10 dark:bg-black dark:shadow-none">
             <h3
-              className="w-full text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+              className="w-full text-balance text-left text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl md:leading-[1.15] dark:text-white"
               data-aos="fade-up"
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
@@ -456,7 +453,7 @@ export default function AutonomousIdentityRecoveryPage() {
               From Password Reset to Autonomous Identity Recovery
             </h3>
 
-            <div className="mt-12 grid grid-cols-1 gap-12 sm:mt-14 sm:gap-10 md:grid-cols-3 md:items-stretch md:gap-8 lg:gap-10">
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-12 sm:gap-8 md:mt-14 md:grid-cols-3 md:items-stretch md:gap-8 lg:gap-10">
               {recoveryFeatureCards.map(({ Icon, title, body }, index) => (
                 <RecoveryFeatureCard
                   key={title}
@@ -480,8 +477,8 @@ export default function AutonomousIdentityRecoveryPage() {
                 key={row.title}
                 className={
                   alignLeft
-                    ? "w-full px-5 sm:px-6 md:pl-0 md:pr-10 lg:pr-16 xl:pr-24"
-                    : "w-full px-5 sm:px-6 md:pl-10 md:pr-0 lg:pl-16 xl:pl-24"
+                    ? "w-full px-0 sm:px-2 md:pl-0 md:pr-10 lg:pr-16 xl:pr-24"
+                    : "w-full px-0 sm:px-2 md:pl-10 md:pr-0 lg:pl-16 xl:pl-24"
                 }
               >
                 <div
@@ -504,7 +501,7 @@ export default function AutonomousIdentityRecoveryPage() {
         className="w-full bg-neutral-100 py-10 sm:py-12 md:py-14 dark:bg-black"
         aria-label="Remediation outcomes"
       >
-        <div className="container max-w-8xl px-4 sm:px-6">
+        <div className="container">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {remediationOutcomeCards.map(({ Icon, title, description }, index) => (
               <div
@@ -528,10 +525,10 @@ export default function AutonomousIdentityRecoveryPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-16 sm:py-20 md:py-24 dark:bg-[#121212]">
-        <div className="container max-w-6xl px-5 sm:px-6">
+      <section className="w-full overflow-x-hidden bg-white py-12 sm:py-16 md:py-24 dark:bg-[#121212]">
+        <div className="container max-w-6xl">
           <h3
-            className="mx-auto max-w-5xl text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.12] dark:text-white"
+            className="mx-auto max-w-5xl text-balance text-left text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl lg:leading-[1.12] dark:text-white"
             data-aos="fade-up"
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
@@ -539,9 +536,9 @@ export default function AutonomousIdentityRecoveryPage() {
             Beyond Password Reset Toward Identity Continuity
           </h3>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-2 md:items-stretch md:gap-8">
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-10 md:mt-14 md:grid-cols-2 md:items-stretch md:gap-8">
             <div
-              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-5 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
               data-aos="fade-up"
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
@@ -557,7 +554,7 @@ export default function AutonomousIdentityRecoveryPage() {
                       className="mt-0.5 size-4 shrink-0 text-neutral-600 transition-colors duration-300 group-hover:text-white sm:size-[18px] dark:text-white"
                       aria-hidden
                     />
-                    <span className="text-sm leading-relaxed text-neutral-800 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
+                    <span className="min-w-0 flex-1 text-sm leading-relaxed text-neutral-800 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
                       {item}
                     </span>
                   </li>
@@ -566,7 +563,7 @@ export default function AutonomousIdentityRecoveryPage() {
             </div>
 
             <div
-              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-6 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-secondary p-5 transition-colors duration-300 hover:bg-primary sm:rounded-3xl sm:p-8 dark:bg-gray dark:hover:bg-primary"
               data-aos="fade-up"
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
@@ -583,7 +580,7 @@ export default function AutonomousIdentityRecoveryPage() {
                       className="mt-0.5 size-4 shrink-0 text-neutral-700 group-hover:text-white sm:size-[18px] dark:text-white"
                       aria-hidden
                     />
-                    <span className="text-sm leading-relaxed text-white transition-colors duration-300 group-hover:text-white! sm:text-base">
+                    <span className="min-w-0 flex-1 text-sm leading-relaxed text-white transition-colors duration-300 group-hover:text-white! sm:text-base">
                       {item}
                     </span>
                   </li>
@@ -599,23 +596,28 @@ export default function AutonomousIdentityRecoveryPage() {
             data-aos-easing="ease-out-cubic"
             data-aos-delay="160"
           >
-            <span className="inline-flex max-w-full  text:black bg-secondary! text-sm! rounded-full px-5 py-2.5 text-center  font-medium leading-snug sm:px-6 sm:text-sm dark:bg-gray dark:text-white">
+            <span className="inline-flex max-w-full rounded-full bg-secondary px-4 py-2.5 text-center text-xs font-medium leading-snug text-neutral-900 sm:px-6 sm:text-sm dark:bg-gray dark:text-white">
               Unlock Access Without Waiting on IT
             </span>
           </div>
 
           <div
-            className="mt-12 rounded-3xl bg-secondary p-8 text-center dark:bg-gray sm:mt-14 sm:p-10 md:p-14"
+            className="mt-10 rounded-2xl bg-secondary p-0 text-center sm:mt-12 sm:rounded-3xl sm:p-8 md:mt-14 md:p-10 lg:p-14 dark:bg-gray"
             data-aos="fade-up"
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
             data-aos-delay="200"
           >
-            <hr className="border-black dark:border-white mb-8 w-96 ml-70" />
-            <h3 className="mx-auto max-w-3xl text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl dark:text-white">
-              Turn Your Service Desk Into an Autonomous Engine
-            </h3>
-            <div className="mt-8 flex   justify-center sm:mt-10">
+            <div className="flex w-full flex-col items-center px-4 py-8 sm:px-6 sm:py-0 md:px-0">
+              <hr
+                className="mx-auto mb-6 h-px w-[70%] min-w-28 max-w-full border-0 border-t border-neutral-900 sm:mb-8 sm:w-[60%] sm:max-w-xs md:w-1/2 md:max-w-sm lg:max-w-md xl:max-w-lg dark:border-white"
+                aria-hidden
+              />
+              <h3 className="mx-auto max-w-3xl text-balance text-lg font-bold leading-snug tracking-tight text-neutral-900 sm:text-xl md:text-2xl md:leading-tight lg:text-3xl xl:text-4xl dark:text-white">
+                Turn Your Service Desk Into an Autonomous Engine
+              </h3>
+            </div>
+            <div className="mt-6 flex justify-center px-4 pb-8 sm:mt-8 sm:px-0 sm:pb-0 sm:pt-0 md:mt-10">
               <Link
                 href="#"
                 className="rounded-full bg-primary text-white! px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:px-10 sm:py-3.5 sm:text-base"

@@ -139,8 +139,8 @@ const MEGA_MENU: MegaMenuColumn[] = [
       },
       {
         id: "r1",
-        label: "Platform Updates",
-        href: "#",
+        label: "Knowledge Center",
+        href: "/knowledge-center",
       },
       {
         id: "r2",

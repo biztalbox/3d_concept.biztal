@@ -7,8 +7,9 @@ import Image from "next/image";
 import { FaDatabase } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { TbChartDots2 } from "react-icons/tb";
-import { LuMonitorCheck } from "react-icons/lu";
+import { LuLaptopMinimalCheck, LuMonitorCheck } from "react-icons/lu";
 import { RxCross2 } from "react-icons/rx";
+import { BsPersonWorkspace } from "react-icons/bs";
 
 const featureCards = [
   {
@@ -53,8 +54,8 @@ const outcomeStats = [
     body: "with connected workplace experiences",
   },
   {
-    icon: "/assets/icons/dollersing.png",
-    iconW: 80,
+    Icon: LuLaptopMinimalCheck,
+    iconW: 90,
     title: "Better Workplace Visibility",
     body: "through continuous experience intelligence insights",
   },
@@ -246,7 +247,10 @@ Over time, this digital friction slows work, reduces engagement, increases cogni
 
         <section className="bg-primary py-16">
           <div className="container grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-8">
-            {outcomeStats.map(({ icon, iconW, title, body }, index) => (
+            {outcomeStats.map((stat, index) => {
+              const { iconW, title, body } = stat;
+              const Icon = "Icon" in stat ? stat.Icon : null;
+              return (
               <div
                 key={title}
                 className="flex flex-col items-center gap-4 text-center"
@@ -255,11 +259,16 @@ Over time, this digital friction slows work, reduces engagement, increases cogni
                 data-aos-easing="ease-out-cubic"
                 data-aos-delay={index * CARD_STAGGER_MS}
               >
-                <Image src={icon} className="invert" width={iconW} height={iconW} alt="" />
+                {Icon ? (
+                  <Icon strokeWidth={0.6} className="text-white" size={iconW} aria-hidden />
+                ) : (
+                  <Image src={stat.icon} className="invert" width={iconW} height={iconW} alt="" />
+                )}
                 <h5 className="text-xl font-bold text-white">{title}</h5>
                 <p className="text-white!">{body}</p>
               </div>
-            ))}
+            );
+            })}
           </div>
         </section>
 
