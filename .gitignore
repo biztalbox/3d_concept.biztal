@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# payload cms
+/media
+/payload.db
+/payload.db-journal
+/payload.db-shm
+/payload.db-wal
+/src/payload-schema.graphql
