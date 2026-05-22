@@ -112,9 +112,9 @@ export default function CognitiveKnowledgeDiscoveryPage() {
               >
                 <h4>The Old Way</h4>
                 <ul>
-                  <li>Search manually across fragmented folders and legacy portals.</li>
-                  <li>Navigate complex silos where data is disconnected and hidden.</li>
-                  <li>Depend on tribal knowledge and availability of senior staff</li>
+                  <li>Search manually.</li>
+                  <li>Navigate silos.</li>
+                  <li>Depend on tribal knowledge.</li>
                 </ul>
               </div>
 
@@ -127,9 +127,9 @@ export default function CognitiveKnowledgeDiscoveryPage() {
               >
                 <h4 className="text-primary">The ZeroFAI Way</h4>
                 <ul>
-                  <li>Unify knowledge from every corner of the organization instantly.</li>
-                  <li>Understand semantic context and intent, not just keywords.</li>
-                  <li>Deliver summarized, actionable instant answers directly.</li>
+                  <li>Unify knowledge .</li>
+                  <li>Understand context.</li>
+                  <li>Deliver instant answers.</li>
                 </ul>
               </div>
             </div>
