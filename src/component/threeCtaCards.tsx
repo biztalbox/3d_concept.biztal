@@ -16,19 +16,19 @@ const CARDS: Card[] = [
     title: "Request Economic Transformation\nModel",
     body: "Receive an AI-calculated ROI projection specific to your enterprise. Discover precisely how much you’ll redirect from maintenance to market-disrupting innovation.",
     button: "Request immersi...",
-    
+    buttonNote: "Schedule a 15-minute executive briefing.",
   },
   {
     title: "Request Economic Transformation Model",
     body: "Receive an AI-calculated ROI projection specific to your enterprise. Discover precisely how much you’ll redirect from maintenance to market-disrupting innovation.",
     button: "Download Economic Transf...",
-    
+    buttonNote: "Receive your ROI projection within 24 hours.",
   },
   {
     title: "Join the Cognitive Enterprise",
     body: "Access an exclusive, limited-seat think tank for organizations pioneering autonomous operations. Shape the future with fellow revolutionaries and gain unparalleled insights.",
     button: "Begin Your Cogniti...",
-    
+    buttonNote: "Limited seats. By invitation only.",
   },
 ];
 
