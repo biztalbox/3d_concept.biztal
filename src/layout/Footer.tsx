@@ -11,8 +11,8 @@ import {
 } from "react-icons/fa";
 
 const NAV_LINKS = [
-  { label: "Leadership", href: "#" },
-  { label: "Blogs", href: "#" },
+  { label: "Leadership", href: "/leadership" },
+  { label: "Blogs", href: "/blogs" },
   { label: "Platform Updates", href: "#" },
   { label: "Custom Stories", href: "#" },
   { label: "Contact", href: "/contact" },

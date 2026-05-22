@@ -14,16 +14,16 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = ({
   req: { payload },
 }) => {
   try {
-    revalidateTag("posts");
+    revalidateTag("posts", "max");
     revalidatePath("/blogs");
 
     if (doc?.slug) {
-      revalidateTag(`post:${doc.slug}`);
+      revalidateTag(`post:${doc.slug}`, "max");
       revalidatePath(`/blogs/${doc.slug}`);
     }
 
     if (previousDoc?.slug && previousDoc.slug !== doc.slug) {
-      revalidateTag(`post:${previousDoc.slug}`);
+      revalidateTag(`post:${previousDoc.slug}`, "max");
       revalidatePath(`/blogs/${previousDoc.slug}`);
     }
   } catch (err) {
@@ -38,11 +38,11 @@ export const revalidateDeletedPost: CollectionAfterDeleteHook<Post> = ({
   req: { payload },
 }) => {
   try {
-    revalidateTag("posts");
+    revalidateTag("posts", "max");
     revalidatePath("/blogs");
 
     if (doc?.slug) {
-      revalidateTag(`post:${doc.slug}`);
+      revalidateTag(`post:${doc.slug}`, "max");
       revalidatePath(`/blogs/${doc.slug}`);
     }
   } catch (err) {

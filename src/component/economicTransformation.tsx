@@ -8,19 +8,19 @@ const SCALABILITY_GIF = "/water-overflow.gif";
 
 type StatItem =
   | {
-      value: number;
-      fillPercent: number; // 0..100 (bar fill)
-      label: string;
-      description: string;
-      barVariant?: "teal" | "muted";
-    }
+    value: number;
+    fillPercent: number; // 0..100 (bar fill)
+    label: string;
+    description: string;
+    barVariant?: "teal" | "muted";
+  }
   | {
-      value: "infinity";
-      fillPercent: number; // usually 100
-      label: string;
-      description: string;
-      barVariant?: "teal" | "muted";
-    };
+    value: "infinity";
+    fillPercent: number; // usually 100
+    label: string;
+    description: string;
+    barVariant?: "teal" | "muted";
+  };
 
 const STAT_BAR_HEIGHT_CLASS =
   "h-[6.25rem] min-h-[6.25rem] lg:h-[6.75rem] lg:min-h-[6.75rem]";
@@ -45,7 +45,7 @@ function StatCard({
     <div className="mx-auto flex h-full w-full min-w-0 flex-col items-center sm:max-w-none  lg:max-w-none">
       <div
         className={[
-          "relative z-10 w-24 shrink-0 overflow-hidden text-center",
+          "relative z-10 w-24 text-center",
           STAT_BAR_HEIGHT_CLASS,
           barBg,
         ].join(" ")}
@@ -55,7 +55,7 @@ function StatCard({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/water-overflow.gif"
-              
+
               alt=""
               className="h-full w-full object-cover"
               aria-hidden
@@ -94,7 +94,7 @@ function StatCard({
 
       <div className="relative -mt-px flex w-full flex-1 overflow-hidden rounded border border-white/8 bg-secondary dark:bg-secondary/40">
         <div className="w-[7px] shrink-0 bg-[#19B6C9]" aria-hidden />
-        <div className="flex flex-1 flex-col justify-center text-center p-4">
+        <div className="flex flex-1 flex-col justify-center text-center px-4 py-1">
           <p className="text-[11px] font-extrabold leading-snug tracking-wide text-white lg:text-[11.5px]">
             {item.label}
           </p>
@@ -135,14 +135,7 @@ export default function EconomicTransformation() {
         label: "Compliance Violations",
         description: "Autonomous enforcement eliminates audit risks",
         barVariant: "muted",
-      },
-      {
-        value: "infinity",
-        fillPercent: 100,
-        label: "Scalability Without Headcount",
-        description: "Your infrastructure grows without expanding your team",
-        barVariant: "muted",
-      },
+      }
     ],
     [],
   );
@@ -356,6 +349,37 @@ export default function EconomicTransformation() {
               setTextRef={setTextRef}
             />
           ))}
+
+          <div className="md:-mt-12.5 mx-auto flex h-full w-full min-w-0 flex-col items-center sm:max-w-none  lg:max-w-none">
+            <div
+              className="relative z-10 w-40 shrink-0 overflow-hidden text-center"
+            >
+              <img
+                src="/water-overflow.gif"
+                className="w-full h-full object-cover"
+                alt=""
+                aria-hidden
+              />
+              <h4
+                className="absolute inset-0 top-12 z-10 flex items-center justify-center text-5xl! font-extrabold leading-none text-white"
+                style={{ willChange: "opacity" }}
+              >
+                ∞
+              </h4>
+            </div>
+
+            <div className="relative flex -mt-px w-full flex-1 rounded border border-white/8 bg-secondary dark:bg-secondary/40">
+              <div className="w-[7px] shrink-0 bg-[#19B6C9]" aria-hidden />
+              <div className="flex flex-1 flex-col justify-center text-center p-4!">
+                <p className="text-[11px] font-extrabold leading-snug tracking-wide text-white lg:text-[11.5px]">
+                  Scalability Without Headcount
+                </p>
+                <p className="mt-1.5 text-[9.5px] leading-relaxed text-white/45 lg:text-[10px]">
+                  Your infrastructure grows without expanding your team
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
