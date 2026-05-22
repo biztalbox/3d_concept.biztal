@@ -88,8 +88,8 @@ export default function SmartWorkflowOrchestrationPage() {
             data-aos-easing="ease-out-cubic"
           >
             <h2>
-              Orchestrate IT Workflows.
-              <span className="text-primary!"> Intelligently. Automatically.</span>
+              Orchestrate IT Workflows
+              <span className="text-primary!"> Intelligently Automatically.</span>
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">

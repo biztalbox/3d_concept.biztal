@@ -95,44 +95,54 @@ function ScallopedIconBadge({
   );
 }
 
+const compareChipLayout =
+  "flex min-h-[3.75rem] flex-col items-center justify-center gap-1 rounded-xl px-2 py-2 sm:min-h-[3.5rem] sm:flex-row sm:items-center sm:gap-2.5 sm:px-3.5 sm:py-2.5";
+
 function MonitoringCompareIconChip({ variant, label }: { variant: "old" | "new"; label: string }) {
   const isOld = variant === "old";
+  const labelClass =
+    "min-w-0 text-center text-xs font-medium leading-tight text-neutral-900 sm:text-left sm:text-sm sm:text-[0.9375rem]";
+
   if (!isOld) {
     return (
-      <div className="flex min-h-[3.25rem] items-center gap-2.5 rounded-xl bg-white px-3 py-2.5 shadow-sm ring-1 ring-black/5 sm:min-h-[3.5rem] sm:px-3.5 dark:bg-white dark:ring-0">
-        <span className="relative inline-flex size-7 shrink-0 items-center justify-center sm:size-8">
+      <div
+        className={`${compareChipLayout} bg-white shadow-sm ring-1 ring-black/5 dark:bg-white dark:ring-0`}
+      >
+        <span className="relative inline-flex size-6 shrink-0 items-center justify-center sm:size-8">
           <FaRegCircle
-            className="absolute size-7 text-primary [&>path]:fill-primary sm:size-8"
+            className="absolute size-6 text-primary [&>path]:fill-primary sm:size-8"
             aria-hidden
           />
           <span className="absolute inset-[3px] z-[1] rounded-full bg-primary sm:inset-1" aria-hidden />
-          <FaCheck className="relative z-10 size-3 text-white sm:size-3.5" aria-hidden />
+          <FaCheck className="relative z-10 size-2.5 text-white sm:size-3.5" aria-hidden />
         </span>
-        <span className="text-sm font-medium leading-tight text-neutral-900 sm:text-[0.9375rem]">
-          {label}
-        </span>
+        <span className={labelClass}>{label}</span>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-[3.25rem] items-center gap-2.5 rounded-xl bg-neutral-300 px-3 py-2.5 transition-colors duration-200 group-hover/oldcol:bg-white sm:min-h-[3.5rem] sm:px-3.5 dark:bg-[#2e2e2e] dark:group-hover/oldcol:bg-white">
-      <span className="relative inline-flex size-7 shrink-0 items-center justify-center sm:size-8">
+    <div
+      className={`${compareChipLayout} bg-neutral-300 transition-colors duration-200 group-hover/oldcol:bg-white dark:bg-[#2e2e2e] dark:group-hover/oldcol:bg-white`}
+    >
+      <span className="relative inline-flex size-6 shrink-0 items-center justify-center sm:size-8">
         <FaRegCircle
-          className="absolute size-7 text-primary [&>path]:fill-primary sm:size-8"
+          className="absolute size-6 text-primary [&>path]:fill-primary sm:size-8"
           aria-hidden
         />
         <span className="absolute inset-[3px] z-[1] rounded-full bg-primary sm:inset-1" aria-hidden />
         <RxCross2
-          className="relative z-10 size-3.5 text-white transition-opacity duration-200 group-hover/oldcol:opacity-0 sm:size-4"
+          className="relative z-10 size-3 text-white transition-opacity duration-200 group-hover/oldcol:opacity-0 sm:size-4"
           aria-hidden
         />
         <FaCheck
-          className="pointer-events-none absolute left-1/2 top-1/2 z-10 size-3 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 transition-opacity duration-200 group-hover/oldcol:opacity-100 sm:size-3.5"
+          className="pointer-events-none absolute left-1/2 top-1/2 z-10 size-2.5 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 transition-opacity duration-200 group-hover/oldcol:opacity-100 sm:size-3.5"
           aria-hidden
         />
       </span>
-      <span className="text-sm font-medium leading-tight text-neutral-900 transition-colors duration-200 dark:text-white dark:group-hover/oldcol:text-neutral-900 sm:text-[0.9375rem]">
+      <span
+        className={`${labelClass} transition-colors duration-200 dark:text-white dark:group-hover/oldcol:text-neutral-900`}
+      >
         {label}
       </span>
     </div>
@@ -194,7 +204,7 @@ export default function ComplaincePage() {
           >
             <h2>Know The Health of Your IT
               
-              <span className="text-primary! text-3xl! sm:text-5xl!">
+              <span className="text-primary! text-4xl!">
                 {" "}
                 Before It Breaks.
               </span>
@@ -267,13 +277,13 @@ alerts further complicates visibility, making it harder to separate critical iss
                 The Old Way
               </p>
 
-              <div className="mt-6 w-full max-w-[22rem] sm:max-w-[24rem]">
-                <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="mt-6 w-full max-w-full sm:max-w-[24rem]">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
                   {oldWayItems.map((label) => (
                     <MonitoringCompareIconChip key={label} variant="old" label={label} />
                   ))}
                 </div>
-                <div className="relative mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+                <div className="relative mt-5 grid grid-cols-3 gap-1.5 sm:gap-3">
                   <div
                     className="pointer-events-none absolute top-1/2 right-0 left-0 z-0 h-px -translate-y-1/2 bg-neutral-400 transition-colors duration-200 group-hover/oldcol:bg-primary dark:bg-neutral-500 dark:group-hover/oldcol:bg-primary"
                     aria-hidden
@@ -308,13 +318,13 @@ alerts further complicates visibility, making it harder to separate critical iss
                 The ZerofAI Way
               </p>
 
-              <div className="mt-6 w-full max-w-[22rem] sm:max-w-[24rem]">
-                <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="mt-6 w-full max-w-full sm:max-w-[24rem]">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
                   {zeroFaiItems.map((label) => (
                     <MonitoringCompareIconChip key={label} variant="new" label={label} />
                   ))}
                 </div>
-                <div className="relative mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+                <div className="relative mt-5 grid grid-cols-3 gap-1.5 sm:gap-3">
                   <div className="pointer-events-none absolute top-1/2 right-0 left-0 z-0 h-px -translate-y-1/2 bg-primary" aria-hidden />
                   {[0, 1, 2].map((i) => (
                     <div key={`new-dot-${i}`} className="relative flex justify-center py-0.5">
@@ -336,7 +346,7 @@ alerts further complicates visibility, making it harder to separate critical iss
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
           >
-            From Monitoring to<span className="text-primary! text-4xl!"> Predictive Intelligence</span>
+            From Monitoring to<span className="text-primary! text-3xl!"> Predictive Intelligence</span>
           </h3>
 
           {/* 3 cards */}

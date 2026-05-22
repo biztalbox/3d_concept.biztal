@@ -104,7 +104,7 @@ export default function ComplaincePage() {
             <h2>
               Identity is the New Perimeter.
               <br />
-              <span className="text-primary! leading-12! text-5xl!"> Automate the Gatekeeper.</span>
+              <span className="text-primary! leading-12! text-4xl!"> Automate the Gatekeeper.</span>
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
@@ -283,8 +283,6 @@ export default function ComplaincePage() {
             >
               <h2 className="mx-auto max-w-4xl text-[28px] font-light leading-tight text-black dark:text-white sm:text-[44px]">
               Ready to move to Autonomous Zero Trust?
-                <br />
-                setup?
               </h2>
 
               <Link
