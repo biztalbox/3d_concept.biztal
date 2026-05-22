@@ -34,7 +34,7 @@ function MouseOrbit() {
 
 function HeroCanvasScene() {
   return (
-    <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="h-full w-full cursor-pointer">
+    <Canvas camera={{ fov: 50 }} gl={{ antialias: true }} className="min-h-96 w-full cursor-pointer">
       <HeroScene />
       <Environment preset="city" />
       <MouseOrbit />
@@ -44,7 +44,7 @@ function HeroCanvasScene() {
 
 const HeroCanvas = () => {
   return (
-    <div className="relative order-1 h-full overflow-hidden md:order-2">
+    <div className="relative order-1 h-full w-full min-w-0 overflow-hidden md:order-2">
       <Suspense fallback={<MinDurationLoader />}>
         <HeroCanvasScene />
       </Suspense>

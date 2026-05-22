@@ -97,20 +97,6 @@ const predictiveOutcomesBanner = [
     { lead: 'More resilient ', accent: 'enterprise', tail: ' operations.' },
 ] as const
 
-function predictiveBannerCellClass(index: number) {
-    const base = 'relative px-5 py-9 sm:px-7 sm:py-10 lg:px-8 lg:py-11'
-    const divider =
-        'before:pointer-events-none before:absolute before:top-1/2 before:hidden before:h-[56%] before:w-px before:-translate-y-1/2 before:bg-primary lg:before:left-0 lg:before:block'
-    if (index === 0) return base
-    if (index === 1) {
-        return `${base} border-t border-primary md:border-t-0 md:border-l md:border-primary lg:border-t-0 ${divider}`
-    }
-    if (index === 2) {
-        return `${base} border-t border-primary lg:border-t-0 ${divider}`
-    }
-    return `${base} border-t border-primary md:border-l md:border-primary lg:border-t-0 ${divider}`
-}
-
 const page = () => {
     return (
         <AosInit>
@@ -236,18 +222,15 @@ const page = () => {
                             >
                                 <div className="rounded-[24px] border border-neutral-200 bg-neutral-100 px-7 py-9 sm:px-9 sm:py-10 md:px-10 md:py-11 dark:border-white/10 dark:bg-[#2a2a2a]">
                                     <p className="text-sm font-medium leading-relaxed text-neutral-900 first:mt-0 sm:text-base md:leading-relaxed dark:text-white">
-                                        Enterprise operations generate massive signals long before failures become tickets,
-                                        incidents, or executive-visible disruption in traditional dashboards.
+                                    ZerofAI continuously analyzes operational patterns, workplace signals, endpoint behavior, support trends, and system activity to identify
+                                    early indicators of disruption before they begin affecting operational performance.
                                     </p>
                                     <p className="mt-4 text-sm font-medium leading-relaxed text-neutral-900 sm:text-base md:leading-relaxed dark:text-white">
-                                        Moving from static visibility to predictive intelligence means correlating patterns
-                                        across systems, users, and services earlier in the disruption lifecycle—when
-                                        remediation is cheaper, faster, and less customer-impacting.
+                                    Instead of relying entirely on reactive workflows, enterprise operations become more predictive, adaptive, and operationally aware.
                                     </p>
                                     <p className="mt-4 text-sm font-semibold leading-relaxed text-primary sm:text-base md:leading-relaxed dark:text-primary">
-                                        ZerofAI helps teams operationalize that shift by fusing continuous signal
-                                        ingestion, contextual enrichment, and anticipatory alerting so leaders intervene
-                                        while outcomes are still reversible.
+                                    The goal isn’t simply faster response.
+                                    It’s creating operational environments that continuously anticipate risk, instability, and workplace disruption before escalation occurs.
                                     </p>
                                 </div>
                             </div>
@@ -320,24 +303,17 @@ const page = () => {
                             >
                                 <div className="rounded-[24px] border border-neutral-200 bg-neutral-100 px-7 py-9 sm:px-9 sm:py-10 md:px-10 md:py-11 dark:border-white/10 dark:bg-[#2a2a2a]">
                                     <p className="text-sm font-medium leading-relaxed text-neutral-900 first:mt-0 sm:text-base md:leading-relaxed dark:text-white">
-                                        A predictive operations program is only as strong as the intelligence layer
-                                        sitting underneath it—one that can absorb messy enterprise reality without
-                                        constant re-tuning.
+                                    Every operational signal contributes to a continuously evolving intelligence layer across the enterprise.
                                     </p>
                                     <p className="mt-4 text-sm font-medium leading-relaxed text-neutral-900 sm:text-base md:leading-relaxed dark:text-white">
-                                        That layer needs to learn continuously from new signals, seasonal patterns,
-                                        change windows, and human feedback so recommendations stay relevant as the
-                                        environment evolves.
+                                    ZerofAI correlates patterns across workplace operations, support environments, endpoint ecosystems, service interactions, and
+                                    operational workflows to identify trends that humans alone often miss at scale.
                                     </p>
                                     <p className="mt-4 text-sm font-medium leading-relaxed text-neutral-900 sm:text-base md:leading-relaxed dark:text-white">
-                                        When learning is continuous, operational teams spend less time reconciling
-                                        contradictory alerts—and more time validating the few decisions that truly need
-                                        human judgment.
+                                    As environments evolve, the intelligence layer evolves with them continuously improving operational awareness, predictive accuracy,
+                                    and organizational responsiveness over time.
                                     </p>
-                                    <p className="mt-4 text-sm font-semibold leading-relaxed text-primary sm:text-base md:leading-relaxed dark:text-primary">
-                                        ZerofAI compounds operational context over time, improving anticipation, tightening
-                                        governance, and keeping humans in control of the decisions that matter most.
-                                    </p>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -416,11 +392,11 @@ const page = () => {
                 >
                     <div className="container px-4 sm:px-6">
                         <div className="overflow-hidden rounded-2xl bg-neutral-950 sm:rounded-3xl dark:bg-black">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                                {predictiveOutcomesBanner.map((row, index) => (
+                            <div className="grid grid-cols-1 divide-y divide-primary md:grid-cols-2 md:divide-x lg:grid-cols-4 lg:divide-y-0">
+                                {predictiveOutcomesBanner.map((row) => (
                                     <div
                                         key={row.accent}
-                                        className={predictiveBannerCellClass(index)}
+                                        className="px-5 py-9 sm:px-7 sm:py-10 lg:px-8 lg:py-11"
                                     >
                                         <p className="text-left text-base font-semibold leading-snug tracking-tight text-white sm:text-lg md:text-xl">
                                             {row.lead}

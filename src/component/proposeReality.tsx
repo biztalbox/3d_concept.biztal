@@ -17,44 +17,44 @@ type CognitivePillar = {
 /** Six pillars + image per column (user-provided assets). */
 const COGNITIVE_PILLARS: CognitivePillar[] = [
   {
-    openTitle: "The Cognitive\nArchitecture",
+    openTitle: "Autonomous Service Consciousness",
     openBody:
-      "ZerofAI operates across six revolutionary pillars, each representing a fundamental reimagining of enterprise IT.",
+      "Response-Driven Assistance transforms service desks into conversational command centers.",
     imageSrc:
       "https://plus.unsplash.com/premium_photo-1682756540097-6a887bbcf9b0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGFpfGVufDB8fDB8fHww",
   },
   {
-    openTitle: "Response-Driven\nAssistance",
+    openTitle: "Self-Healing Digital Organism",
     openBody:
-      "Response-Driven Assistance transforms service desks into conversational command centers.",
+      "Autonomous Issue Management creates living, breathing infrastructure.",
     imageSrc:
       "https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWl8ZW58MHx8MHx8fDA%3D",
   },
   {
-    openTitle: "Intelligent Incident\nMitigation",
+    openTitle: "Perpetual Evolution Engine",
     openBody:
-      "Intelligent Incident Mitigation makes incidents obsolete before humans notice.",
+      "Learning-Driven Management ensures continuous intelligence growth.",
     imageSrc:
       "https://plus.unsplash.com/premium_photo-1733317429945-a3688f50430b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8SW50ZWxsaWdlbnQlMjBJbmNpZGVudCUyME1pdGlnYXRpb24lMjBpbiUyMGFpfGVufDB8fDB8fHww",
   },
   {
-    openTitle: "Autonomous Issue\nManagement",
+    openTitle: "Pre-emptive Incident Immune System",
     openBody:
-      "Autonomous Issue Management creates living, breathing infrastructure.",
+      "Intelligent Incident Mitigation makes incidents obsolete before humans notice.",
     imageSrc:
       "https://plus.unsplash.com/premium_photo-1682756540097-6a887bbcf9b0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGFpfGVufDB8fDB8fHww",
   },
   {
-    openTitle: "Predictive\nAnalytics",
+    openTitle: "Temporal Prediction Matrix",
     openBody:
       "Predictive Analytics forecasts infrastructure needs six months ahead.",
     imageSrc:
       "https://images.unsplash.com/photo-1694903089438-bf28d4697d9a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFpfGVufDB8fDB8fHww",
   },
   {
-    openTitle: "Learning-Driven\nManagement",
+    openTitle: "Cognitive Command Panorama",
     openBody:
-      "Learning-Driven Management ensures continuous intelligence growth.",
+      "Business Intelligence transforms data into strategic wisdom.",
     imageSrc:
       "https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWl8ZW58MHx8MHx8fDA%3D",
   },
@@ -150,9 +150,9 @@ export default function ProposeReality() {
     <>
       {/* Section 1 */}
       <section
-        className="bg-secondary dark:bg-secondary/40 py-20 min-h-screen md:h-[2900px]"
+        className="overflow-x-hidden bg-secondary py-20 min-h-screen dark:bg-secondary/40 md:h-[2900px]"
       >
-        <div className="container relative grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="container relative grid min-w-0 grid-cols-1 gap-10 md:grid-cols-2">
 
           <video
             ref={introVideoRef}
@@ -162,10 +162,10 @@ export default function ProposeReality() {
             loop
             preload="metadata"
             autoPlay
-            className="rounded block mx-auto will-change-[width,height,transform]"
+            className="mx-auto block h-auto w-full max-w-full rounded will-change-[width,height,transform]"
           />
 
-          <div className="">
+          <div className="min-w-0 w-full">
             <h2>
               We Propose a New Reality
             </h2>
@@ -202,12 +202,22 @@ export default function ProposeReality() {
       </section>
 
       {/* Section 2   Cognitive Architecture (screenshot layout: static left + 7 hover pillars) */}
-      <section
-        className="bg-secondary dark:bg-secondary/40 pb-12 md:pb-0"
+      <section className="overflow-x-hidden bg-secondary pb-12 dark:bg-secondary/40 md:pb-0">
+        <div className="container sm:pb-10 ">
+          <div className=" text-center">
+            <h2 className="font-bold leading-tight tracking-tight text-primary">
+              The Cognitive Architecture
+            </h2>
+            <p className="mx-auto text-sm leading-relaxed text-neutral-700 dark:text-white/75 sm:mt-5 md:text-base md:leading-7">
+              ZerofAI operates across six revolutionary pillars, each representing a
+              fundamental reimagining of enterprise IT. Together, they form an
+              interconnected intelligence that grows more powerful with every
+              microsecond of operation.
+            </p>
+          </div>
+        </div>
 
-      >
-
-        <div className="flex w-full flex-col">
+        <div className="flex w-full min-w-0 flex-col">
           {/* Desktop: edge-to-edge columns */}
           <div className="relative hidden min-h-145 w-full min-w-0 lg:block lg:h-[min(78vh,880px)]">
             <div className="flex h-full min-h-145 w-full overflow-hidden bg-secondary dark:bg-secondary/40">

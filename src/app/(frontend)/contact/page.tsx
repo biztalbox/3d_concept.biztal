@@ -22,10 +22,10 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="py-10 sm:py-14 md:py-16">
         <div className="container">
-        <h1 className="text-center text-3xl font-extrabold leading-tight tracking-tight text-neutral-950 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
-          Let&apos;s <span className="text-primary! text-4xl! sm:text-5xl! md:text-6xl! lg:text-7xl!">Secure</span> Your<br />
+        <div className="text-center text-3xl font-extrabold leading-tight tracking-tight text-neutral-950 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
+          Let&apos;s <span className="text-primary! text-4xl! sm:text-7xl! md:text-7xl! lg:text-7xl!">Secure</span> Your<br />
           <span className="text-primary! text-4xl! sm:text-5xl! md:text-6xl! lg:text-7xl!">Infrastructure</span>.
-        </h1>
+        </div>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-neutral-600 sm:text-base dark:text-[#94A3B8]">
             Connect with ZerofAI to automate compliance, monitor endpoints, and strengthen enterprise security
             operations in real time.
@@ -59,9 +59,8 @@ export default function ContactPage() {
                       Global Headquarters
                     </p>
                     <p className="!mt-1 !text-xs !leading-relaxed !text-neutral-600 dark:!text-[#94A3B8]">
-                      101 Security Plaza,
-                      <br />
-                      Silicon Valley, CA 94025
+                    B, 15, Block B, Noida Sector 3, Noida, Uttar Pradesh 201301
+                     
                     </p>
                   </div>
                 </li>

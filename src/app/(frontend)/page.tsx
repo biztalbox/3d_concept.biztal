@@ -25,7 +25,7 @@ export default function Home() {
   // })
 
   return (
-    <main>
+    <main className="w-full min-w-0 overflow-x-hidden">
 
       {/* <HomeScene /> */}
 
@@ -34,7 +34,8 @@ export default function Home() {
 
 
       {/* hero */}
-      <section id="" className="relative w-full lg:min-h-screen">
+      <section id="" className="relative w-full min-w-0 overflow-x-hidden lg:min-h-screen">
+        {/* right-side background decorative strips (flush to viewport edge) */}
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
           <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
           <div className="absolute top-0 right-[-90px] h-[120%] w-[130px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
@@ -72,7 +73,7 @@ export default function Home() {
 
       <ProposeReality />
       <Autonomous />
-      <PreemptiveIncidentImmuneSystem />
+    <PreemptiveIncidentImmuneSystem /> 
       <SelfHealingDigitalOrganism />
       <TemporalPredictionPerpetualEvolution />
       <EconomicTransformation />

@@ -383,10 +383,10 @@ reducing manual intervention to near zero.            </p>
             data-aos-delay={COMPARE_STAGGER_MS}
           >
             <div className="order-2 flex flex-col gap-10 px-6 py-12 md:order-1 md:px-8">
-              <h2>Closed-Loop Resolution</h2>
+              <h2>AI-Led Diagnosis & Decisioning</h2>
               <p>
-              ZerofAI executes actions, validates outcomes, and logs resolution details ensuring issues are fully resolved without manual follow-up.
-
+              Using historical data, context, and predefined policies, ZerofAI determines the root cause and selects the appropriate resolution path
+              automatically.
               </p>
             </div>
             <Image
@@ -417,10 +417,9 @@ reducing manual intervention to near zero.            </p>
               className="justify-self-end rounded-xl md:border-r-4 border-primary"
             />
             <div className="flex flex-col gap-10 px-6 py-12 md:px-8">
-              <h2>Conversational Knowledge Access</h2>
+              <h2>Closed-Loop Resolution</h2>
               <p>
-                Users interact with enterprise knowledge through natural language, receiving summarized,
-                explainable answers without navigating multiple disconnected systems.
+              ZerofAI executes actions, validates outcomes, and logs resolution details ensuring issues are fully resolved without manual follow-up.
               </p>
             </div>
           </div>

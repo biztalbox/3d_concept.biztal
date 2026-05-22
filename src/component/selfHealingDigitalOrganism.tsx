@@ -3,7 +3,10 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { HiOutlineShieldCheck } from "react-icons/hi2";
+import { FaHandHoldingHeart } from "react-icons/fa";
+import { GiBrain } from "react-icons/gi";
+import { IoShieldCheckmark } from "react-icons/io5";
+import { PiTargetBold } from "react-icons/pi";
 
 type Card = {
   title: string;
@@ -13,7 +16,7 @@ type Card = {
 
 function IconBadge({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#19B6C9] text-black ring-1 ring-white/10">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#19B6C9] text-white ring-1 ring-white/10 [&_svg]:h-5 [&_svg]:w-5">
       {children}
     </div>
   );
@@ -35,34 +38,34 @@ export default function SelfHealingDigitalOrganism() {
       body: "Compute anomalies detected and remediated in microseconds. Memory leaks sealed. Performance degradation reversed. Service interruptions prevented before they begin.",
       icon: (
         <IconBadge>
-          <HiOutlineShieldCheck className="h-[22px] w-[22px]" />
+          <FaHandHoldingHeart className="h-[22px] w-[22px]" />
         </IconBadge>
       ),
     },
     {
-      title: "Autonomic Healing",
-      body: "Compute anomalies detected and remediated in microseconds. Memory leaks sealed. Performance degradation reversed. Service interruptions prevented before they begin.",
+      title: "Emotional Sentience Engine",
+      body: "Proactive intervention based on user sentiment analytics. The system detects frustration patterns and deploys preemptive solutions before complaints materialize.",
       icon: (
         <IconBadge>
-          <HiOutlineShieldCheck className="h-[22px] w-[22px]" />
+          <GiBrain className="h-[22px] w-[22px]" />
         </IconBadge>
       ),
     },
     {
-      title: "Autonomic Healing",
-      body: "Compute anomalies detected and remediated in microseconds. Memory leaks sealed. Performance degradation reversed. Service interruptions prevented before they begin.",
+      title: "Agentic Compliance Sovereignty",
+      body: "Autonomous enforcement of security and compliance policies across every endpoint, application, and data flow. Zero violations. Zero manual audits.",
       icon: (
         <IconBadge>
-          <HiOutlineShieldCheck className="h-[22px] w-[22px]" />
+          <IoShieldCheckmark className="h-[22px] w-[22px]" />
         </IconBadge>
       ),
     },
     {
-      title: "Autonomic Healing",
-      body: "Compute anomalies detected and remediated in microseconds. Memory leaks sealed. Performance degradation reversed. Service interruptions prevented before they begin.",
+      title: "False-Positive Annihilation",
+      body: "ML-powered noise suppression with 99.7% accuracy. Your team focuses on real threats while algorithmic intelligence filters the noise.",
       icon: (
         <IconBadge>
-          <HiOutlineShieldCheck className="h-[22px] w-[22px]" />
+          <PiTargetBold className="h-[22px] w-[22px]" />
         </IconBadge>
       ),
     },
@@ -102,24 +105,16 @@ export default function SelfHealingDigitalOrganism() {
               key={`${c.title}-${i}`}
               data-aos="fade-up"
               data-aos-delay={i * 120}
-              className="group relative rounded-xl bg-secondary p-2 transition-[background-color,box-shadow,ring-color,ring-width] duration-300 ease-in-out"
+              className="group flex flex-col gap-4 rounded-xl bg-secondary p-5 transition-all duration-300 ease-in-out hover:ring-1 hover:ring-white"
             >
-              <div className="hover:border-black hover:ring-1 hover:ring-black dark:hover:ring-white rounded-xl flex flex-col gap-4 p-2">
-                <div className="flex items-start gap-4">
-                  {c.icon}
-                  <div className="text-right">
-                    <p className="text-sm font-extrabold text-white/90 transition-colors duration-300 ease-in-out group-hover:text-black">
-                      {c.title}
-                    </p>
-                  </div>
-                </div>
-
-                <p>
-                  {c.body}
+              <div className="flex items-center gap-3">
+                {c.icon}
+                <p className="text-left text-sm font-extrabold text-white/90 transition-colors duration-300 ease-in-out group-hover:text-black">
+                  {c.title}
                 </p>
               </div>
 
-              <div className="pointer-events-none absolute inset-0 rounded-[18px]" />
+              <p className="text-sm leading-relaxed text-white/70">{c.body}</p>
             </div>
           ))}
         </div>

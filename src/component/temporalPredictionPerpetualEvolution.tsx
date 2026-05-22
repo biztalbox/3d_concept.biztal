@@ -32,16 +32,7 @@ export default function TemporalPredictionPerpetualEvolution() {
             Temporal Prediction &amp; Perpetual Evolution
           </h2>
 
-          <p
-            data-aos="fade-up"
-            data-aos-delay="100"
-            className="mx-auto mt-4 max-w-3xl text-xs leading-6 text-white/35 md:text-sm"
-          >
-            ZerofAI operates across six revolutionary pillars, each representing
-            a fundamental reimagining of enterprise IT. Together, they form an
-            interconnected intelligence that grows more powerful with every
-            microsecond of operation.
-          </p>
+         
           <div
             data-aos="fade-up"
             data-aos-delay="100"
@@ -97,19 +88,12 @@ export default function TemporalPredictionPerpetualEvolution() {
                 The Perpetual Evolution Engine
               </p>
               <p className="mt-2 text-xs font-semibold text-white/70">
-                Predictive Analytics with AI Forecasting (PAIF)
+              Learning-Driven Autonomous Management (LLAM)              </p>
+              <p className="mt-6 max-w-3xl text-xs leading-6 text-white/35 md:text-sm md:leading-7">
+              While competitors offer automation, ZerofAI delivers Autonomous Evolution—a meta-cognitive layer that perpetually refines its own intelligence, decision matrices, and agentic behaviors.
               </p>
               <p className="mt-6 max-w-3xl text-xs leading-6 text-white/35 md:text-sm md:leading-7">
-                While competitors offer automation, ZerofAI delivers Autonomous
-                Evolution machine intelligence that perpetually refines its own
-                intelligence, evolves new capabilities, and adapts to emergent
-                conditions.
-              </p>
-              <p className="mt-6 max-w-3xl text-xs leading-6 text-white/35 md:text-sm md:leading-7">
-                The platform learns from every interaction, never resolving the
-                same anomaly twice. It writes new ones. It discovers patterns
-                humans can’t perceive and develops strategies humans haven’t
-                conceived.
+              The platform learns from every interaction, every resolution, every anomaly. It doesn't just execute predefined rules; it writes new ones. It discovers patterns humans can't perceive and develops strategies humans haven't conceived.
               </p>
             </div>
 

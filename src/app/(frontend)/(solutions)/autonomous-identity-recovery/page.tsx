@@ -12,6 +12,9 @@ import { Crosshair } from "lucide-react";
 import { RxCross2 } from "react-icons/rx";
 import { FaCheck } from "react-icons/fa6";
 import type { ReactNode } from "react";
+import { IoMdTime, IoIosPerson } from "react-icons/io";
+import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
+import { BsShieldCheck } from "react-icons/bs";
 
 const RECOVERY_STORY_IMAGES = [
   "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGF0YSUyMGludGVsbGlnZW5jZXxlbnwwfHwwfHx8MA%3D%3D",
@@ -44,6 +47,32 @@ const recoveryStoryRows: {
     imageFirst: false,
   },
 ];
+
+const remediationOutcomeCards = [
+  {
+    Icon: IoMdTime,
+    title: "Reduced Ticket Volume",
+    description: "by eliminating password and access-related requests",
+  },
+  {
+    Icon: HiOutlineWrenchScrewdriver,
+    title: "Faster Access Recovery",
+    description: "with instant, automated resolution",
+  },
+  {
+    Icon: IoIosPerson,
+    title: "Improved Security Posture",
+    description: "through consistent, policy-driven identity verification",
+  },
+  {
+    Icon: BsShieldCheck,
+    title: "Lower IT Workload",
+    description: "by removing manual recovery processes",
+  },
+] as const;
+
+
+
 
 function RecoveryStoryImage({
   src,
@@ -467,6 +496,35 @@ export default function AutonomousIdentityRecoveryPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+
+      <section
+        className="w-full bg-neutral-100 py-10 sm:py-12 md:py-14 dark:bg-black"
+        aria-label="Remediation outcomes"
+      >
+        <div className="container max-w-8xl px-4 sm:px-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+            {remediationOutcomeCards.map(({ Icon, title, description }, index) => (
+              <div
+                key={title}
+                className="flex min-h-[220px] flex-col items-center justify-center rounded-2xl bg-primary px-5 py-8 text-center text-white sm:min-h-[240px] sm:px-6 sm:py-10"
+                data-aos="fade-up"
+                data-aos-duration="900"
+                data-aos-easing="ease-out-cubic"
+                data-aos-delay={index * CARD_STAGGER_MS}
+              >
+                <Icon className="h-12 w-12 shrink-0 sm:h-14 sm:w-14" aria-hidden />
+                <p className="mt-4 text-base font-bold leading-snug text-white! sm:mt-5 sm:text-lg">
+                  {title}
+                </p>
+                <p className="mt-2 max-w-[220px] text-sm font-normal leading-relaxed text-white! sm:text-[0.9375rem]">
+                  {description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

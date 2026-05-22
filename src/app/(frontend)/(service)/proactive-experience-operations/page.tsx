@@ -513,8 +513,7 @@ export default function ComplaincePage() {
               id="proactive-workplace-future-heading"
               className="mx-auto max-w-4xl text-center text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-[2.65rem] lg:leading-tight dark:text-white"
             >
-              <span className="block">The Future of Workplace Oper-</span>
-              <span className="block">ations Is Proactive.</span>
+              The Future of Workplace Operations Is Proactive.
             </h2>
             <div className="mt-8 flex justify-center sm:mt-10">
               <Link

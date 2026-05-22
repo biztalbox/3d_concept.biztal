@@ -108,9 +108,8 @@ export default function ComplaincePage() {
             </h2>
 
             <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
-              Move from periodic audits to real-time enforcement. ZerofAI continuously monitors, detects, and
-              auto-remediates compliance drift across every endpoint without tickets, scripts, or human
-              intervention.
+            Stop treating identity as a ticket-based task. ZerofAI provides adaptive, AI-driven access control that grants the right
+            permissions to the right users at the exact moment they need them—while locking out threats in milliseconds.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-6 sm:mt-10 sm:gap-10">
@@ -283,7 +282,7 @@ export default function ComplaincePage() {
               data-aos-easing="ease-out-cubic"
             >
               <h2 className="mx-auto max-w-4xl text-[28px] font-light leading-tight text-black dark:text-white sm:text-[44px]">
-                Ready to eliminate manual device
+              Ready to move to Autonomous Zero Trust?
                 <br />
                 setup?
               </h2>

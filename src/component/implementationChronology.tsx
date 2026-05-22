@@ -65,8 +65,7 @@ export default function ImplementationChronology() {
             data-aos="fade-up"
             className="mx-auto mt-5 inline-flex items-center rounded-full bg-white px-6 py-2 text-[12px] font-semibold text-black/80 shadow-[0_14px_35px_rgba(0,0,0,0.55)]"
           >
-            From Cost Center to Revenue Architect
-          </div>
+Your Journey to Autonomous Operations</div>
 
           <p
             data-aos="fade-up"
@@ -83,7 +82,7 @@ export default function ImplementationChronology() {
             phase="Phase 1"
             title="Consciousness Awakening"
             day="Day 1"
-            body="Hyper-orchestrative self-service portal goes live. Users experience conversational workflows that feel like magic. Autonomous incident resolution foundation activates across your infrastructure. Self-healing compute capabilities begin operating."
+            body="Hyper-orchestrative self-service portal goes live. Users experience conversational workflows that feel like magic. Autonomous incident resolution foundation activates across your infrastructure. Self-healing compute capabilities begin operating. Your team witnesses their first incidents that resolve themselves."
             delay={0}
           />
 
