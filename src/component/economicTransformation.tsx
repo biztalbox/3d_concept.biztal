@@ -50,46 +50,24 @@ function StatCard({
           barBg,
         ].join(" ")}
       >
-        {item.value === "infinity" ? (
-          <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/water-overflow.gif"
+        <div
+          ref={setFillRef(index)}
+          data-target={Math.max(0, Math.min(100, Math.round(item.fillPercent)))}
+          className={[
+            "absolute bottom-0 left-0 right-0 h-0 will-change-[height]",
+            "bg-[linear-gradient(180deg,#23D3E8_0%,#19B6C9_60%,#118DA0_100%)]",
+          ].join(" ")}
+          aria-hidden
+        />
 
-              alt=""
-              className="h-full w-full object-cover"
-              aria-hidden
-            />
-            <h4
-              ref={setTextRef(index)}
-              className="absolute inset-0 z-10 flex items-center justify-center text-7xl font-extrabold leading-none text-white"
-              style={{ willChange: "opacity" }}
-            >
-              ∞
-            </h4>
-          </>
-        ) : (
-          <>
-            <div
-              ref={setFillRef(index)}
-              data-target={Math.max(0, Math.min(100, Math.round(item.fillPercent)))}
-              className={[
-                "absolute bottom-0 left-0 right-0 h-0 will-change-[height]",
-                "bg-[linear-gradient(180deg,#23D3E8_0%,#19B6C9_60%,#118DA0_100%)]",
-              ].join(" ")}
-              aria-hidden
-            />
-
-            <h4
-              ref={setTextRef(index)}
-              data-count-target={`${item.value}`}
-              className="absolute inset-0 flex items-center justify-center text-7xl font-extrabold leading-none text-white"
-              style={{ willChange: "contents, opacity" }}
-            >
-              {`${item.value}%`}
-            </h4>
-          </>
-        )}
+        <h4
+          ref={setTextRef(index)}
+          data-count-target={`${item.value}`}
+          className="absolute inset-0 flex items-center justify-center text-7xl font-extrabold leading-none text-white"
+          style={{ willChange: "contents, opacity" }}
+        >
+          {`${item.value}%`}
+        </h4>
       </div>
 
       <div className="relative -mt-px flex w-full flex-1 overflow-hidden rounded border border-white/8 bg-secondary dark:bg-secondary/40">

@@ -1,7 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { buildConfig } from "payload";
-import { sqliteAdapter } from "@payloadcms/db-sqlite";
+import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import sharp from "sharp";
 
@@ -31,9 +31,12 @@ export default buildConfig({
   },
   editor: lexicalEditor(),
   collections: [Users, Media, Pages, Posts],
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || "file:./payload.db",
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI || "",
+      // Supabase / Neon / Vercel Postgres require SSL. rejectUnauthorized=false
+      // is safe with managed providers that use a CA we don't bundle.
+      ssl: { rejectUnauthorized: false },
     },
   }),
   secret: process.env.PAYLOAD_SECRET || "",
