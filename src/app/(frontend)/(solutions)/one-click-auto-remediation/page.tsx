@@ -1,8 +1,7 @@
 import AosInit from "@/component/AosInit";
-import AlternatingFeatureRows from "@/component/AlternatingFeatureRows";
 import HeroCanvas from "@/component/bot/HeroCanvas";
 import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
-import { DEFAULT_REMEDIATION_FEATURE_ROWS } from "@/lib/default-alternating-rows";
+import Image from "next/image";
 import Link from "next/link";
 import { GoGoal } from "react-icons/go";
 import { GiBrain } from "react-icons/gi";
@@ -18,7 +17,7 @@ const remediationTraditionalItems = [
   "Depend on manual investigation",
   "Require scripts and operational coordination",
   "Stop at recommendations and workflows",
-  "Siloed manual actions",
+  
 ] as const;
 
 const remediationZerofaiItems = [
@@ -63,6 +62,42 @@ const remediationCompareCards = [
     text: "Detect issues. Trigger remediation. Resolve automatically.",
   },
 ] as const;
+
+const remediationFeatureRows = [
+
+
+
+  {
+    imageSrc:
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGF0YSUyMGludGVsbGlnZW5jZXxlbnwwfHwwfHx8MA%3D%3D",
+    imageAlt: "Event-Driven Detection",
+    accentClass: "bg-primary",
+    title: "Event-Driven Remediation Triggers",
+    description:
+    "ZerofAI continuously analyzes endpoint telemetry, operational events, and service health signals automatically initiating remediationworkflows the moment issues are detected.",    
+    imageFirst: true,
+  },
+  {
+    imageSrc:
+      "https://media.istockphoto.com/id/2265515077/photo/echnology-consultant-integrates-artificial-intelligence-engine-with-data-visualization.webp?a=1&b=1&s=612x612&w=0&k=20&c=qD69FXAFYtbN1Q3XIVsMF9iNv-HKaPzm_s_D9q6rsHE=",
+    imageAlt: "AI-Led Diagnosis and decisioning",
+    accentClass: "bg-[#00bcd4]",
+    title: "Policy-Based Decision Intelligence",
+    description:
+    "Using predefined remediation playbooks, operational policies, and contextual analysis, ZerofAI determines the safest and most effectiveremediation path for every issue.",
+    imageFirst: false,
+  },
+  {
+    imageSrc:
+      "https://media.istockphoto.com/id/2208747071/photo/hands-of-robots-touching-on-access-management-network-connections-highlight-robotics.webp?a=1&b=1&s=612x612&w=0&k=20&c=Vch3r1Ej9lyc1Xhp_-FftSYKO7GK9sYUXsTMS9frMyA=",
+    imageAlt: "Closed-Loop Resolution",
+    accentClass: "bg-[#00bcd4]",
+    title:"Verification, Recovery & Rollback",
+    description:
+    "Once remediation actions are executed, ZerofAI validates system health and confirms successful resolution. If instability or unexpectedbehavior is detected, rollback workflows can automatically restore systems to their previous healthy state.",    
+    imageFirst: true,
+  },
+];
 
 function RemediationCompareCard({
   title,
@@ -260,9 +295,66 @@ export default function ComplaincePage() {
           </div>
         </div>
       </section>
-            <AlternatingFeatureRows rows={DEFAULT_REMEDIATION_FEATURE_ROWS} />
+      <section className="bg-neutral-50 py-16 dark:bg-black sm:py-20 md:py-24">
+        <div className="container max-w-6xl">
+          <div className="flex flex-col gap-14 md:gap-20 lg:gap-24">
+            {remediationFeatureRows.map((row, index) => {
+              const imageAnimation = row.imageFirst ? "fade-right" : "fade-left";
+              const cardAnimation = row.imageFirst ? "fade-left" : "fade-right";
+              const imageOrder = row.imageFirst ? "order-1 md:order-1" : "order-1 md:order-2";
+              const cardOrder = row.imageFirst ? "order-2 md:order-2" : "order-2 md:order-1";
 
-<section
+              return (
+                <div
+                  key={row.title}
+                  className="flex flex-col items-stretch gap-8 md:flex-row md:items-center md:gap-10 lg:gap-14"
+                >
+                  <div className={`w-full min-w-0 ${imageOrder}`}>
+                    <div
+                      data-aos={imageAnimation}
+                      data-aos-duration="900"
+                      data-aos-easing="ease-out-cubic"
+                      className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 dark:ring-0"
+                    >
+                      <Image
+                        src={row.imageSrc}
+                        alt={row.imageAlt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </div>
+                  <div className={`w-full min-w-0 ${cardOrder}`}>
+                    <div
+                      data-aos={cardAnimation}
+                      data-aos-duration="900"
+                      data-aos-easing="ease-out-cubic"
+                      data-aos-delay="80"
+                      className="flex w-full flex-col justify-center md:flex-1 md:basis-0"
+                    >
+                      <div className="overflow-hidden rounded-[24px] border border-neutral-200 bg-white dark:border-0 dark:bg-[#1e1e1e]">
+                        <span className={`block h-2 w-14 ${row.accentClass}`} aria-hidden />
+                        <div className="flex flex-col justify-center px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14">
+                          <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
+                            {row.title}
+                          </h4>
+                          <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
+                            {row.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section
         className="w-full bg-neutral-100 py-10 sm:py-12 md:py-14 dark:bg-black"
         aria-label="Remediation outcomes"
       >

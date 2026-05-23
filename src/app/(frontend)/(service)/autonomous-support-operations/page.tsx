@@ -631,17 +631,21 @@ const page = () => {
                                 <OrchestrationConnectorColumn side="right" />
 
                                 <article
-                                    className="z-10 w-full max-w-xs shrink-0 rounded-xl border border-neutral-200 bg-white p-6 text-right dark:border-white/15 dark:bg-[#1e1e1e] xl:max-w-sm"
+                                    className="z-10 w-full max-w-xs shrink-0 rounded-xl border border-neutral-200 bg-white p-6 dark:border-white/15 dark:bg-[#1e1e1e] xl:max-w-sm"
                                     data-aos="fade-up"
                                     data-aos-duration={AOS_DURATION}
                                     data-aos-easing={AOS_EASING}
                                     data-aos-delay={COMPARE_STAGGER_MS * 2 + 120}
                                 >
-                                   
-                                    <ul className="mt-5 list-none! space-y-3 text-sm text-foreground sm:text-base">
-                                        
-                                        <li>Fewer repetitive escalations. <span className="text-primary" aria-hidden>•</span></li>
-                                        <li>Faster employee support experiences. <span className="text-primary" aria-hidden>•</span></li>
+                                    <ul className="mt-5 space-y-3 text-left text-sm text-foreground sm:text-base">
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Fewer repetitive escalations.
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary" aria-hidden>•</span>
+                                            Faster employee support experiences.
+                                        </li>
                                     </ul>
                                 </article>
                             </div>

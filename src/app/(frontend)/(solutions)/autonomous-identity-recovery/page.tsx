@@ -333,7 +333,8 @@ function RecoveryFeatureCard({
 export default function AutonomousIdentityRecoveryPage() {
   return (
     <AosInit>
-      <section id="" className="relative w-full lg:min-h-screen">
+      <main className="w-full min-w-0 overflow-x-clip">
+      <section id="" className="relative w-full min-w-0 overflow-x-clip lg:min-h-screen">
         <div className="pointer-events-none absolute -top-20 right-0 z-0 hidden h-[calc(100%+5rem)] w-[36vw] overflow-hidden md:block">
           <div className="absolute top-0 right-[72px] h-[120%] w-[140px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
           <div className="absolute top-0 right-[-90px] h-[120%] w-[130px] skew-x-[-33deg] bg-secondary dark:bg-secondary/40" />
@@ -372,7 +373,7 @@ export default function AutonomousIdentityRecoveryPage() {
         </div>
       </section>
 
-      <section className="w-full overflow-x-hidden bg-neutral-100 py-14 sm:py-20 dark:bg-secondary/40">
+      <section className="w-full bg-neutral-100 py-14 sm:py-20 dark:bg-secondary/40">
         <div className="container">
           <h3
             className="text-balance text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl md:leading-[1.15] dark:text-white"
@@ -441,7 +442,7 @@ export default function AutonomousIdentityRecoveryPage() {
         </div>
       </section>
 
-      <section className="overflow-x-hidden py-10 sm:py-12 dark:bg-secondary/40">
+      <section className="py-10 sm:py-12 dark:bg-secondary/40">
         <div className="container">
           <div className="rounded-2xl border border-neutral-200/90 bg-neutral-50 px-4 py-10 sm:rounded-3xl sm:px-7 sm:py-14 md:rounded-[28px] md:px-10 md:py-16 lg:px-12 dark:border-white/10 dark:bg-black dark:shadow-none">
             <h3
@@ -468,7 +469,7 @@ export default function AutonomousIdentityRecoveryPage() {
         </div>
       </section>
 
-      <section className="w-full overflow-x-hidden bg-secondary py-12 sm:py-16 md:py-20 dark:bg-secondary/40">
+      <section className="w-full bg-secondary py-12 sm:py-16 md:py-20 dark:bg-secondary/40">
         <div className="container flex flex-col gap-8 sm:gap-10">
           {recoveryStoryRows.map((row, index) => {
             const alignLeft = index % 2 === 0;
@@ -525,7 +526,7 @@ export default function AutonomousIdentityRecoveryPage() {
         </div>
       </section>
 
-      <section className="w-full overflow-x-hidden bg-white py-12 sm:py-16 md:py-24 dark:bg-[#121212]">
+      <section className="w-full bg-white py-12 sm:py-16 md:py-24 dark:bg-background">
         <div className="container max-w-6xl">
           <h3
             className="mx-auto max-w-5xl text-balance text-left text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-3xl lg:text-4xl lg:leading-[1.12] dark:text-white"
@@ -631,6 +632,7 @@ export default function AutonomousIdentityRecoveryPage() {
 
       </section>
 
+      </main>
     </AosInit>
   );
 }

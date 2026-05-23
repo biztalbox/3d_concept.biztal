@@ -10,7 +10,7 @@ const LeadershipPage = () => {
 
                 <div className="container relative flex flex-col items-center justify-center py-16 text-center sm:py-20 lg:py-24">
                     <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
-                        Leadership
+                       About
                     </div>
 
                     <h1 className="mt-6 text-foreground">
