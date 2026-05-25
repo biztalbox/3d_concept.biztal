@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { s3Storage } from "@payloadcms/storage-s3";
 import sharp from "sharp";
 
 import { Users } from "./payload/collections/Users";
@@ -10,6 +11,7 @@ import { Media } from "./payload/collections/Media";
 import { Pages } from "./payload/collections/Pages";
 import { Posts } from "./payload/collections/Posts";
 import { getAllowedOrigins } from "./payload/lib/getAllowedOrigins";
+import { useS3Storage } from "./payload/lib/storage";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -34,6 +36,31 @@ export default buildConfig({
     },
   },
   editor: lexicalEditor(),
+  plugins: [
+    ...(useS3Storage
+      ? [
+          s3Storage({
+            collections: {
+              media: {
+                prefix: "media",
+                // Serve files directly from Supabase (public bucket) for site + admin previews.
+                disablePayloadAccessControl: true,
+              },
+            },
+            bucket: process.env.S3_BUCKET!,
+            config: {
+              credentials: {
+                accessKeyId: process.env.S3_ACCESS_KEY_ID!,
+                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
+              },
+              region: process.env.S3_REGION || "us-east-1",
+              endpoint: process.env.S3_ENDPOINT,
+              forcePathStyle: true,
+            },
+          }),
+        ]
+      : []),
+  ],
   collections: [Users, Media, Pages, Posts],
   db: postgresAdapter({
     pool: {

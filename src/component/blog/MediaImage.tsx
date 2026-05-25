@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { getMediaUrl } from "@/lib/getMediaUrl";
 import type { Media } from "@/payload-types";
 
 type Props = {
@@ -32,14 +33,16 @@ export function MediaImage({
   height,
 }: Props) {
   if (!media || typeof media !== "object") return null;
-  if (!media.url) return null;
+
+  const src = getMediaUrl(media.url);
+  if (!src) return null;
 
   const resolvedAlt = alt ?? media.alt ?? "";
 
   if (fill) {
     return (
       <Image
-        src={media.url}
+        src={src}
         alt={resolvedAlt}
         fill
         className={className}
@@ -51,7 +54,7 @@ export function MediaImage({
 
   return (
     <Image
-      src={media.url}
+      src={src}
       alt={resolvedAlt}
       width={width ?? media.width ?? 1200}
       height={height ?? media.height ?? 800}

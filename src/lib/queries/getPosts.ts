@@ -20,9 +20,6 @@ export type GetPostsResult = {
 
 /**
  * Fetch published blog posts (newest first) with pagination.
- *
- * Tagged with `posts` so Payload's `afterChange` / `afterDelete` hooks can
- * invalidate this query when editors publish or remove content.
  */
 export const getPosts = async ({
   page = 1,
@@ -39,6 +36,8 @@ export const getPosts = async ({
         limit,
         sort: "-publishedAt",
         depth: 1,
+        draft: false,
+        overrideAccess: true,
         where: {
           and: [
             { _status: { equals: "published" } },
@@ -67,7 +66,7 @@ export const getPosts = async ({
     ["posts", String(page), String(limit), tag ?? "all"],
     {
       tags: ["posts"],
-      revalidate: 3600,
+      revalidate: 300,
     },
   );
 

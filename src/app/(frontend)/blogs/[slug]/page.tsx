@@ -7,10 +7,14 @@ import { MediaImage } from "@/component/blog/MediaImage";
 import { PostMeta } from "@/component/blog/PostMeta";
 import { PostCard } from "@/component/blog/PostCard";
 import { estimateReadingTime } from "@/lib/format";
+import { hasRichTextContent } from "@/lib/hasRichTextContent";
 import { getPayload } from "@/lib/payload";
 import { getPost } from "@/lib/queries/getPost";
 import { getPosts } from "@/lib/queries/getPosts";
 import type { Media } from "@/payload-types";
+
+/** Always read fresh published content from Payload (no stale ISR cache). */
+export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,6 +26,8 @@ export async function generateStaticParams() {
     collection: "posts",
     limit: 100,
     depth: 0,
+    draft: false,
+    overrideAccess: true,
     where: { _status: { equals: "published" } },
     select: { slug: true },
   });
@@ -144,13 +150,15 @@ export default async function PostPage({ params }: Props) {
       {/* Body */}
       <section className="container py-12 sm:py-16 lg:py-20">
         <article className="mx-auto max-w-3xl">
-          {post.content ? (
+          {hasRichTextContent(post.content) ? (
             <div className="post-content space-y-6">
               <RichText data={post.content} />
             </div>
           ) : (
             <p className="text-center !text-muted-foreground">
-              This post has no content yet.
+              This post has no content yet. Open it in the CMS, add body text in
+              the Content field, then click <strong>Publish changes</strong> (not
+              only Save draft).
             </p>
           )}
         </article>

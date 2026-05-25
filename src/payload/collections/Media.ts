@@ -6,6 +6,7 @@ import type { CollectionConfig } from "payload";
 import { anyone } from "../access/anyone";
 import { isAdmin } from "../access/isAdmin";
 import { isEditorOrAdmin } from "../access/isEditorOrAdmin";
+import { useS3Storage } from "../lib/storage";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -33,7 +34,8 @@ export const Media: CollectionConfig = {
     delete: isAdmin,
   },
   upload: {
-    staticDir: mediaDir,
+    // Local folder for dev; Supabase S3 plugin replaces this on production.
+    ...(!useS3Storage ? { staticDir: mediaDir } : {}),
     mimeTypes: ["image/*", "video/*", "application/pdf"],
     imageSizes: [
       {
