@@ -11,7 +11,7 @@ import { Media } from "./payload/collections/Media";
 import { Pages } from "./payload/collections/Pages";
 import { Posts } from "./payload/collections/Posts";
 import { getAllowedOrigins } from "./payload/lib/getAllowedOrigins";
-import { useS3Storage } from "./payload/lib/storage";
+import { getS3StorageConfig, useS3Storage } from "./payload/lib/storage";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -37,29 +37,31 @@ export default buildConfig({
   },
   editor: lexicalEditor(),
   plugins: [
-    ...(useS3Storage
-      ? [
-          s3Storage({
-            collections: {
-              media: {
-                prefix: "media",
-                // Serve files directly from Supabase (public bucket) for site + admin previews.
-                disablePayloadAccessControl: true,
-              },
+    ...((): ReturnType<typeof s3Storage>[] => {
+      const s3 = getS3StorageConfig();
+      if (!s3) return [];
+
+      return [
+        s3Storage({
+          collections: {
+            media: {
+              prefix: "media",
+              disablePayloadAccessControl: true,
             },
-            bucket: process.env.S3_BUCKET!,
-            config: {
-              credentials: {
-                accessKeyId: process.env.S3_ACCESS_KEY_ID!,
-                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
-              },
-              region: process.env.S3_REGION || "us-east-1",
-              endpoint: process.env.S3_ENDPOINT,
-              forcePathStyle: true,
+          },
+          bucket: s3.bucket,
+          config: {
+            credentials: {
+              accessKeyId: s3.accessKeyId,
+              secretAccessKey: s3.secretAccessKey,
             },
-          }),
-        ]
-      : []),
+            region: s3.region,
+            endpoint: s3.endpoint,
+            forcePathStyle: true,
+          },
+        }),
+      ];
+    })(),
   ],
   collections: [Users, Media, Pages, Posts],
   db: postgresAdapter({
