@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   // React Compiler temporarily disabled to reduce dev-time memory pressure
   // when compiling the Payload admin bundle. Re-enable in production builds.
   reactCompiler: process.env.NODE_ENV === "production",
+  serverExternalPackages: ["sharp", "payload", "@payloadcms/db-postgres"],
   turbopack: {
     root: dirname,
   },

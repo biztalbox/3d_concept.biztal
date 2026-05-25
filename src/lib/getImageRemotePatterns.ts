@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import { getServerURL } from "@/lib/getServerURL";
+
 type RemotePattern = NonNullable<
   NonNullable<NextConfig["images"]>["remotePatterns"]
 >[number];
@@ -13,6 +15,7 @@ export function getImageRemotePatterns(): RemotePattern[] {
     { protocol: "https", hostname: "images.unsplash.com" },
     { protocol: "https", hostname: "media.istockphoto.com" },
     { protocol: "https", hostname: "res-console.cloudinary.com" },
+    { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
     { protocol: "http", hostname: "localhost" },
     { protocol: "http", hostname: "127.0.0.1" },
   ];
@@ -34,7 +37,9 @@ export function getImageRemotePatterns(): RemotePattern[] {
     }
   };
 
+  addFromUrl(getServerURL());
   addFromUrl(process.env.NEXT_PUBLIC_SERVER_URL);
+  addFromUrl("https://tc2.biztalbox.com");
   addFromUrl(process.env.NEXT_PUBLIC_SUPABASE_URL);
   addFromUrl(process.env.S3_ENDPOINT);
 

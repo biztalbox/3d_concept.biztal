@@ -3,20 +3,20 @@ import { fileURLToPath } from "url";
 import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import { s3Storage } from "@payloadcms/storage-s3";
 import sharp from "sharp";
 
+import { getServerURL } from "./lib/getServerURL";
 import { Users } from "./payload/collections/Users";
 import { Media } from "./payload/collections/Media";
 import { Pages } from "./payload/collections/Pages";
 import { Posts } from "./payload/collections/Posts";
 import { getAllowedOrigins } from "./payload/lib/getAllowedOrigins";
-import { getS3StorageConfig, useS3Storage } from "./payload/lib/storage";
+import { getStoragePlugins, hasCloudStorage } from "./payload/lib/getStoragePlugins";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+const serverURL = getServerURL();
 const allowedOrigins = getAllowedOrigins();
 
 export default buildConfig({
@@ -36,33 +36,15 @@ export default buildConfig({
     },
   },
   editor: lexicalEditor(),
-  plugins: [
-    ...((): ReturnType<typeof s3Storage>[] => {
-      const s3 = getS3StorageConfig();
-      if (!s3) return [];
-
-      return [
-        s3Storage({
-          collections: {
-            media: {
-              prefix: "media",
-              disablePayloadAccessControl: true,
-            },
-          },
-          bucket: s3.bucket,
-          config: {
-            credentials: {
-              accessKeyId: s3.accessKeyId,
-              secretAccessKey: s3.secretAccessKey,
-            },
-            region: s3.region,
-            endpoint: s3.endpoint,
-            forcePathStyle: true,
-          },
-        }),
-      ];
-    })(),
-  ],
+  plugins: getStoragePlugins(),
+  onInit: async (payload) => {
+    if (process.env.NODE_ENV === "production" && !hasCloudStorage()) {
+      payload.logger.error(
+        "[media] Cloud storage is not configured. Set Supabase S3 keys (S3_BUCKET, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY) or BLOB_READ_WRITE_TOKEN. Uploads will fail with 500 on serverless hosts.",
+      );
+    }
+    payload.logger.info(`[payload] serverURL=${serverURL}`);
+  },
   collections: [Users, Media, Pages, Posts],
   db: postgresAdapter({
     pool: {

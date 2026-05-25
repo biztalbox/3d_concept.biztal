@@ -1,3 +1,5 @@
+import { getServerURL } from "@/lib/getServerURL";
+
 /**
  * Origins allowed for Payload CORS + CSRF.
  * Production must include the public site URL or admin saves fail with
@@ -18,6 +20,7 @@ export function getAllowedOrigins(): string[] {
     origins.add(`https://${trimmed.replace(/\/$/, "")}`);
   };
 
+  add(getServerURL());
   add(process.env.NEXT_PUBLIC_SERVER_URL);
 
   if (process.env.VERCEL_URL) {

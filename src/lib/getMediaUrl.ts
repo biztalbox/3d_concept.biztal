@@ -1,3 +1,5 @@
+import { getServerURL } from "@/lib/getServerURL";
+
 /**
  * Resolve a Payload media URL for the current environment.
  * Fixes relative paths and localhost URLs saved while developing locally.
@@ -6,9 +8,7 @@ export function getMediaUrl(url: string | null | undefined): string | null {
   if (!url?.trim()) return null;
 
   const trimmed = url.trim();
-  const serverUrl = (
-    process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"
-  ).replace(/\/$/, "");
+  const serverUrl = getServerURL();
 
   if (trimmed.startsWith("/")) {
     return `${serverUrl}${trimmed}`;
