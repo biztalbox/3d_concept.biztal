@@ -9,12 +9,16 @@ import { Users } from "./payload/collections/Users";
 import { Media } from "./payload/collections/Media";
 import { Pages } from "./payload/collections/Pages";
 import { Posts } from "./payload/collections/Posts";
+import { getAllowedOrigins } from "./payload/lib/getAllowedOrigins";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
+const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+const allowedOrigins = getAllowedOrigins();
+
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
+  serverURL,
   admin: {
     user: Users.slug,
     meta: {
@@ -52,10 +56,6 @@ export default buildConfig({
       fileSize: 20 * 1024 * 1024,
     },
   },
-  cors: [process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"].filter(
-    Boolean
-  ),
-  csrf: [process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"].filter(
-    Boolean
-  ),
+  cors: allowedOrigins,
+  csrf: allowedOrigins,
 });

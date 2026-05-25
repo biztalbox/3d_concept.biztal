@@ -4,6 +4,8 @@ import { fileURLToPath } from "url";
 import type { CollectionConfig } from "payload";
 
 import { anyone } from "../access/anyone";
+import { isAdmin } from "../access/isAdmin";
+import { isEditorOrAdmin } from "../access/isEditorOrAdmin";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,6 +28,9 @@ export const Media: CollectionConfig = {
   },
   access: {
     read: anyone,
+    create: isEditorOrAdmin,
+    update: isEditorOrAdmin,
+    delete: isAdmin,
   },
   upload: {
     staticDir: mediaDir,
