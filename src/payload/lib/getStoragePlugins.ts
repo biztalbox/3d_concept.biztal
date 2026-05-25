@@ -1,13 +1,38 @@
+import { cloudStoragePlugin } from "@payloadcms/plugin-cloud-storage";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import type { Plugin } from "payload";
 
+import { createSupabaseAdapter } from "../storage/supabaseAdapter";
 import { getS3StorageConfig } from "./storage";
+import { getSupabaseStorageConfig } from "./supabaseStorage";
 
 /**
  * Cloud storage plugins for media (required on serverless production).
- * Priority: Supabase S3 → Vercel Blob → none (local disk, dev only).
+ * Priority: Supabase service role → Supabase S3 keys → Vercel Blob → local disk (dev).
  */
-export function getStoragePlugins() {
+export function getStoragePlugins(): Plugin[] {
+  const supabase = getSupabaseStorageConfig();
+
+  if (supabase) {
+    return [
+      cloudStoragePlugin({
+        collections: {
+          media: {
+            adapter: createSupabaseAdapter({
+              supabaseUrl: supabase.supabaseUrl,
+              serviceRoleKey: supabase.serviceRoleKey,
+              bucket: supabase.bucket,
+            }),
+            disablePayloadAccessControl: true,
+            disableLocalStorage: true,
+            prefix: "media",
+          },
+        },
+      }),
+    ];
+  }
+
   const s3 = getS3StorageConfig();
 
   if (s3) {
@@ -20,6 +45,7 @@ export function getStoragePlugins() {
           },
         },
         bucket: s3.bucket,
+        acl: "public-read",
         config: {
           credentials: {
             accessKeyId: s3.accessKeyId,

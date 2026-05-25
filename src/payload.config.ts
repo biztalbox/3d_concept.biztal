@@ -40,7 +40,7 @@ export default buildConfig({
   onInit: async (payload) => {
     if (process.env.NODE_ENV === "production" && !hasCloudStorage()) {
       payload.logger.error(
-        "[media] Cloud storage is not configured. Set Supabase S3 keys (S3_BUCKET, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY) or BLOB_READ_WRITE_TOKEN. Uploads will fail with 500 on serverless hosts.",
+        "[media] Cloud storage is not configured. Add SUPABASE_SERVICE_ROLE_KEY (easiest) or S3_ACCESS_KEY_ID + S3_SECRET_ACCESS_KEY. Uploads fail with 500 on serverless without this.",
       );
     }
     payload.logger.info(`[payload] serverURL=${serverURL}`);

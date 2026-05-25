@@ -33,11 +33,15 @@ export function getS3StorageConfig(): S3StorageConfig | null {
     return null;
   }
 
+  const region =
+    env("S3_REGION") ||
+    (endpoint.includes("ap-northeast-1") ? "ap-northeast-1" : "us-east-1");
+
   return {
     bucket,
     accessKeyId,
     secretAccessKey,
-    region: env("S3_REGION") || "us-east-1",
+    region,
     endpoint,
   };
 }

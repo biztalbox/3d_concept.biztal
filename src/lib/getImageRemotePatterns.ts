@@ -16,6 +16,7 @@ export function getImageRemotePatterns(): RemotePattern[] {
     { protocol: "https", hostname: "media.istockphoto.com" },
     { protocol: "https", hostname: "res-console.cloudinary.com" },
     { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
+    { protocol: "https", hostname: "*.supabase.co", pathname: "/storage/v1/object/public/**" },
     { protocol: "http", hostname: "localhost" },
     { protocol: "http", hostname: "127.0.0.1" },
   ];
