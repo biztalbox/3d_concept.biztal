@@ -244,11 +244,22 @@ export default function ComplaincePage() {
                   <p className="text-sm font-semibold text-black group-hover:text-white!">
                     The Old Way:
                   </p>
-                  <p className="mt-3 text-sm leading-6 transition-colors duration-200 group-hover:text-white!">
-                    Manual setup. Imaging. IT dependency.
-                    <br />
-                    Day 1 login issues.
-                  </p>
+                  <ul className="mt-3 flex flex-col gap-2 text-sm leading-6 text-black/70 transition-colors duration-200 group-hover:text-white! dark:text-white/75">
+                    {[
+                      "Manual setup",
+                      "Imaging",
+                      "IT dependency",
+                      "Day 1 login issues",
+                    ].map((item) => (
+                      <li key={item} className="flex gap-2.5">
+                        <span
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-current"
+                          aria-hidden
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div
@@ -263,11 +274,21 @@ export default function ComplaincePage() {
                   <p className="text-sm font-semibold text-black group-hover:text-white!">
                     The ZerofAI Way:
                   </p>
-                  <p className="mt-3 text-sm leading-6 transition-colors duration-200 group-hover:text-white!">
-                    Automated onboarding. Policy-driven
-                    <br />
-                    provisioning. Instant readiness.
-                  </p>
+                  <ul className="mt-3 flex flex-col gap-2 text-sm leading-6 text-black/70 transition-colors duration-200 group-hover:text-white! dark:text-white/75">
+                    {[
+                      "Automated onboarding",
+                      "Policy-driven provisioning",
+                      "Instant readiness",
+                    ].map((item) => (
+                      <li key={item} className="flex gap-2.5">
+                        <span
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-current"
+                          aria-hidden
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
@@ -281,38 +302,42 @@ export default function ComplaincePage() {
 
           <div className="mt-8 grid grid-cols-1 gap-5 md:mt-10 md:grid-cols-2 md:gap-6">
             <div
-              className="relative rounded-xl bg-secondary p-5 pl-7 sm:p-6 sm:pl-8 dark:bg-black"
+              className="flex gap-3 rounded-xl bg-secondary p-5 sm:gap-4 sm:p-6 dark:bg-black"
               data-aos="fade-up"
               data-aos-delay="80"
             >
               <span
                 aria-hidden="true"
-                className="absolute top-5 left-[-5] h-7 w-[8px] bg-black sm:top-6 dark:bg-white"
+                className="mt-1 h-7 w-[8px] shrink-0 bg-black dark:bg-white"
               />
-              <h5 className="text-sm font-bold sm:text-[15px]">
-                Intelligent App Orchestration
-              </h5>
-              <p className="mt-3 leading-6 text-white/85 sm:leading-6">
-                No more missing software tickets. Based on the user&apos;s role and
-                department, the AI agent dynamically installs the exact applications and
-                permissions they need to start working immediately.
-              </p>
+              <div className="min-w-0 flex-1">
+                <h5 className="text-sm font-bold sm:text-[15px]">
+                  Intelligent App Orchestration
+                </h5>
+                <p className="mt-3 leading-6 text-white/85 sm:leading-6">
+                  No more missing software tickets. Based on the user&apos;s role and
+                  department, the AI agent dynamically installs the exact applications and
+                  permissions they need to start working immediately.
+                </p>
+              </div>
             </div>
             <div
-              className="relative rounded-xl bg-secondary p-5 pl-7 sm:p-6 sm:pl-8 dark:bg-black"
+              className="flex gap-3 rounded-xl bg-secondary p-5 sm:gap-4 sm:p-6 dark:bg-black"
               data-aos="fade-up"
               data-aos-delay="160"
             >
               <span
                 aria-hidden="true"
-                className="absolute top-5 left-[-5] h-7 w-[8px] bg-black sm:top-6 dark:bg-white"
+                className="mt-1 h-7 w-[8px] shrink-0 bg-black dark:bg-white"
               />
-              <h5 className="text-sm font-bold sm:text-[15px]">Secure Identity Binding</h5>
-              <p className="mt-3 text-xs leading-6 text-white/85 sm:text-[13px] sm:leading-6">
-                Security starts at the first boot. Device enrollment is tied directly to
-                the user&apos;s corporate identity with multi-factor authentication,
-                ensuring the hardware is locked down before the desktop even loads.
-              </p>
+              <div className="min-w-0 flex-1">
+                <h5 className="text-sm font-bold sm:text-[15px]">Secure Identity Binding</h5>
+                <p className="mt-3 text-xs leading-6 text-white/85 sm:text-[13px] sm:leading-6">
+                  Security starts at the first boot. Device enrollment is tied directly to
+                  the user&apos;s corporate identity with multi-factor authentication,
+                  ensuring the hardware is locked down before the desktop even loads.
+                </p>
+              </div>
             </div>
           </div>
         </div>
