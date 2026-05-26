@@ -22,10 +22,8 @@ const LoaderExtensionContext = createContext<LoaderExtensionContextValue | null>
 
 export function useLoaderExtension() {
   const ctx = useContext(LoaderExtensionContext);
-  if (!ctx) {
-    throw new Error("useLoaderExtension must be used within LoaderExtensionProvider");
-  }
-  return ctx;
+  // Safe no-op when provider is not mounted (e.g. loader disabled site-wide).
+  return ctx ?? { extend: () => {} };
 }
 
 export function LoaderExtensionProvider({ children }: { children: ReactNode }) {

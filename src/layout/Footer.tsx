@@ -190,7 +190,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-foreground/10 pt-6 md:flex-row md:items-center">
           <p className="text-xs! text-foreground/55">
-            © 2026 ZerofAI All rights reserved.
+            © 2026 ZerofAI All rights reserved <span className="opacity-0">| Designed by <a href="https://biztalbox.com" target="_blank">biztalbox</a></span>
           </p>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-foreground/55">
             {POLICY_LINKS.map(({ label, href }) => (

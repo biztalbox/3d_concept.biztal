@@ -11,6 +11,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { usePathname } from "next/navigation";
+import { useMediaQuery } from "@/lib/use-media-query";
 
 type NavNode = {  /** Stable key for CMS + rendering */
   id: string;
@@ -293,6 +295,9 @@ function StickyHeader() {
   const mobileMenuId = useId();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const isDesktop = useMediaQuery("(min-width: 767px)");
+  const isHeaderTransparent = pathname === "/" && isDesktop;
 
   const closeDesktopMenus = useCallback(() => {
     setOpenMenuId(null);
@@ -355,7 +360,7 @@ function StickyHeader() {
   }
 
   return (
-    <header className="py-4 sticky top-0 z-50 bg-background border-b">
+    <header className={`py-2 top-0 z-50 ${isHeaderTransparent ? "bg-transparent fixed" : "bg-background sticky border-b"} w-full`}>
 
       <div className="container flex items-center justify-between gap-4">
         {/* logo */}
@@ -371,7 +376,7 @@ function StickyHeader() {
         </Link>
 
         {/* desktop nav pill (solid colors only) */}
-        <div className="hidden w-fit items-center justify-between gap-3 rounded-full bg-secondary dark:bg-secondary/40 px-2 pl-4 py-2 lg:flex">
+        <div className="hidden w-fit items-center justify-between gap-3 rounded-full bg-secondary dark:bg-secondary/60 px-2 pl-4 py-2 lg:flex">
           <nav ref={navRef} className="hidden min-w-0 flex-1 items-center gap-6 whitespace-nowrap md:flex">
             {MEGA_MENU.map((col, idx) => {
               const hasItems = Boolean(col.items?.length);

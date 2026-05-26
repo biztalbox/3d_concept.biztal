@@ -1,6 +1,4 @@
-import { MinDurationLoader } from "@/components/min-duration-loader";
-
-/** Route-level loader (page bundle / server render). 3D assets use Suspense inside HeroCanvas. */
+/** Route-level loading — 3D scene owns its own loader timing. */
 export default function Loading() {
-  return <MinDurationLoader />;
+  return null;
 }

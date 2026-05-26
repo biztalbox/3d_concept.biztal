@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import Header from "@/layout/header";
 import Footer from "@/layout/Footer";
-import { LoaderExtensionProvider } from "@/components/loader-extension-provider";
 import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
@@ -33,11 +32,9 @@ export default function FrontendLayout({
       className={cn("antialiased", "overflow-x-hidden", poppins.variable)}
     >
       <body className="min-w-0 overflow-x-hidden">
-        <LoaderExtensionProvider>
-          <Header />
-          {children}
-          <Footer />
-        </LoaderExtensionProvider>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

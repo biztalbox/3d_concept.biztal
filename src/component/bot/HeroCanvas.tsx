@@ -1,7 +1,7 @@
 "use client";
 
 import HeroScene from "@/component/HeroScene";
-import { MinDurationLoader } from "@/components/min-duration-loader";
+import { LoaderContent } from "@/components/page-loader";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import { Suspense, useRef } from "react";
@@ -45,7 +45,7 @@ function HeroCanvasScene() {
 const HeroCanvas = () => {
   return (
     <div className="relative order-1 h-full w-full min-w-0 overflow-hidden md:order-2">
-      <Suspense fallback={<MinDurationLoader />}>
+      <Suspense fallback={<LoaderContent />}>
         <HeroCanvasScene />
       </Suspense>
     </div>
