@@ -4,6 +4,7 @@ import { useGLTF } from "@react-three/drei";
 
 import { FadeGroup } from "../../shared/FadeGroup";
 import { useLoopAnimations } from "../../shared/useLoopAnimations";
+import { useBaseLabelHover } from "../../shared/useBaseLabelHover";
 import type { ModelProps } from "../../shared/types";
 import { useScreenFlicker } from "../../shared/useMaterialFlicker";
 
@@ -12,6 +13,7 @@ useGLTF.preload("/model5/business.glb");
 
 export function DecisionModel({ isSelected, isHidden, onSelect }: ModelProps) {
   const { scene, animations, materials } = useGLTF("/model5/business.glb");
+  const { hoverIn, hoverOut } = useBaseLabelHover("business_grid", "business_text");
 
   useLoopAnimations(scene, animations, "standing_using_touchscreen");
 
@@ -36,9 +38,11 @@ export function DecisionModel({ isSelected, isHidden, onSelect }: ModelProps) {
         onPointerOver={(e) => {
           e.stopPropagation();
           document.body.style.cursor = "pointer";
+          hoverIn();
         }}
         onPointerOut={() => {
           document.body.style.cursor = "default";
+          hoverOut();
         }}
       >
         <primitive object={scene} />

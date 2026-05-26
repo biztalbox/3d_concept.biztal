@@ -4,6 +4,7 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 
 import { FadeGroup } from "../../shared/FadeGroup";
 import { useLoopAnimations } from "../../shared/useLoopAnimations";
+import { useBaseLabelHover } from "../../shared/useBaseLabelHover";
 import type { ModelProps } from "../../shared/types";
 import { LoopOnce } from "three";
 import { useRouter } from "next/navigation";
@@ -14,6 +15,7 @@ export function BlogModel({ isHidden, onSelect }: ModelProps) {
   const { scene, animations } = useGLTF("/model5/blog.glb");
   const router = useRouter()
   const { actions } = useAnimations(animations, scene);
+  const { hoverIn, hoverOut } = useBaseLabelHover("blog_grid", "blog_text");
 
   const doorAnim = () => {
 
@@ -43,9 +45,11 @@ export function BlogModel({ isHidden, onSelect }: ModelProps) {
         onPointerOver={(e) => {
           e.stopPropagation();
           document.body.style.cursor = "pointer";
+          hoverIn();
         }}
         onPointerOut={() => {
           document.body.style.cursor = "default";
+          hoverOut();
         }}
       >
         <primitive object={scene} />

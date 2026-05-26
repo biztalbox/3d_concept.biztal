@@ -5,6 +5,7 @@ import { useAnimations, useGLTF } from "@react-three/drei";
 import { FadeGroup } from "../../shared/FadeGroup";
 import { useHiddenMeshAnimations } from "../../shared/useHiddenMeshAnimations";
 import { useLoopActions } from "../../shared/useLoopAnimations";
+import { useBaseLabelHover } from "../../shared/useBaseLabelHover";
 import type { ModelProps } from "../../shared/types";
 
 useGLTF.preload("/model5/shooting.glb");
@@ -22,6 +23,7 @@ const SHOOTING_MESHES = [
 export function ShootingModel({ isSelected, isHidden, onSelect }: ModelProps) {
   const { scene, animations } = useGLTF("/model5/shooting.glb");
   const { actions } = useAnimations(animations, scene);
+  const { hoverIn, hoverOut } = useBaseLabelHover("shooting_grid", "shooting_text");
   useLoopActions(actions, "typing");
   useLoopActions(actions, "pc_fan_run");
 
@@ -46,9 +48,11 @@ export function ShootingModel({ isSelected, isHidden, onSelect }: ModelProps) {
         onPointerOver={(e) => {
           e.stopPropagation();
           document.body.style.cursor = "pointer";
+          hoverIn();
         }}
         onPointerOut={() => {
           document.body.style.cursor = "default";
+          hoverOut();
         }}
       >
         <primitive object={scene} />

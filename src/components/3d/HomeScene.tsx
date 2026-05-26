@@ -400,6 +400,9 @@ function HomeCanvasScene({
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       </EffectComposer>
       <AdaptiveDpr />
+
+      {/* <directionalLight position={[0, 10, 0]} intensity={100} color="white" /> */}
+
       {/* <OrbitControls /> */}
       {debugMode ? null : <MouseOrbit enabled={selectedId === null && !isAnimating} />}
 

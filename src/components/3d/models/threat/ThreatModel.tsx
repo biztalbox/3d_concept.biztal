@@ -4,6 +4,7 @@ import { useGLTF } from "@react-three/drei";
 
 import { FadeGroup } from "../../shared/FadeGroup";
 import { useLoopAnimations } from "../../shared/useLoopAnimations";
+import { useBaseLabelHover } from "../../shared/useBaseLabelHover";
 import { useScreenFlicker } from "../../shared/useMaterialFlicker";
 import type { ModelProps } from "../../shared/types";
 
@@ -18,6 +19,7 @@ const FLICKER_TEXTURES = ["Error red", "White error"] as const;
 
 export function ThreatModel({ isSelected, isHidden, onSelect }: ModelProps) {
   const { scene, animations, materials } = useGLTF("/model5/threat.glb");
+  const { hoverIn, hoverOut } = useBaseLabelHover("threat_grid", "threat_text");
   useLoopAnimations(scene, animations, "typing");
   useLoopAnimations(scene, animations, "pc_fan_run");
 
@@ -70,9 +72,11 @@ export function ThreatModel({ isSelected, isHidden, onSelect }: ModelProps) {
         onPointerOver={(e) => {
           e.stopPropagation();
           document.body.style.cursor = "pointer";
+          hoverIn();
         }}
         onPointerOut={() => {
           document.body.style.cursor = "default";
+          hoverOut();
         }}
       >
         <primitive object={scene} />
