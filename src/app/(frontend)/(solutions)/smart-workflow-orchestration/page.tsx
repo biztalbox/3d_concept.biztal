@@ -1,8 +1,6 @@
 import AosInit from "@/component/AosInit";
-import AlternatingFeatureRows from "@/component/AlternatingFeatureRows";
 import HeroCanvas from "@/component/bot/HeroCanvas";
-import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
-import { DEFAULT_REMEDIATION_FEATURE_ROWS } from "@/lib/default-alternating-rows";
+import { CARD_STAGGER_MS } from "@/lib/aos-config";
 import Link from "next/link";
 import { FaClockRotateLeft, FaCheck } from "react-icons/fa6";
 import { GiStarSwirl } from "react-icons/gi";
@@ -23,25 +21,36 @@ import { CheckCircle } from "lucide-react";
 
 
 const traditionalOpsItemList = [
-  "Generate alerts after issues occur",
-  "Require manual investigation",
-  "Create alert fatigue",
-  "Focus on visibility",
+  "Depend on static rules and flows", 
+
+  "Require manual approvals and coordination",
+
+  "Operate within isolated systems",
+
+  "Automate tasks, not outcomes",
 ];
   
 const predictiveOpsItems = [
-  "Predicts issues before they occur",
-  "Correlates signals automatically",
-  "Eliminates noise and false alerts",
-  "Takes preventive action autonomously",
+  "Dynamically orchestrates workflows",
+
+  "Coordinates actions across systems automatically",
+
+  "Executes workflows end-to-end autonomously",
+
+  "Focuses on business outcomes, not task completion",
 ];
 
-const workflowSteps = [
+const OldwayItems = [
   "Trigger workflows.",
   "Coordinate manually.",
   "Resolve step-by-step.",
 ];
 
+const ZerofaiWayItems = [
+  "Orchestrate intelligently.",
+  "Execute autonomously.", 
+  "Resolve instantly.",
+];
 
 const featureBarItems: {
     Icon: IconType;
@@ -50,26 +59,58 @@ const featureBarItems: {
   }[] = [
     {
       Icon: LuClockArrowDown,
-      title: "Less Downtime",
-      sub: "By predicting and preventing issues before they impact users",
+      title: "Reduced Manual Effort",
+      sub: "through end-to-end workflow automation",
     },
     {
       Icon: SlMagnifier,
-      title: "Faster Root Cause ID",
-      sub: "AI-driven insights accelerate incident investigation",
+      title: "Faster Resolution Times",
+      sub: "with intelligent orchestration across systems",
     },
     {
       Icon: IoSettingsOutline,
-      title: "Lower Overhead",
-      sub: "Through automated detection and response workflows",
+      title: "Improved Operational Efficiency",
+      sub: "by eliminating repetitive coordination tasks",
     },
     {
       Icon: IoShieldCheckmarkOutline,
-      title: "System Reliability",
-      sub: "With continuous health monitoring and proactive maintenance",
+      title: "Consistent Service Delivery",
+      sub: "through standardized autonomous execution",
     },
   ];
- 
+
+const remediationFeatureRows = [
+  {
+    imageSrc:
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGF0YSUyMGludGVsbGlnZW5jZXxlbnwwfHwwfHx8MA%3D%3D",
+    imageAlt: "Event-Driven Workflow Initiation",
+    accentClass: "bg-primary",
+    title: "Event-Driven Detection",
+    description:
+    "ZerofAI captures signals from users, systems, incidents, and operational events automatically triggering workflows the moment action isrequired.",  
+    imageFirst: true,
+  },
+  {
+    imageSrc:
+      "https://media.istockphoto.com/id/2265515077/photo/echnology-consultant-integrates-artificial-intelligence-engine-with-data-visualization.webp?a=1&b=1&s=612x612&w=0&k=20&c=qD69FXAFYtbN1Q3XIVsMF9iNv-HKaPzm_s_D9q6rsHE=",
+    imageAlt: "AI-Led Diagnosis and decisioning",
+    accentClass: "bg-[#00bcd4]",
+    title: "Contextual Workflow Intelligence",
+    description:
+    "By correlating operational data, historical patterns, and business rules, ZerofAI dynamically determines how workflows should progressacross systems and teams.",    
+    imageFirst: false,
+  },
+  {
+    imageSrc:
+      "https://media.istockphoto.com/id/2208747071/photo/hands-of-robots-touching-on-access-management-network-connections-highlight-robotics.webp?a=1&b=1&s=612x612&w=0&k=20&c=Vch3r1Ej9lyc1Xhp_-FftSYKO7GK9sYUXsTMS9frMyA=",
+    imageAlt: "Closed-Loop Resolution",
+    accentClass: "bg-[#00bcd4]",
+    title: "Closed-Loop Workflow Execution",
+    description:
+    "ZerofAI executes actions, validates outcomes, and continuously updates workflow states in real time, ensuring processes complete without manual tracking or intervention.",    
+    imageFirst: true,
+  },
+];
 
 export default function SmartWorkflowOrchestrationPage() {
   return (
@@ -82,7 +123,7 @@ export default function SmartWorkflowOrchestrationPage() {
 
         <div className="container grid grid-cols-1 gap-10 md:grid-cols-2">
           <div
-            className="order-2 px-5 py-14 sm:px-6 sm:py-16 md:order-1"
+            className="order-2  py-14 md:order-1"
             data-aos="fade-up"
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
@@ -92,7 +133,7 @@ export default function SmartWorkflowOrchestrationPage() {
               <span className="text-primary!"> Intelligently Automatically.</span>
             </h2>
 
-            <p className="mt-8 max-w-[640px] text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
+            <p className="mt-8  text-xs leading-6 text-black/70 dark:text-white/75 sm:mt-10 sm:text-sm sm:leading-7">
               ZerofAI connects systems, workflows, and actions into a unified automation layer enabling
               IT operations to execute complex processes autonomously, without manual coordination or
               repetitive effort.
@@ -112,10 +153,10 @@ export default function SmartWorkflowOrchestrationPage() {
       </section>
 
       <section
-        className="w-full p-10 bg-secondary py-14 sm:py-16 md:py-20 dark:bg-secondary/40"
+        className="w-full bg-secondary py-14 sm:py-16 md:py-20 dark:bg-secondary/40"
         aria-labelledby="workflow-coordination-heading"
       >
-        <div className="container px-5 sm:px-6">
+        <div className="container">
           <div>
             <h3
               id="workflow-coordination-heading"
@@ -156,7 +197,7 @@ export default function SmartWorkflowOrchestrationPage() {
                 The Old Way
               </p>
               <ul className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:gap-3.5">
-                {workflowSteps.map((label) => (
+                {OldwayItems.map((label) => (
                   <li
                     key={`old-${label}`}
                     className="flex items-center gap-3 rounded-full bg-neutral-200 px-5 py-3.5 sm:px-6 sm:py-4 dark:bg-secondary"
@@ -197,7 +238,7 @@ export default function SmartWorkflowOrchestrationPage() {
                 The ZerofAI Way
               </p>
               <ul className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:gap-3.5">
-                {workflowSteps.map((label) => (
+                {ZerofaiWayItems.map((label) => (
                   <li
                     key={`new-${label}`}
                     className="flex items-center gap-3 rounded-full bg-white px-5 py-3.5 text-neutral-900 shadow-sm ring-1 ring-black/5 sm:px-6 sm:py-4 dark:bg-white dark:ring-0"
@@ -219,15 +260,15 @@ export default function SmartWorkflowOrchestrationPage() {
       </section>
 
       <section className="bg-neutral-100 py-14 dark:bg-[#111111] sm:py-16 md:py-20">
-        <div className="container max-w-6xl">
+        <div className="container">
           <h2
-            className="text-left text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
+            className=" text-2xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl md:leading-[1.15] dark:text-white"
             data-aos="fade-up"
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
           >
-            From Password Reset to{" "}
-            <span className="text-primary!">Autonomous<br /> Identity Recovery</span>
+          From Workflow Automation to {" "}
+            <span className="text-primary!">Workflow Intelligence</span>
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3 md:items-stretch md:gap-8">
@@ -239,15 +280,15 @@ export default function SmartWorkflowOrchestrationPage() {
             >
               <div className="flex shrink-0 items-start justify-between gap-4">
                 <p className="text-[0.9375rem] font-bold leading-snug dark:text-white! text-neutral-900 transition-colors duration-300 group-hover:text-white! sm:text-base dark:text-white">
-                  Automated Identity Verification
+                Cross-System Workflow Orchestration
                 </p>
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary transition-colors duration-300 group-hover:bg-white!">
                   <GoGoal className="h-5 w-5 text-white group-hover:text-primary!" aria-hidden />
                 </span>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-neutral-600 transition-colors duration-300 group-hover:text-white! dark:text-[#a0a0a0] sm:text-[0.9375rem]">
-                ZerofAI validates user identity using contextual signals, authentication factors,
-                and policy-driven checks ensuring secure recovery without human involvement.
+              ZerofAI connects identity systems, endpoints, ITSM tools, and collaboration platforms ensuring workflows execute seamlessly across the enterprise
+              without manual coordination.
               </p>
             </div>
 
@@ -260,15 +301,15 @@ export default function SmartWorkflowOrchestrationPage() {
             >
               <div className="flex shrink-0 items-start justify-between gap-4">
                 <p className="text-base font-bold leading-snug text-neutral-900 dark:text-white! transition-colors duration-300 group-hover:text-white! sm:text-[1.0625rem] dark:text-white">
-                  Zero-Touch Credential &amp; Access Restoration
+                AI-Driven Decisioning & Routing
                 </p>
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary transition-colors duration-300 group-hover:bg-white!">
                   <GiBrain className="h-5 w-5 text-white group-hover:text-primary!" aria-hidden />
                 </span>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-neutral-600 transition-colors duration-300 group-hover:text-white! dark:text-[#a0a0a0] sm:text-[0.9375rem]">
-                From password resets to MFA reconfiguration, ZerofAI automatically restores
-                access across identity systems eliminating delays and manual workflows.
+              AI models analyze context, user intent, and operational signals to determine the next best action automatically reducing dependency on static rules and
+              predefined paths.
               </p>
             </div>
 
@@ -281,24 +322,81 @@ export default function SmartWorkflowOrchestrationPage() {
             >
               <div className="flex shrink-0 items-start justify-between gap-4">
                 <p className="text-base font-bold leading-snug text-neutral-900  dark:text-white! transition-colors duration-300 group-hover:text-white! sm:text-[1.0625rem] dark:text-white">
-                  Unified Recovery Across Systems
+                Autonomous Workflow Execution
                 </p>
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary transition-colors duration-300 group-hover:bg-white!">
                   <CiVirus className="h-5 w-5 text-white group-hover:text-primary!" aria-hidden />
                 </span>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-neutral-600 transition-colors duration-300 group-hover:text-white! dark:text-[#a0a0a0] sm:text-[0.9375rem]">
-                ZerofAI orchestrates recovery across directories, applications, and endpoints
-                ensuring seamless access restoration in hybrid and multi-system environments.
+              From approvals and escalations to remediation and provisioning, ZerofAI executes workflows end-to-end ensuring faster outcomes with minimal human
+              involvement.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-            <AlternatingFeatureRows rows={DEFAULT_REMEDIATION_FEATURE_ROWS} />
+      <section className="bg-neutral-50 py-16 dark:bg-black sm:py-20 md:py-24">
+        <div className="container max-w-6xl">
+          <div className="flex flex-col gap-14 md:gap-20 lg:gap-24">
+            {remediationFeatureRows.map((row, index) => {
+              const imageAnimation = row.imageFirst ? "fade-right" : "fade-left";
+              const cardAnimation = row.imageFirst ? "fade-left" : "fade-right";
+              const imageOrder = row.imageFirst ? "order-1 md:order-1" : "order-1 md:order-2";
+              const cardOrder = row.imageFirst ? "order-2 md:order-2" : "order-2 md:order-1";
 
-<section
+              return (
+                <div
+                  key={row.title}
+                  className="flex flex-col items-stretch gap-8 md:flex-row md:items-center md:gap-10 lg:gap-14"
+                >
+                  <div className={`w-full min-w-0 ${imageOrder}`}>
+                    <div
+                      data-aos={imageAnimation}
+                      data-aos-duration="900"
+                      data-aos-easing="ease-out-cubic"
+                      className="relative aspect-[4/3] w-full min-h-[200px] overflow-hidden rounded-[24px] ring-1 ring-neutral-200 sm:min-h-[220px] md:aspect-[3/2] md:min-h-0 md:flex-1 md:basis-0 dark:ring-0"
+                    >
+                      <Image
+                        src={row.imageSrc}
+                        alt={row.imageAlt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </div>
+                  <div className={`w-full min-w-0 ${cardOrder}`}>
+                    <div
+                      data-aos={cardAnimation}
+                      data-aos-duration="900"
+                      data-aos-easing="ease-out-cubic"
+                      data-aos-delay="80"
+                      className="flex w-full flex-col justify-center md:flex-1 md:basis-0"
+                    >
+                      <div className="overflow-hidden rounded-[24px] border border-neutral-200 bg-white dark:border-0 dark:bg-[#1e1e1e]">
+                        <span className={`block h-2 w-14 ${row.accentClass}`} aria-hidden />
+                        <div className="flex flex-col justify-center px-7 py-9 sm:px-8 sm:py-10 md:px-9 md:py-12 lg:py-14">
+                          <h4 className="text-xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-[1.75rem] dark:text-white">
+                            {row.title}
+                          </h4>
+                          <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] md:text-base md:leading-relaxed dark:text-[#b0b0b0]">
+                            {row.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section
         className="w-full border-y border-neutral-200 bg-[#F8F9FA] py-2 md:py-2.5 dark:border-neutral-600 dark:bg-[#141414]"
         aria-label="Operational outcomes"
       >
@@ -354,10 +452,10 @@ export default function SmartWorkflowOrchestrationPage() {
             id="predictive-ops-heading"
             className="text-center text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
           >
-            <span className="text-primary">Beyond Monitoring</span>
+            <span className="text-primary">Beyond Workflow Automation </span>
             <span className="text-neutral-900 dark:text-white">
               {" "}
-              Towards Predictive Operations
+              Toward Intelligent Orchestration
             </span>
           </h2>
 
@@ -418,7 +516,7 @@ export default function SmartWorkflowOrchestrationPage() {
           >
             <hr className="border-black dark:border-white mb-8 w-60 mx-auto" />
             <h3 className="text-center">
-              Turn Your Service Desk Into an Autonomous Engine
+            Stop Managing Workflows. Start Orchestrating Outcomes.
             </h3>
             <div className="mt-8 flex   justify-center sm:mt-10">
               <Link

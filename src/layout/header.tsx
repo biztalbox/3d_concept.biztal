@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState } from "react"; import { IoSunnyOutline } from "react-icons/io5";
 import { RiMoonClearLine } from "react-icons/ri";
-import { ThemeProvider, useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 import {
   Accordion,
   AccordionContent,
@@ -77,17 +77,17 @@ const MEGA_MENU: MegaMenuColumn[] = [
             href: "/autonomous-identity-recovery",
           },
           {
-            id: "eum-service-workflow",
+            id: "eum-cognitive-knowledge",
             label: "Cognitive Knowledge Discovery",
             href: "/cognitive-knowledge-discovery",
           },
           {
-            id: "eum-service-workflow",
+            id: "eum-smart-workflow",
             label: "Smart Workflow Orchestration",
             href: "/smart-workflow-orchestration",
           },
           {
-            id: "eum-service-workflow",
+            id: "eum-auto-remediation",
             label: "One Click Auto-Remediation",
             href: "/one-click-auto-remediation",
           },
@@ -103,9 +103,9 @@ const MEGA_MENU: MegaMenuColumn[] = [
             label: "Proactive Self-Healing",
             href: "/proactive-self-healing",
           },
-          { id: "dex-experience-mgmt", label: "Sentiment Trend Analysis", href: "/sentiment-trend-analysis" },
-          { id: "dex-experience-mgmt", label: "Employee Productivity Guardrails", href: "/employee-productivity-guardrails" },
-          { id: "dex-experience-mgmt", label: "Experience Optimization & Orchestration", href: "/experience-optimization-orchestration" },
+          { id: "dex-sentiment", label: "Sentiment Trend Analysis", href: "/sentiment-trend-analysis" },
+          { id: "dex-productivity", label: "Employee Productivity Guardrails", href: "/employee-productivity-guardrails" },
+          { id: "dex-optimization", label: "Experience Optimization & Orchestration", href: "/experience-optimization-orchestration" },
         ],
       },
     ]
@@ -596,9 +596,5 @@ function StickyHeader() {
 }
 
 export default function Header() {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <StickyHeader />
-    </ThemeProvider>
-  );
+  return <StickyHeader />;
 }

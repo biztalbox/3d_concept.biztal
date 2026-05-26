@@ -13,17 +13,20 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = ({
   previousDoc,
   req: { payload },
 }) => {
+  // Only refresh the public site when the published version changes.
+  if (doc._status !== "published") {
+    return doc;
+  }
+
   try {
     revalidateTag("posts", "max");
-    revalidatePath("/blogs");
+    revalidatePath("/blogs", "layout");
 
     if (doc?.slug) {
-      revalidateTag(`post:${doc.slug}`, "max");
       revalidatePath(`/blogs/${doc.slug}`);
     }
 
     if (previousDoc?.slug && previousDoc.slug !== doc.slug) {
-      revalidateTag(`post:${previousDoc.slug}`, "max");
       revalidatePath(`/blogs/${previousDoc.slug}`);
     }
   } catch (err) {
@@ -42,7 +45,6 @@ export const revalidateDeletedPost: CollectionAfterDeleteHook<Post> = ({
     revalidatePath("/blogs");
 
     if (doc?.slug) {
-      revalidateTag(`post:${doc.slug}`, "max");
       revalidatePath(`/blogs/${doc.slug}`);
     }
   } catch (err) {

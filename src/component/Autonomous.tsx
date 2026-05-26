@@ -59,13 +59,24 @@ export default function Autonomous() {
   return (
     <section className="bg-black py-25">
       <div className="container">
-        <h2 className="text-center text-primary!">
-          Autonomous Service Consciousness
-        </h2>
-         
+        <h2>Autonomous Service Consciousness</h2>
+        <p className="text-primary! py-1">Response-Driven Assistance (RDA)</p>
 
-        <p className="text-foreground pt-5 font-bold!">Your service desk reimagined as a conversational command center where natural language becomes orchestrated action. A user types "Excel crashed." Within 3.2 seconds, reality shifts.</p>
-        <p className="text-foreground pt-5">The Agentic Workflow Orchestrator diagnoses the memory leak, executes remediation protocols, reinstalls the application with optimized configurations, validates full functionality across dependent services, and logs comprehensive resolution documentation—all within the chat interface. The user never leaves the conversation. The problem becomes history before coffee gets cold.</p>
+        <div className="relative mt-10 max-w-4xl border-l-4 border-primary pl-6 text-sm">
+          <p className="font-bold!">
+            Your service desk reimagined as a conversational command center where natural
+            language becomes orchestrated action. A user types &quot;Excel crashed.&quot; Within
+            3.2 seconds, reality shifts.
+          </p>
+          <p className="mt-6">
+            The Agentic Workflow Orchestrator diagnoses the memory leak, executes remediation
+            protocols, reinstalls the application with optimized configurations, validates full
+            functionality across dependent services, and logs comprehensive resolution
+            documentation—all within the chat interface. The user never leaves the conversation.
+            The problem becomes history before coffee gets cold.
+          </p>
+        </div>
+
         <div className="mt-10">
           <div
             className="relative"

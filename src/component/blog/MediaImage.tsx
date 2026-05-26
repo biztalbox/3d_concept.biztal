@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { getMediaUrl } from "@/lib/getMediaUrl";
 import type { Media } from "@/payload-types";
 
 type Props = {
@@ -13,13 +14,13 @@ type Props = {
   height?: number;
 };
 
+/** Payload CMS media — bypass Next optimizer (avoids private-IP / query-string issues). */
+function isPayloadMediaUrl(src: string) {
+  return src.includes("/api/media/file/");
+}
+
 /**
  * Renders a Payload Media document with Next.js Image.
- *
- * Handles three cases:
- * - Populated Media object (use `url` + width/height for `fill={false}` mode)
- * - Number (unpopulated relation) → renders nothing
- * - Null / undefined → renders nothing
  */
 export function MediaImage({
   media,
@@ -32,16 +33,20 @@ export function MediaImage({
   height,
 }: Props) {
   if (!media || typeof media !== "object") return null;
-  if (!media.url) return null;
+
+  const src = getMediaUrl(media.url);
+  if (!src) return null;
 
   const resolvedAlt = alt ?? media.alt ?? "";
+  const unoptimized = isPayloadMediaUrl(src);
 
   if (fill) {
     return (
       <Image
-        src={media.url}
+        src={src}
         alt={resolvedAlt}
         fill
+        unoptimized={unoptimized}
         className={className}
         sizes={sizes ?? "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
         priority={priority}
@@ -51,8 +56,9 @@ export function MediaImage({
 
   return (
     <Image
-      src={media.url}
+      src={src}
       alt={resolvedAlt}
+      unoptimized={unoptimized}
       width={width ?? media.width ?? 1200}
       height={height ?? media.height ?? 800}
       className={className}

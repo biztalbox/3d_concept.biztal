@@ -8,6 +8,7 @@ import {
 } from "@payloadcms/richtext-lexical";
 
 import { isAdmin } from "../access/isAdmin";
+import { isEditorOrAdmin } from "../access/isEditorOrAdmin";
 import { publishedOrAdmin } from "../access/publishedOrAdmin";
 import { slugField } from "../fields/slug";
 import { revalidateDeletedPost, revalidatePost } from "../hooks/revalidatePost";
@@ -39,9 +40,10 @@ export const Posts: CollectionConfig = {
   },
   access: {
     read: publishedOrAdmin,
-    create: isAdmin,
-    update: isAdmin,
+    create: isEditorOrAdmin,
+    update: isEditorOrAdmin,
     delete: isAdmin,
+    readVersions: isEditorOrAdmin,
   },
   fields: [
     {

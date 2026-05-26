@@ -5,16 +5,22 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import sharp from "sharp";
 
+import { getServerURL } from "./lib/getServerURL";
 import { Users } from "./payload/collections/Users";
 import { Media } from "./payload/collections/Media";
 import { Pages } from "./payload/collections/Pages";
 import { Posts } from "./payload/collections/Posts";
+import { getAllowedOrigins } from "./payload/lib/getAllowedOrigins";
+import { getStoragePlugins, hasCloudStorage } from "./payload/lib/getStoragePlugins";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
+const serverURL = getServerURL();
+const allowedOrigins = getAllowedOrigins();
+
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
+  serverURL,
   admin: {
     user: Users.slug,
     meta: {
@@ -30,6 +36,15 @@ export default buildConfig({
     },
   },
   editor: lexicalEditor(),
+  plugins: getStoragePlugins(),
+  onInit: async (payload) => {
+    if (process.env.NODE_ENV === "production" && !hasCloudStorage()) {
+      payload.logger.error(
+        "[media] Cloud storage is not configured. Add SUPABASE_SERVICE_ROLE_KEY (easiest) or S3_ACCESS_KEY_ID + S3_SECRET_ACCESS_KEY. Uploads fail with 500 on serverless without this.",
+      );
+    }
+    payload.logger.info(`[payload] serverURL=${serverURL}`);
+  },
   collections: [Users, Media, Pages, Posts],
   db: postgresAdapter({
     pool: {
@@ -52,10 +67,6 @@ export default buildConfig({
       fileSize: 20 * 1024 * 1024,
     },
   },
-  cors: [process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"].filter(
-    Boolean
-  ),
-  csrf: [process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"].filter(
-    Boolean
-  ),
+  cors: allowedOrigins,
+  csrf: allowedOrigins,
 });

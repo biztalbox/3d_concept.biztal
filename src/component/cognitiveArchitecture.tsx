@@ -139,7 +139,7 @@ export default function CognitiveArchitecture() {
         {/* Mobile/tablet: simple cards */}
         <div className="grid gap-4 lg:hidden">
           <div className="rounded-[18px] bg-white/5 px-6 py-6 ring-1 ring-white/10">
-            <h2 className="text-[34px] font-extrabold leading-[1.05] tracking-tight">
+            <h2 className="text-[34px] font-extrabold dark:text-white! leading-[1.05] tracking-tight">
               The Cognitive Architecture
             </h2>
             <p className="mt-3 text-sm leading-6 text-white/40">

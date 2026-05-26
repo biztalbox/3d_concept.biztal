@@ -1,6 +1,7 @@
 import type { CollectionConfig } from "payload";
 
 import { isAdmin } from "../access/isAdmin";
+import { isEditorOrAdmin } from "../access/isEditorOrAdmin";
 import { publishedOrAdmin } from "../access/publishedOrAdmin";
 import { slugField } from "../fields/slug";
 
@@ -30,9 +31,10 @@ export const Pages: CollectionConfig = {
   },
   access: {
     read: publishedOrAdmin,
-    create: isAdmin,
-    update: isAdmin,
+    create: isEditorOrAdmin,
+    update: isEditorOrAdmin,
     delete: isAdmin,
+    readVersions: isEditorOrAdmin,
   },
   fields: [
     {
