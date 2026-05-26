@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { RichText } from "@payloadcms/richtext-lexical/react";
+import type { SerializedEditorState } from "lexical";
 
 import { MediaImage } from "@/component/blog/MediaImage";
 import { PostMeta } from "@/component/blog/PostMeta";
@@ -152,7 +153,9 @@ export default async function PostPage({ params }: Props) {
         <article className="mx-auto max-w-3xl">
           {hasRichTextContent(post.content) ? (
             <div className="post-content space-y-6">
-              <RichText data={post.content} />
+              <RichText
+                data={post.content as SerializedEditorState}
+              />
             </div>
           ) : (
             <p className="text-center !text-muted-foreground">

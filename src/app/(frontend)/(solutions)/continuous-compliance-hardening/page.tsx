@@ -3,6 +3,8 @@ import HeroCanvas from "@/component/bot/HeroCanvas";
 import { CARD_STAGGER_MS, COMPARE_STAGGER_MS } from "@/lib/aos-config";
 import Link from "next/link";
 import Image from "next/image";
+import { BsStars } from "react-icons/bs";
+import { FaClockRotateLeft } from "react-icons/fa6";
 
 export default function ComplaincePage() {
   return (
@@ -59,17 +61,20 @@ export default function ComplaincePage() {
            
           </h2>
           <p
-            className=" mt-6 dark:text-white!"
+            className="mt-3"
             data-aos="fade-up"
             data-aos-duration="900"
             data-aos-easing="ease-out-cubic"
             data-aos-delay="80"
           >
-            Autonomous Enterprise Consciousness
+            Point-in-time audits and manual scripting leave dangerous security gaps. If your endpoints aren't compliant every second, your enterprise
+            is exposed.
           </p>
 
-          {/* 3 cards */}
-          <div className="mt-10 grid grid-cols-1 justify-items-center gap-8 md:grid-cols-3 md:gap-4">
+          {/* 2 cards — centered */}
+          
+          <div className="mt-10 flex flex-col items-center justify-center gap-12 md:flex-row md:gap-12 lg:gap-20">
+         
             {/* Card 1   landscape panel ~1.42:1 (w:h) to match design PDF */}
             <div
               className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
@@ -77,46 +82,28 @@ export default function ComplaincePage() {
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
             >
+              <p className="mb-6 text-center  font-bold text-neutral-900 sm:text-base dark:text-white">
+                The Old Way
+              </p>
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  className="text-primary transition-colors duration-300 group-hover:text-white"
+                <FaClockRotateLeft
+                  className="size-[22px] text-primary transition-colors duration-300 group-hover:text-white"
                   aria-hidden
-                >
-                  <path
-                    d="M12 3 2.7 20.2a1 1 0 0 0 .9 1.5h16.8a1 1 0 0 0 .9-1.5L12 3Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 9v5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M12 17h.01"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                />
               </div>
-              <div className="relative flex h-[220px] w-full shrink-0 flex-col overflow-hidden rounded-2xl bg-white transition-colors duration-300 group-hover:bg-primary">
-                <div className="flex min-h-0 flex-1 items-center justify-center px-6 pb-10 pt-8 text-center">
-                  <p className="text-[13px] leading-snug text-black/80 transition-colors duration-300 group-hover:text-white!">
-                    Point-in-time audits and manual scripting leave dangerous
-                    security gaps. If your endpoints aren’t compliant every
-                    second, your enterprise is exposed.
-                  </p>
+              
+               <div className="relative flex h-[220px] w-full shrink-0 flex-col overflow-hidden rounded-2xl dark:bg-secondary bg-white transition-colors duration-300">
+                <div className="flex min-h-0 flex-1 items-center justify-center px-6 pb-10 pt-8">
+                  <ul className="">
+                    <li>Periodic scans</li>
+                    <li>Manual helpdesk tickets for updates</li>
+                    <li>Broken software</li>
+                    <li>Stressful audit fire-drills</li>
+                  </ul>
                 </div>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2.5 rounded-b-2xl bg-primary transition-colors duration-300 group-hover:bg-white" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2.5 rounded-b-2xl bg-primary transition-colors duration-300" />
               </div>
-            </div>
+            </div> 
 
             {/* Card 2 */}
             <div
@@ -126,80 +113,25 @@ export default function ComplaincePage() {
               data-aos-easing="ease-out-cubic"
               data-aos-delay={CARD_STAGGER_MS}
             >
+              <p className="mb-6 text-center text-sm font-bold text-neutral-900 sm:text-base dark:text-white">
+                The ZerofAI Way
+              </p>
               <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  className="text-primary transition-colors duration-300 group-hover:text-white"
+                <BsStars
+                  className="size-[22px] text-primary transition-colors duration-300 group-hover:text-white"
                   aria-hidden
-                >
-                  <path
-                    d="M12 8v5l3 2"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
+                />
               </div>
-              <div className="relative flex h-[220px] w-full shrink-0 flex-col overflow-hidden rounded-2xl bg-white transition-colors duration-300 group-hover:bg-primary">
-                <div className="flex min-h-0 flex-1 items-center justify-center px-6 pb-10 pt-8 text-center">
-                  <p className="text-[13px] leading-snug text-black/80 transition-colors duration-300 group-hover:text-white!">
-                    Periodic scans, manual helpdesk tickets for updates, broken
-                    software, and stressful audit fire-drills.
-                  </p>
+              <div className="relative flex h-[220px] w-full shrink-0 flex-col overflow-hidden rounded-2xl bg-primary transition-colors duration-300 group-hover:bg-primary">
+                <div className="flex min-h-0 flex-1 items-center text-white justify-center px-6 pb-10 pt-8">
+                <ul className="">
+                    <li>Always-on monitoring</li>
+                    <li>instant auto-remediation</li>
+                    <li>silent background hardening</li>
+                    <li>24/7 audit readiness.</li>
+                  </ul>
                 </div>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2.5 rounded-b-2xl bg-primary transition-colors duration-300 group-hover:bg-white" />
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div
-              className="group flex w-full max-w-[352px] shrink-0 flex-col items-center transition-transform duration-300 hover:-translate-y-1"
-              data-aos="fade-up"
-              data-aos-duration="900"
-              data-aos-easing="ease-out-cubic"
-              data-aos-delay={CARD_STAGGER_MS * 2}
-            >
-              <div className="relative z-10 -mb-7 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white transition-colors duration-300 group-hover:bg-primary">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="22"
-                  height="22"
-                  fill="none"
-                  className="text-primary transition-colors duration-300 group-hover:text-white"
-                  aria-hidden
-                >
-                  <path
-                    d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M9.5 12.3 11 13.8l3.6-3.7"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <div className="relative flex h-[220px] w-full shrink-0 flex-col overflow-hidden rounded-2xl bg-white transition-colors duration-300 group-hover:bg-primary">
-                <div className="flex min-h-0 flex-1 items-center justify-center px-6 pb-10 pt-8 text-center">
-                  <p className="text-[13px] leading-snug text-black/80 transition-colors duration-300 group-hover:text-white!">
-                    Always-on monitoring, instant auto-remediation, silent
-                    background hardening, and 24/7 audit readiness.
-                  </p>
-                </div>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2.5 rounded-b-2xl bg-primary transition-colors duration-300 group-hover:bg-white" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2.5 rounded-b-2xl bg-white transition-colors duration-300 " />
               </div>
             </div>
           </div>
@@ -216,7 +148,7 @@ export default function ComplaincePage() {
 
           <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
             <div
-              className="group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary"
+              className="group relative overflow-hidden rounded-2xl bg-white dark:bg-secondary/80 px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary"
               data-aos="fade-up"
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
@@ -240,7 +172,7 @@ export default function ComplaincePage() {
                   </svg>
                 </div>
                 <div className="min-w-0">
-                  <h5 className="text-black font-bold transition-colors duration-300 group-hover:text-white!">
+                  <h5 className="text-black font-bold transition-colors dark:text-white! duration-300 group-hover:text-white!">
                     Real-Time Auto-Remediation
                   </h5>
                   <p className="mt-2 text-black/60 transition-colors duration-300 group-hover:text-white!">
@@ -253,14 +185,14 @@ export default function ComplaincePage() {
             </div>
 
             <div
-              className="group relative overflow-hidden rounded-2xl bg-white px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary"
+              className="group relative overflow-hidden rounded-2xl bg-white dark:bg-secondary/80 px-7 py-8 transition-all duration-300 hover:-translate-y-1 hover:bg-primary"
               data-aos="fade-up"
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
               data-aos-delay={COMPARE_STAGGER_MS}
             >
               <div className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/15 transition-colors duration-300 group-hover:bg-white/20">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full  bg-primary/15 transition-colors duration-300 group-hover:bg-white/20">
                   <svg
                     viewBox="0 0 24 24"
                     width="20"
@@ -284,7 +216,7 @@ export default function ComplaincePage() {
                   </svg>
                 </div>
                 <div className="min-w-0">
-                  <h5 className="text-black font-bold transition-colors duration-300 group-hover:text-white!">
+                  <h5 className="text-black font-bold transition-colors duration-300 dark:text-white! group-hover:text-white!">
                     Always-On Audit
                   </h5>
                   <p className="mt-2 text-black/60 transition-colors duration-300 group-hover:text-white!">
@@ -300,11 +232,11 @@ export default function ComplaincePage() {
       </section>
 
       {/* SECTION (as per screenshot) */}
-      <section className="bg-white px-5 py-16 dark:bg-secondary/40 sm:px-6 md:py-20">
+      <section className="px-5 py-16 dark:bg-secondary/40 sm:px-6 md:py-20">
         <div className="container">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
             <div
-              className="relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10"
+              className="relative rounded-2xl bg-secondary px-6 py-8  sm:px-10 sm:py-10"
               data-aos="fade-up"
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
@@ -334,7 +266,7 @@ export default function ComplaincePage() {
                 </svg>
               </div>
 
-              <h5 className="text-black text-lg font-bold md:text-xl">
+              <h5 className="text-black dark:text-white! text-lg font-bold md:text-xl">
                 Lock Down the Attack Surface, Autonomously.
               </h5>
               <p className="mt-4 text-sm leading-6 text-black/45 md:text-sm">
@@ -346,7 +278,7 @@ export default function ComplaincePage() {
             </div>
 
             <div
-              className="relative rounded-2xl bg-secondary px-6 py-8 dark:bg-white sm:px-10 sm:py-10"
+              className="relative rounded-2xl bg-secondary px-6 py-8 dark:bg-secondary/80 sm:px-10 sm:py-10"
               data-aos="fade-up"
               data-aos-duration="900"
               data-aos-easing="ease-out-cubic"
@@ -382,7 +314,7 @@ export default function ComplaincePage() {
                 </svg>
               </div>
 
-              <h5 className="text-black text-lg font-bold md:text-xl">
+              <h5 className="text-black dark:text-white! text-lg font-bold md:text-xl">
                 Zero Configuration Drift.
               </h5>
               <p className="mt-4 text-sm leading-6 text-black/45 md:text-sm">
@@ -395,11 +327,11 @@ export default function ComplaincePage() {
           </div>
         </div>
 
-        <div className="mt-14 bg-secondary dark:bg-white">
+        <div className="mt-14 bg-secondary dark:bg-secondary/80">
           <div className="container">
             <div className="flex flex-col items-center gap-12 py-14 md:flex-row md:gap-0 md:py-16">
               <div
-                className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45"
+                className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45 dark:md:border-white/20"
                 data-aos="fade-up"
                 data-aos-duration="900"
                 data-aos-easing="ease-out-cubic"
@@ -410,19 +342,25 @@ export default function ComplaincePage() {
                   aria-hidden
                   width={62}
                   height={62}
-                  className="h-[82px] w-[82px]"
+                  className="h-[82px] w-[82px] dark:hidden"
                 />
-                <div className="mt-5 text-sm font-semibold text-black">100%</div>
-                <div className="text-base font-bold text-black">
+                <div
+                  className="hidden h-[82px] w-[82px] shrink-0 bg-primary mask-[url(/icons/policy-enforcement.png)] mask-center mask-contain mask-no-repeat dark:block [-webkit-mask-image:url(/icons/policy-enforcement.png)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
+                  aria-hidden
+                />
+                <div className="mt-5 text-sm font-semibold text-black dark:text-white">
+                  100%
+                </div>
+                <div className="text-base font-bold text-black dark:text-white">
                   Policy Enforcement
                 </div>
-                <div className="mt-1 text-sm text-black/55">
+                <div className="mt-1 text-sm text-black/55 dark:text-white/70">
                   Across All Devices
                 </div>
               </div>
 
               <div
-                className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45"
+                className="flex w-full flex-col items-center text-center md:w-1/3 md:border-r md:border-black/45 dark:md:border-white/20"
                 data-aos="fade-up"
                 data-aos-duration="900"
                 data-aos-easing="ease-out-cubic"
@@ -434,13 +372,19 @@ export default function ComplaincePage() {
                   aria-hidden
                   width={62}
                   height={62}
-                  className="h-[82px] w-[82px]"
+                  className="h-[82px] w-[82px] dark:hidden"
                 />
-                <div className="mt-5 text-sm font-semibold text-black">0</div>
-                <div className="text-base font-bold text-black">
+                <div
+                  className="hidden h-[82px] w-[82px] shrink-0 bg-primary mask-[url(/icons/manual-interventions.png)] mask-center mask-contain mask-no-repeat dark:block [-webkit-mask-image:url(/icons/manual-interventions.png)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
+                  aria-hidden
+                />
+                <div className="mt-5 text-sm font-semibold text-black dark:text-white">
+                  0
+                </div>
+                <div className="text-base font-bold text-black dark:text-white">
                   Manual Interventions
                 </div>
-                <div className="mt-1 text-sm text-black/55">
+                <div className="mt-1 text-sm text-black/55 dark:text-white/70">
                   for compliance drift remediation
                 </div>
               </div>
@@ -458,13 +402,19 @@ export default function ComplaincePage() {
                   aria-hidden
                   width={62}
                   height={62}
-                  className="h-[82px] w-[82px]"
+                  className="h-[82px] w-[82px] dark:hidden"
                 />
-                <div className="mt-5 text-sm font-semibold text-black">24/7</div>
-                <div className="text-base font-bold text-black">
+                <div
+                  className="hidden h-[82px] w-[82px] shrink-0 bg-primary mask-[url(/icons/audit-readiness.png)] mask-center mask-contain mask-no-repeat dark:block [-webkit-mask-image:url(/icons/audit-readiness.png)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
+                  aria-hidden
+                />
+                <div className="mt-5 text-sm font-semibold text-black dark:text-white">
+                  24/7
+                </div>
+                <div className="text-base font-bold text-black dark:text-white">
                   Audit Readiness
                 </div>
-                <div className="mt-1 text-sm text-black/55">
+                <div className="mt-1 text-sm text-black/55 dark:text-white/70">
                   with real-time compliance visibility
                 </div>
               </div>

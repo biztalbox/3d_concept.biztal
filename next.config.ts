@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
     // Payload serves media from /api/media/file/* (often with ?updatedAt query strings).
     localPatterns: [
       { pathname: "/api/media/file/**" },
+      { pathname: "/assets/**" },
+      { pathname: "/**" },
     ],
     // Next.js 16 blocks localhost/private IPs unless allowed (dev + self-hosted).
     dangerouslyAllowLocalIP: process.env.NODE_ENV !== "production",

@@ -84,7 +84,7 @@ export default function SelfHealingDigitalOrganism() {
 
           <div data-aos="fade-left" className="mt-5 flex justify-center">
             <div className="rounded-full bg-[#19B6C9] px-6 py-2 text-xs font-semibold tracking-wide text-white ring-1 ring-white/10">
-              Autonomous Issue Management
+              Autonomous Issue Management (AIM)
             </div>
           </div>
 

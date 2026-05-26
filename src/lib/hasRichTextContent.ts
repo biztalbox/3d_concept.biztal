@@ -1,7 +1,17 @@
+/** Non-empty Payload Lexical rich-text field value. */
+export type RichTextFieldValue = {
+  root: {
+    type: string;
+    children: unknown[];
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+};
+
 /**
  * Returns true when a Payload Lexical rich-text field has visible text.
  */
-export function hasRichTextContent(content: unknown): boolean {
+export function hasRichTextContent(content: unknown): content is RichTextFieldValue {
   if (!content || typeof content !== "object") return false;
 
   let hasText = false;

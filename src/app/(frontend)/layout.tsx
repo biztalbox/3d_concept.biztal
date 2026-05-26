@@ -4,6 +4,7 @@ import "../globals.css";
 import Header from "@/layout/header";
 import Footer from "@/layout/Footer";
 import { LoaderExtensionProvider } from "@/components/loader-extension-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
@@ -33,11 +34,13 @@ export default function FrontendLayout({
       className={cn("antialiased", "overflow-x-hidden", poppins.variable)}
     >
       <body className="min-w-0 overflow-x-hidden">
-        <LoaderExtensionProvider>
-          <Header />
-          {children}
-          <Footer />
-        </LoaderExtensionProvider>
+        <ThemeProvider defaultTheme="system">
+          <LoaderExtensionProvider>
+            <Header />
+            {children}
+            <Footer />
+          </LoaderExtensionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

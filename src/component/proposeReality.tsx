@@ -205,7 +205,7 @@ export default function ProposeReality() {
       <section className="overflow-x-hidden bg-secondary pb-12 dark:bg-secondary/40 md:pb-0">
         <div className="container sm:pb-10 ">
           <div className=" text-center">
-            <h2 className="font-bold leading-tight tracking-tight text-primary">
+            <h2 className="font-bold leading-tight tracking-tight">
               The Cognitive Architecture
             </h2>
             <p className="mx-auto text-sm leading-relaxed text-neutral-700 dark:text-white/75 sm:mt-5 md:text-base md:leading-7">

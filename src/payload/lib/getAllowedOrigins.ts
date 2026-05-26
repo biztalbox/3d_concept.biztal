@@ -1,4 +1,4 @@
-import { getServerURL } from "@/lib/getServerURL";
+import { getServerURL } from "../../lib/getServerURL";
 
 /**
  * Origins allowed for Payload CORS + CSRF.
