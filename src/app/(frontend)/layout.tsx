@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import Header from "@/layout/header";
 import Footer from "@/layout/Footer";
+import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
@@ -32,9 +33,11 @@ export default function FrontendLayout({
       className={cn("antialiased", "overflow-x-hidden", poppins.variable)}
     >
       <body className="min-w-0 overflow-x-hidden">
-        <Header />
-        {children}
-        <Footer />
+        <ThemeProvider defaultTheme="system" storageKey="zerofai-theme">
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
