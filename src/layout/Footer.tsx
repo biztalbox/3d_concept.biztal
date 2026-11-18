@@ -12,7 +12,6 @@ import {
 
 const NAV_LINKS = [
   { label: "Leadership", href: "/leadership" },
-  { label: "Blogs", href: "/blogs" },
   { label: "Knowledge Center", href: "/knowledge-center" },
   { label: "Custom Stories", href: "#" },
   { label: "Contact", href: "/contact" },

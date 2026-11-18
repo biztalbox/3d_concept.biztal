@@ -135,11 +135,6 @@ const MEGA_MENU: MegaMenuColumn[] = [
     heading: "Resources",
     items: [
       {
-        id: "r0",
-        label: "Blogs",
-        href: "/blogs",
-      },
-      {
         id: "r1",
         label: "Knowledge Center",
         href: "/knowledge-center",
